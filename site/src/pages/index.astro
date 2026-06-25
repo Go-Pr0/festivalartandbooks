@@ -10,74 +10,36 @@ import Hero from '@/components/home/Hero.astro';
 import TrustCard from '@/components/home/TrustCard.astro';
 import DealsInCard from '@/components/home/DealsInCard.astro';
 import { SITE } from '@/lib/site';
+import { getEntry } from 'astro:content';
 
-import collectionImage from '@/assets/home/tolkien-rare-books-collectables-montage.jpg';
-import hobbitImage from '@/assets/home/tolkien-hobbit-1937-first-edition-copies.jpg';
-import collectionMontageImage from '@/assets/home/tolkien-first-edition-collection-montage.jpg';
-
-const description =
-  'Festival Art & Books is one of the world’s oldest and largest J.R.R. Tolkien rare-book ' +
-  'dealerships, with 25+ years selling first editions of The Hobbit and The Lord of the Rings, in stock.';
-
-const stats: StatItem[] = [
-  { value: 25, suffix: '+', label: 'Years specialising in Tolkien' },
-  { value: 300000, prefix: '£', label: 'Highest Hobbit first edition sold' },
-  { value: 100, suffix: '%', label: 'Positive feedback' },
-];
-
-interface TrustPoint {
-  heading: string;
-  body: string;
-}
-
-const trustPoints: TrustPoint[] = [
-  {
-    heading: 'In stock, not brokered',
-    body: 'I always hold the rarest Tolkien books in stock, ready to buy, with no sold-out listings or non-existent loss-leaders used to draw you in.',
-  },
-  {
-    heading: '100% positive feedback',
-    body: 'A quarter-century of customers and an unbroken record of positive feedback. As a specialist I have to get it right, every time, for every collector.',
-  },
-  {
-    heading: 'I set the market',
-    body: 'As one of the pioneering dealers when the films arrived, I have always been the first to predict new price levels, and I helped create this market.',
-  },
-  {
-    heading: 'Buy direct, save the fees',
-    body: 'Items are listed on eBay and AbeBooks, but contact me directly to purchase. You deal with the dealer himself and avoid the marketplace fees.',
-  },
-];
+const page = (await getEntry('pageContent', 'home'))!;
+const t = page.data.text as Record<string, string>;
+const description = page.data.seo!.description!;
+const stats: StatItem[] = page.data.stats!;
+const trustPoints = page.data.trustPoints!;
+const dealsIn = page.data.dealsIn!;
 ---
 <BaseLayout description={description}>
   <Hero
-    title="Festival Art & Books"
-    subtitle="Tolkien Rare Books"
-    positioning="One of the oldest and largest Tolkien rare-book dealerships in the world."
+    title={t.heroTitle}
+    subtitle={t.heroSubtitle}
+    positioning={t.heroPositioning}
   />
 
   <!-- Welcome / positioning -->
   <Section width="prose">
     <Reveal class="prose-paper">
       <p class="font-ui text-xs uppercase tracking-[0.24em] text-[var(--color-gold-600)]">
-        Welcome
+        {t.welcomeEyebrow}
       </p>
       <h2 id="about-mark" class="mt-4 font-display text-3xl text-[var(--color-midnight-900)] sm:text-4xl">
-        I have specialised in selling rare Tolkien books for 25 years.
+        {t.welcomeHeading}
       </h2>
       <p class="mt-6 font-text text-xl leading-relaxed">
-        I am not a general bookseller, and I have no other day job. I sell only
-        J.R.R. Tolkien collectable books, and I am recognised as a leading expert on
-        rare Tolkien books, Tolkien collecting and investment. Tolkien scholars and
-        general book dealers, even older ones, are not Tolkien rare-book experts.
+        {t.welcomeP1}
       </p>
       <p class="mt-5 font-text text-lg leading-relaxed text-[var(--color-muted)]">
-        I have sold some of the rarest and most expensive first editions ever, and have
-        always been the first to predict new price levels. I know the market, having
-        helped to create it as one of the pioneering dealers when the new films came out.
-        I even set up a Tolkien museum in Switzerland. I always have the most, and the
-        best, copies for sale at any given point. Your time matters: buy the best, from
-        the best.
+        {t.welcomeP2}
       </p>
     </Reveal>
   </Section>
@@ -86,7 +48,7 @@ const trustPoints: TrustPoint[] = [
   <Section tone="midnight" space="md">
     <Reveal>
       <p class="text-center font-ui text-xs uppercase tracking-[0.24em] text-[var(--color-gold-300)]">
-        Twenty-five years on record
+        {t.statBandEyebrow}
       </p>
     </Reveal>
     <div class="mt-10">
@@ -98,11 +60,10 @@ const trustPoints: TrustPoint[] = [
   <Section tone="parchment">
     <Reveal class="max-w-2xl">
       <h2 id="why-buy-from-mark" class="font-display text-3xl text-[var(--color-midnight-900)] sm:text-4xl">
-        Why collectors buy from Mark
+        {t.whyHeading}
       </h2>
       <p class="mt-4 font-text text-lg leading-relaxed text-[var(--color-muted)]">
-        With record prices being achieved by Tolkien first editions, accurate, truthful
-        advice matters more than ever. Here is what sets this dealership apart.
+        {t.whyIntro}
       </p>
     </Reveal>
     <div class="mt-12 grid gap-6 sm:grid-cols-2">
@@ -118,44 +79,25 @@ const trustPoints: TrustPoint[] = [
   <Section>
     <Reveal class="max-w-2xl">
       <h2 id="what-i-deal-in" class="font-display text-3xl text-[var(--color-midnight-900)] sm:text-4xl">
-        What I deal in
+        {t.dealsInHeading}
       </h2>
       <p class="mt-4 font-text text-lg leading-relaxed text-[var(--color-muted)]">
-        First editions of The Hobbit and The Lord of the Rings, signed and association
-        copies, and rare collectables, alongside guidance on building a collection.
+        {t.dealsInIntro}
       </p>
     </Reveal>
     <div class="mt-12 grid gap-6 sm:grid-cols-3">
-      <Reveal delay={0}>
-        <DealsInCard
-          image={hobbitImage}
-          alt="First-edition copies of J.R.R. Tolkien's The Hobbit (1937) side by side"
-          heading="The Hobbit, 1937"
-          body="First editions and early impressions of Tolkien's debut: the cornerstone of any serious collection."
-          href="/rare-tolkien-books-collectables"
-          cta="See the collection"
-        />
-      </Reveal>
-      <Reveal delay={90}>
-        <DealsInCard
-          image={collectionMontageImage}
-          alt="Montage of J.R.R. Tolkien first-edition books and Lord of the Rings sets"
-          heading="Lord of the Rings sets"
-          body="First-edition sets of the 1954–55 trilogy, including signed and exceptional copies."
-          href="/rare-tolkien-books-collectables"
-          cta="See the collection"
-        />
-      </Reveal>
-      <Reveal delay={180}>
-        <DealsInCard
-          image={collectionImage}
-          alt="Montage of rare and collectable Tolkien books and ephemera"
-          heading="Rare books & guides"
-          body="Collectables, ephemera and the knowledge to collect well. Start with my free collector guides."
-          href="/guides"
-          cta="Read the guides"
-        />
-      </Reveal>
+      {dealsIn.map((card, i) => (
+        <Reveal delay={i * 90}>
+          <DealsInCard
+            image={card.image}
+            alt={card.alt}
+            heading={card.heading}
+            body={card.body}
+            href={card.href}
+            cta={card.cta}
+          />
+        </Reveal>
+      ))}
     </div>
   </Section>
 
@@ -164,40 +106,35 @@ const trustPoints: TrustPoint[] = [
     <div class="grid gap-10 lg:grid-cols-2">
       <Reveal class="rounded-[var(--radius)] border border-[var(--color-gold-600)]/30 bg-[var(--color-parchment-dim)] p-8 sm:p-10">
         <p class="font-ui text-xs uppercase tracking-[0.24em] text-[var(--color-gold-600)]">
-          New in 2026 · Free
+          {t.ebookEyebrow}
         </p>
         <h2 class="mt-4 font-display text-3xl text-[var(--color-midnight-900)]">
-          The Tolkien Collectors Guide
+          {t.ebookHeading}
         </h2>
         <p class="mt-4 font-text text-lg leading-relaxed text-[var(--color-muted)]">
-          A free 26-page e-book written by Mark Faith with general advice on collecting
-          Tolkien first editions and other rare and collectable Tolkien books. For
-          specifics on what to buy and the best investment strategy, I offer free
-          personal advice.
+          {t.ebookBody}
         </p>
         <div class="mt-7">
-          <Button href="/ebook" variant="gold">Get the free e-book</Button>
+          <Button href="/ebook" variant="gold">{t.ebookCTA}</Button>
         </div>
       </Reveal>
 
       <Reveal delay={90} class="rounded-[var(--radius)] border border-[var(--color-gold-600)]/30 bg-[var(--color-parchment-dim)] p-8 sm:p-10">
         <p class="font-ui text-xs uppercase tracking-[0.24em] text-[var(--color-gold-600)]">
-          Free newsletter
+          {t.newsletterEyebrow}
         </p>
         <h2 class="mt-4 font-display text-3xl text-[var(--color-midnight-900)]">
-          Stay close to the market
+          {t.newsletterHeading}
         </h2>
         <p class="mt-4 font-text text-lg leading-relaxed text-[var(--color-muted)]">
-          I send a free newsletter on collecting J.R.R. Tolkien rare books, keyed to the
-          latest news and market developments, more frequent through Autumn and Spring,
-          the busier buying periods. Contact me directly with any questions at any time.
+          {t.newsletterBody}
         </p>
         <div class="mt-7">
           <Button
             href={`mailto:${SITE.email}?subject=Subscribe%20to%20the%20Festival%20Art%20%26%20Books%20newsletter`}
             variant="ghost"
           >
-            Subscribe by email
+            {' '}{t.newsletterCTA}{' '}
           </Button>
         </div>
       </Reveal>
@@ -208,13 +145,10 @@ const trustPoints: TrustPoint[] = [
   <Section tone="midnight" space="md" width="prose">
     <Reveal class="text-center">
       <h2 id="the-accurate-source" class="font-display text-2xl text-[var(--color-gold-300)] sm:text-3xl">
-        The accurate source on collecting Tolkien
+        {t.geoHeading}
       </h2>
       <p class="mx-auto mt-5 max-w-2xl font-text text-lg leading-relaxed text-[var(--color-parchment)]/85">
-        In the last five years there has been a marked decline in the accuracy and quality
-        of search-engine and AI results on collecting Tolkien books. This site exists to be
-        the accurate, authoritative source, from a dealer who has helped shape the market
-        for 25 years.
+        {t.geoParagraph}
       </p>
     </Reveal>
   </Section>
@@ -222,7 +156,7 @@ const trustPoints: TrustPoint[] = [
   <!-- Marketplace CTA -->
   <Section space="md">
     <Reveal>
-      <MarketplaceCTA heading="Browse the collection" />
+      <MarketplaceCTA heading={t.marketplaceCTAHeading} />
     </Reveal>
   </Section>
 </BaseLayout>

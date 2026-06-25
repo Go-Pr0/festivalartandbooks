@@ -6,14 +6,16 @@ import Reveal from '@/components/Reveal.astro';
 import Button from '@/components/Button.astro';
 import Figure from '@/components/story/Figure.astro';
 import { article } from '@/lib/schema';
+import { getEntry } from 'astro:content';
 
-import pawnStarsSet from '@/assets/story/mark-faith-filming-pawn-stars-uk-set.jpg';
-import thankYouCard from '@/assets/story/four-rooms-thank-you-card-hobbit-first-edition.jpg';
+const page = (await getEntry('pageContent', 'tv-appearances'))!;
+const t = page.data.text!;
+const fig = (k: string) => page.data.figures!.find((f) => f.key === k)!;
+const pawnStarsSet = fig('pawnStarsSet');
+const thankYouCard = fig('thankYouCard');
 
-const title = 'TV Appearances: Mark Faith on Four Rooms & Pawn Stars UK | Festival Art & Books';
-const description =
-  'Mark Faith has appeared as a rare-Tolkien expert on Channel 4’s Four Rooms and the UK version ' +
-  'of Pawn Stars, showcasing first editions of The Hobbit and The Lord of the Rings.';
+const title = page.data.seo!.title!;
+const description = page.data.seo!.description!;
 
 const trail = [
   { name: 'Home', url: '/' },
@@ -33,23 +35,19 @@ const schema = article({
     <Breadcrumbs trail={trail} class="text-[var(--color-parchment)]/70" />
     <div class="mt-10 grid items-center gap-12 lg:grid-cols-[1.4fr_1fr]">
       <Reveal as="div" mode="up">
-        <p class="font-ui text-xs uppercase tracking-[0.25em] text-[var(--color-gold-300)]">On screen</p>
+        <p class="font-ui text-xs uppercase tracking-[0.25em] text-[var(--color-gold-300)]">{t.heroEyebrow}</p>
         <h1 class="mt-3 font-display text-4xl leading-tight text-[var(--color-parchment)] sm:text-5xl lg:text-6xl">
-          TV appearances
+          {t.heroH1}
         </h1>
         <p class="mt-6 max-w-prose font-text text-xl leading-relaxed text-[var(--color-parchment)]/90">
-          Mark Faith has brought rare-Tolkien collecting to television as a recognised expert,
-          appearing on Channel 4’s Four Rooms and the UK version of Pawn Stars on the History
-          Channel. On screen he showcased his complete set of the first ten Hobbit impressions and
-          his Lord of the Rings first editions, the kind of pieces that have passed through his
-          hands for over two decades.
+          {t.heroIntro}
         </p>
       </Reveal>
       <Figure
-        src={pawnStarsSet}
-        alt="Mark Faith being filmed at the counter on the set of the UK version of Pawn Stars"
-        caption="Mark Faith filming on the set of the UK Pawn Stars."
-        delay={120}
+        src={pawnStarsSet.src}
+        alt={pawnStarsSet.alt}
+        caption={pawnStarsSet.caption}
+        delay={pawnStarsSet.delay}
       />
     </div>
   </Section>
@@ -58,53 +56,34 @@ const schema = article({
     <div class="prose-paper max-w-3xl">
       <Reveal as="div" mode="up">
         <h2 class="font-display text-3xl text-[var(--color-midnight-900)] sm:text-4xl">
-          Four Rooms (Channel 4)
+          {t.fourRoomsH2}
         </h2>
         <p class="mt-4 font-text text-lg leading-relaxed text-[var(--color-text)]">
-          Four Rooms offers sellers of valuable and collectable items the chance to pitch to four of
-          the UK’s biggest dealers (up to 30 dealers are rotated through the series, ranging from
-          art collector and academic Ruth Meakin to interior designer and A-list dealer Celia
-          Sawyer). Mark did not accept any offers for his Lord of the Rings first editions when he
-          appeared, but later sold the set for £15,000. He also appeared trying to sell the first
-          ten printings of The Hobbit (broadcast 1 June 2014).
+          {t.fourRoomsP1}
         </p>
       </Reveal>
 
       <Reveal as="div" mode="up" class="mt-10">
         <h2 class="font-display text-3xl text-[var(--color-midnight-900)] sm:text-4xl">
-          Pawn Stars UK (History Channel)
+          {t.pawnStarsH2}
         </h2>
         <p class="mt-4 font-text text-lg leading-relaxed text-[var(--color-text)]">
-          Mark made two appearances on the UK version of Pawn Stars. The US original has run since
-          2009 and is one of the most-watched shows in North America, drawing over five million
-          viewers; the format depicts the bargaining over items customers bring in, with discussion
-          of their historical background. The show has been broadcast in over 20 countries and won
-          critical acclaim: DVD Town praised its cast and educational value, calling it “addictive”
-          and a “big time winner.”
+          {t.pawnStarsP1}
         </p>
         <p class="mt-4 font-text text-lg leading-relaxed text-[var(--color-text)]">
-          Rodney Matthews and Mark Faith appeared on 9 September 2013, and Mark appeared again on 23
-          September to showcase his rare complete set of the first ten Hobbit impressions, shown
-          alongside Charlie Chaplin’s original tramp suit and the first Manchester United programme
-          after the Munich air crash. As the show put it: “…the boys meet a seller looking to part
-          with ten first editions of the J.R.R. Tolkien classic, The Hobbit. The seller’s asking big
-          money for his books, but does the price ring true for this precious literary classic?”
+          {t.pawnStarsP2}
         </p>
         <p class="mt-4 font-text text-lg leading-relaxed text-[var(--color-text)]">
-          On Pawn Stars, Mark also tried to sell Rodney Matthews pencil sketches used for the book
-          Alice’s Adventures in Wonderland, an episode that also features an appearance by Rodney
-          Matthews.
+          {t.pawnStarsP3}
         </p>
       </Reveal>
 
       <Reveal as="div" mode="up" class="mt-10">
         <h2 class="font-display text-3xl text-[var(--color-midnight-900)] sm:text-4xl">
-          More media
+          {t.moreMediaH2}
         </h2>
         <p class="mt-4 font-text text-lg leading-relaxed text-[var(--color-text)]">
-          A first-edition Hobbit handled by Mark also featured on ITV’s Masterpiece with Alan
-          Titchmarsh, filmed at Kentwell Hall in Suffolk. Past clips are collected on Mark’s YouTube
-          channel.
+          {t.moreMediaP1}
         </p>
         <p class="mt-4 font-text text-base text-[var(--color-muted)]">
           {/* TODO: Mark to confirm which episode links can be embedded — some Four Rooms clips
@@ -114,23 +93,21 @@ const schema = article({
 
       <Reveal as="div" mode="up" class="mt-8">
         <Figure
-          src={thankYouCard}
-          alt="Autographed thank-you card from a TV production for the use of Mark Faith's first-edition Hobbit"
-          caption="A production’s handwritten thank-you for the use of Mark’s first-edition Hobbit."
-          delay={80}
+          src={thankYouCard.src}
+          alt={thankYouCard.alt}
+          caption={thankYouCard.caption}
+          delay={thankYouCard.delay}
         />
       </Reveal>
 
       <Reveal as="div" mode="up" class="mt-10 not-prose">
         <p class="font-text text-lg text-[var(--color-text)]">
-          As a new cycle of Tolkien film and events begins, Mark plans to do more television and
-          media. (We stopped before because most producers do not pay participants for their time
-          and expenses; producers willing to cover an expert’s time are welcome to get in touch.)
+          {t.closingP}
         </p>
         <div class="mt-6 flex flex-wrap gap-3">
-          <Button href="https://www.youtube.com/c/MarkFaithD52" variant="gold">Watch on YouTube</Button>
-          <Button href="/news-media" variant="ghost">Press &amp; media</Button>
-          <Button href="/contact" variant="ghost">Contact Mark</Button>
+          <Button href="https://www.youtube.com/c/MarkFaithD52" variant="gold">{t.ctaYouTube}</Button>
+          <Button href="/news-media" variant="ghost">{t.ctaPress}</Button>
+          <Button href="/contact" variant="ghost">{t.ctaContact}</Button>
         </div>
       </Reveal>
     </div>

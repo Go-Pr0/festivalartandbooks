@@ -7,10 +7,12 @@ import Breadcrumbs from '@/components/Breadcrumbs.astro';
 import MarketplaceCTA from '@/components/MarketplaceCTA.astro';
 import { Image } from 'astro:assets';
 import { SITE } from '@/lib/site';
-
-import markPortrait from '@/assets/showcase/mark-faith-tolkien-dealer-portrait.jpg';
+import { getEntry } from 'astro:content';
 
 const PATH = '/ebook';
+
+const page = (await getEntry('pageContent', 'ebook'))!;
+const t = page.data.text!;
 
 const trail = [
   { name: 'Home', url: '/' },
@@ -21,34 +23,31 @@ const subject = encodeURIComponent('Free Tolkien Collector’s Guide e-book');
 const mailto = `mailto:${SITE.email}?subject=${subject}`;
 ---
 <BaseLayout
-  title="Free Tolkien Collector’s Guide E-book | Festival Art & Books"
-  description="Get Mark Faith’s free 26-page Tolkien Collector’s Guide e-book: practical advice on buying and collecting rare Tolkien books. Free with any purchase or with the newsletter."
+  title={page.data.seo!.title!}
+  description={page.data.seo!.description!}
 >
   <Section tone="midnight" space="md">
     <Breadcrumbs trail={trail} class="text-[var(--color-parchment)]/70" />
     <div class="mt-8 grid grid-cols-1 gap-10 lg:grid-cols-[1.4fr_1fr] lg:items-center">
       <Reveal class="max-w-2xl">
         <p class="font-ui text-xs uppercase tracking-[0.2em] text-[var(--color-gold-300)]">
-          Free collector’s guide
+          {t.heroEyebrow}
         </p>
         <h1 class="mt-3 font-display text-4xl text-[var(--color-parchment)] sm:text-5xl">
-          The Tolkien Collector’s Guide
+          {t.heroH1}
         </h1>
         <p class="mt-6 font-text text-xl leading-relaxed text-[var(--color-parchment)]/85">
-          Mark’s Tolkien Collector’s Guide is free when you buy something from us, and the
-          monthly newsletter is free too. It is his way of sharing twenty-five years of
-          specialist knowledge, to enhance your collecting, save you time, and help you
-          make better choices.
+          {t.heroIntro}
         </p>
         <div class="mt-8 flex flex-wrap gap-3">
-          <Button href={mailto} variant="gold" size="lg">Email Mark for your free copy</Button>
+          <Button href={mailto} variant="gold" size="lg">{t.ctaEmailMark}</Button>
         </div>
       </Reveal>
       <Reveal mode="fade" delay={120}>
         <figure class="overflow-hidden rounded-[var(--radius)] border border-[var(--color-gold-600)]/30">
           <Image
-            src={markPortrait}
-            alt="Mark Faith, author of the free Tolkien Collector’s Guide e-book"
+            src={page.data.heroImage!}
+            alt={page.data.heroImageAlt!}
             widths={[400, 700]}
             sizes="(min-width: 1024px) 30vw, 100vw"
             class="w-full object-cover"
@@ -61,34 +60,20 @@ const mailto = `mailto:${SITE.email}?subject=${subject}`;
   <Section tone="paper" width="prose">
     <Reveal>
       <p class="font-ui text-xs uppercase tracking-[0.2em] text-[var(--color-gold-600)]">
-        From the introduction
+        {t.fromIntroEyebrow}
       </p>
       <h2 class="mt-3 font-display text-3xl text-[var(--color-midnight-900)] sm:text-4xl">
-        A note from Mark
+        {t.noteFromMarkH2}
       </h2>
       <div class="mt-6 space-y-5 font-text text-lg leading-relaxed text-[var(--color-text)]">
         <p>
-          Thank you for investing your time in this little guide. I hope it will enhance
-          your Tolkien collecting experience, save you time, and help you make better
-          choices. Many people consider their Tolkien collecting just a hobby, but for
-          most it’s very much a paying one; I financed my first collection by reselling
-          spare copies. Tolkien early editions are easy to identify, but prices vary
-          widely, so it can be tricky knowing what to pay for a particular copy.
+          {t.noteP1}
         </p>
         <p>
-          I have been a specialist Tolkien dealer for twenty-five years, and was a private
-          collector before that. I am not an antiquarian-book or literature expert; I know
-          Tolkien books as a personal reading passion. I think I know more than most
-          dealers because I have specialised so narrowly and handled thousands of copies
-          myself. I am not a broker; I hold dozens of rare editions in stock, ready to
-          buy, and sell some books on consignment for customers.
+          {t.noteP2}
         </p>
         <p>
-          At the core of my business is a true passion for the author and the fantasy
-          genre. I am a fan, completely open and willing to discuss collecting and the
-          works themselves. This guide is my way of sharing what I have learned. Please
-          feel free to email your own tips, anecdotes and suggestions so I can improve
-          future editions.
+          {t.noteP3}
         </p>
       </div>
     </Reveal>
@@ -97,34 +82,29 @@ const mailto = `mailto:${SITE.email}?subject=${subject}`;
   <Section tone="parchment" width="prose" space="md">
     <Reveal>
       <h2 class="font-display text-3xl text-[var(--color-midnight-900)] sm:text-4xl">
-        How to get the e-book
+        {t.howToGetH2}
       </h2>
       <ol class="mt-6 space-y-4 font-text text-lg leading-relaxed text-[var(--color-text)]">
         <li>
-          <span class="font-ui text-sm font-semibold uppercase tracking-wide text-[var(--color-gold-600)]">Step 1:</span>
-          Email Mark at
-          <a
-            href={mailto}
-            class="text-[var(--color-midnight-900)] underline decoration-[var(--color-gold-600)]/50 underline-offset-4 hover:text-[var(--color-oxblood-600)]"
-          >{SITE.email}</a>
-          and ask for the free Tolkien Collector’s Guide.
+          <span class="font-ui text-sm font-semibold uppercase tracking-wide text-[var(--color-gold-600)]">{t.step1Label}</span>
+          <Fragment set:html={(t.step1Body as string).replace('{mailto}', mailto)} />
         </li>
         <li>
-          <span class="font-ui text-sm font-semibold uppercase tracking-wide text-[var(--color-gold-600)]">Step 2:</span>
-          You can also join the free monthly newsletter at the same time.
+          <span class="font-ui text-sm font-semibold uppercase tracking-wide text-[var(--color-gold-600)]">{t.step2Label}</span>
+          {t.step2Body}
         </li>
         <li>
-          <span class="font-ui text-sm font-semibold uppercase tracking-wide text-[var(--color-gold-600)]">Step 3:</span>
-          The full guide is included free with any purchase from the shop.
+          <span class="font-ui text-sm font-semibold uppercase tracking-wide text-[var(--color-gold-600)]">{t.step3Label}</span>
+          {t.step3Body}
         </li>
       </ol>
       <div class="mt-8">
-        <Button href={mailto} variant="primary" size="lg">Request the free e-book</Button>
+        <Button href={mailto} variant="primary" size="lg">{t.ctaRequestEbook}</Button>
       </div>
     </Reveal>
   </Section>
 
   <Section tone="surface" space="md">
-    <MarketplaceCTA heading="Browse the collection" tone="paper" />
+    <MarketplaceCTA heading={t.marketplaceCTAHeading as string} tone="paper" />
   </Section>
 </BaseLayout>

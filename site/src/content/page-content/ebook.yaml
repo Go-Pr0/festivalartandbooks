@@ -1,0 +1,54 @@
+seo:
+  title: "Free Tolkien Collector’s Guide E-book | Festival Art & Books"
+  description: >-
+    Get Mark Faith’s free 26-page Tolkien Collector’s Guide e-book: practical advice on buying and collecting rare Tolkien books. Free with any purchase or with the newsletter.
+
+heroImage: "../../assets/showcase/mark-faith-tolkien-dealer-portrait.jpg"
+heroImageAlt: "Mark Faith, author of the free Tolkien Collector’s Guide e-book"
+
+text:
+  heroEyebrow: "Free collector’s guide"
+  heroH1: "The Tolkien Collector’s Guide"
+  heroIntro: >-
+    Mark’s Tolkien Collector’s Guide is free when you buy something from us, and the
+    monthly newsletter is free too. It is his way of sharing twenty-five years of
+    specialist knowledge, to enhance your collecting, save you time, and help you
+    make better choices.
+  ctaEmailMark: "Email Mark for your free copy"
+
+  fromIntroEyebrow: "From the introduction"
+  noteFromMarkH2: "A note from Mark"
+  noteP1: >-
+    Thank you for investing your time in this little guide. I hope it will enhance
+    your Tolkien collecting experience, save you time, and help you make better
+    choices. Many people consider their Tolkien collecting just a hobby, but for
+    most it’s very much a paying one; I financed my first collection by reselling
+    spare copies. Tolkien early editions are easy to identify, but prices vary
+    widely, so it can be tricky knowing what to pay for a particular copy.
+  noteP2: >-
+    I have been a specialist Tolkien dealer for twenty-five years, and was a private
+    collector before that. I am not an antiquarian-book or literature expert; I know
+    Tolkien books as a personal reading passion. I think I know more than most
+    dealers because I have specialised so narrowly and handled thousands of copies
+    myself. I am not a broker; I hold dozens of rare editions in stock, ready to
+    buy, and sell some books on consignment for customers.
+  noteP3: >-
+    At the core of my business is a true passion for the author and the fantasy
+    genre. I am a fan, completely open and willing to discuss collecting and the
+    works themselves. This guide is my way of sharing what I have learned. Please
+    feel free to email your own tips, anecdotes and suggestions so I can improve
+    future editions.
+
+  howToGetH2: "How to get the e-book"
+  step1Label: "Step 1:"
+  step1Body: >-
+    Email Mark at
+    <a href="{mailto}" class="text-[var(--color-midnight-900)] underline decoration-[var(--color-gold-600)]/50 underline-offset-4 hover:text-[var(--color-oxblood-600)]">MarkFaith@festivalartandbooks.com</a>
+    and ask for the free Tolkien Collector’s Guide.
+  step2Label: "Step 2:"
+  step2Body: "You can also join the free monthly newsletter at the same time."
+  step3Label: "Step 3:"
+  step3Body: "The full guide is included free with any purchase from the shop."
+  ctaRequestEbook: "Request the free e-book"
+
+  marketplaceCTAHeading: "Browse the collection"

@@ -6,14 +6,16 @@ import Reveal from '@/components/Reveal.astro';
 import Button from '@/components/Button.astro';
 import Figure from '@/components/story/Figure.astro';
 import { article } from '@/lib/schema';
+import { getEntry } from 'astro:content';
 
-import montageOne from '@/assets/story/festival-in-the-shire-2010-event-montage.jpg';
-import montageTwo from '@/assets/story/festival-in-the-shire-2010-event-montage-two.jpg';
+const page = (await getEntry('pageContent', 'festival-in-the-shire'))!;
+const t = page.data.text!;
+const fig = (k: string) => page.data.figures!.find((f) => f.key === k)!;
+const montageOne = fig('montageOne');
+const montageTwo = fig('montageTwo');
 
-const title = 'Festival in the Shire: Mark Faith’s 2010 Tolkien Festival | Festival Art & Books';
-const description =
-  'Festival in the Shire was a three-day Tolkien festival created by Mark Faith in 2010, with ' +
-  '500+ attendees, expert lectures, an art show and a fan exposition. Plans to revive it.';
+const title = page.data.seo!.title!;
+const description = page.data.seo!.description!;
 
 const trail = [
   { name: 'Home', url: '/' },
@@ -32,16 +34,12 @@ const schema = article({
   <Section tone="midnight" space="md">
     <Breadcrumbs trail={trail} class="text-[var(--color-parchment)]/70" />
     <Reveal as="div" mode="up" class="mt-10 max-w-3xl">
-      <p class="font-ui text-xs uppercase tracking-[0.25em] text-[var(--color-gold-300)]">2010 · Mid-Wales</p>
+      <p class="font-ui text-xs uppercase tracking-[0.25em] text-[var(--color-gold-300)]">{t.heroEyebrow}</p>
       <h1 class="mt-3 font-display text-4xl leading-tight text-[var(--color-parchment)] sm:text-5xl lg:text-6xl">
-        Festival in the Shire
+        {t.heroH1}
       </h1>
       <p class="mt-6 font-text text-xl leading-relaxed text-[var(--color-parchment)]/90">
-        Festival in the Shire was one of the biggest Tolkien events of 2010, created and staged by
-        Mark Faith of Festival Art and Books. Held over three days with more than 500 attendees, it
-        brought together academic Tolkien experts giving lectures, an art show, stalls,
-        entertainment and a fan exposition. It was both a major event for fans and a focal point for
-        worldwide collectors of Tolkien books and Tolkien-inspired art.
+        {t.heroIntro}
       </p>
     </Reveal>
   </Section>
@@ -50,37 +48,31 @@ const schema = article({
     <div class="grid gap-12 lg:grid-cols-[1.4fr_1fr] lg:items-start">
       <Reveal as="div" mode="up" class="prose-paper">
         <h2 class="font-display text-3xl text-[var(--color-midnight-900)] sm:text-4xl">
-          What was Festival in the Shire?
+          {t.whatWasH2}
         </h2>
         <p class="mt-4 font-text text-lg leading-relaxed text-[var(--color-text)]">
-          One of the biggest Tolkien events in 2010 was Festival in the Shire. With over 500
-          attendees and held over three days, there was a comprehensive cast of academic Tolkien
-          experts giving lectures, with an art show, stalls, entertainment and a fan exposition.
+          {t.whatWasP1}
         </p>
         <p class="mt-4 font-text text-lg leading-relaxed text-[var(--color-text)]">
-          This was not just about collecting Tolkien Rare Books, but a journey into the amazing
-          writing and the author himself.
+          {t.whatWasP2}
         </p>
 
         <h2 class="mt-10 font-display text-3xl text-[var(--color-midnight-900)] sm:text-4xl">
-          What happened after?
+          {t.whatHappenedH2}
         </h2>
         <p class="mt-4 font-text text-lg leading-relaxed text-[var(--color-text)]">
-          For three years afterwards, Mark held smaller local events, including one in Scotland and
-          another in the Netherlands, followed by occasional book and art exhibitions. He continues
-          to hold small exhibitions and fan events, both for fans and for serious collectors.
+          {t.whatHappenedP1}
         </p>
 
         <h2 class="mt-10 font-display text-3xl text-[var(--color-midnight-900)] sm:text-4xl">
-          Will the festival return?
+          {t.willReturnH2}
         </h2>
         <p class="mt-4 font-text text-lg leading-relaxed text-[var(--color-text)]">
-          Yes, there are plans to stage these events again. As a new cycle of Tolkien film and
-          fandom begins, keep an eye on this site for announcements.
+          {t.willReturnP1}
         </p>
         <div class="mt-6 flex flex-wrap gap-3">
-          <Button href="/events" variant="primary">See past &amp; upcoming events</Button>
-          <Button href="/contact" variant="ghost">Register your interest</Button>
+          <Button href="/events" variant="primary">{t.ctaEvents}</Button>
+          <Button href="/contact" variant="ghost">{t.ctaContact}</Button>
         </div>
         {/* TODO: Mark to confirm whether to link the original event site/schedules
             (festivalartandbooks.com/FAB/FitS/) or treat them as archived/retired. */}
@@ -88,17 +80,17 @@ const schema = article({
 
       <div class="space-y-8">
         <Figure
-          src={montageOne}
-          alt="Photo montage from Festival in the Shire 2010 showing community events, performances and exhibitions"
-          caption="A montage from Festival in the Shire 2010: lectures, art, stalls and entertainment over three days."
-          frame="portrait"
-          delay={80}
+          src={montageOne.src}
+          alt={montageOne.alt}
+          caption={montageOne.caption}
+          frame={montageOne.frame as 'default' | 'portrait'}
+          delay={montageOne.delay}
         />
         <Figure
-          src={montageTwo}
-          alt="Further photo montage from Festival in the Shire 2010 capturing attendees and exhibition stands"
-          caption="More from the festival weekend: 500+ attendees gathered for the celebration."
-          delay={160}
+          src={montageTwo.src}
+          alt={montageTwo.alt}
+          caption={montageTwo.caption}
+          delay={montageTwo.delay}
         />
       </div>
     </div>

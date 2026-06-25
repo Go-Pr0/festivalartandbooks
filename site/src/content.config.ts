@@ -1,5 +1,18 @@
 import { defineCollection, z } from 'astro:content';
-import { glob } from 'astro/loaders';
+import { glob, file } from 'astro/loaders';
+import yaml from 'js-yaml'; // bundled with astro (its file() loader uses it)
+
+// file() requires each array item to have an id. Our list YAMLs are id-less ordered arrays;
+// inject a zero-padded id from array index so insertion AND sort order are stable, WITHOUT
+// editing the verbatim data files.
+const orderedList = (path: string) =>
+  file(path, {
+    parser: (text) =>
+      (yaml.load(text) as Record<string, unknown>[]).map((item, i) => ({
+        ...item,
+        id: String(i).padStart(3, '0'),
+      })),
+  });
 
 /**
  * Content collections — the new site is content-first. Source the body from the
@@ -75,4 +88,72 @@ const books = defineCollection({
     }),
 });
 
-export const collections = { guides, journal, pages, books };
+// Shared LIST collections — file() loader, ORDER PRESERVED via injected zero-padded ids.
+const events = defineCollection({
+  loader: orderedList('./src/content/data/events.yaml'),
+  schema: z.object({ date: z.string(), location: z.string(), detail: z.string() }),
+});
+
+const artists = defineCollection({
+  loader: orderedList('./src/content/data/artists.yaml'),
+  schema: ({ image }) =>
+    z.object({ name: z.string(), image: image(), alt: z.string(), bio: z.array(z.string()) }),
+});
+
+const mediaMentions = defineCollection({
+  loader: orderedList('./src/content/data/media-mentions.yaml'),
+  schema: z.object({ outlet: z.string(), headline: z.string(), url: z.string() }),
+});
+
+const usedBooksFaqs = defineCollection({
+  loader: orderedList('./src/content/data/used-books-faqs.yaml'),
+  schema: z.object({ question: z.string(), answer: z.array(z.string()) }),
+});
+
+const rareBooksGallery = defineCollection({
+  loader: orderedList('./src/content/data/rare-books-gallery.yaml'),
+  schema: ({ image }) => z.object({ image: image(), alt: z.string(), caption: z.string() }),
+});
+
+// Per-page singletons. id = filename (home, about, ...). All fields optional; pages use a subset.
+const pageContent = defineCollection({
+  loader: glob({ pattern: '*.yaml', base: './src/content/page-content' }),
+  schema: ({ image }) =>
+    z.object({
+      seo: z.object({ title: z.string().optional(), description: z.string().optional() }).optional(),
+      heroImage: image().optional(),
+      heroImageAlt: z.string().optional(),
+      stats: z.array(z.object({
+        value: z.number(), prefix: z.string().optional(), suffix: z.string().optional(),
+        decimals: z.number().optional(), label: z.string(),
+      })).optional(),
+      timeline: z.array(z.object({ year: z.string(), title: z.string(), body: z.string() })).optional(),
+      trustPoints: z.array(z.object({ heading: z.string(), body: z.string() })).optional(),
+      dealsIn: z.array(z.object({
+        image: image(), alt: z.string(), heading: z.string(), body: z.string(),
+        href: z.string(), cta: z.string(),
+      })).optional(),
+      figures: z.array(z.object({
+        key: z.string(), src: image(), alt: z.string(), caption: z.string().optional(),
+        frame: z.string().optional(), delay: z.number().optional(), sizes: z.string().optional(),
+      })).optional(),
+      text: z.record(z.union([
+        z.string(),
+        z.array(z.string()),
+        z.array(z.object({ title: z.string(), description: z.string(), href: z.string() })),
+      ])).optional(),
+    }),
+});
+
+export const collections = {
+  guides,
+  journal,
+  pages,
+  books,
+  events,
+  artists,
+  mediaMentions,
+  usedBooksFaqs,
+  rareBooksGallery,
+  pageContent,
+};

@@ -11,87 +11,32 @@ import Figure from '@/components/story/Figure.astro';
 import type { TimelineEntry } from '@/components/story/TimelineItem.astro';
 import type { StatItem } from '@/components/StatBand.astro';
 import { article } from '@/lib/schema';
-import { SITE } from '@/lib/site';
+import { getEntry } from 'astro:content';
 
-import markPortrait from '@/assets/story/mark-faith-tolkien-rare-book-dealer-portrait.jpg';
-import markWilburSmith from '@/assets/story/mark-faith-with-author-wilbur-smith.jpg';
-import gtcFounders from '@/assets/story/swiss-tolkien-museum-gtc-founder-members.jpg';
-import gtcEarlyTalks from '@/assets/story/swiss-tolkien-museum-gtc-founders-early-talks.jpg';
+const page = (await getEntry('pageContent', 'about'))!;
+const t = page.data.text as Record<string, string>;
+const exploreCards = (page.data.text as Record<string, unknown>).exploreCards as {
+  title: string;
+  description: string;
+  href: string;
+}[];
 
-const title = 'About Mark Faith, Tolkien Rare Book Expert | Festival Art & Books';
-const description =
-  'Mark Faith is a specialist Tolkien rare-book dealer of 25+ years near Machynlleth, Wales: ' +
-  'record sales of £54,000 and £75,000, 300+ first-edition sets, TV expert.';
+const title = page.data.seo!.title!;
+const description = page.data.seo!.description!;
 
 const trail = [
   { name: 'Home', url: '/' },
   { name: 'About', url: '/about' },
 ];
 
-const stats: StatItem[] = [
-  { value: 25, suffix: '+', label: 'Years specialising in Tolkien' },
-  { value: 300, suffix: '+', label: 'First-edition sets sold' },
-  { value: 75000, prefix: '£', label: 'Record Lord of the Rings set sale' },
-  { value: 54000, prefix: '£', label: 'Record signed Hobbit sale' },
-];
+const stats: StatItem[] = page.data.stats!;
+const journey: TimelineEntry[] = page.data.timeline!;
 
-const journey: TimelineEntry[] = [
-  {
-    year: 'c. 1996',
-    title: 'A collector first',
-    body:
-      'Mark began collecting Tolkien for at least five years before he ever traded, buying and ' +
-      'selling first editions in the course of building his own collection. Tolkien, alongside ' +
-      'Wilbur Smith, was a favourite author from the start.',
-  },
-  {
-    year: 'January 2001',
-    title: 'Mark Faith Books',
-    body:
-      'He opened as a rare-book dealer under the name Mark Faith Books, dealing the most valuable ' +
-      'and rarest pieces (books, art and memorabilia) for institutions and private collectors ' +
-      'from the very beginning, before the shop was well known online.',
-  },
-  {
-    year: 'Record sales',
-    title: 'Unprecedented prices',
-    body:
-      'Through his hands passed a signed Hobbit that sold for £54,000 and a Lord of the Rings set ' +
-      'for £75,000, the highest prices ever achieved for those books at the time. He has sold ' +
-      'over 300 first-edition sets, all first-edition printings.',
-  },
-  {
-    year: '2009',
-    title: 'Festival Art and Books',
-    body:
-      'Mark consolidated the specialist dealership under the name Festival Art and Books, the ' +
-      'business he still runs today: Tolkien rare books and Tolkien-inspired original art.',
-  },
-  {
-    year: '2010',
-    title: 'Festival in the Shire',
-    body:
-      'He created and staged Festival in the Shire, one of the biggest Tolkien events of the ' +
-      'year. Held over three days, it hosted a number of Tolkien experts giving lectures, an art ' +
-      'exhibition, stalls, entertainments and a fan exposition. It made him one of the world’s ' +
-      'best-recognised dealers of collectible Tolkien books and art.',
-  },
-  {
-    year: 'Switzerland',
-    title: 'The Swiss Tolkien museum (GTC)',
-    body:
-      'Mark supplied some of the rarest and most important items to a private Tolkien museum ' +
-      'opening in Switzerland, GTC AG, and was involved in its founding talks.',
-  },
-  {
-    year: 'On screen',
-    title: 'Tolkien expert on television',
-    body:
-      'Mark brought rare-Tolkien collecting to a wider audience on Channel 4’s Four Rooms and the ' +
-      'UK version of Pawn Stars on the History Channel, showcasing his complete set of the first ' +
-      'ten Hobbit impressions and his Lord of the Rings first editions.',
-  },
-];
+const fig = (k: string) => page.data.figures!.find((f) => f.key === k)!;
+const markPortrait = fig('markPortrait');
+const markWilburSmith = fig('markWilburSmith');
+const gtcFounders = fig('gtcFounders');
+const gtcEarlyTalks = fig('gtcEarlyTalks');
 
 const schema = article({
   title,
@@ -108,37 +53,31 @@ const schema = article({
     <div class="mt-10 grid items-center gap-12 lg:grid-cols-[1.4fr_1fr]">
       <Reveal as="div" mode="up">
         <p class="font-ui text-xs uppercase tracking-[0.25em] text-[var(--color-gold-300)]">
-          About the dealer
+          {t.heroEyebrow}
         </p>
         <h1 id="about-mark-faith" class="mt-3 font-display text-4xl leading-tight text-[var(--color-parchment)] sm:text-5xl lg:text-6xl">
-          Mark Faith, Tolkien rare-book expert
+          {t.heroH1}
         </h1>
         <p class="mt-6 max-w-prose font-text text-xl leading-relaxed text-[var(--color-parchment)]/90">
-          Mark Faith is a specialist dealer in rare and collectible J.R.R. Tolkien books, working
-          from near Machynlleth in Mid-Wales and selling worldwide. For 25+ years he has bought and
-          sold first editions of The Hobbit and The Lord of the Rings, handling transactions worth
-          millions, including a signed Hobbit at £54,000 and a Lord of the Rings set at £75,000,
-          both records at the time. He has sold over 300 first-edition sets, founded Festival in the
-          Shire (2010), supplied a private Swiss Tolkien museum, and appeared as a Tolkien expert on
-          Four Rooms and Pawn Stars UK. He is not a general bookseller: Tolkien is the whole focus.
+          {t.heroIntro}
         </p>
         <div class="mt-8 flex flex-wrap gap-3">
-          <Button href="/contact" variant="gold">Contact Mark</Button>
+          <Button href="/contact" variant="gold">{t.ctaContact}</Button>
           <Button
             href="/rare-tolkien-books-collectables"
             variant="ghost"
             class="text-[var(--color-parchment)] border-[var(--color-parchment)]/40 hover:bg-[var(--color-parchment)]/10"
           >
-            Browse the collection
+            {' '}{t.ctaBrowse}{' '}
           </Button>
         </div>
       </Reveal>
       <Figure
-        src={markPortrait}
-        alt="Mark Faith, Tolkien rare-book dealer and founder of Festival Art and Books, smiling outdoors"
-        delay={120}
-        frame="portrait"
-        sizes="(min-width: 1024px) 24rem, 80vw"
+        src={markPortrait.src}
+        alt={markPortrait.alt}
+        delay={markPortrait.delay}
+        frame={markPortrait.frame as 'default' | 'portrait'}
+        sizes={markPortrait.sizes}
       />
     </div>
   </Section>
@@ -151,50 +90,35 @@ const schema = article({
     <div class="grid gap-12 lg:grid-cols-[1.5fr_1fr] lg:items-start">
       <Reveal as="div" mode="up" class="prose-paper">
         <h2 id="what-makes-a-tolkien-expert" class="font-display text-3xl text-[var(--color-midnight-900)] sm:text-4xl">
-          What makes Mark a genuine Tolkien expert?
+          {t.expertHeading}
         </h2>
         <p class="mt-4 font-text text-lg leading-relaxed text-[var(--color-text)]">
-          The key to being a Tolkien book expert is the sheer number of different book examples I
-          have personally viewed, bought and sold over 25 years: many thousands of firsts and early
-          printings. I have sold over 300 first-edition sets alone, all first-edition printings.
-          This first-hand experience in Tolkien book condition means customers get exactly what they
-          pay for, the first time. Being a specialist dealer means you have the books in stock, ready
-          to sell immediately, rather than just brokering books.
+          {t.expertP1}
         </p>
         <p class="mt-4 font-text text-lg leading-relaxed text-[var(--color-text)]">
-          I started this business because traditional rare and antiquarian book dealers were not
-          very approachable or helpful. Established collectors were having a difficult time adjusting
-          to the changes the internet brought; they still demanded personalised service and asked me
-          to find their rare books for them because they liked my service. I consequently moved from
-          general rare-book dealing to a bespoke sourcing and buying service for an ever-smaller
-          circle of serious, dedicated collectors: private museums, institutions, celebrities and
-          wealthy individuals building collections. They let us do the work for them, sourcing and
-          buying rare copies of books as well as art and memorabilia, without the hassle.
+          {t.expertP2}
         </p>
         <figure class="mt-8 border-l-2 border-[var(--color-gold-500)] pl-5">
           <blockquote class="font-display text-2xl italic leading-snug text-[var(--color-midnight-900)]">
-            “Mark introduced me to the works of Tolkien a few years ago and he is now coaching me on
-            all things Tolkien and is helping me build up a pragmatic collection. His knowledge and
-            contacts are incredible; they are to die for and I have no hesitation in recommending
-            Mark.”
+            {t.expertBlockquote}
           </blockquote>
           <figcaption class="mt-3 font-ui text-sm text-[var(--color-muted)]">
-            A long-standing Tolkien collector and client
+            {t.expertFigcaption}
           </figcaption>
         </figure>
       </Reveal>
       <div class="space-y-8">
         <Figure
-          src={markWilburSmith}
-          alt="Mark Faith (left) standing with bestselling author Wilbur Smith, whose first and signed editions he also dealt"
-          caption="Mark with author Wilbur Smith. Early in the business Mark also dealt Smith first and signed editions."
-          delay={80}
+          src={markWilburSmith.src}
+          alt={markWilburSmith.alt}
+          caption={markWilburSmith.caption}
+          delay={markWilburSmith.delay}
         />
         <Figure
-          src={gtcFounders}
-          alt="The founder members of the Swiss Tolkien museum, GTC AG, to which Mark Faith supplied rare Tolkien items"
-          caption="The founder members of the Swiss Tolkien museum (GTC); Mark supplied some of its rarest items."
-          delay={160}
+          src={gtcFounders.src}
+          alt={gtcFounders.alt}
+          caption={gtcFounders.caption}
+          delay={gtcFounders.delay}
         />
       </div>
     </div>
@@ -202,13 +126,12 @@ const schema = article({
 
   <Section tone="parchment" space="lg">
     <Reveal as="div" mode="up">
-      <p class="font-ui text-xs uppercase tracking-[0.2em] text-[var(--color-gold-600)]">The journey</p>
+      <p class="font-ui text-xs uppercase tracking-[0.2em] text-[var(--color-gold-600)]">{t.journeyEyebrow}</p>
       <h2 id="the-journey" class="mt-2 font-display text-3xl text-[var(--color-midnight-900)] sm:text-4xl">
-        Twenty-five years dealing rare Tolkien
+        {t.journeyHeading}
       </h2>
       <p class="mt-3 max-w-prose font-text text-lg text-[var(--color-muted)]">
-        From a private collector in the mid-1990s to one of the world’s best-known Tolkien
-        rare-book dealers: the milestones along the way.
+        {t.journeyIntro}
       </p>
     </Reveal>
     <div class="mt-12">
@@ -220,35 +143,23 @@ const schema = article({
     <div class="grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-center">
       <Reveal as="div" mode="up" class="prose-paper">
         <h2 id="why-this-site-exists" class="font-display text-3xl text-[var(--color-midnight-900)] sm:text-4xl">
-          Why this site exists
+          {t.whySiteHeading}
         </h2>
         <p class="mt-4 font-text text-lg leading-relaxed text-[var(--color-text)]">
-          eBay and the internet had a crucial impact on rare-book dealing, and the market for all
-          collectibles for that matter. Market globalisation revealed that many items which
-          collectors thought to be rare were not so scarce after all. This reduced the prices
-          customers were willing to pay for such items while increasing the value of the truly rare.
-          The information and specialised knowledge which gave dealers their main market advantage
-          became transparent to all via the internet.
+          {t.whySiteP1}
         </p>
         <p class="mt-4 font-text text-lg leading-relaxed text-[var(--color-text)]">
-          The downside of the internet then, and now, with the advent of AI, is information
-          overload: the truth must be distilled from conventional wisdom, popular opinion, or
-          outright fabrication. I built Festival Art and Books to be the accurate, authoritative
-          source on collecting Tolkien: real stock, honest grading, and knowledge earned by handling
-          the rarest pieces first-hand. I continue to accurately predict prices, and we still hold
-          small exhibitions and fan events, both for fans and serious collectors.
+          {t.whySiteP2}
         </p>
         <p class="mt-6 font-ui text-sm text-[var(--color-muted)]">
-          Mark Faith, Owner and Founder, Festival Art and Books &amp; Festival in the Shire.
-          Based near Machynlleth, Mid-Wales, UK. Sells and delivers worldwide.
-          <br />Contact: <a class="underline" href={`mailto:${SITE.email}`}>{SITE.email}</a>
+          <Fragment set:html={t.whySiteSignoff} />
         </p>
       </Reveal>
       <Figure
-        src={gtcEarlyTalks}
-        alt="The founders of the Tolkien Museum in the early stages of talks, with Mark Faith involved"
-        caption="The founders of the Tolkien museum in the early stages of talks."
-        delay={120}
+        src={gtcEarlyTalks.src}
+        alt={gtcEarlyTalks.alt}
+        caption={gtcEarlyTalks.caption}
+        delay={gtcEarlyTalks.delay}
       />
     </div>
   </Section>
@@ -256,32 +167,22 @@ const schema = article({
   <Section tone="parchment" space="md">
     <Reveal as="div" mode="up">
       <h2 id="explore-marks-story" class="font-display text-2xl text-[var(--color-midnight-900)] sm:text-3xl">
-        Explore Mark’s story further
+        {t.exploreHeading}
       </h2>
       <ul class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        <li>
-          <a class="block rounded-[var(--radius)] border border-[var(--color-gold-600)]/25 bg-[var(--color-surface)] p-5 transition-colors hover:border-[var(--color-gold-500)]" href="/festival-in-the-shire">
-            <span class="font-display text-xl text-[var(--color-midnight-900)]">Festival in the Shire</span>
-            <span class="mt-1 block font-text text-[var(--color-muted)]">The 2010 event: three days of lectures, an art exhibition, stalls and a fan exposition.</span>
-          </a>
-        </li>
-        <li>
-          <a class="block rounded-[var(--radius)] border border-[var(--color-gold-600)]/25 bg-[var(--color-surface)] p-5 transition-colors hover:border-[var(--color-gold-500)]" href="/tv-appearances">
-            <span class="font-display text-xl text-[var(--color-midnight-900)]">TV appearances</span>
-            <span class="mt-1 block font-text text-[var(--color-muted)]">Four Rooms and Pawn Stars UK: Mark as a rare-Tolkien expert on screen.</span>
-          </a>
-        </li>
-        <li>
-          <a class="block rounded-[var(--radius)] border border-[var(--color-gold-600)]/25 bg-[var(--color-surface)] p-5 transition-colors hover:border-[var(--color-gold-500)]" href="/news-media">
-            <span class="font-display text-xl text-[var(--color-midnight-900)]">News &amp; media</span>
-            <span class="mt-1 block font-text text-[var(--color-muted)]">Two decades of press coverage and media mentions.</span>
-          </a>
-        </li>
+        {exploreCards.map((card) => (
+          <li>
+            <a class="block rounded-[var(--radius)] border border-[var(--color-gold-600)]/25 bg-[var(--color-surface)] p-5 transition-colors hover:border-[var(--color-gold-500)]" href={card.href}>
+              <span class="font-display text-xl text-[var(--color-midnight-900)]" set:html={card.title} />
+              <span class="mt-1 block font-text text-[var(--color-muted)]">{card.description}</span>
+            </a>
+          </li>
+        ))}
       </ul>
     </Reveal>
   </Section>
 
   <Section tone="paper" space="md">
-    <MarketplaceCTA heading="Buy from a dealer who has handled the rarest Tolkien books" />
+    <MarketplaceCTA heading={t.marketplaceCTAHeading} />
   </Section>
 </BaseLayout>

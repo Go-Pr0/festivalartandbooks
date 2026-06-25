@@ -1,0 +1,100 @@
+seo:
+  title: "About Mark Faith, Tolkien Rare Book Expert | Festival Art & Books"
+  description: "Mark Faith is a specialist Tolkien rare-book dealer of 25+ years near Machynlleth, Wales: first-edition sales up to £300,000, 300+ first-edition sets sold, TV expert."
+
+heroImage: "../../assets/story/mark-faith-tolkien-rare-book-dealer-portrait.jpg"
+heroImageAlt: "Mark Faith, Tolkien rare-book dealer and founder of Festival Art and Books, smiling outdoors"
+
+stats:
+  - value: 25
+    suffix: "+"
+    label: "Years specialising in Tolkien"
+  - value: 300
+    suffix: "+"
+    label: "First-edition sets sold"
+  - value: 125000
+    prefix: "£"
+    label: "Highest Lord of the Rings set sold"
+
+timeline:
+  - year: "c. 1996"
+    title: "A collector first"
+    body: "Mark began collecting Tolkien for at least five years before he ever traded, buying and selling first editions in the course of building his own collection. Tolkien, alongside Wilbur Smith, was a favourite author from the start."
+  - year: "January 2001"
+    title: "Mark Faith Books"
+    body: "He opened as a rare-book dealer under the name Mark Faith Books, dealing the most valuable and rarest pieces (books, art and memorabilia) for institutions and private collectors from the very beginning, before the shop was well known online."
+  - year: "Record sales"
+    title: "Unprecedented prices"
+    body: "Through his hands passed a signed Hobbit that sold for £54,000 and a Lord of the Rings set for £75,000, the highest prices ever achieved for those books at the time. He has sold over 300 first-edition sets, all first-edition printings."
+  - year: "2009"
+    title: "Festival Art and Books"
+    body: "Mark consolidated the specialist dealership under the name Festival Art and Books, the business he still runs today: Tolkien rare books and Tolkien-inspired original art."
+  - year: "2010"
+    title: "Festival in the Shire"
+    body: "He created and staged Festival in the Shire, one of the biggest Tolkien events of the year. Held over three days, it hosted a number of Tolkien experts giving lectures, an art exhibition, stalls, entertainments and a fan exposition. It made him one of the world’s best-recognised dealers of collectible Tolkien books and art."
+  - year: "Switzerland"
+    title: "The Swiss Tolkien museum (GTC)"
+    body: "Mark supplied some of the rarest and most important items to a private Tolkien museum opening in Switzerland, GTC AG, and was involved in its founding talks."
+  - year: "On screen"
+    title: "Tolkien expert on television"
+    body: "Mark brought rare-Tolkien collecting to a wider audience on Channel 4’s Four Rooms and the UK version of Pawn Stars on the History Channel, showcasing his complete set of the first ten Hobbit impressions and his Lord of the Rings first editions."
+
+figures:
+  - key: "markPortrait"
+    src: "../../assets/story/mark-faith-tolkien-rare-book-dealer-portrait.jpg"
+    alt: "Mark Faith, Tolkien rare-book dealer and founder of Festival Art and Books, smiling outdoors"
+    delay: 120
+    frame: "portrait"
+    sizes: "(min-width: 1024px) 24rem, 80vw"
+  - key: "markWilburSmith"
+    src: "../../assets/story/mark-faith-with-author-wilbur-smith.jpg"
+    alt: "Mark Faith (left) standing with bestselling author Wilbur Smith, whose first and signed editions he also dealt"
+    caption: "Mark with author Wilbur Smith. Early in the business Mark also dealt Smith first and signed editions."
+    delay: 80
+  - key: "gtcFounders"
+    src: "../../assets/story/swiss-tolkien-museum-gtc-founder-members.jpg"
+    alt: "The founder members of the Swiss Tolkien museum, GTC AG, to which Mark Faith supplied rare Tolkien items"
+    caption: "The founder members of the Swiss Tolkien museum (GTC); Mark supplied some of its rarest items."
+    delay: 160
+  - key: "gtcEarlyTalks"
+    src: "../../assets/story/swiss-tolkien-museum-gtc-founders-early-talks.jpg"
+    alt: "The founders of the Tolkien Museum in the early stages of talks, with Mark Faith involved"
+    caption: "The founders of the Tolkien museum in the early stages of talks."
+    delay: 120
+
+text:
+  heroEyebrow: "About the dealer"
+  heroH1: "Mark Faith, Tolkien rare-book expert"
+  heroIntro: "Mark Faith is a specialist dealer in rare and collectible J.R.R. Tolkien books, working from near Machynlleth in Mid-Wales and selling worldwide. For 25+ years he has bought and sold first editions of The Hobbit and The Lord of the Rings, handling transactions worth millions, including a signed Hobbit at £54,000 and a Lord of the Rings set at £75,000, both records at the time. He has sold over 300 first-edition sets, founded Festival in the Shire (2010), supplied a private Swiss Tolkien museum, and appeared as a Tolkien expert on Four Rooms and Pawn Stars UK. He is not a general bookseller: Tolkien is the whole focus."
+
+  ctaContact: "Contact Mark"
+  ctaBrowse: "Browse the collection"
+
+  expertHeading: "What makes Mark a genuine Tolkien expert?"
+  expertP1: "The key to being a Tolkien book expert is the sheer number of different book examples I have personally viewed, bought and sold over 25 years: many thousands of firsts and early printings. I have sold over 300 first-edition sets alone, all first-edition printings. This first-hand experience in Tolkien book condition means customers get exactly what they pay for, the first time. Being a specialist dealer means you have the books in stock, ready to sell immediately, rather than just brokering books."
+  expertP2: "I started this business because traditional rare and antiquarian book dealers were not very approachable or helpful. Established collectors were having a difficult time adjusting to the changes the internet brought; they still demanded personalised service and asked me to find their rare books for them because they liked my service. I consequently moved from general rare-book dealing to a bespoke sourcing and buying service for an ever-smaller circle of serious, dedicated collectors: private museums, institutions, celebrities and wealthy individuals building collections. They let us do the work for them, sourcing and buying rare copies of books as well as art and memorabilia, without the hassle."
+  expertBlockquote: "“Mark introduced me to the works of Tolkien a few years ago and he is now coaching me on all things Tolkien and is helping me build up a pragmatic collection. His knowledge and contacts are incredible; they are to die for and I have no hesitation in recommending Mark.”"
+  expertFigcaption: "A long-standing Tolkien collector and client"
+
+  journeyEyebrow: "The journey"
+  journeyHeading: "Twenty-five years dealing rare Tolkien"
+  journeyIntro: "From a private collector in the mid-1990s to one of the world’s best-known Tolkien rare-book dealers: the milestones along the way."
+
+  whySiteHeading: "Why this site exists"
+  whySiteP1: "eBay and the internet had a crucial impact on rare-book dealing, and the market for all collectibles for that matter. Market globalisation revealed that many items which collectors thought to be rare were not so scarce after all. This reduced the prices customers were willing to pay for such items while increasing the value of the truly rare. The information and specialised knowledge which gave dealers their main market advantage became transparent to all via the internet."
+  whySiteP2: "The downside of the internet then, and now, with the advent of AI, is information overload: the truth must be distilled from conventional wisdom, popular opinion, or outright fabrication. I built Festival Art and Books to be the accurate, authoritative source on collecting Tolkien: real stock, honest grading, and knowledge earned by handling the rarest pieces first-hand. I continue to accurately predict prices, and we still hold small exhibitions and fan events, both for fans and serious collectors."
+  whySiteSignoff: "Mark Faith, Owner and Founder, Festival Art and Books &amp; Festival in the Shire.\n          Based near Machynlleth, Mid-Wales, UK. Sells and delivers worldwide.\n          <br>Contact: <a class=\"underline\" href=\"mailto:MarkFaith@festivalartandbooks.com\">MarkFaith@festivalartandbooks.com</a>"
+
+  exploreHeading: "Explore Mark’s story further"
+  exploreCards:
+    - title: "Festival in the Shire"
+      description: "The 2010 event: three days of lectures, an art exhibition, stalls and a fan exposition."
+      href: "/festival-in-the-shire"
+    - title: "TV appearances"
+      description: "Four Rooms and Pawn Stars UK: Mark as a rare-Tolkien expert on screen."
+      href: "/tv-appearances"
+    - title: "News &amp; media"
+      description: "Two decades of press coverage and media mentions."
+      href: "/news-media"
+
+  marketplaceCTAHeading: "Buy from a dealer who has handled the rarest Tolkien books"

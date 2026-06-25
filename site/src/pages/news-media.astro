@@ -5,8 +5,7 @@ import Breadcrumbs from '@/components/Breadcrumbs.astro';
 import Reveal from '@/components/Reveal.astro';
 import Figure from '@/components/story/Figure.astro';
 import { collectionPage } from '@/lib/schema';
-
-import pressImage from '@/assets/story/mark-faith-press-media-hobbit-first-edition.jpg';
+import { getEntry, getCollection } from 'astro:content';
 
 interface MediaMention {
   outlet: string;
@@ -14,84 +13,22 @@ interface MediaMention {
   url: string;
 }
 
-const title = 'News & Media: Press Coverage of Mark Faith | Festival Art & Books';
-const description =
-  'Two decades of press and media coverage of Mark Faith and Festival Art and Books: the BBC, ' +
-  'WalesOnline, CBS News, Tolkien Library, AbeBooks and more on rare Tolkien books.';
+const page = (await getEntry('pageContent', 'news-media'))!;
+const t = page.data.text!;
+const title = page.data.seo!.title!;
+const description = page.data.seo!.description!;
+
+const figure = (key: string) => page.data.figures!.find((f) => f.key === key)!;
+const pressFigure = figure('press');
 
 const trail = [
   { name: 'Home', url: '/' },
   { name: 'News & Media', url: '/news-media' },
 ];
 
-// Outlets named verbatim from source links; headline summaries describe each link.
-const mentions: MediaMention[] = [
-  {
-    outlet: 'BBC News (Mid Wales)',
-    headline: 'Tolkien festival held in mid-Wales',
-    url: 'https://www.bbc.co.uk/news/uk-wales-mid-wales-10954446',
-  },
-  {
-    outlet: 'WalesOnline',
-    headline: 'Tolkien festival held in mid-Wales',
-    url: 'https://www.walesonline.co.uk/news/wales-news/tolkien-festival-held-middle-wales-2079036',
-  },
-  {
-    outlet: 'BBC Wales (blog)',
-    headline: 'Festival in the Shire coverage',
-    url: 'https://www.bbc.co.uk/blogs/wales/entries/d5064482-14e6-3525-ab42-dea2dea7efef',
-  },
-  {
-    outlet: 'CBS News',
-    headline: 'Priciest Tolkien book in the world sold',
-    url: 'https://www.cbsnews.com/news/priciest-tolkien-book-in-the-world-sold',
-  },
-  {
-    outlet: 'BBC News (Entertainment & Arts)',
-    headline: 'The Hobbit first edition fetches £137,000 at auction',
-    url: 'https://www.bbc.co.uk/news/entertainment-arts-33013144',
-  },
-  {
-    outlet: 'Tolkien Library',
-    headline: 'Interview: Festival in the Shire',
-    url: 'https://tolkienlibrary.com/press/940-interview-festival-in-the-shire.php',
-  },
-  {
-    outlet: 'Tolkien Library',
-    headline: 'The most expensive Tolkien book in the world',
-    url: 'https://tolkienlibrary.com/press/856-most-expensive-tolkien-book-in-the-world.php',
-  },
-  {
-    outlet: 'Tolkien Library',
-    headline: 'The Hobbit association copies',
-    url: 'https://tolkienlibrary.com/press/987-the-hobbit-association-copies.php',
-  },
-  {
-    outlet: 'AbeBooks',
-    headline: 'Collecting J.R.R. Tolkien books',
-    url: 'https://www.abebooks.com/books/collecting-jrr-tolkien-books',
-  },
-  {
-    outlet: 'GamesRadar',
-    headline: 'Festival in the Shire',
-    url: 'https://www.gamesradar.com/festival-in-the-shire',
-  },
-  {
-    outlet: 'Middle-earth News',
-    headline: 'Festival in the Shire is returning to Scotland',
-    url: 'https://middleearthnews.com/2013/11/05/festival-in-the-shire-is-returning-to-scotland/',
-  },
-  {
-    outlet: 'JRRTolkien.it',
-    headline: 'Torna in Galles il Festival in the Shire',
-    url: 'https://www.jrrtolkien.it/2011/08/17/torna-in-galles-il-festival-in-the-shire/',
-  },
-  {
-    outlet: 'Dimitra Fimi',
-    headline: 'Festival in the Shire (October 2009)',
-    url: 'https://dimitrafimi.com/2009/10',
-  },
-];
+const mentions: MediaMention[] = (await getCollection('mediaMentions'))
+  .sort((a, b) => a.id.localeCompare(b.id))
+  .map((m) => ({ outlet: m.data.outlet, headline: m.data.headline, url: m.data.url }));
 
 const schema = collectionPage({
   name: 'News & Media — Festival Art & Books',
@@ -105,33 +42,30 @@ const schema = collectionPage({
     <Breadcrumbs trail={trail} class="text-[var(--color-parchment)]/70" />
     <div class="mt-10 grid items-center gap-12 lg:grid-cols-[1.4fr_1fr]">
       <Reveal as="div" mode="up">
-        <p class="font-ui text-xs uppercase tracking-[0.25em] text-[var(--color-gold-300)]">As seen in</p>
+        <p class="font-ui text-xs uppercase tracking-[0.25em] text-[var(--color-gold-300)]">{t.heroEyebrow}</p>
         <h1 class="mt-3 font-display text-4xl leading-tight text-[var(--color-parchment)] sm:text-5xl lg:text-6xl">
-          News &amp; media
+          {t.heroH1}
         </h1>
         <p class="mt-6 max-w-prose font-text text-xl leading-relaxed text-[var(--color-parchment)]/90">
-          Over the last 20 years Mark Faith and Festival Art and Books have been covered across the
-          press and Tolkien community, from the BBC and WalesOnline to CBS News, the Tolkien Library
-          and AbeBooks. Below is a sample of the official mentions we endorse; there have been many
-          more besides.
+          {t.heroIntro}
         </p>
       </Reveal>
       <Figure
-        src={pressImage}
-        alt="An autographed headshot above a handwritten thank-you card sent to Mark Faith for the use of a first-edition Hobbit"
-        caption="Press and production thanks for the use of Mark’s first-edition Hobbit."
-        frame="portrait"
-        delay={120}
-        sizes="(min-width: 1024px) 22rem, 80vw"
+        src={pressFigure.src}
+        alt={pressFigure.alt}
+        caption={pressFigure.caption}
+        frame={pressFigure.frame as 'default' | 'portrait'}
+        delay={pressFigure.delay}
+        sizes={pressFigure.sizes}
       />
     </div>
   </Section>
 
   <Section space="lg">
     <Reveal as="div" mode="up">
-      <h2 class="font-display text-3xl text-[var(--color-midnight-900)] sm:text-4xl">Press &amp; media coverage</h2>
+      <h2 class="font-display text-3xl text-[var(--color-midnight-900)] sm:text-4xl">{t.pressHeading}</h2>
       <p class="mt-3 max-w-prose font-text text-lg text-[var(--color-muted)]">
-        A selection of official media links from across two decades of Tolkien dealing and events.
+        {t.pressIntro}
       </p>
     </Reveal>
     <ul class="mt-10 grid gap-4 sm:grid-cols-2">
@@ -155,11 +89,9 @@ const schema = collectionPage({
 
   <Section tone="parchment" space="md">
     <Reveal as="div" mode="up" class="max-w-2xl">
-      <h2 class="font-display text-2xl text-[var(--color-midnight-900)] sm:text-3xl">More coverage</h2>
+      <h2 class="font-display text-2xl text-[var(--color-midnight-900)] sm:text-3xl">{t.moreCoverageHeading}</h2>
       <p class="mt-3 font-text text-lg leading-relaxed text-[var(--color-text)]">
-        Mark and artist Rodney Matthews were also interviewed for a feature documentary on the
-        Nazareth DVD <em>No Means of Escape</em>, filmed live at Metropolis Studios. For more on
-        Mark’s on-screen work, see his <a class="underline decoration-[var(--color-gold-500)]/60 underline-offset-4" href="/tv-appearances">TV appearances</a>.
+        <Fragment set:html={t.moreCoverageP} />
       </p>
       {/* TODO: Mark to confirm Nazareth DVD release/title detail and any press-contact note. */}
     </Reveal>
