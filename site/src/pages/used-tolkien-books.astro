@@ -1,0 +1,163 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Section from '@/components/Section.astro';
+import Reveal from '@/components/Reveal.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import MarketplaceCTA from '@/components/MarketplaceCTA.astro';
+import FaqList from '@/components/showcase/FaqList.astro';
+import type { FaqItem } from '@/components/showcase/FaqList.astro';
+import { Image } from 'astro:assets';
+import { faqPage } from '@/lib/schema';
+
+import heroMontage from '@/assets/showcase/tolkien-used-collectable-books-montage.jpg';
+
+const PATH = '/used-tolkien-books';
+
+const trail = [
+  { name: 'Home', url: '/' },
+  { name: 'Used Tolkien Books: Q&A', url: PATH },
+];
+
+// Genuine Q&A pairs from Mark Faith, lightly edited for flow. Drives both the visible
+// FAQ and the FAQPage JSON-LD below.
+const faqs: FaqItem[] = [
+  {
+    question:
+      'What is the value of a first edition, first printing of The Hobbit and The Lord of the Rings, complete with dust jacket?',
+    answer: [
+      'At auction in Texas in May 2026, a first-edition Hobbit sold for $450,000 and The Lord of the Rings for $325,000. Prior auction records were $300,000 in 2024 and $250,000 in 2025 (for a signed copy).',
+      'For some reason, such sales are not being reported on Tolkien-related websites. Many media sites only present the information they think will be popular, so millions of people end up making decisions based on incomplete or false figures.',
+    ],
+  },
+  {
+    question: 'Is this what these books are officially worth?',
+    answer: [
+      'There is no official price, only what someone will pay. Auctions reflect the value on the day of sale, which can be inflated by emotion and may not match the wider trend.',
+      'I have sold Hobbits for between £150,000 and £300,000, and Lord of the Rings sets for £50,000 to £125,000. Our exact prices and customers remain confidential. New price highs break through the perceived ceiling of value, which in turn raises every price down the scale.',
+    ],
+  },
+  {
+    question: 'What is the record price for an unsigned 1st/1st Hobbit, without a dust jacket?',
+    answer: [
+      '£40,000 at a UK auction. Most of the value is in having a complete book with a nice, unrestored original dust jacket.',
+      'A record for a jacketless book sets a precedent for all other rare Tolkien books without jackets. That said, jacketless copies (or those with badly damaged jackets) will not appreciate as fast, at least until all the jacketed copies disappear into collections for good.',
+    ],
+  },
+  {
+    question:
+      'What is the difference between a restored and a repaired dust jacket? Is a restored one worth less?',
+    answer: [
+      'Nearly every first-edition jacket we have seen without visible damage has been repaired or touched up, which is conservation repair, a good thing. The original paper was cheap, and some early editions were printed on recycled stock that damages easily. Collector-acceptable repair is usually under 3–5% of the jacket area, depending on where it is.',
+      'Restoration is different: large torn or lost sections are replaced and hand-painted to match. Done professionally, it is very hard to detect, and many sellers don’t even mention it. My view is that a restored jacket is still worth what it was before restoration: the restoration adds nothing to value, and most serious collectors are purists who would not buy a restored copy.',
+    ],
+  },
+  {
+    question: 'Are new or recent editions worth collecting?',
+    answer: [
+      'Yes, but mainly for enjoyment, not real investment. Those published before 1990 have become very rare in nice condition, with so many collectors chasing them, in some cases appreciating faster than 1st/1st editions, which have a smaller market because of high prices.',
+      'Tolkien was not as popular early on as people think, and books and jackets were not looked after with future value in mind. Some deluxe editions since 2000 had limited, numbered or signed runs and are genuinely scarce, but a brand-new book must stay as new, ideally still shrink-wrapped, to have any chance of gaining value.',
+    ],
+  },
+  {
+    question: 'Are older damaged editions of The Hobbit and The Lord of the Rings worth anything?',
+    answer: [
+      'Possibly, if the book is complete and in good condition and the dust jacket has only, say, 10% loss, tears or damage. Damage tends to be on the jacket spine, which is exposed to handling and the environment, and stains or fading on light paper also affect value.',
+      'Older printings are scarcer because the print runs were small, but wear and aging may be worse. Some collectors prefer good looks over age and would rather have a later printing in better condition. You will not find a fine early copy in a charity shop or grandmother’s attic anymore, except by amazing luck.',
+    ],
+  },
+  {
+    question: 'What order should I collect in, and what should I buy first?',
+    answer: [
+      'This is a difficult question. With new films on the way, the market is about to boom. You should buy everything you can afford, because prices are rising and the average condition of available books is declining as collectors sell off their unwanted copies after upgrading.',
+    ],
+  },
+  {
+    question: 'What is a first edition?',
+    answer: [
+      'It is the first printing of the first text version available to the public. Older Tolkien first editions are easy to identify: they show only one copyright date, and later printings are declared, even on the dust jacket.',
+      'Tolkien’s books have never been out of print, with hundreds of new editions and illustrators. First printings of those new editions are called “first thus”. Before a certain date, a number 1 in the ten-digit number line denoted a first edition, but by 2000, number lines had become meaningless because of digital print-on-demand.',
+    ],
+  },
+  {
+    question: 'What is a “state”?',
+    answer: [
+      'This term gets misused, even by experts. A state is an intentional variation of an edition by the publisher, often a reprint to address errors. Misprints, typos and mechanical errors are not states; they are fun to collect but no more valuable than any other copy.',
+      'In Tolkien there are few official states except those with added illustrations. The slip-text 4 in The Return of the King, for example, is a printing error, not a state. As books become more valuable, misprints and states are often used by dealers to command higher prices, but they do not necessarily add value.',
+    ],
+  },
+  {
+    question: 'Do price clipping, owner names, inscriptions or bookplates affect value?',
+    answer: [
+      'No. This comes down to personal preference and is not a problem in modern collecting. Some collectors avoid them, but they are normal features of used books; it is abnormal damage that affects value. Condition and printing matter most.',
+      'Price-clipping was usually done by the bookstore to mark discounted copies approved by the publisher, which affected royalties.',
+    ],
+  },
+  {
+    question: 'Are there Tolkien experts or official Tolkien sources?',
+    answer: [
+      'Tolkien’s written works are important English literature, studied by academics with higher degrees; you can now even take an English-literature degree in Tolkien. But for decades thousands of unqualified fans have made a lifelong study of the man and his work, with encyclopaedic knowledge of Tolkien lore. They are experts too, even if not formally recognised, and many have written excellent books and speak at fan events.',
+      'The original publishers, Allen & Unwin, did not keep records on production and distribution; most paper records of the day were destroyed for want of storage. Some old printing information apparently survives, but it gives no detail on distribution or the publisher’s exact intentions, and even major bookstores may have altered the copies they sold.',
+    ],
+  },
+];
+
+const schema = faqPage(
+  faqs.map((item) => ({
+    question: item.question,
+    answer: item.answer.join(' '),
+  })),
+);
+---
+<BaseLayout
+  title="Used Tolkien Books: Expert Q&A | Festival Art & Books"
+  description="Answer-first guide to buying used and rare Tolkien books: first-edition values, dust jackets, restoration, states and what to collect, from 25-year specialist Mark Faith."
+  schema={schema}
+>
+  <Section tone="midnight" space="md">
+    <Breadcrumbs trail={trail} class="text-[var(--color-parchment)]/70" />
+    <Reveal class="mt-8 max-w-3xl">
+      <p class="font-ui text-xs uppercase tracking-[0.2em] text-[var(--color-gold-300)]">
+        Questions &amp; Answers
+      </p>
+      <h1 id="used-tolkien-books-qa" class="mt-3 font-display text-4xl text-[var(--color-parchment)] sm:text-5xl">
+        Used &amp; Rare Tolkien Books: Q&amp;A
+      </h1>
+      <p class="mt-6 font-text text-xl leading-relaxed text-[var(--color-parchment)]/85">
+        Straight answers to the questions buyers actually ask, based on thirty-plus years
+        as a Tolkien collector and dealer. Condition is everything; there is no “official”
+        price, only what someone will pay. If you are about to spend thousands, contact us
+        directly for expert advice first.
+      </p>
+    </Reveal>
+  </Section>
+
+  <Section tone="paper" width="wide" id="faq">
+    <Reveal as="figure">
+      <Image
+        src={heroMontage}
+        alt="Collection of used and collectable J.R.R. Tolkien hardback books"
+        widths={[600, 900, 1200]}
+        sizes="(min-width: 768px) 56rem, 100vw"
+        class="w-full rounded-[var(--radius)] border border-[var(--color-gold-600)]/25 object-cover"
+      />
+    </Reveal>
+    <FaqList items={faqs} class="mt-12" />
+  </Section>
+
+  <Section tone="parchment" width="wide">
+    <Reveal>
+      <p class="font-text text-lg leading-relaxed text-[var(--color-text)]">
+        These questions, and many more, are covered in detail in Mark’s free Tolkien
+        Collector’s Guide. For a copy and to subscribe to the newsletter, email
+        <a
+          href="mailto:MarkFaith@festivalartandbooks.com"
+          class="text-[var(--color-midnight-900)] underline decoration-[var(--color-gold-600)]/50 underline-offset-4 hover:text-[var(--color-oxblood-600)]"
+        >MarkFaith@festivalartandbooks.com</a>.
+      </p>
+    </Reveal>
+  </Section>
+
+  <Section tone="surface">
+    <MarketplaceCTA heading="Find your next Tolkien book" tone="paper" />
+  </Section>
+</BaseLayout>

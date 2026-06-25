@@ -1,0 +1,45 @@
+---
+/**
+ * A single milestone in the vertical <Timeline>. Renders a marker on the gold rail,
+ * a year/era label, a heading and body. Reveals on scroll with a stagger delay set
+ * by the parent Timeline. Final item draws no continuing rail below the marker.
+ */
+import Reveal from '@/components/Reveal.astro';
+
+export interface TimelineEntry {
+  /** Year or era, e.g. '1996', 'Jan 2001', '2010'. */
+  year: string;
+  /** Short milestone heading. */
+  title: string;
+  /** One short paragraph describing the milestone. */
+  body: string;
+}
+
+interface Props extends TimelineEntry {
+  /** Stagger delay for the reveal, in ms. */
+  delay?: number;
+  /** True for the last entry — suppresses the trailing rail segment. */
+  last?: boolean;
+}
+
+const { year, title, body, delay, last = false } = Astro.props;
+---
+<Reveal as="li" mode="up" delay={delay} class="relative grid grid-cols-[auto_1fr] gap-x-5 sm:gap-x-7">
+  <div class="relative flex flex-col items-center">
+    <span
+      class="mt-1 h-4 w-4 shrink-0 rounded-full border-2 border-[var(--color-gold-500)] bg-[var(--color-parchment)] ring-4 ring-[var(--color-gold-500)]/15"
+      aria-hidden="true"
+    ></span>
+    {!last && (
+      <span
+        class="mt-1 w-px grow bg-gradient-to-b from-[var(--color-gold-600)]/50 to-[var(--color-gold-600)]/10"
+        aria-hidden="true"
+      ></span>
+    )}
+  </div>
+  <div class="pb-12">
+    <p class="font-ui text-xs uppercase tracking-[0.2em] text-[var(--color-gold-600)]">{year}</p>
+    <h3 class="mt-1 font-display text-2xl text-[var(--color-midnight-900)] sm:text-3xl">{title}</h3>
+    <p class="mt-2 max-w-prose font-text text-lg leading-relaxed text-[var(--color-text)]">{body}</p>
+  </div>
+</Reveal>

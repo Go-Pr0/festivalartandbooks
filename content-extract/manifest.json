@@ -1,0 +1,162 @@
+[
+  {
+    "slug": "home",
+    "title": "FESTIVAL ART AND BOOKS",
+    "url": "https://festivalartandbooks.com/",
+    "nav": "Main: Home",
+    "images": 1,
+    "blocks": 18
+  },
+  {
+    "slug": "used-tolkien-books-qa",
+    "title": "USED TOLKIEN BOOKS, Q&A",
+    "url": "https://festivalartandbooks.com/new-and-used-tolkien-books/",
+    "nav": "Main: Used Tolkien Books, Q&A",
+    "images": 1,
+    "blocks": 36
+  },
+  {
+    "slug": "rare-tolkien-books-collectables",
+    "title": "RARE TOLKIEN BOOKS & COLLECTABLES",
+    "url": "https://festivalartandbooks.com/rare-tolkien-books-collectables/",
+    "nav": "Main: Rare Tolkien Books & Collectables",
+    "images": 4,
+    "blocks": 56
+  },
+  {
+    "slug": "contact-and-about-us",
+    "title": "CONTACT AND ABOUT US",
+    "url": "https://festivalartandbooks.com/contact-and-about-us/",
+    "nav": "Main: Contact and About Us",
+    "images": 3,
+    "blocks": 18
+  },
+  {
+    "slug": "tolkien-collector-e-book",
+    "title": "TOLKIEN COLLECTOR E-BOOK",
+    "url": "https://festivalartandbooks.com/tolkien-collector-e-book/",
+    "nav": "Resources dropdown: Tolkien Collector E-book",
+    "images": 1,
+    "blocks": 6
+  },
+  {
+    "slug": "the-journal",
+    "title": "THE JOURNAL",
+    "url": "https://festivalartandbooks.com/the-journal/",
+    "nav": "Resources dropdown: The Journal",
+    "images": 1,
+    "blocks": 3
+  },
+  {
+    "slug": "festival-in-the-shire",
+    "title": "FESTIVAL IN THE SHIRE",
+    "url": "https://festivalartandbooks.com/festival-in-the-shire/",
+    "nav": "Resources dropdown: Festival in the Shire",
+    "images": 2,
+    "blocks": 6
+  },
+  {
+    "slug": "events",
+    "title": "EVENTS",
+    "url": "https://festivalartandbooks.com/events/",
+    "nav": "Resources dropdown: Events",
+    "images": 0,
+    "blocks": 4
+  },
+  {
+    "slug": "mark-faith-founder",
+    "title": "MARK D. FAITH – FOUNDER FESTIVAL ART AND BOOKS & FESTIVAL IN THE SHIRE",
+    "url": "https://festivalartandbooks.com/mark-d-faith-founder-festival-art-and-books-festival-in-the-shire/",
+    "nav": "Resources dropdown: Mark Faith – Festival Art & Books",
+    "images": 4,
+    "blocks": 22
+  },
+  {
+    "slug": "tv-appearances",
+    "title": "TV APPEARANCES",
+    "url": "https://festivalartandbooks.com/tv-appearances/",
+    "nav": "Resources dropdown: TV Appearances",
+    "images": 2,
+    "blocks": 14
+  },
+  {
+    "slug": "news-media",
+    "title": "NEWS/MEDIA",
+    "url": "https://festivalartandbooks.com/news-media/",
+    "nav": "Resources dropdown: News/Media",
+    "images": 2,
+    "blocks": 27
+  },
+  {
+    "slug": "ballantine",
+    "title": "BALLANTINE",
+    "url": "https://festivalartandbooks.com/ballantine/",
+    "nav": "Not in main nav (linked internally / standalone)",
+    "images": 3,
+    "blocks": 17
+  },
+  {
+    "slug": "nazareth",
+    "title": "NAZARETH",
+    "url": "https://festivalartandbooks.com/nazareth/",
+    "nav": "Not in main nav (linked internally / standalone)",
+    "images": 1,
+    "blocks": 3
+  },
+  {
+    "slug": "tolkien-inspired-art",
+    "title": "TOLKIEN INSPIRED ART",
+    "url": "https://festivalartandbooks.com/tolkien-inspired-art/",
+    "nav": "Not in main nav (linked internally / standalone)",
+    "images": 1,
+    "blocks": 4
+  },
+  {
+    "slug": "tolkien-inspired-artists",
+    "title": "TOLKIEN INSPIRED ARTISTS",
+    "url": "https://festivalartandbooks.com/tolkien-inspired-artists/",
+    "nav": "Not in main nav (linked internally / standalone)",
+    "images": 16,
+    "blocks": 39
+  },
+  {
+    "slug": "ebay-listings-master",
+    "title": "EBAY LISTINGS MASTER",
+    "url": "https://festivalartandbooks.com/ebay-listings-master/",
+    "nav": "Not in main nav (internal/utility)",
+    "images": 4,
+    "blocks": 4
+  },
+  {
+    "slug": "resources",
+    "title": "RESOURCES",
+    "url": "https://festivalartandbooks.com/resources/",
+    "nav": "Resources landing (dropdown parent)",
+    "images": 1,
+    "blocks": 1
+  },
+  {
+    "slug": "online-shop",
+    "title": "ONLINE SHOP",
+    "url": "https://festivalartandbooks.com/online-shop-2/",
+    "nav": "Online Shop (links out to eBay/AbeBooks)",
+    "images": 1,
+    "blocks": 2
+  },
+  {
+    "slug": "post-the-hobbit-or-the-lord-of-the-rings",
+    "title": "The Hobbit or The Lord of the Rings?",
+    "url": "https://festivalartandbooks.com/the-hobbit-or-the-lord-of-the-rings/",
+    "nav": "Blog post",
+    "images": 1,
+    "blocks": 2
+  },
+  {
+    "slug": "a-seo-copy-check-page",
+    "title": "A SEO COPY CHECK PAGE",
+    "url": "https://festivalartandbooks.com/a-seo-copy-check-page/",
+    "nav": "TEST/DRAFT page — likely exclude from new site",
+    "images": 1,
+    "blocks": 10
+  }
+]

@@ -1,0 +1,36 @@
+# Festival Art & Books — robots.txt
+# Strategy: permissive. AI citation requires being crawlable. See research §7.
+
+# --- AI / answer-engine crawlers: explicitly allowed ---
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# --- Everything else ---
+User-agent: *
+Allow: /
+
+Sitemap: https://festivalartandbooks.com/sitemap-index.xml

@@ -1,0 +1,36 @@
+---
+/**
+ * Breadcrumb trail + matching BreadcrumbList JSON-LD. Use on every non-home page.
+ * Pass the full trail including Home; the last crumb renders as the current page.
+ */
+import SchemaOrg from '@/components/SchemaOrg.astro';
+import { breadcrumbs } from '@/lib/schema';
+
+export interface Crumb {
+  name: string;
+  url: string;
+}
+
+interface Props {
+  trail: Crumb[];
+  class?: string;
+}
+
+const { trail, class: className = '' } = Astro.props;
+const lastIndex = trail.length - 1;
+---
+<nav aria-label="Breadcrumb" class:list={['font-ui text-sm text-[var(--color-muted)]', className]}>
+  <ol class="flex flex-wrap items-center gap-x-2 gap-y-1">
+    {trail.map((crumb, i) => (
+      <li class="flex items-center gap-x-2">
+        {i > 0 && <span aria-hidden="true" class="text-[var(--color-gold-600)]/60">/</span>}
+        {i === lastIndex ? (
+          <span aria-current="page" class="text-[var(--color-midnight-900)]">{crumb.name}</span>
+        ) : (
+          <a href={crumb.url} class="hover:text-[var(--color-midnight-900)]">{crumb.name}</a>
+        )}
+      </li>
+    ))}
+  </ol>
+</nav>
+<SchemaOrg schema={breadcrumbs(trail)} />

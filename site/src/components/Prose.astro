@@ -1,0 +1,16 @@
+---
+/**
+ * Long-form content wrapper. Pairs @tailwindcss/typography's `prose` with the
+ * brand-tuned `.prose-paper` overrides in global.css. Wrap MDX/rich text in this.
+ */
+interface Props {
+  as?: 'div' | 'article' | 'section';
+  class?: string;
+}
+
+const { as = 'div', class: className = '' }: Props = Astro.props;
+const Tag = as;
+---
+<Tag class:list={['prose prose-paper max-w-[var(--content-max)]', className]}>
+  <slot />
+</Tag>

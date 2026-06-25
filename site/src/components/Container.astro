@@ -1,0 +1,26 @@
+---
+/**
+ * Max-width content wrapper with consistent horizontal padding.
+ * `width="prose"` narrows to the comfortable reading measure for long-form text.
+ */
+type Tag = 'div' | 'section' | 'article' | 'header' | 'footer' | 'main' | 'nav';
+
+interface Props {
+  as?: Tag;
+  /** `prose` = reading measure; `wide` = roomier for lists/Q&A; `page` = full width. */
+  width?: 'page' | 'wide' | 'prose';
+  class?: string;
+}
+
+const { as = 'div', width = 'page', class: className = '' }: Props = Astro.props;
+const Tag = as;
+const widths: Record<NonNullable<Props['width']>, string> = {
+  prose: 'max-w-[var(--content-max)]',
+  wide: 'max-w-[50rem]',
+  page: 'max-w-[var(--page-max)]',
+};
+const maxW = widths[width];
+---
+<Tag class:list={['mx-auto w-full px-6 sm:px-8', maxW, className]}>
+  <slot />
+</Tag>

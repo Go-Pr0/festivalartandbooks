@@ -1,0 +1,53 @@
+---
+/**
+ * Reusable marketplace call-to-action: eBay + AbeBooks shop links plus the
+ * "contact direct to save fees" prompt. Mark sells off-site but prefers direct email.
+ */
+import Button from '@/components/Button.astro';
+import { EXTERNAL, SITE } from '@/lib/site';
+
+interface Props {
+  /** Optional override heading. */
+  heading?: string;
+  tone?: 'paper' | 'midnight';
+  class?: string;
+}
+
+const {
+  heading = 'Browse the collection',
+  tone = 'paper',
+  class: className = '',
+} = Astro.props;
+
+const isMidnight = tone === 'midnight';
+const wrap = isMidnight
+  ? 'bg-[var(--color-midnight-900)] text-[var(--color-parchment)] border-[var(--color-gold-600)]/40'
+  : 'bg-[var(--color-surface)] text-[var(--color-text)] border-[var(--color-gold-600)]/30';
+const sub = isMidnight ? 'text-[var(--color-parchment)]/80' : 'text-[var(--color-muted)]';
+---
+<aside
+  class:list={[
+    'rounded-[var(--radius)] border p-8 sm:p-10',
+    wrap,
+    className,
+  ]}
+>
+  <h2 class:list={['font-display text-2xl sm:text-3xl', isMidnight ? 'text-[var(--color-gold-300)]' : 'text-[var(--color-midnight-900)]']}>
+    {heading}
+  </h2>
+  <p class:list={['mt-3 font-text text-lg', sub]}>
+    Every item is available through our online shops. Prefer to deal directly?
+    Email Mark. Buying direct saves the marketplace fees and you talk to the dealer himself.
+  </p>
+  <div class="mt-6 flex flex-wrap gap-3">
+    <Button href={EXTERNAL.ebay} variant={isMidnight ? 'gold' : 'primary'}>
+      Shop on eBay
+    </Button>
+    <Button href={EXTERNAL.abebooks} variant="ghost" class={isMidnight ? 'text-[var(--color-parchment)] border-[var(--color-parchment)]/40 hover:bg-[var(--color-parchment)]/10' : ''}>
+      Shop on AbeBooks
+    </Button>
+    <Button href={`mailto:${SITE.email}`} variant="ghost" class={isMidnight ? 'text-[var(--color-parchment)] border-[var(--color-parchment)]/40 hover:bg-[var(--color-parchment)]/10' : ''}>
+      Email Mark direct
+    </Button>
+  </div>
+</aside>

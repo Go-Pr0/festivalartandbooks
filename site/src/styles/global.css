@@ -1,0 +1,180 @@
+@import "tailwindcss";
+@import "./motion.css";
+@plugin "@tailwindcss/typography";
+
+/*
+  Festival Art & Books — Design System
+  ------------------------------------
+  Direction: authentic antiquarian + quietly modern. The site should feel like a
+  serious, scholarly rare-book dealership — confident, warm, high-end — NOT a generic
+  templated startup. Lean on the existing brand cues from the current site:
+    - deep royal/midnight blue (the homepage montage backdrop)
+    - gold / bronze (the dragon emblem)
+    - parchment / cream paper tones
+    - a deep oxblood red accent (the current "Online Shop" button)
+  Pair a refined display serif with a readable text serif; use a clean sans only for
+  small UI labels. Generous whitespace, large type, restrained motion.
+
+  Fonts: wire up via Fontsource (npm) or a <link> in BaseLayout during the build.
+  Suggested pairing — Display: "Cormorant Garamond"; Text: "EB Garamond";
+  UI/sans: system sans or "Inter". Update the --font-* tokens if you change them.
+*/
+
+@theme {
+  /* ---- Brand color palette ---- */
+  --color-ink: #1a1512;          /* near-black warm ink for body text */
+  --color-parchment: #f6f0e2;    /* primary cream/paper background */
+  --color-parchment-dim: #ece3cf;/* slightly deeper paper for cards/sections */
+
+  --color-midnight-950: #0d1430; /* darkest blue */
+  --color-midnight-900: #14224f; /* deep royal blue (hero backdrop) */
+  --color-midnight-700: #243a76;
+  --color-midnight-500: #3a539b;
+
+  --color-gold-600: #a9781f;     /* bronze/gold for emphasis, rules, accents */
+  --color-gold-500: #c8962f;     /* primary gold */
+  --color-gold-300: #e3c479;     /* light gold highlight */
+
+  --color-oxblood-700: #8b2222;  /* darker hover for the CTA */
+  --color-oxblood-600: #a82c2c;  /* CTA red — lifted from the old #8b1a1a so buttons read warmer, not muddy */
+
+  /* ---- Semantic tokens ---- */
+  --color-bg: var(--color-parchment);
+  --color-surface: #fffdf8;
+  --color-text: var(--color-ink);
+  --color-muted: #5c5346;
+  --color-accent: var(--color-gold-500);
+  --color-cta: var(--color-oxblood-600);
+  --color-link: var(--color-midnight-700);
+
+  /* ---- Typography ---- */
+  --font-display: "Cormorant Garamond", "EB Garamond", Georgia, serif;
+  --font-text: "EB Garamond", Georgia, "Times New Roman", serif;
+  --font-ui: "Inter Variable", "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+  /* ---- Spacing / layout ---- */
+  --content-max: 73ch;   /* comfortable reading measure for long essays (very slightly wider) */
+  --page-max: 80rem;     /* overall page container */
+  --radius: 2px;         /* understated, not bubbly */
+
+  /* ---- Motion ---- */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --reveal-distance: 1.25rem;
+  --reveal-duration: 720ms;
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-text);
+  color: var(--color-text);
+  background: var(--color-bg);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display);
+  letter-spacing: 0.01em;
+}
+
+/* Long-form reading defaults — the site is content-heavy. */
+.prose-paper {
+  max-width: var(--content-max);
+  font-size: 1.175rem;
+  line-height: 1.7;
+}
+
+/*
+  Brand-tuned long-form typography. Layered on top of @tailwindcss/typography's
+  `prose` so guides and journal entries read like a scholarly book page.
+*/
+.prose-paper {
+  --tw-prose-body: var(--color-ink);
+  --tw-prose-headings: var(--color-midnight-900);
+  --tw-prose-links: var(--color-midnight-700);
+  --tw-prose-bold: var(--color-ink);
+  --tw-prose-quotes: var(--color-midnight-900);
+  --tw-prose-quote-borders: var(--color-gold-500);
+  --tw-prose-captions: var(--color-muted);
+  --tw-prose-counters: var(--color-gold-600);
+  --tw-prose-bullets: var(--color-gold-600);
+  --tw-prose-hr: color-mix(in srgb, var(--color-gold-600) 35%, transparent);
+  font-family: var(--font-text);
+}
+
+.prose-paper :where(h1, h2, h3, h4) {
+  font-family: var(--font-display);
+  letter-spacing: 0.01em;
+}
+
+.prose-paper :where(blockquote) {
+  font-style: italic;
+  border-inline-start-width: 3px;
+}
+
+.prose-paper :where(a) {
+  text-decoration-color: color-mix(in srgb, var(--color-gold-600) 60%, transparent);
+}
+
+/* `:not(.btn)` so this unlayered rule doesn't override button text colours (which are
+   Tailwind utilities in a lower-priority layer). Without it, <a>-based buttons render
+   blue link text instead of their variant colour (e.g. white on the red primary). */
+a:not(.btn) { color: var(--color-link); text-underline-offset: 0.18em; }
+
+/*
+  Inline links on dark/midnight bands must not inherit the blue link colour (it lands
+  blue-on-blue and disappears). Section sets data-tone; the Hero header sets it too.
+  Buttons (.btn) keep their own styling.
+*/
+[data-tone="midnight"] a:not(.btn) { color: var(--color-gold-300); }
+[data-tone="midnight"] a:not(.btn):hover { color: var(--color-parchment); }
+/* The current breadcrumb crumb is dark-blue by default — invisible on a dark band. */
+[data-tone="midnight"] [aria-current="page"] { color: var(--color-parchment); }
+/*
+  Ghost buttons default to dark-blue text for light backgrounds; on a dark band that is
+  blue-on-blue. Force white text + a light border so they read cleanly over midnight.
+  (Primary/red buttons already use white text via the variant.)
+*/
+[data-tone="midnight"] .btn-ghost {
+  color: #fff;
+  border-color: color-mix(in srgb, #fff 40%, transparent);
+}
+[data-tone="midnight"] .btn-ghost:hover {
+  background-color: color-mix(in srgb, #fff 10%, transparent);
+}
+
+::selection { background: var(--color-gold-300); color: var(--color-ink); }
+
+/* Accessible focus ring for keyboard users across interactive elements. */
+:focus-visible {
+  outline: 2px solid var(--color-gold-500);
+  outline-offset: 2px;
+  border-radius: var(--radius);
+}
+
+/* Skip link — visually hidden until focused. */
+.skip-link {
+  position: fixed;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 100;
+  transform: translateY(-150%);
+  background: var(--color-midnight-900);
+  color: var(--color-parchment);
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius);
+  font-family: var(--font-ui);
+  font-size: 0.875rem;
+  transition: transform 180ms var(--ease-out);
+}
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}

@@ -1,0 +1,48 @@
+---
+/**
+ * A single animated statistic: a large numeral that counts up on scroll, with a
+ * caption beneath. Numerals begin at 0 (rendered as the final value as a no-JS /
+ * reduced-motion fallback) and animate to `value`. Drive these via countup.ts.
+ */
+interface Props {
+  /** Numeric target, e.g. 75000, 25, 300. */
+  value: number;
+  /** Leading symbol, e.g. '£'. */
+  prefix?: string;
+  /** Trailing symbol, e.g. '+', ' yrs'. */
+  suffix?: string;
+  decimals?: number;
+  /** Caption under the numeral. */
+  label: string;
+  tone?: 'dark' | 'light';
+  class?: string;
+}
+
+const {
+  value,
+  prefix = '',
+  suffix = '',
+  decimals = 0,
+  label,
+  tone = 'dark',
+  class: className = '',
+} = Astro.props;
+
+const numeralColor = tone === 'light' ? 'text-[var(--color-gold-300)]' : 'text-[var(--color-gold-600)]';
+const labelColor = tone === 'light' ? 'text-[var(--color-parchment)]/80' : 'text-[var(--color-muted)]';
+const rendered = `${prefix}${value.toLocaleString('en-GB')}${suffix}`;
+---
+<div class:list={['text-center', className]}>
+  <div
+    class:list={['font-display text-5xl font-semibold tabular-nums sm:text-6xl', numeralColor]}
+    data-countup={String(value)}
+    data-countup-prefix={prefix}
+    data-countup-suffix={suffix}
+    data-countup-decimals={String(decimals)}
+  >
+    {rendered}
+  </div>
+  <div class:list={['mt-2 font-ui text-sm uppercase tracking-[0.18em]', labelColor]}>
+    {label}
+  </div>
+</div>

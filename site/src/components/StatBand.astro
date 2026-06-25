@@ -1,0 +1,38 @@
+---
+/**
+ * A horizontal band of animated <Stat> figures (e.g. 25 years / £75,000 / 300+ sets).
+ * Pass the stats as data; each counts up independently when scrolled into view.
+ */
+import Stat from '@/components/Stat.astro';
+import Reveal from '@/components/Reveal.astro';
+
+export interface StatItem {
+  value: number;
+  prefix?: string;
+  suffix?: string;
+  decimals?: number;
+  label: string;
+}
+
+interface Props {
+  stats: StatItem[];
+  tone?: 'dark' | 'light';
+  class?: string;
+}
+
+const { stats, tone = 'dark', class: className = '' } = Astro.props;
+---
+<dl class:list={['grid gap-10 sm:grid-cols-3 sm:gap-8', className]}>
+  {stats.map((stat, i) => (
+    <Reveal as="div" delay={i * 120}>
+      <Stat
+        value={stat.value}
+        prefix={stat.prefix}
+        suffix={stat.suffix}
+        decimals={stat.decimals}
+        label={stat.label}
+        tone={tone}
+      />
+    </Reveal>
+  ))}
+</dl>

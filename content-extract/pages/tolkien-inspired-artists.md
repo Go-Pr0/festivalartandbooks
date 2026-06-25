@@ -1,0 +1,128 @@
+---
+title: "TOLKIEN INSPIRED ARTISTS"
+slug: tolkien-inspired-artists
+source_url: https://festivalartandbooks.com/tolkien-inspired-artists/
+nav_location: "Not in main nav (linked internally / standalone)"
+meta_description: "Tolkien Fantasy Artists featured by Festival Art and Books. Discover their work today."
+---
+
+# TOLKIEN INSPIRED ARTISTS
+
+![Portrait of a man with sunglasses on head](../images/tolkien-inspired-artists/Joe-Gilronan.jpg)
+*[image — role: featured | alt: Portrait of a man with sunglasses on head | source: https://festivalartandbooks.com/wp-content/uploads/2020/05/Joe-Gilronan.jpg]*
+
+Please contact us for a complete listing of our Tolkien inspired fantasy art – markfaith@festivalartandbooks.com
+
+ART > JOE GILRONAN
+I am a full time professional artist who has been greatly influenced by the works of Tolkien. I received a Fine Arts Degree in painting from Liverpool University and hold a Higher National Diploma in design and ceramics from the University of Wales. I am originally from Chester, England but have lived in Olvera, Cadiz Spain for the last 4 years. I have exhibited and sold work world wide and work primarily in oils,acrylic and clay.
+
+Influences
+Tolkien
+Why Tolkien? I suppose it all started from a very early age when I first heard a reading of the Hobbit on a British children’s TV show called Jackanory. I just loved the whole world that he had created, this in turn led me to The Lord of the Rings/Silmarillion. Ever since a part of me has inhabited this world and art has allowed me to continue this magical journey.
+
+The natural world
+I have been very lucky in that I have always lived in close range of amazing scenery the Snowdonian national park, the Cheshire plains and now the Andalucia moutains. Whenever possible, I go for walks and take photographs and do lots of sketches. So there are lots of trees/mountains/castles/rivers and landmarks that I have sketched/photographed in my finished works.
+
+Artists
+Two artists who have greatly inspired him are J.M.W. Turner, a Romantic landscape painter, and his own father, R.A. Gilronan, who made a career as a successful landscape painter. Joe revealed, “From a very early age I always thought with my hands, and I guess I always knew that one day that I would be an artist like my father before me.”
+
+![](../images/tolkien-inspired-artists/Joegilraenpics.jpg)
+*[image — source: https://festivalartandbooks.com/wp-content/uploads/2020/05/Joegilraenpics.jpg]*
+
+ART > Rainer Kalwitz
+Rainer Kalwitz lives and works in Recklinghausen (Germany). He has worked with many important record labels in the fields of metal, rock and progressive rock, such as Century Media, Metal Blade Records, EMI, BMG, Inside Out Music, SPV, Limb Music Products, Mascot Records, Mausoleum Records, Black Mark, Frontiers, Roadrunner Records etc. Besides detailed brushwork, Rainer Kalwitz basically uses an airbrush, but is not to be regarded as an “airbrusher” as his works are very different from other typical airbrushed artwork. On the contrary, intense pre-studies underlie the final version of a picture, often in form of a series of photos or sketches. Thus the result has to be regarded as the end of a long technical and creative process. Some of his images are among the best selling poster prints in Europe.
+
+![](../images/tolkien-inspired-artists/Rainer-Kalwitz.jpg)
+*[image — source: https://festivalartandbooks.com/wp-content/uploads/2020/05/Rainer-Kalwitz.jpg]*
+
+![](../images/tolkien-inspired-artists/Rainer-Kalwitz-pics.jpg)
+*[image — source: https://festivalartandbooks.com/wp-content/uploads/2020/05/Rainer-Kalwitz-pics.jpg]*
+
+![](../images/tolkien-inspired-artists/Ruth-Lacon.jpg)
+*[image — source: https://festivalartandbooks.com/wp-content/uploads/2020/05/Ruth-Lacon.jpg]*
+
+ART > RUTH LACON
+Ruth Lacon has had an interest in the works of J.R.R. Tolkien since her Edinburgh childhood in Scotland, and managed the unusual feat of reading the Silmarillion when aged 12. Ruth joined the Tolkien Society in 1986 whilst at university, and has been a member ever since, contributing articles and artwork to the Society’s publications. She holds two degrees, a B.Sc. (Hons) in Zoology from Aberdeen and a B.A. in Design (Illustration) from the University of Wales. Ruth has produced many works of art inspired by the works of J.R.R. Tolkien, some of which are featured in her published book, The Art of Ruth Lacon. She also writes scholarly papers on J.R.R. Tolkien. Ruth also writes non-Tolkien based fiction, and creates paintings inspired by a range of myths and legends.
+
+![](../images/tolkien-inspired-artists/RUTH-LACON-pics.jpg)
+*[image — source: https://festivalartandbooks.com/wp-content/uploads/2020/05/RUTH-LACON-pics.jpg]*
+
+ART > ROGER DEAN
+Roger Dean is an internationally recognised artist and designer, whose evocative and visionary images with associated graphics, logos, and lettering, created a new genre of work.
+Made popular through the media of album covers and posters his work has sold in excess of sixty million copies world-wide.
+
+![](../images/tolkien-inspired-artists/Roger-Dean.jpg)
+*[image — source: https://festivalartandbooks.com/wp-content/uploads/2020/05/Roger-Dean.jpg]*
+
+Roger has set up and successfully run his own publishing company called Dragons Dream. Under this imprint his books Views and Magnetic Storm were published. Views went straight to number one in the best seller lists going on to sell well over a million copies.
+ven if you don’t number among Roger Dean’s many worldwide devotees, if you’re of a certain age you’re likely to find his work eerily familiar. And with good reason – his unique vision was responsible for some of the most iconic imagery of the 1970s and 80s, and its popularity has gone on to span more than four decades. The inclusiveness of his work means that it is just as likely to be found blu-tacked to the wall of a suburban bedsitting room as it is hanging in an international art gallery.
+
+Along with artists like Storm Thorgerson (Pink Floyd’s Dark Side of the Moon) Roger is credited with transforming the status of the album cover for all time, elevating it from mere packaging to a work of art in its own right. His designs for legendary prog-rock band Yes (at the time the most successful band in the world) gained him massive exposure; his covers for hit albums such as Tales from Topographic Oceans, Close to the Edge, Yessongs and Fragile won admiration from millions of fans globally. Roger’s artwork and trademark calligraphy became synonymous with the identity of the band and when, along with his brother Martyn, he was invited to conceive the stage set for the Yes USA tour it was seen as a natural progression.
+Although perhaps best known for his paintings, Roger is also an accomplished designer and publisher. A graduate of the Royal College of Art, he won early acclaim for his Sea Urchin Chair, which was famously ‘borrowed’ by Lord Snowden for exhibition at the British Trade Fair in Brussels. The prototype for Sea Urchin Chair was also shown at the Royal Academy of Arts and the Design Centre, and was later acquired by the Victoria & Albert Museum for their permanent exhibition. Roger was also commissioned to design the seating for the legendary Ronnie Scott’s Jazz Club in London.
+
+Roger has a passionate interest in building design. The full-size prototype of his ‘curvilinear house’ – an organically inspired space for alternative living – made a dramatic impact at the Birmingham International Ideal Home Exhibition, where it became the focal point of the event with nearly 200,000 people passing through its doors. The house was also shown at the Tomorrow’s World exhibition at the National Exhibition Centre, and later visited the Glastonbury Music Festival (where it was the only habitable space free of mud!).
+
+Published through his own Dragons Dream imprint, Roger’s first book, Views, went straight to number one in The Times best seller list, stayed there for eleven weeks and went on to sell over a million copies. He later produced a second book of his work, the highly acclaimed Magnetic Storm, in collaboration with his brother, Martyn. Roger is also involved in the design and production of computer games.
+
+Irrepressibly productive, Roger continues to work and exhibit, both collaboratively and in his own right. He is currently occupied with several major architectural design projects, including Willowater and Home for Life.
+
+![](../images/tolkien-inspired-artists/Roger-Dean-pics.jpg)
+*[image — source: https://festivalartandbooks.com/wp-content/uploads/2020/05/Roger-Dean-pics.jpg]*
+
+ART > MICHAEL FISHEL
+Artist Michael Fishel was born in 1950, and even from a very early age had a keen interest in drawing and painting and was fascinated with illustrations of the great fantasy masters of old. Michael attended the John Heron Institute of Art in Indiana in 1971 and shortly thereafter set upon a course to bring his unique fantasy visionary art to the canvas. in 1975 his art had caught the attention of cutting edge publishers of fantasy art at that time, The Big “O” Poster Co. located in London, England and published his paintings as full colour 24” x 36” posters in 1977 alongside such well known artists as Roger Dean,
+
+Rodney Matthews and H.R. Giger. In 1980 he began illustrating the RPG books for Dungeons & Dragons Co. In 1984 he painted fantasy book cover art for the authors H.P. Lovecraft and Richard Adams. Over the years Michael’s art has been published as posters, prints and jigsaw puzzles. Michael is currently living in Austin, Texas and is now creating art in the digital medium.
+
+![](../images/tolkien-inspired-artists/Michael-Fishel-pics.jpg)
+*[image — source: https://festivalartandbooks.com/wp-content/uploads/2020/05/Michael-Fishel-pics.jpg]*
+
+![](../images/tolkien-inspired-artists/Ted-Nesmith.jpg)
+*[image — source: https://festivalartandbooks.com/wp-content/uploads/2020/05/Ted-Nesmith.jpg]*
+
+ART > TED NASMITH
+Ted Nasmith is a Canadian artist, illustrator and architectural renderer. He is best known as an illustrator of J. R. R. Tolkien’s works – The Hobbit, The Lord of the Rings and The Silmarillion.
+
+Nasmith’s Tolkien artwork, which echoes the luminist landscapes and Victorian neoclassical styles, eventually caught the attention of Tolkien’s publishers, who included four of his paintings in the 1987 Tolkien Calendar. His artwork continued to appear in these beloved calendars over the years, including several where he is the sole featured artist (1990, 2002, 2003, 2004, 2009).
+
+In October 1996, Nasmith was asked by Tolkien’s publishers to provide the artwork for the first illustrated edition of The Silmarillion, during which time Ted developed a strong working relationship with Christopher Tolkien. The illustrated edition was published in 1998; in 2004, a second edition (ISBN 0-618-39111-8) was published featuring many more paintings by Nasmith.
+In early 1999, representatives for Peter Jackson and New Line Cinema invited Ted Nasmith to join John Howe and Alan Lee to work on conceptual art for the Lord of the Rings movie trilogy.
+
+Nasmith is also considered a Tolkien scholar, well-read in ancient history, religion, and other areas. He is a prominent member of several Tolkien-related organizations (such as The Tolkien Society, the Mythopoeic Society, and Mensa’s Beyond Bree).
+Nasmith is a musician, guitarist and tenor. Much of his musical work is likewise inspired by Tolkien’s writings. His first commercial album, The Hidden Door: Songs in the Key of Enchantment, was released in 2007. He has also worked on a musical project entitled Beren and Lúthien: A Song Cycle, with his friend Alex Lewis, and has a close friendship with the founders of The Tolkien Ensemble.
+
+![](../images/tolkien-inspired-artists/Ted-Nasmith-pics.jpg)
+*[image — source: https://festivalartandbooks.com/wp-content/uploads/2020/05/Ted-Nasmith-pics.jpg]*
+
+ART > GARY CHALK
+Gary Chalk has drawn an incalculable number of pictures for children’s books and fantasy games over the years, as well as writing and co-writing books for Dorling Kindersley and Hachette. Well known for his black and white illustrations for the Redwall and Lone Wolf series, Gary also contributed to many of Games Workshop’s most popular board games and Warhammer publications. Gary now lives in France and is currently working on a boardgame based on the Lone Wolf books and a series of children’s fantasy books with british author Allan Frewin Jones.
+
+![](../images/tolkien-inspired-artists/Gary-Chalk.jpg)
+*[image — source: https://festivalartandbooks.com/wp-content/uploads/2020/05/Gary-Chalk.jpg]*
+
+![](../images/tolkien-inspired-artists/Gary-Chalk-pics.jpg)
+*[image — source: https://festivalartandbooks.com/wp-content/uploads/2020/05/Gary-Chalk-pics.jpg]*
+
+ART > TIM KIRK
+Tim Kirk is a designer with extensive experience in a broad media spectrum – from book and magazine illustration to theme park and museum exhibit design. Tim’s paintings based on J.R.R. Tolkien’s epic fantasy The Lord of the Rings appeared in the 1975 Tolkien Calendar, published by Ballantine Books. His illustrations have appeared in a wide variety of books, magazines and fanzines; he has produced artwork for greeting cards, comics, web sites, jigsaw puzzles, costume design and character concepts for fantasy role playing games. He is a five-time winner of the prestigious Hugo Award for science fiction illustration.
+
+![](../images/tolkien-inspired-artists/Tim-Kirk.jpg)
+*[image — source: https://festivalartandbooks.com/wp-content/uploads/2020/05/Tim-Kirk.jpg]*
+
+For 22 years, Tim was employed as an imagineer by the Walt Disney Company. He contributed significantly to several major Disney theme park projects, including Epcot Center, Pleasure Island and the Disney-MGM Studio Tour (Florida), Disneyland (Anaheim) and Tokyo DisneySea – the second gated theme park for the Tokyo Disney Resort – which opened in 2001. Tim was a concept artist on The Haunted Mansion (2003), a Disney feature film based on the theme park attraction of the same name. In partnership with his brother and sister-in-law (also Disney veterans), Tim created Kirk Design Incorporated in 2002 (www.kirkdesigninc.com). Kirk Design specializes in themed concept and exhibit design for museums, theme parks, restaurants and retail, with a strong emphasis on immersive, innovative storytelling; recently completed projects include the Science Fiction Museum and Hall of Fame in Seattle (2004), the Parsonage of Aimee Semple McPherson in Los Angeles (April, 2006), and the Center for Water Education in Hemet, California (2007). Other clients include Walt Disney Imagineering, Thinkwell Design and Production, the Ronald Reagan Presidential Library, the Aquarium of the Pacific (Long Beach, California), and Ghirardelli Chocolate. Tim’s work will be included in a new museum (opening soon) in Switzerland dedicated to J.R.R. Tolkien.
+Tim Kirk is a third generation southern California native. He is a graduate of California State University at Long Beach, with a master’s degree in illustration. He and his wife, Linda, make their home in Long Beach.
+
+ART > RODNEY MATTHEWS
+Rodney Matthews has been described by John Cleese as belonging “among the greatest artists that have ever lived”. His distinct style has won him a strong following, and he has illustrated Tolkien, C. S. Lewis, Lewis Carroll, Kenneth Grahame and other classic writers. As designer-illustrator he has created book and record album covers (for Magnum, Thin Lizzy, Nazareth, Barclay James Harvest, Rick Wakeman and others). He has also created video games, and television series, such as Gerry Anderson’s production of Lavender Castle, and worked closely with fantasy author Michael Moorcock (Elric at the End of Time). Rodney’s notecards, postcards, jigsaw puzzles, collector’s cards, and poster prints have sold worldwide in their millions. His work is collected in Last Ship Home, In Search of Forever, and Countdown to Millennium. Born in Somerset, England, Rodney has made his home in North Wales for many years. His originals have been displayed at the leading Chris Beetles Gallery in London’s West End, and his one-man shows have been featured in the Langton Gallery, London, in Sierre, Switzerland, and in Cardiff and Machynlleth, Wales.
+
+![](../images/tolkien-inspired-artists/Rodney-Matthews.jpg)
+*[image — source: https://festivalartandbooks.com/wp-content/uploads/2020/05/Rodney-Matthews.jpg]*
+
+![Rodney Matthews artwork (image missing on source site)](https://festivalartandbooks.com/wp-content/uploads/2020/05/Rodney-Matthews-pics.jpg) <!-- MISSING ON SOURCE SITE: returns HTTP 404 live, broken there too. Needs a replacement from Mark for the new build. -->
+*[image — source: https://festivalartandbooks.com/wp-content/uploads/2020/05/Rodney-Matthews-pics.jpg]*
+
+---
+
+## Links found on this page
+
+- [markfaith@festivalartandbooks.com](mailto:markfaith@festivalartandbooks.com)

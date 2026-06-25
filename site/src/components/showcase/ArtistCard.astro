@@ -1,0 +1,43 @@
+---
+/**
+ * Profile card for a Tolkien-inspired artist Mark has represented: an optimised
+ * portrait/artwork image plus a short biography. Used as a grid item on /tolkien-art.
+ */
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+export interface Artist {
+  name: string;
+  src: ImageMetadata;
+  alt: string;
+  /** Short biography paragraphs drawn from the content extract. */
+  bio: string[];
+}
+
+interface Props {
+  artist: Artist;
+  class?: string;
+}
+
+const { artist, class: className = '' } = Astro.props;
+---
+<article
+  class:list={[
+    'flex h-full flex-col overflow-hidden rounded-[var(--radius)] border border-[var(--color-gold-600)]/25 bg-[var(--color-surface)] shadow-sm',
+    className,
+  ]}
+>
+  <Image
+    src={artist.src}
+    alt={artist.alt}
+    widths={[400, 700]}
+    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+    class="aspect-[4/3] w-full object-cover"
+  />
+  <div class="flex flex-1 flex-col p-6">
+    <h3 class="font-display text-2xl text-[var(--color-midnight-900)]">{artist.name}</h3>
+    <div class="mt-3 space-y-2 font-text text-base leading-relaxed text-[var(--color-muted)]">
+      {artist.bio.map((para) => <p>{para}</p>)}
+    </div>
+  </div>
+</article>

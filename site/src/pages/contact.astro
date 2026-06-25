@@ -1,0 +1,81 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Section from '@/components/Section.astro';
+import Reveal from '@/components/Reveal.astro';
+import Button from '@/components/Button.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import ContactDetails from '@/components/showcase/ContactDetails.astro';
+import { Image } from 'astro:assets';
+import { EXTERNAL } from '@/lib/site';
+
+import markPortrait from '@/assets/showcase/mark-faith-tolkien-dealer-portrait.jpg';
+
+const PATH = '/contact';
+
+const trail = [
+  { name: 'Home', url: '/' },
+  { name: 'Contact', url: PATH },
+];
+---
+<BaseLayout
+  title="Contact Mark Faith | Festival Art & Books"
+  description="Contact Tolkien rare-book specialist Mark Faith near Machynlleth, Mid-Wales, UK. Email is best; he travels and calls back. Sells and delivers worldwide; buy direct to save fees."
+>
+  <Section tone="midnight" space="md">
+    <Breadcrumbs trail={trail} class="text-[var(--color-parchment)]/70" />
+    <Reveal class="mt-8 max-w-3xl">
+      <p class="font-ui text-xs uppercase tracking-[0.2em] text-[var(--color-gold-300)]">
+        Get in touch
+      </p>
+      <h1 class="mt-3 font-display text-4xl text-[var(--color-parchment)] sm:text-5xl">
+        Contact Mark Faith
+      </h1>
+      <p class="mt-6 font-text text-xl leading-relaxed text-[var(--color-parchment)]/85">
+        Festival Art and Books is based near Machynlleth, Mid-Wales, UK, and sells and
+        delivers worldwide. Mark travels a lot in the course of the business, so email is
+        the best way to reach him, and he will call you back.
+      </p>
+    </Reveal>
+  </Section>
+
+  <Section tone="paper">
+    <div class="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-start">
+      <Reveal>
+        <ContactDetails />
+      </Reveal>
+      <Reveal mode="fade" delay={120}>
+        <figure class="overflow-hidden rounded-[var(--radius)] border border-[var(--color-gold-600)]/25">
+          <Image
+            src={markPortrait}
+            alt="Mark Faith, Tolkien rare-book specialist and founder of Festival Art and Books"
+            widths={[400, 700, 1000]}
+            sizes="(min-width: 1024px) 45vw, 100vw"
+            class="w-full object-cover"
+          />
+          <figcaption class="bg-[var(--color-surface)] px-5 py-4 font-ui text-sm text-[var(--color-muted)]">
+            Mark Faith, owner and founder, Festival Art and Books and Festival in the Shire.
+          </figcaption>
+        </figure>
+      </Reveal>
+    </div>
+  </Section>
+
+  <Section tone="parchment" width="prose" space="md">
+    <Reveal>
+      <h2 class="font-display text-3xl text-[var(--color-midnight-900)] sm:text-4xl">
+        Where to buy
+      </h2>
+      <p class="mt-4 font-text text-lg leading-relaxed text-[var(--color-text)]">
+        Stock is listed on our marketplace shops, where every item is shown with honest
+        photographs and condition notes. For anything of real value, or to commission a
+        sourcing service for a specific edition, set, or piece of art, email Mark
+        directly. Dealing direct saves the marketplace fees and puts you in touch with the
+        specialist himself.
+      </p>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <Button href={EXTERNAL.ebay} variant="primary">Shop on eBay</Button>
+        <Button href={EXTERNAL.abebooks} variant="ghost">Shop on AbeBooks</Button>
+      </div>
+    </Reveal>
+  </Section>
+</BaseLayout>

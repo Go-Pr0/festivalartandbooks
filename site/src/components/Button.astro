@@ -1,0 +1,60 @@
+---
+/**
+ * Button / link with brand variants. Renders an <a> when `href` is set, otherwise a
+ * <button>. External links automatically get rel/target. Keep variants restrained.
+ */
+type Variant = 'primary' | 'gold' | 'ghost';
+type Size = 'sm' | 'md' | 'lg';
+
+import type { HTMLAttributes } from 'astro/types';
+
+type Props = Omit<HTMLAttributes<'a'>, 'type'> & {
+  href?: string;
+  variant?: Variant;
+  size?: Size;
+  type?: 'button' | 'submit';
+  external?: boolean;
+};
+
+const {
+  href,
+  variant = 'primary',
+  size = 'md',
+  type = 'button',
+  external,
+  class: className = '',
+  ...rest
+} = Astro.props;
+
+const base =
+  'inline-flex items-center justify-center gap-2 rounded-[var(--radius)] font-ui font-medium ' +
+  'tracking-wide transition-colors duration-200 focus-visible:outline-2 ' +
+  'focus-visible:outline-offset-2 focus-visible:outline-[var(--color-gold-500)]';
+
+const variants: Record<Variant, string> = {
+  primary:
+    'bg-[var(--color-oxblood-600)] text-white hover:bg-[var(--color-oxblood-700)]',
+  gold: 'bg-[var(--color-gold-500)] text-[var(--color-midnight-950)] hover:bg-[var(--color-gold-600)]',
+  ghost:
+    'border border-[var(--color-gold-600)]/50 text-[var(--color-midnight-900)] hover:bg-[var(--color-gold-500)]/10',
+};
+
+const sizes: Record<Size, string> = {
+  sm: 'px-4 py-2 text-sm',
+  md: 'px-6 py-3 text-base',
+  lg: 'px-8 py-4 text-lg',
+};
+
+const cls = ['btn', `btn-${variant}`, base, variants[variant], sizes[size], className];
+const isExternal = external ?? (href?.startsWith('http') ?? false);
+const externalAttrs = isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {};
+---
+{href ? (
+  <a href={href} class:list={cls} {...externalAttrs} {...rest}>
+    <slot />
+  </a>
+) : (
+  <button type={type} class:list={cls} {...rest}>
+    <slot />
+  </button>
+)}

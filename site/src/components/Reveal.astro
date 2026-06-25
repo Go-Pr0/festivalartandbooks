@@ -1,0 +1,28 @@
+---
+/**
+ * Reveal-on-scroll wrapper. Adds the `data-reveal` hooks the motion system observes.
+ * The actual animation + reduced-motion handling lives in motion.css / reveal.ts.
+ */
+type Tag = 'div' | 'section' | 'article' | 'li' | 'span' | 'p' | 'figure' | 'header';
+type Mode = 'up' | 'fade' | 'scale';
+
+interface Props {
+  as?: Tag;
+  /** Animation flavour: slide-up (default), fade only, or subtle scale. */
+  mode?: Mode;
+  /** Stagger delay in milliseconds. */
+  delay?: number;
+  class?: string;
+}
+
+const { as = 'div', mode = 'up', delay, class: className = '' }: Props = Astro.props;
+const Tag = as;
+const revealValue = mode === 'up' ? '' : mode;
+---
+<Tag
+  data-reveal={revealValue}
+  data-reveal-delay={delay !== undefined ? String(delay) : undefined}
+  class={className}
+>
+  <slot />
+</Tag>

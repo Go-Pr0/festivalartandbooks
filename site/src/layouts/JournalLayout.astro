@@ -1,0 +1,108 @@
+---
+/**
+ * Renders a single journal essay: Article schema, breadcrumbs, a visible "Last updated"
+ * freshness date, and the Markdown body in brand prose.
+ */
+import type { CollectionEntry } from 'astro:content';
+import { render } from 'astro:content';
+import { Image } from 'astro:assets';
+
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Section from '@/components/Section.astro';
+import Prose from '@/components/Prose.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import Reveal from '@/components/Reveal.astro';
+import { article } from '@/lib/schema';
+import { SITE } from '@/lib/site';
+
+interface Props {
+  entry: CollectionEntry<'journal'>;
+}
+
+const { entry } = Astro.props;
+const { data } = entry;
+const { Content } = await render(entry);
+
+const url = `/journal/${entry.id}`;
+
+const dateFormat = new Intl.DateTimeFormat('en-GB', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+const datePublished = dateFormat.format(data.datePublished);
+const dateModified = data.dateModified ?? data.datePublished;
+const lastUpdated = dateFormat.format(dateModified);
+
+const schema = article({
+  title: data.title,
+  description: data.description,
+  url,
+  datePublished: data.datePublished.toISOString(),
+  dateModified: dateModified.toISOString(),
+});
+---
+<BaseLayout
+  title={`${data.title} | The Journal`}
+  description={data.description}
+  type="article"
+  schema={schema}
+>
+  <Section tone="parchment" space="md">
+    <Breadcrumbs
+      trail={[
+        { name: 'Home', url: '/' },
+        { name: 'Journal', url: '/journal' },
+        { name: data.title, url },
+      ]}
+    />
+    <Reveal as="header" class="mt-8 max-w-[var(--content-max)]">
+      <p class="font-ui text-xs uppercase tracking-[0.2em] text-[var(--color-gold-600)]">
+        The Journal
+      </p>
+      <h1 class="mt-2 font-display text-4xl leading-tight text-[var(--color-midnight-900)] sm:text-5xl">
+        {data.title}
+      </h1>
+      <p class="mt-5 text-xl text-[var(--color-muted)]">{data.description}</p>
+      <p class="mt-6 font-ui text-sm text-[var(--color-muted)]">
+        By Mark Faith ·
+        <time datetime={data.datePublished.toISOString()}>{datePublished}</time>
+        · Last updated:
+        <time datetime={dateModified.toISOString()}>{lastUpdated}</time>
+      </p>
+    </Reveal>
+  </Section>
+
+  {data.heroImage && (
+    <Section space="sm">
+      <Reveal as="figure" mode="fade" class="mx-auto max-w-[var(--page-max)]">
+        <Image
+          src={data.heroImage}
+          alt={data.heroAlt ?? data.title}
+          widths={[640, 960, 1280]}
+          sizes="(min-width: 1024px) 1024px, 100vw"
+          class="w-full rounded-sm shadow-sm"
+        />
+      </Reveal>
+    </Section>
+  )}
+
+  <Section space="md">
+    <Reveal>
+      <Prose as="article" class="mx-auto">
+        <Content />
+      </Prose>
+    </Reveal>
+
+    <Reveal class="mx-auto mt-16 max-w-[var(--content-max)] border-t border-[var(--color-gold-600)]/20 pt-8">
+      <p class="font-ui text-sm text-[var(--color-muted)]">
+        Mark Faith has dealt in rare Tolkien books for 25+ years. For advice or to enquire
+        about a book, email
+        <a class="text-[var(--color-oxblood-600)] underline" href={`mailto:${SITE.email}`}>
+          {SITE.email}
+        </a>, or read the
+        <a class="text-[var(--color-oxblood-600)] underline" href="/guides">collecting guides</a>.
+      </p>
+    </Reveal>
+  </Section>
+</BaseLayout>

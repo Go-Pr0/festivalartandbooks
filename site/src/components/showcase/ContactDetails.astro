@@ -1,0 +1,63 @@
+---
+/**
+ * Mark's contact card: location, email-first contact note, worldwide delivery, and
+ * the direct-deal-saves-fees prompt. No backend — email is the single channel.
+ */
+import Button from '@/components/Button.astro';
+import { SITE } from '@/lib/site';
+
+interface DetailRow {
+  label: string;
+  value: string;
+}
+
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+
+const details: DetailRow[] = [
+  { label: 'Based in', value: 'Near Machynlleth, Mid-Wales, UK' },
+  { label: 'Ships to', value: 'Worldwide, sold and delivered internationally' },
+  { label: 'Best way to reach Mark', value: 'Email; he travels a lot and will call you back' },
+];
+---
+<div
+  class:list={[
+    'rounded-[var(--radius)] border border-[var(--color-gold-600)]/30 bg-[var(--color-surface)] p-8 sm:p-10',
+    className,
+  ]}
+>
+  <dl class="space-y-6">
+    {details.map((row) => (
+      <div>
+        <dt class="font-ui text-xs uppercase tracking-[0.18em] text-[var(--color-gold-600)]">
+          {row.label}
+        </dt>
+        <dd class="mt-1 font-text text-lg text-[var(--color-text)]">{row.value}</dd>
+      </div>
+    ))}
+    <div>
+      <dt class="font-ui text-xs uppercase tracking-[0.18em] text-[var(--color-gold-600)]">Email</dt>
+      <dd class="mt-1 font-text text-lg">
+        <a
+          href={`mailto:${SITE.email}`}
+          class="text-[var(--color-midnight-900)] underline decoration-[var(--color-gold-600)]/50 underline-offset-4 hover:text-[var(--color-oxblood-600)]"
+        >
+          {SITE.email}
+        </a>
+      </dd>
+    </div>
+  </dl>
+  <p class="mt-8 font-text text-base text-[var(--color-muted)]">
+    Buying direct saves the marketplace fees, and you deal with the specialist himself,
+    not a middleman. For any purchase running into the thousands, a short email is always
+    the right first step.
+  </p>
+  <div class="mt-6">
+    <Button href={`mailto:${SITE.email}`} variant="primary" size="lg">
+      Email Mark Faith
+    </Button>
+  </div>
+</div>

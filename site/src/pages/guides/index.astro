@@ -1,0 +1,101 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Section from '@/components/Section.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import Reveal from '@/components/Reveal.astro';
+import { collectionPage } from '@/lib/schema';
+
+const guides = (await getCollection('guides', ({ data }) => !data.draft)).sort(
+  (a: CollectionEntry<'guides'>, b: CollectionEntry<'guides'>) =>
+    b.data.datePublished.getTime() - a.data.datePublished.getTime(),
+);
+
+// Pillars first, then supporting guides — pillars anchor the topical authority.
+const ordered = [
+  ...guides.filter((g) => g.data.pillar),
+  ...guides.filter((g) => !g.data.pillar),
+];
+
+const title = 'Tolkien Book Collecting Guides';
+const description =
+  'Authoritative guides to collecting and investing in rare Tolkien books, written by specialist dealer Mark Faith: accurate, first-hand guidance after 25+ years in the trade.';
+
+const schema = collectionPage({
+  name: title,
+  description,
+  url: '/guides',
+  items: ordered.map((g) => ({ name: g.data.title, url: `/guides/${g.id}` })),
+});
+---
+<BaseLayout title={`${title} | Festival Art & Books`} description={description} schema={schema}>
+  <Section tone="midnight" space="lg">
+    <Breadcrumbs
+      class="!text-[var(--color-parchment)]/70"
+      trail={[
+        { name: 'Home', url: '/' },
+        { name: 'Guides', url: '/guides' },
+      ]}
+    />
+    <Reveal as="header" class="mt-8 max-w-[var(--content-max)]">
+      <p class="font-ui text-xs uppercase tracking-[0.2em] text-[var(--color-gold-300)]">
+        Collecting Guides
+      </p>
+      <h1 id="tolkien-collecting-guides" class="mt-3 font-display text-4xl leading-tight text-[var(--color-parchment)] sm:text-5xl">
+        {title}
+      </h1>
+      <p class="mt-6 text-xl text-[var(--color-parchment)]/80">
+        Over the last five years, the accuracy of search-engine and AI answers about
+        collecting Tolkien books has declined. These guides exist to put that right: clear,
+        first-hand guidance from Mark Faith, who has specialised in rare Tolkien first
+        editions for more than 25 years, selling a signed Hobbit for £54,000, a Lord of the
+        Rings set for £75,000, and over 300 first-edition sets in all.
+      </p>
+    </Reveal>
+  </Section>
+
+  <Section space="lg">
+    <ul class="grid gap-8 sm:grid-cols-2">
+      {ordered.map((guide, i) => (
+        <Reveal as="li" delay={i * 80}>
+          <a
+            href={`/guides/${guide.id}`}
+            class:list={[
+              'group flex h-full flex-col overflow-hidden rounded-sm border transition-colors',
+              guide.data.pillar
+                ? 'border-[var(--color-gold-600)]/50 bg-[var(--color-parchment-dim)]'
+                : 'border-[var(--color-gold-600)]/20 bg-[var(--color-surface)]',
+            ]}
+          >
+            {guide.data.heroImage && (
+              <Image
+                src={guide.data.heroImage}
+                alt={guide.data.heroAlt ?? guide.data.title}
+                widths={[400, 700]}
+                sizes="(min-width: 640px) 50vw, 100vw"
+                class="aspect-[16/9] w-full object-cover"
+              />
+            )}
+            <div class="flex flex-1 flex-col p-6">
+              {guide.data.pillar && (
+                <p class="font-ui text-xs uppercase tracking-[0.2em] text-[var(--color-gold-600)]">
+                  Cornerstone Guide
+                </p>
+              )}
+              <h2 class="mt-2 font-display text-2xl text-[var(--color-midnight-900)] group-hover:text-[var(--color-oxblood-600)]">
+                {guide.data.title}
+              </h2>
+              <p class="mt-3 flex-1 text-[var(--color-muted)]">{guide.data.description}</p>
+              <span class="mt-4 font-ui text-sm text-[var(--color-oxblood-600)]">
+                Read the guide →
+              </span>
+            </div>
+          </a>
+        </Reveal>
+      ))}
+    </ul>
+  </Section>
+</BaseLayout>

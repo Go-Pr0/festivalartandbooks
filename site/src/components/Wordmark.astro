@@ -1,0 +1,46 @@
+---
+/**
+ * Text/emblem wordmark — no image logo exists yet. A small inline ring-and-rune
+ * emblem paired with the display-serif name. Used in the Header and Footer.
+ */
+import { SITE } from '@/lib/site';
+
+interface Props {
+  /** Wrap in a link to home. Off when already used inside a heading. */
+  href?: string;
+  /** Light variant for dark (midnight) backgrounds. */
+  tone?: 'dark' | 'light';
+  class?: string;
+}
+
+const { href = '/', tone = 'dark', class: className = '' } = Astro.props;
+
+const nameColor = tone === 'light' ? 'text-[var(--color-parchment)]' : 'text-[var(--color-midnight-900)]';
+const emblemColor = 'text-[var(--color-gold-500)]';
+const Tag = href ? 'a' : 'span';
+---
+<Tag
+  href={href || undefined}
+  class:list={['group inline-flex items-center gap-3', className]}
+  aria-label={href ? `${SITE.name}, home` : undefined}
+>
+  <svg
+    class:list={['h-8 w-8 shrink-0 transition-transform duration-500 group-hover:rotate-[18deg]', emblemColor]}
+    viewBox="0 0 48 48"
+    fill="none"
+    aria-hidden="true"
+  >
+    <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="1.5" />
+    <circle cx="24" cy="24" r="14" stroke="currentColor" stroke-width="0.75" opacity="0.6" />
+    <path d="M24 10 L24 38 M10 24 L38 24" stroke="currentColor" stroke-width="0.75" opacity="0.5" />
+    <path d="M24 16 L29 24 L24 32 L19 24 Z" fill="currentColor" />
+  </svg>
+  <span class="flex flex-col leading-none">
+    <span class:list={['font-display text-xl tracking-wide sm:text-2xl', nameColor]}>
+      Festival Art &amp; Books
+    </span>
+    <span class="font-ui text-[0.6rem] uppercase tracking-[0.28em] text-[var(--color-gold-600)]">
+      {SITE.tagline}
+    </span>
+  </span>
+</Tag>

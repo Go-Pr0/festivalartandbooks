@@ -1,0 +1,30 @@
+---
+/**
+ * Animated vertical timeline of Mark Faith's 25-year journey as a Tolkien rare-book
+ * dealer. Pass the milestones as data; each renders as a <TimelineItem> on a gold
+ * rail and reveals on scroll with an incremental stagger.
+ */
+import TimelineItem from '@/components/story/TimelineItem.astro';
+import type { TimelineEntry } from '@/components/story/TimelineItem.astro';
+
+interface Props {
+  entries: TimelineEntry[];
+  /** Per-item stagger in ms. */
+  stagger?: number;
+  class?: string;
+}
+
+const { entries, stagger = 90, class: className = '' } = Astro.props;
+const lastIndex = entries.length - 1;
+---
+<ol class:list={['relative', className]}>
+  {entries.map((entry, i) => (
+    <TimelineItem
+      year={entry.year}
+      title={entry.title}
+      body={entry.body}
+      delay={i * stagger}
+      last={i === lastIndex}
+    />
+  ))}
+</ol>

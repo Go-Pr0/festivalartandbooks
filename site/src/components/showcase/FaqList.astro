@@ -1,0 +1,44 @@
+---
+/**
+ * Answer-first FAQ list. Each entry renders as a question heading + concise answer,
+ * structured for GEO extraction. The matching FAQPage JSON-LD is emitted by the page
+ * using the same data via `faqPage()` — this component handles the visible layout only.
+ */
+import Reveal from '@/components/Reveal.astro';
+
+export interface FaqItem {
+  question: string;
+  /** Visible answer paragraphs, in Mark's voice. */
+  answer: string[];
+}
+
+interface Props {
+  items: FaqItem[];
+  class?: string;
+}
+
+const { items, class: className = '' } = Astro.props;
+
+/** Stable, human-readable fragment id from the question text for deep-linking. */
+function slugify(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/['’"“”]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+    .slice(0, 60)
+    .replace(/-+$/g, '');
+}
+---
+<div class:list={['space-y-10', className]}>
+  {items.map((item, i) => (
+    <Reveal as="article" mode="up" delay={i * 40} class="border-l-2 border-[var(--color-gold-600)]/40 pl-6">
+      <h2 id={slugify(item.question)} class="font-display text-2xl text-[var(--color-midnight-900)] sm:text-3xl">
+        {item.question}
+      </h2>
+      <div class="mt-3 space-y-3 font-text text-lg leading-relaxed text-[var(--color-text)]">
+        {item.answer.map((para) => <p>{para}</p>)}
+      </div>
+    </Reveal>
+  ))}
+</div>

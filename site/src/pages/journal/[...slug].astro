@@ -1,0 +1,14 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getCollection } from 'astro:content';
+import JournalLayout from '@/layouts/JournalLayout.astro';
+
+export const getStaticPaths = (async () => {
+  const entries = await getCollection('journal', ({ data }) => !data.draft);
+  return entries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}) satisfies GetStaticPaths;
+---
+<JournalLayout entry={Astro.props.entry} />
