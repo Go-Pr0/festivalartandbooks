@@ -13,7 +13,7 @@ export function organization() {
     url: SITE.url,
     description: SITE.description,
     foundingDate: SITE.foundingDate,
-    logo: `${SITE.url}/logo.png`, // TODO: add a clean logo to public/
+    logo: `${SITE.url}/logo.png`,
     email: SITE.email,
     address: {
       '@type': 'PostalAddress',

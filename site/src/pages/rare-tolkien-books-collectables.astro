@@ -95,6 +95,20 @@ const schema = collectionPage({
     <Gallery items={gallery} columns={3} class="mt-10" />
   </Section>
 
+  <Section tone="midnight" width="prose">
+    <Reveal class="text-center">
+      <h2 class="font-display text-3xl text-[var(--color-parchment)] sm:text-4xl">
+        {t.catalogueHeading}
+      </h2>
+      <p class="mx-auto mt-4 max-w-xl font-text text-lg leading-relaxed text-[var(--color-parchment)]/80">
+        {t.catalogueIntro}
+      </p>
+      <div class="mt-8">
+        <Button href="/books" variant="gold">{t.catalogueButtonLabel}</Button>
+      </div>
+    </Reveal>
+  </Section>
+
   <Section tone="paper" width="prose">
     <Reveal class="rounded-[var(--radius)] border border-[var(--color-gold-600)]/30 bg-[var(--color-surface)] p-8 sm:p-10">
       <p class="font-ui text-xs uppercase tracking-[0.2em] text-[var(--color-gold-600)]">

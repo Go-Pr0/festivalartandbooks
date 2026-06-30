@@ -1,0 +1,79 @@
+---
+/**
+ * Card for the books catalogue grid. Shows the first image, title, edition label
+ * (if set), and a formatted price — or "Price on application" if unset.
+ */
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  slug: string;
+  title: string;
+  description: string;
+  editionTitle?: string;
+  price?: number;
+  priceCurrency?: string;
+  firstImage?: ImageMetadata;
+  delay?: number;
+}
+
+const {
+  slug,
+  title,
+  description,
+  editionTitle,
+  price,
+  priceCurrency = 'GBP',
+  firstImage,
+  delay = 0,
+} = Astro.props;
+
+const href = `/books/${slug}`;
+
+function formatPrice(p: number, currency: string): string {
+  const symbol = currency === 'GBP' ? '£' : currency + '\u00a0';
+  return `${symbol}${p.toLocaleString('en-GB')}`;
+}
+
+const priceDisplay = price != null ? formatPrice(price, priceCurrency) : 'Price on application';
+---
+<a
+  href={href}
+  class="group flex h-full flex-col overflow-hidden rounded-[var(--radius)] border border-[var(--color-gold-600)]/30 bg-[var(--color-surface)] transition-colors hover:border-[var(--color-gold-600)]/60"
+  style={delay ? `--reveal-delay:${delay}ms` : undefined}
+>
+  {firstImage ? (
+    <div class="overflow-hidden">
+      <Image
+        src={firstImage}
+        alt={editionTitle ?? title}
+        widths={[400, 700]}
+        sizes="(min-width: 640px) 50vw, (min-width: 1024px) 33vw, 100vw"
+        class="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+      />
+    </div>
+  ) : (
+    <div class="flex aspect-[4/3] items-center justify-center bg-[var(--color-parchment-dim)]">
+      <span class="font-display text-4xl text-[var(--color-gold-300)]">FAB</span>
+    </div>
+  )}
+
+  <div class="flex flex-1 flex-col p-6">
+    {editionTitle && (
+      <p class="font-ui text-xs uppercase tracking-[0.18em] text-[var(--color-gold-600)]">
+        {editionTitle}
+      </p>
+    )}
+    <h2 class:list={[
+      'font-display text-2xl leading-snug text-[var(--color-midnight-900)] transition-colors group-hover:text-[var(--color-oxblood-600)]',
+      editionTitle ? 'mt-1' : 'mt-0',
+    ]}>
+      {title}
+    </h2>
+    <p class="mt-3 flex-1 text-sm text-[var(--color-muted)] line-clamp-3">{description}</p>
+    <p class="mt-4 font-display text-xl text-[var(--color-midnight-900)]">{priceDisplay}</p>
+    <span class="mt-3 font-ui text-sm text-[var(--color-oxblood-600)]">
+      View details →
+    </span>
+  </div>
+</a>

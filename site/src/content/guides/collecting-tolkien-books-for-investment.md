@@ -55,8 +55,6 @@ Impressions are the same as printings, terms derived from the old technology of 
 
 Older books show the edition by year and by printing. A first edition, first printing is referred to as a 1st/1st; the next printing is a 1st/2nd, and so on. American publishers adopted the number-line system before their UK counterparts.
 
-{/* TODO: Mark to expand: per-title identification points (number-line examples and copyright-page details for the 1937 Hobbit and the 1954–55 Lord of the Rings) for a deeper standalone identification guide. */}
-
 ## Why are ISBN numbers useless for Tolkien collectors?
 
 An important note about ISBN numbers: they are useless to book collectors. The number applies to the original registration of that particular publication, not necessarily the first edition of that book, and the same ISBN may be reused for variations like deluxe editions or changes of cover art or artist. For example, there are many variations of the 1966 Hobbit that use the same ISBN. Publishers also created slip-cased sets, as they did with the first Lord of the Rings sets, in which different impressions and ISBNs can be mixed together in a new case.
@@ -70,8 +68,6 @@ Today, collectors want the earliest impressions of each title that could potenti
 Because hardbacks were expensive, publishers used cheaper paper. Most dust-jacket wear is on the spine, which was exposed to the air. With less central heating in Britain then, common dampness led to mould that discoloured jacket paper, especially the spine, ranging from deep brown to white spotting to faded title colours. Damp also caused bleed from the red cloth covers onto the back of the jackets and weakened the paper, leaving spines prone to fraying and loss. The rest of a jacket can still be very nice; the original colour, though, is grey, not beige or white, as you can tell from the grey flaps where the price and reviews appear. The rarest sets I have ever sold had light-grey dust jackets, which by the second edition were dark grey.
 
 Completeness of the jackets is critical to value. Think in terms of percentage of paper loss, say 5% or 10%, usually at the spine ends from being pulled off a shelf. Whole missing sections reduce value significantly. Beware digitally printed facsimile jackets sold cheaply: they add no value whatsoever compared with a set lacking its jackets, and using one to overprice a jacket-less book is not just deception, it is theft.
-
-{/* TODO: Mark to expand: the printing-history chart he compiled for each Lord of the Rings title (year and impression counts) could become a standalone reference table. */}
 
 ## Do misprints, states and issue points matter?
 

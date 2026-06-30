@@ -19,9 +19,6 @@ const trail = [
   { name: 'Tolkien-Inspired Art', url: PATH },
 ];
 
-// TODO: Mark to supply a replacement for the missing "Rodney-Matthews-pics.jpg"
-// artwork image (the original returns HTTP 404 on the old site); using the
-// available portrait/artwork file in the meantime.
 const artists: Artist[] = (await getCollection('artists'))
   .sort((a, b) => a.id.localeCompare(b.id))
   .map((a) => ({

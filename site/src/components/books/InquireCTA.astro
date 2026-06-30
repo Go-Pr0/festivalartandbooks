@@ -1,0 +1,45 @@
+---
+/**
+ * Aside box shown at the bottom of each book/collectable detail page.
+ * Primary action: mailto inquiry. Optional secondary: marketplace listing.
+ */
+import Button from '@/components/Button.astro';
+import { inquiryMailto } from '@/lib/inquiry';
+
+interface Props {
+  title: string;
+  slug: string;
+  price?: number;
+  priceCurrency?: string;
+  offerUrl?: string;
+}
+
+const { title, slug, price, priceCurrency = 'GBP', offerUrl } = Astro.props;
+
+const mailtoUrl = inquiryMailto({ title, slug, price, currency: priceCurrency });
+---
+<aside
+  class="rounded-[var(--radius)] border border-[var(--color-gold-600)]/40 bg-[var(--color-parchment-dim)] p-8"
+  aria-labelledby="inquire-heading"
+>
+  <h2
+    id="inquire-heading"
+    class="font-display text-2xl text-[var(--color-midnight-900)]"
+  >
+    Inquire about this item
+  </h2>
+  <p class="mt-3 text-[var(--color-muted)]">
+    Buying directly avoids marketplace fees and lets you ask about condition, provenance,
+    and postage before committing. Mark responds personally.
+  </p>
+  <div class="mt-6 flex flex-wrap gap-4">
+    <Button href={mailtoUrl} variant="primary" size="md">
+      Email Mark about this item
+    </Button>
+    {offerUrl && (
+      <Button href={offerUrl} variant="ghost" size="md" external>
+        View on eBay / AbeBooks ↗
+      </Button>
+    )}
+  </div>
+</aside>

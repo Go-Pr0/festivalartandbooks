@@ -1,0 +1,16 @@
+# Netlify build settings for the Astro site in site/
+# Connect this repo at https://app.netlify.com → Add new site → Import from Git
+
+[build]
+  base = "site"
+  command = "npm ci && npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Decap CMS admin panel — serve the static admin shell
+[[redirects]]
+  from = "/admin/*"
+  to = "/admin/index.html"
+  status = 200

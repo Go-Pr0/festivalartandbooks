@@ -35,6 +35,7 @@ export interface NavItem {
 export const NAV: readonly NavItem[] = [
   { label: 'Home', href: '/' },
   { label: 'Rare Books & Collectables', href: '/rare-tolkien-books-collectables' },
+  { label: 'Catalogue', href: '/books' },
   { label: 'Guides', href: '/guides' },
   { label: 'Used Books & Q&A', href: '/used-tolkien-books' },
   {
@@ -54,8 +55,8 @@ export const NAV: readonly NavItem[] = [
   { label: 'Contact', href: '/contact' },
 ] as const;
 
-/** Where the prominent "Online Shop" affordance points (off-site marketplace). */
+/** Where the prominent header shop affordance points (on-site catalogue). */
 export const SHOP = {
-  label: 'Online Shop',
-  href: EXTERNAL.ebay,
+  label: 'Catalogue',
+  href: '/books',
 } as const;

@@ -1,0 +1,138 @@
+backend:
+  name: github
+  repo: Go-Pr0/festivalartandbooks
+  branch: main
+  # Netlify OAuth proxy — uncomment and set once you have a deployed site on Netlify:
+  # base_url: https://your-netlify-site.netlify.app
+  # auth_endpoint: api/auth
+
+# Enables the CMS UI without GitHub auth when running `npm run dev` locally
+local_backend: true
+
+# Where uploaded images are saved in the repo
+media_folder: site/src/assets/inventory
+# How those paths appear in the generated Markdown front-matter
+# (relative from site/src/content/books/ up to site/src/assets/)
+public_folder: ../../assets/inventory
+
+collections:
+  - name: books
+    label: Books & Collectables
+    label_singular: Book / Collectable
+    folder: site/src/content/books
+    create: true
+    delete: true
+    extension: md
+    format: frontmatter
+    slug: "{{title}}"
+    summary: "{{title}} — {{fields.availability}}"
+    fields:
+      - label: Title
+        name: title
+        widget: string
+        hint: "Short working title used as the filename slug, e.g. 'Hobbit First Edition 1937 Fine'"
+
+      - label: Description
+        name: description
+        widget: text
+        hint: "One-sentence summary for SEO and catalogue listing."
+
+      - label: Edition / Full Title
+        name: editionTitle
+        widget: string
+        required: false
+        hint: "e.g. 'The Hobbit, first edition, second impression, 1937'"
+
+      - label: Author
+        name: author
+        widget: string
+        default: "J.R.R. Tolkien"
+
+      - label: Publisher
+        name: publisher
+        widget: string
+        required: false
+        hint: "e.g. 'George Allen & Unwin'"
+
+      - label: Year Published
+        name: datePublished
+        widget: string
+        required: false
+        hint: "The book's own publication year, e.g. '1937'"
+
+      - label: Format
+        name: bookFormat
+        widget: select
+        required: false
+        options:
+          - { label: "Hardcover", value: "Hardcover" }
+          - { label: "Paperback", value: "Paperback" }
+          - { label: "EBook", value: "EBook" }
+          - { label: "AudioBook", value: "AudioBook" }
+
+      - label: ISBN
+        name: isbn
+        widget: string
+        required: false
+
+      - label: Kind
+        name: kind
+        widget: select
+        required: false
+        options:
+          - { label: "Book", value: "book" }
+          - { label: "Collectable / Memorabilia", value: "collectable" }
+
+      - label: Condition
+        name: condition
+        widget: string
+        required: false
+        hint: "Brief condition grade, e.g. 'Fine in Very Good+ dust jacket'"
+
+      - label: Images
+        name: images
+        widget: list
+        required: false
+        field:
+          label: Image
+          name: image
+          widget: image
+          hint: "Upload to site/src/assets/inventory/ — use descriptive filenames."
+
+      - label: Price (£)
+        name: price
+        widget: number
+        required: false
+        value_type: float
+        min: 0
+
+      - label: Currency
+        name: priceCurrency
+        widget: string
+        default: "GBP"
+
+      - label: Availability
+        name: availability
+        widget: select
+        default: "InStock"
+        options:
+          - { label: "In Stock", value: "InStock" }
+          - { label: "Sold / Out of Stock", value: "OutOfStock" }
+          - { label: "Pre-Order", value: "PreOrder" }
+
+      - label: Listing URL (eBay / AbeBooks)
+        name: offerUrl
+        widget: string
+        required: false
+        hint: "Full URL to the marketplace listing."
+
+      - label: Draft (hide from site)
+        name: draft
+        widget: boolean
+        default: false
+
+      - label: Condition Notes & Details
+        name: body
+        widget: markdown
+        required: false
+        hint: "Longer description, issue-point notes, provenance, etc. Rendered on the catalogue entry."

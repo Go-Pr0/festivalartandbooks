@@ -55,39 +55,50 @@ const schema = collectionPage({
   </Section>
 
   <Section space="lg">
-    <ul class="grid gap-8 sm:grid-cols-2">
-      {entries.map((entry, i) => (
-        <Reveal as="li" delay={i * 80}>
-          <a
-            href={`/journal/${entry.id}`}
-            class="group flex h-full flex-col overflow-hidden rounded-sm border border-[var(--color-gold-600)]/20 bg-[var(--color-surface)] transition-colors"
-          >
-            {entry.data.heroImage && (
-              <Image
-                src={entry.data.heroImage}
-                alt={entry.data.heroAlt ?? entry.data.title}
-                widths={[400, 700]}
-                sizes="(min-width: 640px) 50vw, 100vw"
-                class="aspect-[16/9] w-full object-cover"
-              />
-            )}
-            <div class="flex flex-1 flex-col p-6">
-              <p class="font-ui text-xs uppercase tracking-[0.18em] text-[var(--color-gold-600)]">
-                <time datetime={entry.data.datePublished.toISOString()}>
-                  {dateFormat.format(entry.data.datePublished)}
-                </time>
-              </p>
-              <h2 class="mt-2 font-display text-2xl text-[var(--color-midnight-900)] group-hover:text-[var(--color-oxblood-600)]">
-                {entry.data.title}
-              </h2>
-              <p class="mt-3 flex-1 text-[var(--color-muted)]">{entry.data.description}</p>
-              <span class="mt-4 font-ui text-sm text-[var(--color-oxblood-600)]">
-                Read the essay →
-              </span>
-            </div>
-          </a>
-        </Reveal>
-      ))}
-    </ul>
+    {entries.length > 0 ? (
+      <ul class="grid gap-8 sm:grid-cols-2">
+        {entries.map((entry, i) => (
+          <Reveal as="li" delay={i * 80}>
+            <a
+              href={`/journal/${entry.id}`}
+              class="group flex h-full flex-col overflow-hidden rounded-sm border border-[var(--color-gold-600)]/20 bg-[var(--color-surface)] transition-colors"
+            >
+              {entry.data.heroImage && (
+                <Image
+                  src={entry.data.heroImage}
+                  alt={entry.data.heroAlt ?? entry.data.title}
+                  widths={[400, 700]}
+                  sizes="(min-width: 640px) 50vw, 100vw"
+                  class="aspect-[16/9] w-full object-cover"
+                />
+              )}
+              <div class="flex flex-1 flex-col p-6">
+                <p class="font-ui text-xs uppercase tracking-[0.18em] text-[var(--color-gold-600)]">
+                  <time datetime={entry.data.datePublished.toISOString()}>
+                    {dateFormat.format(entry.data.datePublished)}
+                  </time>
+                </p>
+                <h2 class="mt-2 font-display text-2xl text-[var(--color-midnight-900)] group-hover:text-[var(--color-oxblood-600)]">
+                  {entry.data.title}
+                </h2>
+                <p class="mt-3 flex-1 text-[var(--color-muted)]">{entry.data.description}</p>
+                <span class="mt-4 font-ui text-sm text-[var(--color-oxblood-600)]">
+                  Read the essay →
+                </span>
+              </div>
+            </a>
+          </Reveal>
+        ))}
+      </ul>
+    ) : (
+      <Reveal as="div" class="max-w-prose rounded-[var(--radius)] border border-[var(--color-gold-600)]/25 bg-[var(--color-surface)] p-8">
+        <p class="font-text text-lg leading-relaxed text-[var(--color-text)]">
+          New essays are in preparation. In the meantime, explore our
+          <a class="underline decoration-[var(--color-gold-500)]/60 underline-offset-4" href="/guides">collecting guides</a>
+          or subscribe to the
+          <a class="underline decoration-[var(--color-gold-500)]/60 underline-offset-4" href="/ebook">free collector e-book</a>.
+        </p>
+      </Reveal>
+    )}
   </Section>
 </BaseLayout>

@@ -84,6 +84,8 @@ const books = defineCollection({
       priceCurrency: z.string().default('GBP'),
       availability: z.enum(['InStock', 'OutOfStock', 'PreOrder']).default('InStock'),
       offerUrl: z.string().url().optional(), // eBay / AbeBooks listing
+      condition: z.string().optional(), // e.g. "Very Good in Very Good dust-jacket"
+      kind: z.enum(['book', 'collectable']).default('book'),
       draft: z.boolean().default(false),
     }),
 });

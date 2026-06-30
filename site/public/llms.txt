@@ -21,6 +21,7 @@
 ## Current Inventory
 
 - [Rare Tolkien Books & Collectables](https://festivalartandbooks.com/rare-tolkien-books-collectables): The current collection of rare and collectable Tolkien books, art and ephemera.
+- [Current Catalogue](https://festivalartandbooks.com/books): Browse rare Tolkien books currently for sale with photos, prices and condition notes.
 - [eBay Shop](https://www.ebay.co.uk/str/festivalartandbooks): Current listings for rare Tolkien books and art.
 - [AbeBooks Shop](https://www.abebooks.co.uk/festival-art-and-books-aberdyfi/51881760/sf): Current listings on AbeBooks.
 
@@ -31,4 +32,3 @@
 ## Optional
 
 - [The Journal](https://festivalartandbooks.com/journal): Essays on Tolkien collecting, market commentary, and notable finds.
-- [The Hobbit or The Lord of the Rings?](https://festivalartandbooks.com/journal/the-hobbit-or-the-lord-of-the-rings): Mark Faith on the perennial question of which masterpiece is the better book, and the better one to collect.
