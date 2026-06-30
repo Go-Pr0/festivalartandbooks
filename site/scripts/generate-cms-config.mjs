@@ -12,6 +12,15 @@ import { collections } from '../cms/collections.mjs';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const outPath = join(__dirname, '../public/admin/config.yml');
 
+const SITE = `site_url: https://festivalartandbooks.com
+display_url: festivalartandbooks.com
+logo_url: /logo.png
+
+editor:
+  preview: true
+
+`;
+
 const BACKEND = `backend:
   name: github
   repo: Go-Pr0/festivalartandbooks
@@ -38,5 +47,5 @@ const indentedCollections = collectionsYaml
   .map((line) => (line ? `  ${line}` : ''))
   .join('\n');
 
-writeFileSync(outPath, `${BACKEND}collections:\n${indentedCollections}\n`, 'utf8');
+writeFileSync(outPath, `${SITE}${BACKEND}collections:\n${indentedCollections}\n`, 'utf8');
 console.log(`Wrote ${outPath}`);

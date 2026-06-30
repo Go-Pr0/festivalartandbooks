@@ -1,3 +1,10 @@
+site_url: https://festivalartandbooks.com
+display_url: festivalartandbooks.com
+logo_url: /logo.png
+
+editor:
+  preview: true
+
 backend:
   name: github
   repo: Go-Pr0/festivalartandbooks
@@ -16,13 +23,28 @@ collections:
   - name: books
     label: Books & Collectables
     label_singular: Book / Collectable
+    icon: book
     folder: site/src/content/books
     create: true
     delete: true
     extension: md
     format: frontmatter
     slug: '{{title}}'
+    identifier_field: title
     summary: '{{title}} — {{fields.availability}}'
+    preview_path: books/{{slug}}
+    sortable_fields:
+      - title
+    view_filters:
+      - label: In Stock
+        field: availability
+        pattern: InStock
+      - label: Sold
+        field: availability
+        pattern: OutOfStock
+      - label: Drafts
+        field: draft
+        pattern: true
     media_folder: site/src/assets/inventory
     public_folder: ../../assets/inventory
     fields:
@@ -93,6 +115,8 @@ collections:
             widget: image
             hint: Upload to inventory — use descriptive filenames.
         required: false
+        collapsed: true
+        summary: '{{fields.image}}'
       - label: Price (£)
         name: price
         widget: number
@@ -114,6 +138,7 @@ collections:
           - label: Pre-Order
             value: PreOrder
         default: InStock
+        hint: Set to Sold when the item is no longer for sale. In Stock items appear in the catalogue.
       - label: Listing URL (eBay / AbeBooks)
         name: offerUrl
         widget: string
@@ -123,7 +148,8 @@ collections:
         name: draft
         widget: boolean
         default: false
-      - label: Body
+        hint: Tick to hide this entry from the public site while you work on it.
+      - label: Full description
         name: body
         widget: markdown
         required: false
@@ -131,13 +157,19 @@ collections:
   - name: journal
     label: Journal
     label_singular: Journal entry
+    icon: edit_note
     folder: site/src/content/journal
     create: true
     delete: true
     extension: md
     format: frontmatter
     slug: '{{title}}'
+    identifier_field: title
     summary: '{{title}} — {{fields.datePublished}}'
+    preview_path: journal/{{slug}}
+    sortable_fields:
+      - title
+      - datePublished
     media_folder: site/src/assets/journal
     public_folder: ../../assets/journal
     fields:
@@ -167,6 +199,7 @@ collections:
         name: draft
         widget: boolean
         default: false
+        hint: Tick to hide this entry from the public site while you work on it.
       - label: Body
         name: body
         widget: markdown
@@ -175,13 +208,19 @@ collections:
   - name: guides
     label: Collecting Guides
     label_singular: Guide
+    icon: menu_book
     folder: site/src/content/guides
     create: true
     delete: true
     extension: md
     format: frontmatter
     slug: '{{title}}'
+    identifier_field: title
     summary: '{{title}}'
+    preview_path: guides/{{slug}}
+    sortable_fields:
+      - title
+      - datePublished
     media_folder: site/src/assets/guides
     public_folder: ../../assets/guides
     fields:
@@ -227,10 +266,12 @@ collections:
             name: answer
             widget: markdown
         required: false
+        summary: '{{fields.question}}'
       - label: Draft (hide from site)
         name: draft
         widget: boolean
         default: false
+        hint: Tick to hide this entry from the public site while you work on it.
       - label: Body
         name: body
         widget: markdown
@@ -238,6 +279,7 @@ collections:
         hint: Guide body — use H2/H3 as real questions for GEO.
   - name: lists
     label: Lists & Galleries
+    icon: format_list_bulleted
     files:
       - name: events
         label: Events
@@ -259,6 +301,7 @@ collections:
               - label: Detail
                 name: detail
                 widget: markdown
+            summary: '{{fields.date}} — {{fields.location}}'
       - name: media-mentions
         label: Press & Media
         file: site/src/content/data/media-mentions.yaml
@@ -277,6 +320,7 @@ collections:
               - label: URL
                 name: url
                 widget: string
+            summary: '{{fields.headline}}'
       - name: used-books-faqs
         label: Used Books FAQs
         file: site/src/content/data/used-books-faqs.yaml
@@ -295,6 +339,7 @@ collections:
                 field:
                   label: Paragraph
                   widget: string
+            summary: '{{fields.question}}'
       - name: artists
         label: Tolkien Artists
         file: site/src/content/data/artists.yaml
@@ -321,6 +366,7 @@ collections:
                 field:
                   label: Paragraph
                   widget: string
+            summary: '{{fields.name}}'
       - name: rare-books-gallery
         label: Rare Books Gallery
         file: site/src/content/data/rare-books-gallery.yaml
@@ -341,8 +387,10 @@ collections:
               - label: Caption
                 name: caption
                 widget: string
-  - name: site_pages
-    label: Site Pages
+            summary: '{{fields.caption}}'
+  - name: pages_shop_home
+    label: Pages — Shop & Home
+    icon: web
     files:
       - name: home
         label: Homepage
@@ -362,6 +410,7 @@ collections:
               - label: Meta description
                 name: description
                 widget: text
+                hint: Short summary for Google and social previews — aim for ~150 characters.
             collapsed: true
           - label: Stats
             name: stats
@@ -386,6 +435,7 @@ collections:
                 name: label
                 widget: string
             required: false
+            summary: '{{fields.label}}'
           - label: Trust points
             name: trustPoints
             widget: list
@@ -397,6 +447,7 @@ collections:
                 name: body
                 widget: text
             required: false
+            summary: '{{fields.heading}}'
           - label: What I deal in
             name: dealsIn
             widget: list
@@ -420,6 +471,7 @@ collections:
                 name: cta
                 widget: string
             required: false
+            summary: '{{fields.heading}}'
           - label: Page copy
             name: text
             widget: object
@@ -494,6 +546,199 @@ collections:
                 name: marketplaceCTAHeading
                 widget: string
             collapsed: true
+      - name: rare-tolkien-books-collectables
+        label: Rare Tolkien Books & Collectables
+        file: site/src/content/page-content/rare-tolkien-books-collectables.yaml
+        format: yaml
+        media_folder: site/src/assets/showcase
+        public_folder: ../../assets/showcase
+        fields:
+          - label: SEO
+            name: seo
+            widget: object
+            fields:
+              - label: Meta title
+                name: title
+                widget: string
+                required: true
+              - label: Meta description
+                name: description
+                widget: text
+                hint: Short summary for Google and social previews — aim for ~150 characters.
+            collapsed: true
+          - label: Hero image
+            name: heroImage
+            widget: image
+            required: false
+          - label: Hero image alt text
+            name: heroImageAlt
+            widget: string
+            required: false
+          - label: Page copy
+            name: text
+            widget: object
+            fields:
+              - label: Hero eyebrow
+                name: heroEyebrow
+                widget: string
+              - label: Hero H1
+                name: heroH1
+                widget: string
+              - label: Hero intro
+                name: heroIntro
+                widget: markdown
+              - label: What we deal in eyebrow
+                name: whatWeDeelInEyebrow
+                widget: string
+              - label: What we deal in heading
+                name: whatWeDealInHeading
+                widget: string
+              - label: What we deal in paragraph 1
+                name: whatWeDealInP1
+                widget: markdown
+              - label: What we deal in paragraph 2
+                name: whatWeDealInP2
+                widget: markdown
+              - label: Gallery heading
+                name: galleryHeading
+                widget: string
+              - label: Gallery intro
+                name: galleryIntro
+                widget: markdown
+              - label: Catalogue heading
+                name: catalogueHeading
+                widget: string
+              - label: Catalogue intro
+                name: catalogueIntro
+                widget: markdown
+              - label: Catalogue button label
+                name: catalogueButtonLabel
+                widget: string
+              - label: Go deeper eyebrow
+                name: goDeeperEyebrow
+                widget: string
+              - label: Go deeper heading
+                name: goDeeperHeading
+                widget: string
+              - label: Go deeper body
+                name: goDeeperBody
+                widget: markdown
+              - label: Go deeper button label
+                name: goDeeperButtonLabel
+                widget: string
+              - label: Marketplace CTA heading
+                name: marketplaceCtaHeading
+                widget: string
+            collapsed: true
+      - name: used-tolkien-books
+        label: Used Tolkien Books
+        file: site/src/content/page-content/used-tolkien-books.yaml
+        format: yaml
+        media_folder: site/src/assets/showcase
+        public_folder: ../../assets/showcase
+        fields:
+          - label: SEO
+            name: seo
+            widget: object
+            fields:
+              - label: Meta title
+                name: title
+                widget: string
+                required: true
+              - label: Meta description
+                name: description
+                widget: text
+                hint: Short summary for Google and social previews — aim for ~150 characters.
+            collapsed: true
+          - label: Hero image
+            name: heroImage
+            widget: image
+            required: false
+          - label: Hero image alt text
+            name: heroImageAlt
+            widget: string
+            required: false
+          - label: Page copy
+            name: text
+            widget: object
+            fields:
+              - label: Hero eyebrow
+                name: heroEyebrow
+                widget: string
+              - label: Hero H1
+                name: heroH1
+                widget: string
+              - label: Hero intro
+                name: heroIntro
+                widget: markdown
+              - label: Closing paragraph
+                name: closingParagraph
+                widget: markdown
+              - label: Marketplace CTA heading
+                name: marketplaceCtaHeading
+                widget: string
+            collapsed: true
+      - name: contact
+        label: Contact
+        file: site/src/content/page-content/contact.yaml
+        format: yaml
+        media_folder: site/src/assets/showcase
+        public_folder: ../../assets/showcase
+        fields:
+          - label: SEO
+            name: seo
+            widget: object
+            fields:
+              - label: Meta title
+                name: title
+                widget: string
+                required: true
+              - label: Meta description
+                name: description
+                widget: text
+                hint: Short summary for Google and social previews — aim for ~150 characters.
+            collapsed: true
+          - label: Hero image
+            name: heroImage
+            widget: image
+            required: false
+          - label: Hero image alt text
+            name: heroImageAlt
+            widget: string
+            required: false
+          - label: Page copy
+            name: text
+            widget: object
+            fields:
+              - label: Hero eyebrow
+                name: heroEyebrow
+                widget: string
+              - label: Hero H1
+                name: heroH1
+                widget: string
+              - label: Hero intro
+                name: heroIntro
+                widget: markdown
+              - label: Portrait caption
+                name: portraitCaption
+                widget: string
+              - label: Where to buy H2
+                name: whereToBuyH2
+                widget: string
+              - label: Where to buy paragraph
+                name: whereToBuyP1
+                widget: markdown
+              - label: eBay CTA
+                name: ctaEbay
+                widget: string
+              - label: AbeBooks CTA
+                name: ctaAbebooks
+                widget: string
+            collapsed: true
+  - name: pages_about_story
+    label: Pages — About & Story
+    icon: web
+    files:
       - name: about
         label: About Mark Faith
         file: site/src/content/page-content/about.yaml
@@ -512,6 +757,7 @@ collections:
               - label: Meta description
                 name: description
                 widget: text
+                hint: Short summary for Google and social previews — aim for ~150 characters.
             collapsed: true
           - label: Hero image
             name: heroImage
@@ -544,6 +790,7 @@ collections:
                 name: label
                 widget: string
             required: false
+            summary: '{{fields.label}}'
           - label: Timeline
             name: timeline
             widget: list
@@ -558,6 +805,7 @@ collections:
                 name: body
                 widget: markdown
             required: false
+            summary: '{{fields.year}} — {{fields.title}}'
           - label: Figures
             name: figures
             widget: list
@@ -590,6 +838,7 @@ collections:
                 widget: string
                 required: false
             required: false
+            summary: '{{fields.key}}'
           - label: Page copy
             name: text
             widget: object
@@ -661,16 +910,17 @@ collections:
                   - label: Link URL
                     name: href
                     widget: string
+                summary: '{{fields.title}}'
               - label: Marketplace CTA heading
                 name: marketplaceCTAHeading
                 widget: string
             collapsed: true
-      - name: contact
-        label: Contact
-        file: site/src/content/page-content/contact.yaml
+      - name: festival-in-the-shire
+        label: Festival in the Shire
+        file: site/src/content/page-content/festival-in-the-shire.yaml
         format: yaml
-        media_folder: site/src/assets/showcase
-        public_folder: ../../assets/showcase
+        media_folder: site/src/assets/story
+        public_folder: ../../assets/story
         fields:
           - label: SEO
             name: seo
@@ -683,15 +933,41 @@ collections:
               - label: Meta description
                 name: description
                 widget: text
+                hint: Short summary for Google and social previews — aim for ~150 characters.
             collapsed: true
-          - label: Hero image
-            name: heroImage
-            widget: image
+          - label: Figures
+            name: figures
+            widget: list
+            fields:
+              - label: Key
+                name: key
+                widget: string
+                hint: Stable identifier used in templates, e.g. markPortrait
+              - label: Image
+                name: src
+                widget: image
+              - label: Alt text
+                name: alt
+                widget: string
+              - label: Caption
+                name: caption
+                widget: string
+                required: false
+              - label: Frame
+                name: frame
+                widget: string
+                required: false
+                hint: e.g. portrait
+              - label: Animation delay (ms)
+                name: delay
+                widget: number
+                required: false
+              - label: Sizes attribute
+                name: sizes
+                widget: string
+                required: false
             required: false
-          - label: Hero image alt text
-            name: heroImageAlt
-            widget: string
-            required: false
+            summary: '{{fields.key}}'
           - label: Page copy
             name: text
             widget: object
@@ -705,22 +981,267 @@ collections:
               - label: Hero intro
                 name: heroIntro
                 widget: markdown
-              - label: Portrait caption
-                name: portraitCaption
+              - label: What was H2
+                name: whatWasH2
                 widget: string
-              - label: Where to buy H2
-                name: whereToBuyH2
-                widget: string
-              - label: Where to buy paragraph
-                name: whereToBuyP1
+              - label: What was paragraph 1
+                name: whatWasP1
                 widget: markdown
-              - label: eBay CTA
-                name: ctaEbay
+              - label: What was paragraph 2
+                name: whatWasP2
+                widget: markdown
+              - label: What happened H2
+                name: whatHappenedH2
                 widget: string
-              - label: AbeBooks CTA
-                name: ctaAbebooks
+              - label: What happened paragraph
+                name: whatHappenedP1
+                widget: markdown
+              - label: Will return H2
+                name: willReturnH2
+                widget: string
+              - label: Will return paragraph
+                name: willReturnP1
+                widget: markdown
+              - label: Events CTA
+                name: ctaEvents
+                widget: string
+              - label: Contact CTA
+                name: ctaContact
                 widget: string
             collapsed: true
+      - name: tv-appearances
+        label: TV Appearances
+        file: site/src/content/page-content/tv-appearances.yaml
+        format: yaml
+        media_folder: site/src/assets/story
+        public_folder: ../../assets/story
+        fields:
+          - label: SEO
+            name: seo
+            widget: object
+            fields:
+              - label: Meta title
+                name: title
+                widget: string
+                required: true
+              - label: Meta description
+                name: description
+                widget: text
+                hint: Short summary for Google and social previews — aim for ~150 characters.
+            collapsed: true
+          - label: Figures
+            name: figures
+            widget: list
+            fields:
+              - label: Key
+                name: key
+                widget: string
+                hint: Stable identifier used in templates, e.g. markPortrait
+              - label: Image
+                name: src
+                widget: image
+              - label: Alt text
+                name: alt
+                widget: string
+              - label: Caption
+                name: caption
+                widget: string
+                required: false
+              - label: Frame
+                name: frame
+                widget: string
+                required: false
+                hint: e.g. portrait
+              - label: Animation delay (ms)
+                name: delay
+                widget: number
+                required: false
+              - label: Sizes attribute
+                name: sizes
+                widget: string
+                required: false
+            required: false
+            summary: '{{fields.key}}'
+          - label: Page copy
+            name: text
+            widget: object
+            fields:
+              - label: Hero eyebrow
+                name: heroEyebrow
+                widget: string
+              - label: Hero H1
+                name: heroH1
+                widget: string
+              - label: Hero intro
+                name: heroIntro
+                widget: markdown
+              - label: Four Rooms H2
+                name: fourRoomsH2
+                widget: string
+              - label: Four Rooms paragraph
+                name: fourRoomsP1
+                widget: markdown
+              - label: Pawn Stars H2
+                name: pawnStarsH2
+                widget: string
+              - label: Pawn Stars paragraph 1
+                name: pawnStarsP1
+                widget: markdown
+              - label: Pawn Stars paragraph 2
+                name: pawnStarsP2
+                widget: markdown
+              - label: Pawn Stars paragraph 3
+                name: pawnStarsP3
+                widget: markdown
+              - label: More media H2
+                name: moreMediaH2
+                widget: string
+              - label: More media paragraph
+                name: moreMediaP1
+                widget: markdown
+              - label: Closing paragraph
+                name: closingP
+                widget: markdown
+              - label: YouTube CTA
+                name: ctaYouTube
+                widget: string
+              - label: Press CTA
+                name: ctaPress
+                widget: string
+              - label: Contact CTA
+                name: ctaContact
+                widget: string
+            collapsed: true
+      - name: news-media
+        label: News & Media
+        file: site/src/content/page-content/news-media.yaml
+        format: yaml
+        media_folder: site/src/assets/story
+        public_folder: ../../assets/story
+        fields:
+          - label: SEO
+            name: seo
+            widget: object
+            fields:
+              - label: Meta title
+                name: title
+                widget: string
+                required: true
+              - label: Meta description
+                name: description
+                widget: text
+                hint: Short summary for Google and social previews — aim for ~150 characters.
+            collapsed: true
+          - label: Figures
+            name: figures
+            widget: list
+            fields:
+              - label: Key
+                name: key
+                widget: string
+                hint: Stable identifier used in templates, e.g. markPortrait
+              - label: Image
+                name: src
+                widget: image
+              - label: Alt text
+                name: alt
+                widget: string
+              - label: Caption
+                name: caption
+                widget: string
+                required: false
+              - label: Frame
+                name: frame
+                widget: string
+                required: false
+                hint: e.g. portrait
+              - label: Animation delay (ms)
+                name: delay
+                widget: number
+                required: false
+              - label: Sizes attribute
+                name: sizes
+                widget: string
+                required: false
+            required: false
+            summary: '{{fields.key}}'
+          - label: Page copy
+            name: text
+            widget: object
+            fields:
+              - label: Hero eyebrow
+                name: heroEyebrow
+                widget: string
+              - label: Hero H1
+                name: heroH1
+                widget: string
+              - label: Hero intro
+                name: heroIntro
+                widget: markdown
+              - label: Press heading
+                name: pressHeading
+                widget: string
+              - label: Press intro
+                name: pressIntro
+                widget: markdown
+              - label: More coverage heading
+                name: moreCoverageHeading
+                widget: string
+              - label: More coverage paragraph
+                name: moreCoverageP
+                widget: markdown
+            collapsed: true
+      - name: events
+        label: Events
+        file: site/src/content/page-content/events.yaml
+        format: yaml
+        fields:
+          - label: SEO
+            name: seo
+            widget: object
+            fields:
+              - label: Meta title
+                name: title
+                widget: string
+                required: true
+              - label: Meta description
+                name: description
+                widget: text
+                hint: Short summary for Google and social previews — aim for ~150 characters.
+            collapsed: true
+          - label: Page copy
+            name: text
+            widget: object
+            fields:
+              - label: Hero eyebrow
+                name: heroEyebrow
+                widget: string
+              - label: Hero H1
+                name: heroH1
+                widget: string
+              - label: Hero intro
+                name: heroIntro
+                widget: markdown
+              - label: Past events heading
+                name: pastEventsHeading
+                widget: string
+              - label: More events heading
+                name: moreEventsHeading
+                widget: string
+              - label: More events paragraph
+                name: moreEventsParagraph
+                widget: markdown
+              - label: Festival CTA button
+                name: ctaButtonFestival
+                widget: string
+              - label: Contact CTA button
+                name: ctaButtonContact
+                widget: string
+            collapsed: true
+  - name: pages_resources
+    label: Pages — Resources
+    icon: web
+    files:
       - name: ebook
         label: E-book
         file: site/src/content/page-content/ebook.yaml
@@ -739,6 +1260,7 @@ collections:
               - label: Meta description
                 name: description
                 widget: text
+                hint: Short summary for Google and social previews — aim for ~150 characters.
             collapsed: true
           - label: Hero image
             name: heroImage
@@ -807,304 +1329,6 @@ collections:
                 name: marketplaceCTAHeading
                 widget: string
             collapsed: true
-      - name: events
-        label: Events
-        file: site/src/content/page-content/events.yaml
-        format: yaml
-        fields:
-          - label: SEO
-            name: seo
-            widget: object
-            fields:
-              - label: Meta title
-                name: title
-                widget: string
-                required: true
-              - label: Meta description
-                name: description
-                widget: text
-            collapsed: true
-          - label: Page copy
-            name: text
-            widget: object
-            fields:
-              - label: Hero eyebrow
-                name: heroEyebrow
-                widget: string
-              - label: Hero H1
-                name: heroH1
-                widget: string
-              - label: Hero intro
-                name: heroIntro
-                widget: markdown
-              - label: Past events heading
-                name: pastEventsHeading
-                widget: string
-              - label: More events heading
-                name: moreEventsHeading
-                widget: string
-              - label: More events paragraph
-                name: moreEventsParagraph
-                widget: markdown
-              - label: Festival CTA button
-                name: ctaButtonFestival
-                widget: string
-              - label: Contact CTA button
-                name: ctaButtonContact
-                widget: string
-            collapsed: true
-      - name: festival-in-the-shire
-        label: Festival in the Shire
-        file: site/src/content/page-content/festival-in-the-shire.yaml
-        format: yaml
-        media_folder: site/src/assets/story
-        public_folder: ../../assets/story
-        fields:
-          - label: SEO
-            name: seo
-            widget: object
-            fields:
-              - label: Meta title
-                name: title
-                widget: string
-                required: true
-              - label: Meta description
-                name: description
-                widget: text
-            collapsed: true
-          - label: Figures
-            name: figures
-            widget: list
-            fields:
-              - label: Key
-                name: key
-                widget: string
-                hint: Stable identifier used in templates, e.g. markPortrait
-              - label: Image
-                name: src
-                widget: image
-              - label: Alt text
-                name: alt
-                widget: string
-              - label: Caption
-                name: caption
-                widget: string
-                required: false
-              - label: Frame
-                name: frame
-                widget: string
-                required: false
-                hint: e.g. portrait
-              - label: Animation delay (ms)
-                name: delay
-                widget: number
-                required: false
-              - label: Sizes attribute
-                name: sizes
-                widget: string
-                required: false
-            required: false
-          - label: Page copy
-            name: text
-            widget: object
-            fields:
-              - label: Hero eyebrow
-                name: heroEyebrow
-                widget: string
-              - label: Hero H1
-                name: heroH1
-                widget: string
-              - label: Hero intro
-                name: heroIntro
-                widget: markdown
-              - label: What was H2
-                name: whatWasH2
-                widget: string
-              - label: What was paragraph 1
-                name: whatWasP1
-                widget: markdown
-              - label: What was paragraph 2
-                name: whatWasP2
-                widget: markdown
-              - label: What happened H2
-                name: whatHappenedH2
-                widget: string
-              - label: What happened paragraph
-                name: whatHappenedP1
-                widget: markdown
-              - label: Will return H2
-                name: willReturnH2
-                widget: string
-              - label: Will return paragraph
-                name: willReturnP1
-                widget: markdown
-              - label: Events CTA
-                name: ctaEvents
-                widget: string
-              - label: Contact CTA
-                name: ctaContact
-                widget: string
-            collapsed: true
-      - name: news-media
-        label: News & Media
-        file: site/src/content/page-content/news-media.yaml
-        format: yaml
-        media_folder: site/src/assets/story
-        public_folder: ../../assets/story
-        fields:
-          - label: SEO
-            name: seo
-            widget: object
-            fields:
-              - label: Meta title
-                name: title
-                widget: string
-                required: true
-              - label: Meta description
-                name: description
-                widget: text
-            collapsed: true
-          - label: Figures
-            name: figures
-            widget: list
-            fields:
-              - label: Key
-                name: key
-                widget: string
-                hint: Stable identifier used in templates, e.g. markPortrait
-              - label: Image
-                name: src
-                widget: image
-              - label: Alt text
-                name: alt
-                widget: string
-              - label: Caption
-                name: caption
-                widget: string
-                required: false
-              - label: Frame
-                name: frame
-                widget: string
-                required: false
-                hint: e.g. portrait
-              - label: Animation delay (ms)
-                name: delay
-                widget: number
-                required: false
-              - label: Sizes attribute
-                name: sizes
-                widget: string
-                required: false
-            required: false
-          - label: Page copy
-            name: text
-            widget: object
-            fields:
-              - label: Hero eyebrow
-                name: heroEyebrow
-                widget: string
-              - label: Hero H1
-                name: heroH1
-                widget: string
-              - label: Hero intro
-                name: heroIntro
-                widget: markdown
-              - label: Press heading
-                name: pressHeading
-                widget: string
-              - label: Press intro
-                name: pressIntro
-                widget: markdown
-              - label: More coverage heading
-                name: moreCoverageHeading
-                widget: string
-              - label: More coverage paragraph
-                name: moreCoverageP
-                widget: markdown
-            collapsed: true
-      - name: rare-tolkien-books-collectables
-        label: Rare Tolkien Books & Collectables
-        file: site/src/content/page-content/rare-tolkien-books-collectables.yaml
-        format: yaml
-        media_folder: site/src/assets/showcase
-        public_folder: ../../assets/showcase
-        fields:
-          - label: SEO
-            name: seo
-            widget: object
-            fields:
-              - label: Meta title
-                name: title
-                widget: string
-                required: true
-              - label: Meta description
-                name: description
-                widget: text
-            collapsed: true
-          - label: Hero image
-            name: heroImage
-            widget: image
-            required: false
-          - label: Hero image alt text
-            name: heroImageAlt
-            widget: string
-            required: false
-          - label: Page copy
-            name: text
-            widget: object
-            fields:
-              - label: Hero eyebrow
-                name: heroEyebrow
-                widget: string
-              - label: Hero H1
-                name: heroH1
-                widget: string
-              - label: Hero intro
-                name: heroIntro
-                widget: markdown
-              - label: What we deal in eyebrow
-                name: whatWeDeelInEyebrow
-                widget: string
-              - label: What we deal in heading
-                name: whatWeDealInHeading
-                widget: string
-              - label: What we deal in paragraph 1
-                name: whatWeDealInP1
-                widget: markdown
-              - label: What we deal in paragraph 2
-                name: whatWeDealInP2
-                widget: markdown
-              - label: Gallery heading
-                name: galleryHeading
-                widget: string
-              - label: Gallery intro
-                name: galleryIntro
-                widget: markdown
-              - label: Catalogue heading
-                name: catalogueHeading
-                widget: string
-              - label: Catalogue intro
-                name: catalogueIntro
-                widget: markdown
-              - label: Catalogue button label
-                name: catalogueButtonLabel
-                widget: string
-              - label: Go deeper eyebrow
-                name: goDeeperEyebrow
-                widget: string
-              - label: Go deeper heading
-                name: goDeeperHeading
-                widget: string
-              - label: Go deeper body
-                name: goDeeperBody
-                widget: markdown
-              - label: Go deeper button label
-                name: goDeeperButtonLabel
-                widget: string
-              - label: Marketplace CTA heading
-                name: marketplaceCtaHeading
-                widget: string
-            collapsed: true
       - name: tolkien-art
         label: Tolkien Art
         file: site/src/content/page-content/tolkien-art.yaml
@@ -1121,6 +1345,7 @@ collections:
               - label: Meta description
                 name: description
                 widget: text
+                hint: Short summary for Google and social previews — aim for ~150 characters.
             collapsed: true
           - label: Page copy
             name: text
@@ -1155,154 +1380,6 @@ collections:
                 widget: markdown
               - label: Marketplace CTA heading
                 name: marketplaceCTAHeading
-                widget: string
-            collapsed: true
-      - name: tv-appearances
-        label: TV Appearances
-        file: site/src/content/page-content/tv-appearances.yaml
-        format: yaml
-        media_folder: site/src/assets/story
-        public_folder: ../../assets/story
-        fields:
-          - label: SEO
-            name: seo
-            widget: object
-            fields:
-              - label: Meta title
-                name: title
-                widget: string
-                required: true
-              - label: Meta description
-                name: description
-                widget: text
-            collapsed: true
-          - label: Figures
-            name: figures
-            widget: list
-            fields:
-              - label: Key
-                name: key
-                widget: string
-                hint: Stable identifier used in templates, e.g. markPortrait
-              - label: Image
-                name: src
-                widget: image
-              - label: Alt text
-                name: alt
-                widget: string
-              - label: Caption
-                name: caption
-                widget: string
-                required: false
-              - label: Frame
-                name: frame
-                widget: string
-                required: false
-                hint: e.g. portrait
-              - label: Animation delay (ms)
-                name: delay
-                widget: number
-                required: false
-              - label: Sizes attribute
-                name: sizes
-                widget: string
-                required: false
-            required: false
-          - label: Page copy
-            name: text
-            widget: object
-            fields:
-              - label: Hero eyebrow
-                name: heroEyebrow
-                widget: string
-              - label: Hero H1
-                name: heroH1
-                widget: string
-              - label: Hero intro
-                name: heroIntro
-                widget: markdown
-              - label: Four Rooms H2
-                name: fourRoomsH2
-                widget: string
-              - label: Four Rooms paragraph
-                name: fourRoomsP1
-                widget: markdown
-              - label: Pawn Stars H2
-                name: pawnStarsH2
-                widget: string
-              - label: Pawn Stars paragraph 1
-                name: pawnStarsP1
-                widget: markdown
-              - label: Pawn Stars paragraph 2
-                name: pawnStarsP2
-                widget: markdown
-              - label: Pawn Stars paragraph 3
-                name: pawnStarsP3
-                widget: markdown
-              - label: More media H2
-                name: moreMediaH2
-                widget: string
-              - label: More media paragraph
-                name: moreMediaP1
-                widget: markdown
-              - label: Closing paragraph
-                name: closingP
-                widget: markdown
-              - label: YouTube CTA
-                name: ctaYouTube
-                widget: string
-              - label: Press CTA
-                name: ctaPress
-                widget: string
-              - label: Contact CTA
-                name: ctaContact
-                widget: string
-            collapsed: true
-      - name: used-tolkien-books
-        label: Used Tolkien Books
-        file: site/src/content/page-content/used-tolkien-books.yaml
-        format: yaml
-        media_folder: site/src/assets/showcase
-        public_folder: ../../assets/showcase
-        fields:
-          - label: SEO
-            name: seo
-            widget: object
-            fields:
-              - label: Meta title
-                name: title
-                widget: string
-                required: true
-              - label: Meta description
-                name: description
-                widget: text
-            collapsed: true
-          - label: Hero image
-            name: heroImage
-            widget: image
-            required: false
-          - label: Hero image alt text
-            name: heroImageAlt
-            widget: string
-            required: false
-          - label: Page copy
-            name: text
-            widget: object
-            fields:
-              - label: Hero eyebrow
-                name: heroEyebrow
-                widget: string
-              - label: Hero H1
-                name: heroH1
-                widget: string
-              - label: Hero intro
-                name: heroIntro
-                widget: markdown
-              - label: Closing paragraph
-                name: closingParagraph
-                widget: markdown
-              - label: Marketplace CTA heading
-                name: marketplaceCtaHeading
                 widget: string
             collapsed: true
 

@@ -106,6 +106,16 @@ The sidebar has five sections:
 
 Each site page is split into labelled blocks — **SEO**, optional **Hero image**, **Stats / Timeline / Figures** (where the page uses them), and **Page copy** (individual headings and paragraphs). Expand a block to edit its fields.
 
+### Admin UI
+
+The `/admin` panel uses a **polished, branded interface** — a Festival Art & Books header at the top and **organised page sections** (SEO, hero, stats, page copy, etc.) grouped into collapsible blocks so you are not scrolling through one long form.
+
+Custom admin styling lives in **`site/public/admin/admin.css`** (loaded by `index.html`). If the panel looks unstyled after a deploy, check that this file is present.
+
+The **live preview pane** (when editing markdown) loads **`site/public/admin/preview.css`**, which approximates the live site typography — serif body text, cream background, readable line length — so what you see while editing is closer to the published page.
+
+> **Developers:** After changing collection schemas or CMS field definitions in `site/cms/`, you must still run **`npm run cms:config`** and commit the regenerated **`config.yml`** — the admin UI styling does not replace config regeneration.
+
 ---
 
 ## Day-to-day tasks

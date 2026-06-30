@@ -1,0 +1,359 @@
+/*
+  Festival Art & Books — Decap CMS admin branding
+  Targets stable emotion label fragments from decap-cms@3.
+*/
+
+:root {
+  --fab-midnight: #14224f;
+  --fab-midnight-dark: #0d1430;
+  --fab-midnight-light: #243a76;
+  --fab-gold: #c8962f;
+  --fab-gold-light: #e3c479;
+  --fab-parchment: #f6f0e2;
+  --fab-parchment-dim: #ece3cf;
+  --fab-surface: #fffdf8;
+  --fab-oxblood: #a82c2c;
+  --fab-oxblood-hover: #8b2222;
+  --fab-ink: #1a1512;
+  --fab-muted: #5c5346;
+  --fab-border: rgba(20, 34, 79, 0.14);
+  --fab-radius: 4px;
+  --fab-font-display: "Cormorant Garamond", Georgia, serif;
+  --fab-font-ui: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --fab-focus-ring: 0 0 0 2px var(--fab-surface), 0 0 0 4px var(--fab-gold);
+}
+
+/* ---- Base ---- */
+
+html {
+  color-scheme: light;
+}
+
+body {
+  font-family: var(--fab-font-ui);
+  background-color: var(--fab-parchment);
+  color: var(--fab-ink);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+[class*="SidebarHeading"],
+[class*="CollectionTopHeading"],
+[class*="WorkflowTopHeading"],
+[class*="SearchResultHeading"],
+[class*="CardTopHeading"] {
+  font-family: var(--fab-font-display);
+  font-weight: 600;
+  color: var(--fab-midnight);
+  letter-spacing: 0.01em;
+}
+
+/* ---- Top bar brand treatment ---- */
+
+body > header {
+  position: sticky;
+  background: linear-gradient(180deg, var(--fab-surface) 0%, var(--fab-parchment) 100%) !important;
+  border-bottom: 1px solid var(--fab-border);
+  box-shadow: 0 2px 10px rgba(20, 34, 79, 0.06);
+}
+
+body > header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--fab-midnight) 0%,
+    var(--fab-gold) 45%,
+    var(--fab-gold-light) 55%,
+    var(--fab-midnight) 100%
+  );
+  pointer-events: none;
+}
+
+[class*="AppHeaderContent"] {
+  position: relative;
+}
+
+[class*="AppHeaderNavLink"],
+[class*="AppHeaderButton"] {
+  color: var(--fab-muted);
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+[class*="AppHeaderNavLink"]:hover,
+[class*="AppHeaderNavLink"]:focus-visible,
+[class*="AppHeaderButton"]:hover,
+[class*="AppHeaderButton"]:focus-visible,
+.header-link-active {
+  color: var(--fab-midnight) !important;
+}
+
+.header-link-active {
+  box-shadow: inset 0 -2px 0 var(--fab-gold);
+}
+
+[class*="AppHeaderSiteLink"] {
+  font-family: var(--fab-font-display);
+  color: var(--fab-midnight);
+}
+
+[class*="AppHeaderQuickNewButton"] {
+  background-color: var(--fab-midnight) !important;
+  color: var(--fab-surface) !important;
+}
+
+[class*="AppHeaderQuickNewButton"]:hover,
+[class*="AppHeaderQuickNewButton"]:focus-visible {
+  background-color: var(--fab-midnight-light) !important;
+}
+
+/* Soften technical indicators */
+[class*="AppHeaderTestRepoIndicator"] {
+  opacity: 0.55;
+  font-size: 12px !important;
+}
+
+[class*="PrivacyWarning"] {
+  opacity: 0.7;
+  font-size: 13px;
+}
+
+/* ---- Login / authentication ---- */
+
+[class*="StyledAuthenticationPage"] {
+  background:
+    linear-gradient(165deg, var(--fab-midnight-dark) 0%, var(--fab-midnight) 38%, transparent 38%),
+    var(--fab-parchment);
+  min-height: 100vh;
+}
+
+[class*="AuthForm"] {
+  background: var(--fab-surface);
+  border: 1px solid var(--fab-border);
+  border-radius: var(--fab-radius);
+  box-shadow: 0 8px 32px rgba(20, 34, 79, 0.12);
+  padding: 1.75rem 2rem 2rem;
+}
+
+[class*="AuthInput"] {
+  background-color: var(--fab-surface);
+  border: 1px solid var(--fab-border);
+  border-radius: var(--fab-radius);
+  color: var(--fab-ink);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+[class*="AuthInput"]:focus {
+  outline: none;
+  border-color: var(--fab-gold);
+  box-shadow: var(--fab-focus-ring);
+}
+
+[class*="LoginButton"] {
+  background-color: var(--fab-oxblood) !important;
+  color: var(--fab-surface) !important;
+  border-radius: var(--fab-radius);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: background-color 0.2s ease;
+}
+
+[class*="LoginButton"]:hover:not([disabled]),
+[class*="LoginButton"]:focus-visible:not([disabled]) {
+  background-color: var(--fab-oxblood-hover) !important;
+}
+
+[class*="LoginButton"][disabled] {
+  opacity: 0.55;
+}
+
+[class*="NetlifyCreditIcon"] {
+  opacity: 0.25;
+}
+
+[class*="DecapLogoIcon"] {
+  color: var(--fab-gold);
+}
+
+/* ---- Sidebar (collection list) ---- */
+
+[class*="SidebarContainer"] {
+  background: var(--fab-surface) !important;
+  border: 1px solid var(--fab-border);
+  border-radius: var(--fab-radius);
+  box-shadow: 0 4px 16px rgba(20, 34, 79, 0.08);
+}
+
+[class*="SidebarHeading"] {
+  font-size: 1.35rem;
+  color: var(--fab-midnight);
+  border-bottom: 1px solid var(--fab-border);
+  padding-bottom: 0.5rem;
+}
+
+[class*="SidebarNavLink"] {
+  color: var(--fab-muted);
+  border-left: 2px solid transparent;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+[class*="SidebarNavLink"]:hover,
+[class*="SidebarNavLink"]:focus-visible {
+  color: var(--fab-midnight);
+  background-color: rgba(200, 150, 47, 0.08);
+}
+
+[class*="SidebarNavLink"].sidebar-active {
+  color: var(--fab-midnight) !important;
+  background-color: rgba(200, 150, 47, 0.16) !important;
+  border-left-color: var(--fab-gold) !important;
+  font-weight: 600;
+}
+
+/* ---- Main editor area ---- */
+
+[class*="EditorContainer"] {
+  background-color: var(--fab-parchment-dim) !important;
+}
+
+[class*="ControlPaneContainer"] {
+  background-color: transparent;
+}
+
+[class*="CollectionMain"] {
+  background-color: transparent;
+}
+
+[class*="AppMainContainer"] {
+  background-color: var(--fab-parchment);
+}
+
+[class*="ToolbarContainer"] {
+  background-color: var(--fab-surface) !important;
+  border-bottom: 1px solid var(--fab-border);
+}
+
+/* ---- Buttons: Save, Publish, Delete ---- */
+
+[class*="PublishButton"],
+[class*="StatusButton"] {
+  background-color: var(--fab-oxblood) !important;
+  color: var(--fab-surface) !important;
+  border-radius: var(--fab-radius);
+  font-weight: 600;
+}
+
+[class*="PublishButton"]:hover:not([disabled]),
+[class*="PublishButton"]:focus-visible:not([disabled]),
+[class*="StatusButton"]:hover:not([disabled]),
+[class*="StatusButton"]:focus-visible:not([disabled]) {
+  background-color: var(--fab-oxblood-hover) !important;
+}
+
+[class*="SaveButton"] {
+  background-color: var(--fab-midnight) !important;
+  color: var(--fab-surface) !important;
+  border-radius: var(--fab-radius);
+  font-weight: 600;
+}
+
+[class*="SaveButton"]:hover:not([disabled]),
+[class*="SaveButton"]:focus-visible:not([disabled]) {
+  background-color: var(--fab-midnight-light) !important;
+}
+
+[class*="DeleteButton"] {
+  background-color: rgba(168, 44, 44, 0.1) !important;
+  color: var(--fab-oxblood) !important;
+  border: 1px solid rgba(168, 44, 44, 0.25);
+  border-radius: var(--fab-radius);
+}
+
+[class*="DeleteButton"]:hover:not([disabled]),
+[class*="DeleteButton"]:focus-visible:not([disabled]) {
+  background-color: rgba(168, 44, 44, 0.18) !important;
+}
+
+[class*="CollectionTopNewButton"] {
+  background-color: var(--fab-midnight) !important;
+  color: var(--fab-surface) !important;
+  border-radius: var(--fab-radius);
+}
+
+/* ---- Form fields & focus rings ---- */
+
+input:not([type="checkbox"]):not([type="radio"]),
+textarea,
+select,
+[class*="SearchInput"] {
+  background-color: var(--fab-surface);
+  border: 1px solid var(--fab-border);
+  border-radius: var(--fab-radius);
+  color: var(--fab-ink);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:not([type="checkbox"]):not([type="radio"]):focus,
+textarea:focus,
+select:focus,
+[class*="SearchInput"]:focus {
+  outline: none;
+  border-color: var(--fab-gold);
+  box-shadow: var(--fab-focus-ring);
+}
+
+[class*="FieldLabel"] {
+  color: var(--fab-muted);
+  font-family: var(--fab-font-ui);
+  letter-spacing: 0.06em;
+}
+
+/* Soften optional field suffix */
+[class*="FieldLabel"] span {
+  opacity: 0.45;
+  font-weight: 400;
+}
+
+/* ---- Cards & collection views ---- */
+
+[class*="Card"],
+[class*="CollectionTopContainer"],
+[class*="WorkflowCardContainer"],
+[class*="SearchResultContainer"] {
+  background-color: var(--fab-surface);
+  border-color: var(--fab-border);
+}
+
+/* ---- Error / debug output ---- */
+
+[class*="ErrorCodeBlock"] {
+  background: var(--fab-parchment-dim);
+  border: 1px solid var(--fab-border);
+  border-radius: var(--fab-radius);
+  color: var(--fab-muted);
+  font-size: 13px;
+  padding: 1rem;
+}
+
+/* ---- Progress bar (nprogress) ---- */
+
+#nprogress .bar {
+  background: var(--fab-gold) !important;
+}
+
+#nprogress .peg {
+  box-shadow:
+    0 0 10px var(--fab-gold),
+    0 0 5px var(--fab-gold) !important;
+}

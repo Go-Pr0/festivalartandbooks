@@ -60,7 +60,9 @@ export function objectField(label, name, fields, opts = {}) {
 export function seoFields({ titleRequired = false } = {}) {
   return objectField('SEO', 'seo', [
     stringField('Meta title', 'title', { required: titleRequired }),
-    textField('Meta description', 'description'),
+    textField('Meta description', 'description', {
+      hint: 'Short summary for Google and social previews — aim for ~150 characters.',
+    }),
   ]);
 }
 
@@ -78,7 +80,7 @@ export function statsField() {
     stringField('Suffix', 'suffix', { required: false }),
     numberField('Decimals', 'decimals', { required: false }),
     stringField('Label', 'label'),
-  ], { required: false });
+  ], { required: false, summary: '{{fields.label}}' });
 }
 
 export function timelineField() {
@@ -86,14 +88,14 @@ export function timelineField() {
     stringField('Year', 'year'),
     stringField('Title', 'title'),
     markdownField('Body', 'body'),
-  ], { required: false });
+  ], { required: false, summary: '{{fields.year}} — {{fields.title}}' });
 }
 
 export function trustPointsField() {
   return listField('Trust points', 'trustPoints', [
     stringField('Heading', 'heading'),
     textField('Body', 'body'),
-  ], { required: false });
+  ], { required: false, summary: '{{fields.heading}}' });
 }
 
 export function dealsInField() {
@@ -104,7 +106,7 @@ export function dealsInField() {
     textField('Body', 'body'),
     stringField('Link URL', 'href'),
     stringField('CTA label', 'cta'),
-  ], { required: false });
+  ], { required: false, summary: '{{fields.heading}}' });
 }
 
 export function figuresField() {
@@ -116,7 +118,7 @@ export function figuresField() {
     stringField('Frame', 'frame', { required: false, hint: 'e.g. portrait' }),
     numberField('Animation delay (ms)', 'delay', { required: false }),
     stringField('Sizes attribute', 'sizes', { required: false }),
-  ], { required: false });
+  ], { required: false, summary: '{{fields.key}}' });
 }
 
 export function exploreCardsField() {
@@ -124,7 +126,7 @@ export function exploreCardsField() {
     stringField('Title', 'title'),
     textField('Description', 'description'),
     stringField('Link URL', 'href'),
-  ]);
+  ], { summary: '{{fields.title}}' });
 }
 
 /**
@@ -140,7 +142,7 @@ export function textSection(entries) {
         stringField('Title', 'title'),
         textField('Description', 'description'),
         stringField('Link URL', 'href'),
-      ], rest);
+      ], { summary: '{{fields.title}}', ...rest });
     }
     return stringField(label, name, rest);
   });
@@ -159,7 +161,10 @@ export const txt = (label, name) => ({ label, name, widget: 'text' });
 // ── Content collection fields ───────────────────────────────────────────────
 
 export function draftField() {
-  return booleanField('Draft (hide from site)', 'draft', { default: false });
+  return booleanField('Draft (hide from site)', 'draft', {
+    default: false,
+    hint: 'Tick to hide this entry from the public site while you work on it.',
+  });
 }
 
 export function bodyField(hint) {
@@ -195,13 +200,13 @@ export function guidesFields() {
     listField('FAQ', 'faq', [
       stringField('Question', 'question'),
       markdownField('Answer', 'answer'),
-    ], { required: false }),
+    ], { required: false, summary: '{{fields.question}}' }),
     draftField(),
     bodyField('Guide body — use H2/H3 as real questions for GEO.'),
   ];
 }
 
-export function booksFields() {
+function booksListingDetailsFields() {
   return [
     stringField('Title', 'title', {
       hint: "Short working title used as the filename slug, e.g. 'Hobbit First Edition 1937 Fine'",
@@ -232,22 +237,40 @@ export function booksFields() {
       required: false,
       hint: "Brief condition grade, e.g. 'Fine in Very Good+ dust jacket'",
     }),
-    listField('Images', 'images', [
-      imageField('Image', 'image', { hint: 'Upload to inventory — use descriptive filenames.' }),
-    ], { required: false }),
+  ];
+}
+
+function booksPricingFields() {
+  return [
     numberField('Price (£)', 'price', { required: false, value_type: 'float', min: 0 }),
     stringField('Currency', 'priceCurrency', { default: 'GBP' }),
     selectField('Availability', 'availability', [
       { label: 'In Stock', value: 'InStock' },
       { label: 'Sold / Out of Stock', value: 'OutOfStock' },
       { label: 'Pre-Order', value: 'PreOrder' },
-    ], { default: 'InStock' }),
+    ], {
+      default: 'InStock',
+      hint: 'Set to Sold when the item is no longer for sale. In Stock items appear in the catalogue.',
+    }),
     stringField('Listing URL (eBay / AbeBooks)', 'offerUrl', {
       required: false,
       hint: 'Full URL to the marketplace listing.',
     }),
+  ];
+}
+
+export function booksFields() {
+  return [
+    ...booksListingDetailsFields(),
+    listField('Images', 'images', [
+      imageField('Image', 'image', { hint: 'Upload to inventory — use descriptive filenames.' }),
+    ], { required: false, collapsed: true, summary: '{{fields.image}}' }),
+    ...booksPricingFields(),
     draftField(),
-    bodyField('Longer description, issue-point notes, provenance, etc. Rendered on the catalogue entry.'),
+    markdownField('Full description', 'body', {
+      required: false,
+      hint: 'Longer description, issue-point notes, provenance, etc. Rendered on the catalogue entry.',
+    }),
   ];
 }
 
@@ -259,7 +282,7 @@ export function eventsListFields() {
       stringField('Date', 'date'),
       stringField('Location', 'location'),
       markdownField('Detail', 'detail'),
-    ]),
+    ], { summary: '{{fields.date}} — {{fields.location}}' }),
   ];
 }
 
@@ -269,7 +292,7 @@ export function mediaMentionsListFields() {
       stringField('Outlet', 'outlet'),
       stringField('Headline', 'headline'),
       stringField('URL', 'url'),
-    ]),
+    ], { summary: '{{fields.headline}}' }),
   ];
 }
 
@@ -278,7 +301,7 @@ export function usedBooksFaqsListFields() {
     listField('Used books FAQs', 'items', [
       stringField('Question', 'question'),
       stringListField('Answer paragraphs', 'answer', 'Paragraph'),
-    ]),
+    ], { summary: '{{fields.question}}' }),
   ];
 }
 
@@ -289,7 +312,7 @@ export function artistsListFields() {
       imageField('Portrait / artwork', 'image'),
       stringField('Alt text', 'alt'),
       stringListField('Bio paragraphs', 'bio', 'Paragraph'),
-    ]),
+    ], { summary: '{{fields.name}}' }),
   ];
 }
 
@@ -299,6 +322,6 @@ export function rareBooksGalleryListFields() {
       imageField('Image', 'image'),
       stringField('Alt text', 'alt'),
       stringField('Caption', 'caption'),
-    ]),
+    ], { summary: '{{fields.caption}}' }),
   ];
 }
