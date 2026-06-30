@@ -10,8 +10,7 @@ import tailwindcss from '@tailwindcss/vite';
 /** @type {any} */
 const vitePlugins = [tailwindcss()];
 
-// IMPORTANT: update `site` to the production domain before launch.
-// It is required for correct sitemap, canonical URLs, and absolute schema.org URLs.
+// Production domain — required for sitemap, canonical URLs, and absolute schema.org URLs.
 export default defineConfig({
   site: 'https://festivalartandbooks.com',
   integrations: [

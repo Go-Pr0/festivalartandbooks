@@ -3,7 +3,7 @@
 
 [build]
   base = "site"
-  command = "npm ci && npm run build"
+  command = "npm ci && npm run cms:config && npm run build"
   publish = "dist"
 
 [build.environment]

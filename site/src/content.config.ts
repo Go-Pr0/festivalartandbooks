@@ -7,11 +7,16 @@ import yaml from 'js-yaml'; // bundled with astro (its file() loader uses it)
 // editing the verbatim data files.
 const orderedList = (path: string) =>
   file(path, {
-    parser: (text) =>
-      (yaml.load(text) as Record<string, unknown>[]).map((item, i) => ({
+    parser: (text) => {
+      const parsed = yaml.load(text);
+      const items = Array.isArray(parsed)
+        ? parsed
+        : (parsed as { items: Record<string, unknown>[] }).items;
+      return items.map((item, i) => ({
         ...item,
         id: String(i).padStart(3, '0'),
-      })),
+      }));
+    },
   });
 
 /**

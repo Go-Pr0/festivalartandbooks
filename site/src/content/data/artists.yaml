@@ -1,62 +1,56 @@
+items:
 - name: Joe Gilronan
   image: ../../assets/showcase/artist-joe-gilronan-tolkien-artwork.jpg
   alt: Tolkien-inspired landscape painting by artist Joe Gilronan
   bio:
-    - A full-time professional artist from Chester, England, with a Fine Arts degree from Liverpool University. He works in oils, acrylic and clay.
-    - His love of Tolkien began as a child hearing The Hobbit read on Jackanory; landscapes from Snowdonia, the Cheshire plains and Andalucía feed his Middle-earth work.
-
+  - A full-time professional artist from Chester, England, with a Fine Arts degree from Liverpool University. He works in oils, acrylic and clay.
+  - His love of Tolkien began as a child hearing The Hobbit read on Jackanory; landscapes from Snowdonia, the Cheshire plains and Andalucía feed his Middle-earth work.
 - name: Rainer Kalwitz
   image: ../../assets/showcase/artist-rainer-kalwitz-tolkien-artwork.jpg
   alt: Fantasy artwork by Tolkien-inspired artist Rainer Kalwitz
   bio:
-    - Based in Recklinghausen, Germany, Kalwitz has worked with major rock and metal labels including Century Media, Metal Blade, EMI and Roadrunner.
-    - He combines detailed brushwork with airbrush, built on intense photographic and sketch studies. Some of his images are among the best-selling poster prints in Europe.
-
+  - Based in Recklinghausen, Germany, Kalwitz has worked with major rock and metal labels including Century Media, Metal Blade, EMI and Roadrunner.
+  - He combines detailed brushwork with airbrush, built on intense photographic and sketch studies. Some of his images are among the best-selling poster prints in Europe.
 - name: Ruth Lacon
   image: ../../assets/showcase/artist-ruth-lacon-tolkien-artwork.jpg
   alt: Tolkien-inspired illustration by artist Ruth Lacon
   bio:
-    - A Tolkien enthusiast since her Edinburgh childhood, Ruth read The Silmarillion at twelve and joined the Tolkien Society in 1986. She holds degrees in Zoology and Design (Illustration).
-    - Her Tolkien-inspired work appears in her book The Art of Ruth Lacon, alongside scholarly papers on the author.
-
+  - A Tolkien enthusiast since her Edinburgh childhood, Ruth read The Silmarillion at twelve and joined the Tolkien Society in 1986. She holds degrees in Zoology and Design (Illustration).
+  - Her Tolkien-inspired work appears in her book The Art of Ruth Lacon, alongside scholarly papers on the author.
 - name: Roger Dean
   image: ../../assets/showcase/artist-roger-dean-fantasy-artwork.jpg
   alt: Fantasy landscape artwork by Roger Dean
   bio:
-    - An internationally recognised artist and designer whose visionary images created a new genre, selling over sixty million copies worldwide.
-    - Best known for iconic 1970s and 80s album covers for the band Yes; a Royal College of Art graduate whose Sea Urchin Chair entered the V&A’s permanent collection.
-
+  - An internationally recognised artist and designer whose visionary images created a new genre, selling over sixty million copies worldwide.
+  - Best known for iconic 1970s and 80s album covers for the band Yes; a Royal College of Art graduate whose Sea Urchin Chair entered the V&A’s permanent collection.
 - name: Michael Fishel
   image: ../../assets/showcase/artist-michael-fishel-fantasy-artwork.jpg
   alt: Fantasy poster artwork by Michael Fishel
   bio:
-    - Born in 1950, Fishel trained at the John Heron Institute of Art in Indiana and was published as full-colour posters by London’s Big “O” Poster Co. from 1977, alongside Roger Dean and Rodney Matthews.
-    - He went on to illustrate Dungeons & Dragons books and cover art for H.P. Lovecraft and Richard Adams; he now works in digital media in Austin, Texas.
-
+  - Born in 1950, Fishel trained at the John Heron Institute of Art in Indiana and was published as full-colour posters by London’s Big “O” Poster Co. from 1977, alongside Roger Dean and Rodney Matthews.
+  - He went on to illustrate Dungeons & Dragons books and cover art for H.P. Lovecraft and Richard Adams; he now works in digital media in Austin, Texas.
 - name: Ted Nasmith
   image: ../../assets/showcase/artist-ted-nasmith-tolkien-artwork.jpg
   alt: Tolkien illustration by Canadian artist Ted Nasmith
   bio:
-    - A Canadian illustrator best known for his work on The Hobbit, The Lord of the Rings and The Silmarillion, whose luminist style appeared in Tolkien calendars from 1987.
-    - He illustrated the first illustrated edition of The Silmarillion (1998) and was invited to join John Howe and Alan Lee on conceptual art for Peter Jackson’s film trilogy.
-
+  - A Canadian illustrator best known for his work on The Hobbit, The Lord of the Rings and The Silmarillion, whose luminist style appeared in Tolkien calendars from 1987.
+  - He illustrated the first illustrated edition of The Silmarillion (1998) and was invited to join John Howe and Alan Lee on conceptual art for Peter Jackson’s film trilogy.
 - name: Gary Chalk
   image: ../../assets/showcase/artist-gary-chalk-fantasy-artwork.jpg
   alt: Fantasy illustration by artist Gary Chalk
   bio:
-    - A prolific illustrator of children’s books and fantasy games, known for his black-and-white work on the Redwall and Lone Wolf series.
-    - He contributed to many of Games Workshop’s most popular board games and Warhammer publications and now lives in France.
-
+  - A prolific illustrator of children’s books and fantasy games, known for his black-and-white work on the Redwall and Lone Wolf series.
+  - He contributed to many of Games Workshop’s most popular board games and Warhammer publications and now lives in France.
 - name: Tim Kirk
   image: ../../assets/showcase/artist-tim-kirk-tolkien-artwork.jpg
   alt: Tolkien-inspired painting by artist Tim Kirk
   bio:
-    - A five-time Hugo Award winner whose Lord of the Rings paintings appeared in the 1975 Tolkien Calendar published by Ballantine Books.
-    - He spent 22 years as a Disney Imagineer, contributing to Epcot, Tokyo DisneySea and more, before co-founding Kirk Design Inc.
-
+  - A five-time Hugo Award winner whose Lord of the Rings paintings appeared in the 1975 Tolkien Calendar published by Ballantine Books.
+  - He spent 22 years as a Disney Imagineer, contributing to Epcot, Tokyo DisneySea and more, before co-founding Kirk Design Inc.
 - name: Rodney Matthews
   image: ../../assets/showcase/artist-rodney-matthews-fantasy-artwork.jpg
   alt: Fantasy artwork by artist Rodney Matthews
   bio:
-    - Described by John Cleese as “among the greatest artists that have ever lived”, Matthews has illustrated Tolkien, C.S. Lewis, Lewis Carroll and many album covers.
-    - Born in Somerset and long settled in North Wales, his originals have shown at the Chris Beetles Gallery in London and in galleries from Switzerland to Machynlleth.
+  - Described by John Cleese as “among the greatest artists that have ever lived”, Matthews has illustrated Tolkien, C.S. Lewis, Lewis Carroll and many album covers.
+  - Born in Somerset and long settled in North Wales, his originals have shown at the Chris Beetles Gallery in London and in galleries from Switzerland to Machynlleth.
+

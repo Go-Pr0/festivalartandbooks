@@ -9,7 +9,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "check": "astro check",
-    "cms:config": "node scripts/generate-cms-config.mjs"
+    "cms:config": "node scripts/generate-cms-config.mjs",
+    "cms:server": "decap-server"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.0.0",
@@ -23,6 +24,7 @@
     "@astrojs/check": "^0.9.9",
     "@tailwindcss/typography": "^0.5.15",
     "@tailwindcss/vite": "^4.0.0",
+    "decap-server": "^3.9.1",
     "tailwindcss": "^4.0.0",
     "typescript": "^5.9.3"
   }
