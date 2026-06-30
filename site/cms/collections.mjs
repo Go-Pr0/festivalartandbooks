@@ -152,7 +152,7 @@ const PAGE_TEXT = {
     str('Hero eyebrow', 'heroEyebrow'),
     str('Hero H1', 'heroH1'),
     md('Hero intro', 'heroIntro'),
-    str('What we deal in eyebrow', 'whatWeDeelInEyebrow'),
+    str('What we deal in eyebrow', 'whatWeDealInEyebrow'),
     str('What we deal in heading', 'whatWeDealInHeading'),
     md('What we deal in paragraph 1', 'whatWeDealInP1'),
     md('What we deal in paragraph 2', 'whatWeDealInP2'),

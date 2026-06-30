@@ -592,7 +592,7 @@ collections:
                 name: heroIntro
                 widget: markdown
               - label: What we deal in eyebrow
-                name: whatWeDeelInEyebrow
+                name: whatWeDealInEyebrow
                 widget: string
               - label: What we deal in heading
                 name: whatWeDealInHeading
