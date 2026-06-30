@@ -8,6 +8,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import yaml from 'js-yaml';
 import { collections } from '../cms/collections.mjs';
+import { validateCollections } from '../cms/validate-config.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const outPath = join(__dirname, '../public/admin/config.yml');
@@ -37,7 +38,15 @@ media_folder: site/src/assets/inventory
 public_folder: ../../assets/inventory
 `;
 
-const collectionsYaml = yaml.dump(collections(), {
+const collectionDefs = collections();
+const errors = validateCollections(collectionDefs);
+if (errors.length > 0) {
+  console.error('Decap CMS config validation failed:\n');
+  for (const err of errors) console.error(`  - ${err}`);
+  process.exit(1);
+}
+
+const collectionsYaml = yaml.dump(collectionDefs, {
   lineWidth: -1,
   noRefs: true,
 });

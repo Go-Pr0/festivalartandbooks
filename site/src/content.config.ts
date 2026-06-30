@@ -2,6 +2,36 @@ import { defineCollection, z } from 'astro:content';
 import { glob, file } from 'astro/loaders';
 import yaml from 'js-yaml'; // bundled with astro (its file() loader uses it)
 
+/** Decap list widgets may save plain strings or `{ paragraph }` / `{ image }` objects. */
+function normalizeStringArray(val: unknown): unknown {
+  if (!Array.isArray(val)) return val;
+  return val.map((item) => {
+    if (typeof item === 'string') return item;
+    if (item && typeof item === 'object') {
+      const o = item as Record<string, unknown>;
+      if (typeof o.paragraph === 'string') return o.paragraph;
+      if (typeof o.text === 'string') return o.text;
+    }
+    return String(item);
+  });
+}
+
+function normalizeImageArray(val: unknown): unknown {
+  if (!Array.isArray(val)) return val;
+  return val.map((item) => {
+    if (typeof item === 'string') return item;
+    if (item && typeof item === 'object') {
+      const o = item as Record<string, unknown>;
+      if (typeof o.image === 'string') return o.image;
+    }
+    return item;
+  });
+}
+
+const stringArray = () => z.preprocess(normalizeStringArray, z.array(z.string()));
+const imageArray = (image: () => z.ZodType) =>
+  z.preprocess(normalizeImageArray, z.array(image())).optional();
+
 // file() requires each array item to have an id. Our list YAMLs are id-less ordered arrays;
 // inject a zero-padded id from array index so insertion AND sort order are stable, WITHOUT
 // editing the verbatim data files.
@@ -84,7 +114,7 @@ const books = defineCollection({
       datePublished: z.string().optional(), // book's own publication year
       bookFormat: z.string().optional(),
       isbn: z.string().optional(),
-      images: z.array(image()).optional(),
+      images: imageArray(image),
       price: z.number().optional(),
       priceCurrency: z.string().default('GBP'),
       availability: z.enum(['InStock', 'OutOfStock', 'PreOrder']).default('InStock'),
@@ -104,7 +134,7 @@ const events = defineCollection({
 const artists = defineCollection({
   loader: orderedList('./src/content/data/artists.yaml'),
   schema: ({ image }) =>
-    z.object({ name: z.string(), image: image(), alt: z.string(), bio: z.array(z.string()) }),
+    z.object({ name: z.string(), image: image(), alt: z.string(), bio: stringArray() }),
 });
 
 const mediaMentions = defineCollection({
@@ -114,7 +144,7 @@ const mediaMentions = defineCollection({
 
 const usedBooksFaqs = defineCollection({
   loader: orderedList('./src/content/data/used-books-faqs.yaml'),
-  schema: z.object({ question: z.string(), answer: z.array(z.string()) }),
+  schema: z.object({ question: z.string(), answer: stringArray() }),
 });
 
 const rareBooksGallery = defineCollection({

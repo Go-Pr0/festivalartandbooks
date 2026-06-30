@@ -109,11 +109,11 @@ collections:
       - label: Images
         name: images
         widget: list
-        fields:
-          - label: Image
-            name: image
-            widget: image
-            hint: Upload to inventory — use descriptive filenames.
+        field:
+          label: Image
+          name: image
+          widget: image
+          hint: Use a descriptive filename, e.g. tolkien-hobbit-1937-first-edition-front-cover.jpg
         required: false
         collapsed: true
         summary: '{{fields.image}}'
@@ -338,7 +338,9 @@ collections:
                 widget: list
                 field:
                   label: Paragraph
+                  name: paragraph
                   widget: string
+                hint: Add one entry per paragraph. Each paragraph appears as a separate block on the site.
             summary: '{{fields.question}}'
       - name: artists
         label: Tolkien Artists
@@ -365,7 +367,9 @@ collections:
                 widget: list
                 field:
                   label: Paragraph
+                  name: paragraph
                   widget: string
+                hint: Add one entry per paragraph. Each paragraph appears as a separate block on the site.
             summary: '{{fields.name}}'
       - name: rare-books-gallery
         label: Rare Books Gallery

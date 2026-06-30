@@ -41,15 +41,37 @@ export function listField(label, name, fields, opts = {}) {
   return { label, name, widget: 'list', fields, ...opts };
 }
 
-/** List of primitive strings (maps to YAML string arrays). */
-export function stringListField(label, name, itemLabel = 'Item', opts = {}) {
-  return {
+/** List where each item is a single sub-field (images, string paragraphs, etc.). */
+export function singletonListField(label, name, field, opts = {}) {
+  return { label, name, widget: 'list', field, ...opts };
+}
+
+/** List of primitive strings — Decap requires inner field.name; site normalizes on load. */
+export function stringListField(label, name, itemLabel = 'Paragraph', opts = {}) {
+  return singletonListField(
     label,
     name,
-    widget: 'list',
-    field: { label: itemLabel, widget: 'string' },
-    ...opts,
-  };
+    { label: itemLabel, name: 'paragraph', widget: 'string' },
+    {
+      hint: 'Add one entry per paragraph. Each paragraph appears as a separate block on the site.',
+      ...opts,
+    },
+  );
+}
+
+/** List of image paths for book catalogue entries. */
+export function imageListField(label, name, opts = {}) {
+  return singletonListField(
+    label,
+    name,
+    {
+      label: 'Image',
+      name: 'image',
+      widget: 'image',
+      hint: 'Use a descriptive filename, e.g. tolkien-hobbit-1937-first-edition-front-cover.jpg',
+    },
+    { required: false, collapsed: true, summary: '{{fields.image}}', ...opts },
+  );
 }
 
 export function objectField(label, name, fields, opts = {}) {
@@ -262,9 +284,7 @@ function booksPricingFields() {
 export function booksFields() {
   return [
     ...booksListingDetailsFields(),
-    listField('Images', 'images', [
-      imageField('Image', 'image', { hint: 'Upload to inventory — use descriptive filenames.' }),
-    ], { required: false, collapsed: true, summary: '{{fields.image}}' }),
+    imageListField('Images', 'images'),
     ...booksPricingFields(),
     draftField(),
     markdownField('Full description', 'body', {

@@ -62,6 +62,8 @@ cd site
 npm run cms:config
 ```
 
+The generator validates field definitions before writing — if `config.yml` would be invalid for Decap, the command fails with a clear error instead of breaking `/admin` at runtime.
+
 Commit the updated `config.yml` along with any schema changes so the live `/admin` panel stays in sync.
 
 ---
