@@ -1,13 +1,67 @@
 seo:
   title: "Used Tolkien Books: Expert Q&A | Festival Art & Books"
-  description: "Answer-first guide to buying used and rare Tolkien books: first-edition values, dust jackets, restoration, states and what to collect, from 25-year specialist Mark Faith."
+  description: "Used Tolkien Books Guide from Festival Art and Books with expert answers. Learn more today."
 
 heroImage: "../../assets/showcase/tolkien-used-collectable-books-montage.jpg"
-heroImageAlt: "Collection of used and collectable J.R.R. Tolkien hardback books"
+heroImageAlt: "Collection of J.R.R. Tolkien books"
 
 text:
   heroEyebrow: "Questions & Answers"
-  heroH1: "Used & Rare Tolkien Books: Q&A"
-  heroIntro: "Straight answers to the questions buyers actually ask, based on thirty-plus years as a Tolkien collector and dealer. Condition is everything; there is no “official” price, only what someone will pay. If you are about to spend thousands, contact us directly for expert advice first."
-  closingParagraph: "These questions, and many more, are covered in detail in Mark’s free Tolkien Collector’s Guide. For a copy and to subscribe to the newsletter, email <a href=\"mailto:MarkFaith@festivalartandbooks.com\" class=\"text-[var(--color-midnight-900)] underline decoration-[var(--color-gold-600)]/50 underline-offset-4 hover:text-[var(--color-oxblood-600)]\">MarkFaith@festivalartandbooks.com</a>."
+  heroH1: "Used Tolkien Books, Q&A"
+  heroIntro: >-
+    My Tolkien Collector's Guide provides general advice on selecting and buying used and rare
+    Tolkien books and memorabilia. Collecting strategies for Tolkien titles, and specifically
+    what to buy, can change with the market. If you are thinking of buying a book costing
+    thousands, it is best to contact us directly for expert advice. With new films and other
+    related developments in the works, the Tolkien fan market is about to take off, just as it
+    did 25 years ago when Peter Jackson's films came out. The huge boom in popularity back then
+    took fans and experts by complete surprise. The market is still growing, and people are much
+    more aware of it. I set out in business around 2001 to make Tolkien book collecting easier
+    and more accessible to everyone. Photographs replaced detailed descriptions, often riddled
+    with old book binding terminology that no longer applies. Millions use eBay, which provides
+    instant availability, a wide selection from all over the world, and a range of prices. My
+    only criticism is the need for better book categories which they once had.
+
+    First editions are now so rare, in good condition, that they are too expensive for most
+    collectors. This was true before too, but today we know they are worth the investment, so
+    there is more demand. Oddly, you do not hear of record sale prices of The Hobbit and The
+    Lord of the Rings on the internet as these are perhaps irrelevant to the average collector.
+    It may be a consequence of AI. We know that upward price trends and new price highs are
+    particularly important for removing perceived value ceilings.
+
+    eBay is not the only a source of books but a critical provider of real-time information on
+    the Tolkien rare book market. On the downside, you do have to spend many hours on the
+    internet to keep up. My regular customers let me do it for them. Only the best of the best
+    is available in my shop. That is one of the reasons why I provide information and newsletter
+    updates for our fans and customers. Subscribe today.
+
+    Digital information is in flux now due to emerging technology. Search engines were producing
+    accurate results, but the new AI is notoriously inaccurate. Not only is accuracy a huge
+    problem, but we also seem to have lost valuable information. I recently spoke to an expert
+    consultant S.E.O. who explained why this is happening. His view was that every country has
+    its own version of popular search engines. For your website to show up in a search in a
+    specific country, the search engine must be configured for that market with the appropriate
+    regional keywords, language, and technical settings. Content must be written specifically for
+    that region's language, the audience and its preferences. The digital world is now made up
+    of many digital regions reflecting features and trends specific to those regions. If you do
+    not live in a particular region, you may not even see a search result from it. This is
+    partly because there is now too much information on the internet. The biggest search engine
+    now prioritises what is nearest to you geographically, not key words. This is a very
+    important fact. You may be the only seller of certain items in the entire world, but an
+    algorithm may not recognise your specialty, seniority, or expertise. It will not track who
+    has been the leading expert the longest or who holds the rarest or biggest inventory. What a
+    search engine algorithm is actually measuring is indications of popularity, things like the
+    number of other social media sites linked to yours, how often your site is visited, or how
+    much relevant content exists on your pages. What counts is how well your site is structured
+    to be read by a computer rather than by humans. In short, search engines and AI may
+    perceive someone to be an authority who is nothing of the sort.
+
+    Information on the internet is not necessarily factual or even expert opinion. Just because
+    everyone says it is so, does not make it so. It is not clear exactly how AI will resolve
+    this. With that in mind, let me offer some frequently asked questions on Tolkien, and their
+    answers, based on thirty plus years as Tolkien collector and dealer.
+  closingParagraph: >-
+    These questions and many more are covered in detail in my Tolkien Collector's Guide. For a
+    free copy and to subscribe to our newsletter, contact
+    <a href="mailto:MarkFaith@festivalartandbooks.com" class="text-[var(--color-midnight-900)] underline decoration-[var(--color-gold-600)]/50 underline-offset-4 hover:text-[var(--color-oxblood-600)]">markfaith@festivalartandbooks.com</a>.
   marketplaceCtaHeading: "Find your next Tolkien book"

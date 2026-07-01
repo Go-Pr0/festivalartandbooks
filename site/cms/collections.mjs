@@ -1,4 +1,5 @@
 import {
+  archiveGalleryListFields,
   booksFields,
   dealsInField,
   eventsListFields,
@@ -29,6 +30,11 @@ const STORY_MEDIA = {
 const SHOWCASE_MEDIA = {
   media_folder: 'site/src/assets/showcase',
   public_folder: '../../assets/showcase',
+};
+
+const ARCHIVE_MEDIA = {
+  media_folder: 'site/src/assets/archive',
+  public_folder: '../../assets/archive',
 };
 
 const HOME_MEDIA = {
@@ -113,6 +119,10 @@ const PAGE_TEXT = {
     str('Step 3 label', 'step3Label'),
     md('Step 3 body', 'step3Body'),
     str('Request e-book CTA', 'ctaRequestEbook'),
+    str('Read online eyebrow', 'readOnlineEyebrow'),
+    str('Read online H2', 'readOnlineH2'),
+    md('Read online body', 'readOnlineBody'),
+    str('Read online CTA', 'readOnlineCTA'),
     str('Marketplace CTA heading', 'marketplaceCTAHeading'),
   ],
   events: [
@@ -156,6 +166,8 @@ const PAGE_TEXT = {
     str('What we deal in heading', 'whatWeDealInHeading'),
     md('What we deal in paragraph 1', 'whatWeDealInP1'),
     md('What we deal in paragraph 2', 'whatWeDealInP2'),
+    str('Book values heading', 'bookValuesHeading'),
+    md('Book values body', 'bookValuesBody'),
     str('Gallery heading', 'galleryHeading'),
     md('Gallery intro', 'galleryIntro'),
     str('Catalogue heading', 'catalogueHeading'),
@@ -202,6 +214,26 @@ const PAGE_TEXT = {
     md('Hero intro', 'heroIntro'),
     md('Closing paragraph', 'closingParagraph'),
     str('Marketplace CTA heading', 'marketplaceCtaHeading'),
+  ],
+  'collectors-guide': [
+    str('Hero eyebrow', 'heroEyebrow'),
+    str('Hero H1', 'heroH1'),
+    md('Hero intro', 'heroIntro'),
+    str('Chapters heading', 'chaptersHeading'),
+    str('Read online CTA', 'ctaReadOnline'),
+    str('Download CTA', 'ctaDownload'),
+  ],
+  'photo-gallery': [
+    str('Hero eyebrow', 'heroEyebrow'),
+    str('Hero H1', 'heroH1'),
+    md('Hero intro', 'heroIntro'),
+    str('Empty gallery heading', 'emptyGalleryHeading'),
+    md('Empty gallery body', 'emptyGalleryBody'),
+  ],
+  resources: [
+    str('Hero eyebrow', 'heroEyebrow'),
+    str('Hero H1', 'heroH1'),
+    md('Hero intro', 'heroIntro'),
   ],
 };
 
@@ -347,6 +379,15 @@ export function collections() {
           public_folder: '../../assets/showcase',
           fields: rareBooksGalleryListFields(),
         },
+        {
+          name: 'archive-gallery',
+          label: 'Archive Photo Gallery',
+          file: 'site/src/content/data/archive-gallery.yaml',
+          format: 'yaml',
+          media_folder: 'site/src/assets/archive',
+          public_folder: '../../assets/archive',
+          fields: archiveGalleryListFields(),
+        },
       ],
     },
     pageFilesCollection('pages_shop_home', 'Pages — Shop & Home', [
@@ -436,12 +477,35 @@ export function collections() {
     ]),
     pageFilesCollection('pages_resources', 'Pages — Resources', [
       {
+        name: 'collectors-guide',
+        label: "Collector's Guide",
+        file: 'site/src/content/page-content/collectors-guide.yaml',
+        format: 'yaml',
+        ...SHOWCASE_MEDIA,
+        fields: pageFields('collectors-guide', { hero: true }),
+      },
+      {
         name: 'ebook',
         label: 'E-book',
         file: 'site/src/content/page-content/ebook.yaml',
         format: 'yaml',
         ...SHOWCASE_MEDIA,
         fields: pageFields('ebook', { hero: true }),
+      },
+      {
+        name: 'photo-gallery',
+        label: 'Photo Gallery',
+        file: 'site/src/content/page-content/photo-gallery.yaml',
+        format: 'yaml',
+        ...ARCHIVE_MEDIA,
+        fields: pageFields('photo-gallery', { hero: true }),
+      },
+      {
+        name: 'resources',
+        label: 'Resources',
+        file: 'site/src/content/page-content/resources.yaml',
+        format: 'yaml',
+        fields: pageFields('resources'),
       },
       {
         name: 'tolkien-art',

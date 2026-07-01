@@ -10,7 +10,8 @@
     "astro": "astro",
     "check": "astro check",
     "cms:config": "node scripts/generate-cms-config.mjs",
-    "cms:server": "decap-server"
+    "cms:server": "decap-server",
+    "sync:ebay": "node scripts/sync-ebay-inventory.mjs"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.0.0",

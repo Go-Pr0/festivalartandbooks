@@ -83,6 +83,17 @@ const schema = collectionPage({
     </Reveal>
   </Section>
 
+  <Section tone="parchment" width="prose">
+    <Reveal>
+      <h2 class="font-display text-3xl text-[var(--color-midnight-900)] sm:text-4xl">
+        {t.bookValuesHeading}
+      </h2>
+      <div class="prose-tolkien mt-6 space-y-5 font-text text-lg leading-relaxed text-[var(--color-text)]">
+        <Fragment set:html={t.bookValuesBody as string} />
+      </div>
+    </Reveal>
+  </Section>
+
   <Section tone="parchment">
     <Reveal>
       <h2 class="font-display text-3xl text-[var(--color-midnight-900)] sm:text-4xl">

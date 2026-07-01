@@ -104,6 +104,23 @@ const mailto = `mailto:${SITE.email}?subject=${subject}`;
     </Reveal>
   </Section>
 
+  <Section tone="parchment" width="prose" space="md">
+    <Reveal>
+      <p class="font-ui text-xs uppercase tracking-[0.2em] text-[var(--color-gold-600)]">
+        {t.readOnlineEyebrow}
+      </p>
+      <h2 class="mt-3 font-display text-3xl text-[var(--color-midnight-900)] sm:text-4xl">
+        {t.readOnlineH2}
+      </h2>
+      <p class="mt-6 font-text text-lg leading-relaxed text-[var(--color-text)]">
+        {t.readOnlineBody}
+      </p>
+      <div class="mt-8">
+        <Button href="/collectors-guide" variant="primary" size="lg">{t.readOnlineCTA}</Button>
+      </div>
+    </Reveal>
+  </Section>
+
   <Section tone="surface" space="md">
     <MarketplaceCTA heading={t.marketplaceCTAHeading as string} tone="paper" />
   </Section>

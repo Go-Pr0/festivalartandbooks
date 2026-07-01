@@ -1,51 +1,42 @@
 seo:
-  title: "Festival in the Shire: Mark Faith’s 2010 Tolkien Festival | Festival Art & Books"
+  title: "Festival in the Shire | Festival Art & Books"
   description: >-
-    Festival in the Shire was a three-day Tolkien festival created by Mark Faith in 2010, with
-    500+ attendees, expert lectures, an art show and a fan exposition. Plans to revive it.
+    Tolkien Fan Festival by Festival Art and Books celebrates the world of Tolkien. Join us today.
 
 figures:
   - key: montageOne
     src: "../../assets/story/festival-in-the-shire-2010-event-montage.jpg"
-    alt: "Photo montage from Festival in the Shire 2010 showing community events, performances and exhibitions"
-    caption: "A montage from Festival in the Shire 2010: lectures, art, stalls and entertainment over three days."
+    alt: "Collage of community events and performances"
     frame: "portrait"
     delay: 80
   - key: montageTwo
     src: "../../assets/story/festival-in-the-shire-2010-event-montage-two.jpg"
-    alt: "Further photo montage from Festival in the Shire 2010 capturing attendees and exhibition stands"
-    caption: "More from the festival weekend: 500+ attendees gathered for the celebration."
+    alt: "Photo montage from Festival in the Shire 2010"
     delay: 160
 
 text:
-  heroEyebrow: "2010 · Mid-Wales"
+  heroEyebrow: "2010"
   heroH1: "Festival in the Shire"
   heroIntro: >-
-    Festival in the Shire was one of the biggest Tolkien events of 2010, created and staged by
-    Mark Faith of Festival Art and Books. Held over three days with more than 500 attendees, it
-    brought together academic Tolkien experts giving lectures, an art show, stalls,
-    entertainment and a fan exposition. It was both a major event for fans and a focal point for
-    worldwide collectors of Tolkien books and Tolkien-inspired art.
+    One of the biggest Tolkien events in 2010 was Festival in the Shire.
 
   whatWasH2: "What was Festival in the Shire?"
   whatWasP1: >-
-    One of the biggest Tolkien events in 2010 was Festival in the Shire. With over 500
-    attendees and held over three days, there was a comprehensive cast of academic Tolkien
-    experts giving lectures, with an art show, stalls, entertainment and a fan exposition.
+    With over 500 attendees and held over three days, there was a comprehensive cast of
+    academic Tolkien academic experts giving lectures, with an art show, stalls,
+    entertainment and fan exposition.
   whatWasP2: >-
     This was not just about collecting Tolkien Rare Books, but a journey into the amazing
     writing and the author himself.
 
   whatHappenedH2: "What happened after?"
   whatHappenedP1: >-
-    For three years afterwards, Mark held smaller local events, including one in Scotland and
-    another in the Netherlands, followed by occasional book and art exhibitions. He continues
-    to hold small exhibitions and fan events, both for fans and for serious collectors.
+    For three years after we held smaller local events including one in Scotland and another
+    in the Netherlands. Later we did occasional book and art exhibitions.
 
   willReturnH2: "Will the festival return?"
   willReturnP1: >-
-    Yes, there are plans to stage these events again. As a new cycle of Tolkien film and
-    fandom begins, keep an eye on this site for announcements.
+    Keep your eye on our website as we have plans to do these again.
 
   ctaEvents: "See past & upcoming events"
   ctaContact: "Register your interest"

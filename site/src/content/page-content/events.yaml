@@ -1,13 +1,16 @@
 seo:
   title: "Events: Tolkien Exhibitions & Talks by Mark Faith | Festival Art & Books"
-  description: "Past and occasional Tolkien events from Festival Art and Books: rare books, art exhibitions and talks in Wales, the Netherlands and Scotland, with new events planned."
+  description: "Tolkien Collector Events by Festival Art and Books bring fans together. Learn more today."
 
 text:
   heroEyebrow: "Exhibitions & talks"
   heroH1: "Events"
-  heroIntro: "We have no Tolkien Rare Book events scheduled, but have plans to start them again soon. Watch this space. We sometimes exhibit at others’ events. If you would be interested in having us exhibit at your event, please contact us. Some past events are highlighted below. In addition, we organised our own very large event with over 500 attendees, <a class=\"underline decoration-[var(--color-gold-500)]/60 underline-offset-4\" href=\"/festival-in-the-shire\">Festival in the Shire</a> in 2010."
+  heroIntro: >-
+    We have no Tolkien Rare Book events scheduled, but have plans to start them again soon. Watch this space.
+
+    We sometimes exhibit at others' events. If you would be interested in having us exhibit at your event, please contact us. Some past events are highlighted below. In addition, we organised our own very large event with over 500 attendees, Festival in the Shire in 2010. See the <a class="underline decoration-[var(--color-gold-500)]/60 underline-offset-4" href="/festival-in-the-shire">link</a>.
   pastEventsHeading: "Past events"
   moreEventsHeading: "More events planned"
-  moreEventsParagraph: "Mark intends to stage new exhibitions and talks. To hear about the next one, or to discuss a private viewing of rare Tolkien books and art, get in touch."
+  moreEventsParagraph: "If you would be interested in having us exhibit at your event, please contact us."
   ctaButtonFestival: "About Festival in the Shire"
   ctaButtonContact: "Register your interest"

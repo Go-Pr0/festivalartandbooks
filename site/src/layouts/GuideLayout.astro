@@ -4,7 +4,7 @@
  * an optional FAQPage block, breadcrumbs, and a visible "Last updated" freshness date.
  */
 import type { CollectionEntry } from 'astro:content';
-import { render } from 'astro:content';
+import { render, getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
 
 import BaseLayout from '@/layouts/BaseLayout.astro';
@@ -24,6 +24,33 @@ const { data } = entry;
 const { Content } = await render(entry);
 
 const url = `/guides/${entry.id}`;
+const isCollectorsGuide = data.cluster === 'collectors-guide';
+
+let prevChapter: CollectionEntry<'guides'> | null = null;
+let nextChapter: CollectionEntry<'guides'> | null = null;
+
+if (isCollectorsGuide) {
+  const siblings = (await getCollection('guides', ({ data: d }) =>
+    d.cluster === 'collectors-guide' && !d.draft,
+  )).sort(
+    (a, b) => (a.data.chapterOrder ?? 0) - (b.data.chapterOrder ?? 0),
+  );
+  const idx = siblings.findIndex((s) => s.id === entry.id);
+  if (idx > 0) prevChapter = siblings[idx - 1]!;
+  if (idx >= 0 && idx < siblings.length - 1) nextChapter = siblings[idx + 1]!;
+}
+
+const breadcrumbTrail = isCollectorsGuide
+  ? [
+      { name: 'Home', url: '/' },
+      { name: "The Tolkien Collector's Guide", url: '/collectors-guide' },
+      { name: data.title, url },
+    ]
+  : [
+      { name: 'Home', url: '/' },
+      { name: 'Guides', url: '/guides' },
+      { name: data.title, url },
+    ];
 
 const dateFormat = new Intl.DateTimeFormat('en-GB', {
   day: 'numeric',
@@ -53,14 +80,18 @@ if (data.faq && data.faq.length > 0) {
   schema={schema}
 >
   <Section tone="parchment" space="md">
-    <Breadcrumbs
-      trail={[
-        { name: 'Home', url: '/' },
-        { name: 'Guides', url: '/guides' },
-        { name: data.title, url },
-      ]}
-    />
+    <Breadcrumbs trail={breadcrumbTrail} />
     <Reveal as="header" class="mt-8 max-w-[var(--content-max)]">
+      {isCollectorsGuide && (
+        <p class="mb-4 font-ui text-sm">
+          <a
+            href="/collectors-guide"
+            class="text-[var(--color-oxblood-600)] underline decoration-[var(--color-gold-600)]/40 underline-offset-4 hover:decoration-[var(--color-oxblood-600)]"
+          >
+            Part of The Tolkien Collector's Guide
+          </a>
+        </p>
+      )}
       {data.pillar && (
         <p class="font-ui text-xs uppercase tracking-[0.2em] text-[var(--color-gold-600)]">
           Cornerstone Guide
@@ -110,6 +141,43 @@ if (data.faq && data.faq.length > 0) {
             </div>
           ))}
         </dl>
+      </Reveal>
+    )}
+
+    {isCollectorsGuide && (prevChapter || nextChapter) && (
+      <Reveal class="mx-auto mt-16 max-w-[var(--content-max)] border-t border-[var(--color-gold-600)]/20 pt-8">
+        <nav aria-label="Chapter navigation" class="grid gap-4 sm:grid-cols-2">
+          {prevChapter ? (
+            <a
+              href={`/guides/${prevChapter.id}`}
+              class="group rounded-[var(--radius)] border border-[var(--color-gold-600)]/25 p-5 transition-colors hover:border-[var(--color-gold-500)]"
+            >
+              <span class="font-ui text-xs uppercase tracking-[0.2em] text-[var(--color-gold-600)]">
+                Previous chapter
+              </span>
+              <span class="mt-2 block font-display text-xl text-[var(--color-midnight-900)] group-hover:text-[var(--color-oxblood-600)]">
+                {prevChapter.data.title}
+              </span>
+            </a>
+          ) : (
+            <div />
+          )}
+          {nextChapter ? (
+            <a
+              href={`/guides/${nextChapter.id}`}
+              class="group rounded-[var(--radius)] border border-[var(--color-gold-600)]/25 p-5 text-left transition-colors hover:border-[var(--color-gold-500)] sm:text-right"
+            >
+              <span class="font-ui text-xs uppercase tracking-[0.2em] text-[var(--color-gold-600)]">
+                Next chapter
+              </span>
+              <span class="mt-2 block font-display text-xl text-[var(--color-midnight-900)] group-hover:text-[var(--color-oxblood-600)]">
+                {nextChapter.data.title}
+              </span>
+            </a>
+          ) : (
+            <div />
+          )}
+        </nav>
       </Reveal>
     )}
 

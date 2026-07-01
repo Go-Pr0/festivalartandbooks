@@ -1,30 +1,49 @@
 seo:
-  title: "News & Media: Press Coverage of Mark Faith | Festival Art & Books"
+  title: "NEWS/MEDIA | Festival Art and Books"
   description: >-
-    Two decades of press and media coverage of Mark Faith and Festival Art and Books: the BBC,
-    WalesOnline, CBS News, Tolkien Library, AbeBooks and more on rare Tolkien books.
+    Tolkien Book News from Festival Art and Books covering collecting trends. Read more today.
 
 figures:
   - key: press
     src: ../../assets/story/mark-faith-press-media-hobbit-first-edition.jpg
-    alt: An autographed headshot above a handwritten thank-you card sent to Mark Faith for the use of a first-edition Hobbit
-    caption: Press and production thanks for the use of Mark’s first-edition Hobbit.
+    alt: Autographed headshot above handwritten thank-you card
     frame: portrait
     delay: 120
     sizes: "(min-width: 1024px) 22rem, 80vw"
 
 text:
-  heroEyebrow: As seen in
-  heroH1: News & media
+  heroEyebrow: ""
+  heroH1: "NEWS/MEDIA"
   heroIntro: >-
-    Over the last 20 years Mark Faith and Festival Art and Books have been covered across the
-    press and Tolkien community, from the BBC and WalesOnline to CBS News, the Tolkien Library
-    and AbeBooks. Below is a sample of the official mentions we endorse; there have been many
-    more besides.
-  pressHeading: Press & media coverage
-  pressIntro: A selection of official media links from across two decades of Tolkien dealing and events.
-  moreCoverageHeading: More coverage
+    A sample of old media links over the last 20 years!  These are the official ones we
+    endorsed, but we have appeared on hundreds more as links.
+  pressHeading: ""
+  pressIntro: ""
+  moreCoverageHeading: ""
   moreCoverageP: >-
-    Mark and artist Rodney Matthews were also interviewed for a feature documentary on the
-    Nazareth DVD <em>No Means of Escape</em>, filmed live at Metropolis Studios. For more on
-    Mark’s on-screen work, see his <a class="underline decoration-[var(--color-gold-500)]/60 underline-offset-4" href="/tv-appearances">TV appearances</a>.
+    <p><strong>First Edition Hobbit appears on ITV's Masterpiece programme</strong><br>
+    Masterpiece With Alan Titchmarsh Thursday 18 Feb<br>
+    Episode 4 – Teams try to uncover the most rare and valuable pieces at Kentwell Hall in Suffolk.</p>
+
+    <p><strong>Interview with Mark Faith and Rodney Matthews</strong><br>
+    on the latest Nazerath DVD<br>
+    Artist Rodney Matthews and his agent Mark D. Faith of Festival Art and Books interviewed for a special feature documentary on the new Nazareth band DVD, No Means of Escape, filmed live at Metropolis Studios.</p>
+
+    <p><strong>The Hobbit first edition fetches £137,000 at auction</strong><br>
+    <a class="underline decoration-[var(--color-gold-500)]/60 underline-offset-4" href="https://www.bbc.co.uk/news/entertainment-arts-33013144">www.bbc.co.uk/news/entertainment-arts-33013144</a></p>
+
+    <p><strong>Latest TV appearance on Channel 4's Four Rooms</strong><br>
+    Mark Faith of Festival Art and Books tries to sell the first ten printings of<br>
+    The Hobbit by JRR Tolkien, June 1st 2014.<br>
+    Mark Faith, promoting Tolkien collecting on TV</p>
+
+    <p><strong>For sale, perhaps the most important original<br>
+    Tolkien related art piece?</strong><br>
+    <a class="underline decoration-[var(--color-gold-500)]/60 underline-offset-4" href="/ballantine/">Click here for more information</a></p>
+
+    <p><strong>Festival in the Shire Exhibition, returns to Scotland</strong><br>
+    11th – 18th November 2013, 2014</p>
+
+    <p>A celebration of fantasy art including classic rock album covers from Roger Dean and Rodney Matthews. The exhibition includes an exhibition of Album covers for the bands YES, ASIA, Uriah Heap, Nazareth, Magnum and other classic rock bands as well as art for books, posters and calendars. Artist signed prints and posters will be available for sale as well as Tolkien books and memorabilia. Rodney Matthews will give a free talk about his art on Tuesday 12th at 6:30pm and again on Saturday 16th at 6:30pm at the Artist Gallery. Come along and have Rodney sign one of his prints for you. Our other fantasy artist works will also be on display.</p>
+
+    <p>For more information including press details, contact <a class="underline decoration-[var(--color-gold-500)]/60 underline-offset-4" href="mailto:MarkFaith@festivalartandbooks.com">MarkFaith@festivalartandbooks.com</a></p>

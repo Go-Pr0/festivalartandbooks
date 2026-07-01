@@ -240,6 +240,12 @@ collections:
         widget: string
         required: false
         hint: e.g. hobbit-first-editions — groups supporting pages under a pillar.
+      - label: Chapter order
+        name: chapterOrder
+        widget: number
+        required: false
+        value_type: int
+        hint: Order within a cluster/series (0 = first chapter)
       - label: Hero image
         name: heroImage
         widget: image
@@ -391,6 +397,39 @@ collections:
               - label: Caption
                 name: caption
                 widget: string
+            summary: '{{fields.caption}}'
+      - name: archive-gallery
+        label: Archive Photo Gallery
+        file: site/src/content/data/archive-gallery.yaml
+        format: yaml
+        media_folder: site/src/assets/archive
+        public_folder: ../../assets/archive
+        fields:
+          - label: Archive photos
+            name: items
+            widget: list
+            fields:
+              - label: Image
+                name: image
+                widget: image
+              - label: Alt text
+                name: alt
+                widget: string
+              - label: Caption
+                name: caption
+                widget: string
+              - label: Category
+                name: category
+                widget: select
+                options:
+                  - label: Article
+                    value: article
+                  - label: Tolkien photo
+                    value: tolkien-photo
+                  - label: Book
+                    value: book
+                  - label: Other
+                    value: other
             summary: '{{fields.caption}}'
   - name: pages_shop_home
     label: Pages — Shop & Home
@@ -602,6 +641,12 @@ collections:
                 widget: markdown
               - label: What we deal in paragraph 2
                 name: whatWeDealInP2
+                widget: markdown
+              - label: Book values heading
+                name: bookValuesHeading
+                widget: string
+              - label: Book values body
+                name: bookValuesBody
                 widget: markdown
               - label: Gallery heading
                 name: galleryHeading
@@ -1246,6 +1291,57 @@ collections:
     label: Pages — Resources
     icon: web
     files:
+      - name: collectors-guide
+        label: Collector's Guide
+        file: site/src/content/page-content/collectors-guide.yaml
+        format: yaml
+        media_folder: site/src/assets/showcase
+        public_folder: ../../assets/showcase
+        fields:
+          - label: SEO
+            name: seo
+            widget: object
+            fields:
+              - label: Meta title
+                name: title
+                widget: string
+                required: true
+              - label: Meta description
+                name: description
+                widget: text
+                hint: Short summary for Google and social previews — aim for ~150 characters.
+            collapsed: true
+          - label: Hero image
+            name: heroImage
+            widget: image
+            required: false
+          - label: Hero image alt text
+            name: heroImageAlt
+            widget: string
+            required: false
+          - label: Page copy
+            name: text
+            widget: object
+            fields:
+              - label: Hero eyebrow
+                name: heroEyebrow
+                widget: string
+              - label: Hero H1
+                name: heroH1
+                widget: string
+              - label: Hero intro
+                name: heroIntro
+                widget: markdown
+              - label: Chapters heading
+                name: chaptersHeading
+                widget: string
+              - label: Read online CTA
+                name: ctaReadOnline
+                widget: string
+              - label: Download CTA
+                name: ctaDownload
+                widget: string
+            collapsed: true
       - name: ebook
         label: E-book
         file: site/src/content/page-content/ebook.yaml
@@ -1329,9 +1425,101 @@ collections:
               - label: Request e-book CTA
                 name: ctaRequestEbook
                 widget: string
+              - label: Read online eyebrow
+                name: readOnlineEyebrow
+                widget: string
+              - label: Read online H2
+                name: readOnlineH2
+                widget: string
+              - label: Read online body
+                name: readOnlineBody
+                widget: markdown
+              - label: Read online CTA
+                name: readOnlineCTA
+                widget: string
               - label: Marketplace CTA heading
                 name: marketplaceCTAHeading
                 widget: string
+            collapsed: true
+      - name: photo-gallery
+        label: Photo Gallery
+        file: site/src/content/page-content/photo-gallery.yaml
+        format: yaml
+        media_folder: site/src/assets/archive
+        public_folder: ../../assets/archive
+        fields:
+          - label: SEO
+            name: seo
+            widget: object
+            fields:
+              - label: Meta title
+                name: title
+                widget: string
+                required: true
+              - label: Meta description
+                name: description
+                widget: text
+                hint: Short summary for Google and social previews — aim for ~150 characters.
+            collapsed: true
+          - label: Hero image
+            name: heroImage
+            widget: image
+            required: false
+          - label: Hero image alt text
+            name: heroImageAlt
+            widget: string
+            required: false
+          - label: Page copy
+            name: text
+            widget: object
+            fields:
+              - label: Hero eyebrow
+                name: heroEyebrow
+                widget: string
+              - label: Hero H1
+                name: heroH1
+                widget: string
+              - label: Hero intro
+                name: heroIntro
+                widget: markdown
+              - label: Empty gallery heading
+                name: emptyGalleryHeading
+                widget: string
+              - label: Empty gallery body
+                name: emptyGalleryBody
+                widget: markdown
+            collapsed: true
+      - name: resources
+        label: Resources
+        file: site/src/content/page-content/resources.yaml
+        format: yaml
+        fields:
+          - label: SEO
+            name: seo
+            widget: object
+            fields:
+              - label: Meta title
+                name: title
+                widget: string
+                required: true
+              - label: Meta description
+                name: description
+                widget: text
+                hint: Short summary for Google and social previews — aim for ~150 characters.
+            collapsed: true
+          - label: Page copy
+            name: text
+            widget: object
+            fields:
+              - label: Hero eyebrow
+                name: heroEyebrow
+                widget: string
+              - label: Hero H1
+                name: heroH1
+                widget: string
+              - label: Hero intro
+                name: heroIntro
+                widget: markdown
             collapsed: true
       - name: tolkien-art
         label: Tolkien Art

@@ -215,6 +215,11 @@ export function guidesFields() {
       required: false,
       hint: 'e.g. hobbit-first-editions — groups supporting pages under a pillar.',
     }),
+    numberField('Chapter order', 'chapterOrder', {
+      required: false,
+      value_type: 'int',
+      hint: 'Order within a cluster/series (0 = first chapter)',
+    }),
     imageField('Hero image', 'heroImage', { required: false }),
     stringField('Hero image alt text', 'heroAlt', { required: false }),
     datetimeField('Date published', 'datePublished'),
@@ -342,6 +347,22 @@ export function rareBooksGalleryListFields() {
       imageField('Image', 'image'),
       stringField('Alt text', 'alt'),
       stringField('Caption', 'caption'),
+    ], { summary: '{{fields.caption}}' }),
+  ];
+}
+
+export function archiveGalleryListFields() {
+  return [
+    listField('Archive photos', 'items', [
+      imageField('Image', 'image'),
+      stringField('Alt text', 'alt'),
+      stringField('Caption', 'caption'),
+      selectField('Category', 'category', [
+        { label: 'Article', value: 'article' },
+        { label: 'Tolkien photo', value: 'tolkien-photo' },
+        { label: 'Book', value: 'book' },
+        { label: 'Other', value: 'other' },
+      ]),
     ], { summary: '{{fields.caption}}' }),
   ];
 }

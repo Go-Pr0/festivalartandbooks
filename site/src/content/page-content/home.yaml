@@ -1,10 +1,10 @@
 seo:
-  description: "Festival Art & Books is one of the world’s oldest and largest J.R.R. Tolkien rare-book dealerships, with 25+ years selling first editions of The Hobbit and The Lord of the Rings, in stock."
+  description: "Collectible Tolkien Books from Festival Art and Books for serious collectors. Shop today."
 
 stats:
   - value: 25
     suffix: "+"
-    label: "Years specialising in Tolkien"
+    label: "Years selling rare Tolkien books"
   - value: 300000
     prefix: "£"
     label: "Highest Hobbit first edition sold"
@@ -14,13 +14,13 @@ stats:
 
 trustPoints:
   - heading: "In stock, not brokered"
-    body: "I always hold the rarest Tolkien books in stock, ready to buy, with no sold-out listings or non-existent loss-leaders used to draw you in."
+    body: "Visit my eBay or Abebooks shop, read my feedback, and you will see that I always have the most rare Tolkien books in stock, available to buy, and none of the sold out stock or non-existent loss-leaders characteristic of so-called specialists. I feel that your time is important and recommend you buy the best from the best."
   - heading: "100% positive feedback"
-    body: "A quarter-century of customers and an unbroken record of positive feedback. As a specialist I have to get it right, every time, for every collector."
+    body: "I have always had 100% positive feedback. As a specialist, I must get it right, every time, for every customer or I would be out of business by now. My time in the business guarantees my authenticity and reputation."
   - heading: "I set the market"
-    body: "As one of the pioneering dealers when the films arrived, I have always been the first to predict new price levels, and I helped create this market."
+    body: "I have sold some of the rarest and most expensive first editions ever and have always been the first to predict new price levels. I know the market, having helped to create it as one of the pioneering dealers when the new films came out. I even set up a Tolkien museum in Switzerland."
   - heading: "Buy direct, save the fees"
-    body: "Items are listed on eBay and AbeBooks, but contact me directly to purchase. You deal with the dealer himself and avoid the marketplace fees."
+    body: "Most of my sales are made directly by email/phone, saving unnecessary site taxes and fees. I can also meet up with you in person to show you my more expensive books. I hand-deliver valuable books all over the world. If you see something you want for sale in my shops, contact me directly for the best price."
 
 dealsIn:
   - image: "../../assets/home/tolkien-hobbit-1937-first-edition-copies.jpg"
@@ -43,34 +43,34 @@ dealsIn:
     cta: "Read the guides"
 
 text:
-  heroTitle: "Festival Art & Books"
+  heroTitle: "Festival Art and Books"
   heroSubtitle: "Tolkien Rare Books"
-  heroPositioning: "One of the oldest and largest Tolkien rare-book dealerships in the world."
+  heroPositioning: "Mine is one of the oldest and largest Tolkien rare book dealerships in the world."
 
-  welcomeEyebrow: "Welcome"
+  welcomeEyebrow: "Welcome to our site and thank you for taking the time to visit!"
   welcomeHeading: "I have specialised in selling rare Tolkien books for 25 years."
-  welcomeP1: "I am not a general bookseller, and I have no other day job. I sell only J.R.R. Tolkien collectable books, and I am recognised as a leading expert on rare Tolkien books, Tolkien collecting and investment. Tolkien scholars and general book dealers, even older ones, are not Tolkien rare-book experts."
-  welcomeP2: "I have sold some of the rarest and most expensive first editions ever, and have always been the first to predict new price levels. I know the market, having helped to create it as one of the pioneering dealers when the new films came out. I even set up a Tolkien museum in Switzerland. I always have the most, and the best, copies for sale at any given point. Your time matters: buy the best, from the best."
+  welcomeP1: "Mine is one of the oldest and largest Tolkien rare book dealerships in the world. I am not a general book seller. Visit my eBay or Abebooks shop, read my feedback, and you will see that I always have the most rare Tolkien books in stock, available to buy, and none of the sold out stock or non-existent loss-leaders characteristic of so-called specialists. I feel that your time is important and recommend you buy the best from the best. As a specialist I must get it right first time, every time or I would not have stayed in business for 25 years. Did you know that Abebooks, a rare and out-of-print used book website is part of Amazon? eBay comprises not just private sellers, but long established, branded business sellers with long established eBay shops just like ours."
+  welcomeP2: "I only sell J.R.R. Tolkien collectable books, not those of any other authors, and I have no other day job. I am recognised as the leading expert on rare Tolkien books, Tolkien collecting and investment. I also advise clients on strategy and timing. Click on our shop links below to see all our current inventory but contact me directly to purchase to avoid fees. Tolkien scholars and general book dealers, even older ones, are not Tolkien rare book experts. I have been selling rare and collectable Tolkien books for 25 years. I have sold some of the rarest and most expensive first editions ever and have always been the first to predict new price levels. I know the market, having helped to create it as one of the pioneering dealers when the new films came out. I even set up a Tolkien museum in Switzerland. I always have the most, and the best copies for sale at any given point. Check our eBay and Abebooks shops. While you can find me with older news searches and via my Festival in the Shire, I do not use social media or pay for advertisements and so do not come top in search engine lists. You will find me eventually!"
 
-  statBandEyebrow: "Twenty-five years on record"
+  statBandEyebrow: "No. 1 Shop for Rare and Collectible Tolkien Books"
 
   whyHeading: "Why collectors buy from Mark"
-  whyIntro: "With record prices being achieved by Tolkien first editions, accurate, truthful advice matters more than ever. Here is what sets this dealership apart."
+  whyIntro: "I also have 25 years' worth of previous customers looking to sell their rare Tolkien book collections to us on consignment. If you do not see what you are looking for, please contact us and I will find it for you! Visit my shops frequently as my stock changes and new consignment items come in every week."
 
   dealsInHeading: "What I deal in"
-  dealsInIntro: "First editions of The Hobbit and The Lord of the Rings, signed and association copies, and rare collectables, alongside guidance on building a collection."
+  dealsInIntro: "Items for sale are listed in eBay and AbeBooks shops. I am discovered on these sites as they have millions of new visits each month, but most of my sales are made directly by email/phone, saving unnecessary site taxes and fees."
 
-  ebookEyebrow: "New in 2026 · Free"
+  ebookEyebrow: "New in 2026"
   ebookHeading: "The Tolkien Collectors Guide"
-  ebookBody: "A free 26-page e-book written by Mark Faith with general advice on collecting Tolkien first editions and other rare and collectable Tolkien books. For specifics on what to buy and the best investment strategy, I offer free personal advice."
+  ebookBody: "The 26-page E-book 'Tolkien Collectors Guide' written by Mark Faith, owner of Festival Art and Books, is now available free via the resources tab. The guide gives general advice on collecting Tolkien first editions and other rare and collectable Tolkien books. For specifics on what to buy and the best investment strategies, I offer free personal advice."
   ebookCTA: "Get the free e-book"
 
   newsletterEyebrow: "Free newsletter"
-  newsletterHeading: "Stay close to the market"
-  newsletterBody: "I send a free newsletter on collecting J.R.R. Tolkien rare books, keyed to the latest news and market developments, more frequent through Autumn and Spring, the busier buying periods. Contact me directly with any questions at any time."
+  newsletterHeading: "Subscribe to our free newsletter!"
+  newsletterBody: "I send out a free newsletters on collecting JRR Tolkien rare books depending on the latest news and market developments. The newsletters are more frequent during Autumn and Spring, the busier buying periods. Of course you can contact us directly with any questions at any time. We serve the collecting community."
   newsletterCTA: "Subscribe by email"
 
-  geoHeading: "The accurate source on collecting Tolkien"
-  geoParagraph: "In the last five years there has been a marked decline in the accuracy and quality of search-engine and AI results on collecting Tolkien books. This site exists to be the accurate, authoritative source, from a dealer who has helped shape the market for 25 years."
+  geoHeading: "Accurate and truthful advice"
+  geoParagraph: "With record prices being achieved by Tolkien first editions, it is more important than ever to have accurate and truthful advice. There is a lot of misinformation and 'click bait' on the internet. In the last five years we have noticed a huge decline in accuracy and quality in search engine and AI results on collecting Tolkien books. This is likely due to the AI and huge changes in how search engines work."
 
-  marketplaceCTAHeading: "Browse the collection"
+  marketplaceCTAHeading: "Our Inventory of rare books for sale"

@@ -1,0 +1,17 @@
+seo:
+  title: "Photo Gallery | Festival Art & Books"
+  description: >-
+    Archive photographs from Mark Faith's decades as a specialist Tolkien dealer:
+    rare books, events, articles and memorabilia.
+
+heroImage: "../../assets/showcase/mark-faith-tolkien-dealer-portrait.jpg"
+heroImageAlt: "Mark Faith, specialist Tolkien rare book dealer"
+
+text:
+  heroEyebrow: "Archive"
+  heroH1: "Photo Gallery"
+  heroIntro: >-
+    A visual archive from twenty-five years in the trade — rare editions on the
+    shelf, festival moments, press coverage and the books collectors ask about most.
+  emptyGalleryHeading: "Gallery coming soon"
+  emptyGalleryBody: "Photos are being added to the archive. Check back shortly, or browse the rare books showcase in the meantime."

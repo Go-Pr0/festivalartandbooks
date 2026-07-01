@@ -46,3 +46,6 @@ coverage/
 
 # Decap CMS local uploads cache (if any)
 .decap/
+
+# eBay sync session cookies (local only)
+site/.ebay-sync-cookies.txt

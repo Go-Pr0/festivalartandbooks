@@ -62,12 +62,18 @@ const schema = collectionPage({
   </Section>
 
   <Section space="lg">
-    <Reveal as="div" mode="up">
-      <h2 class="font-display text-3xl text-[var(--color-midnight-900)] sm:text-4xl">{t.pressHeading}</h2>
-      <p class="mt-3 max-w-prose font-text text-lg text-[var(--color-muted)]">
-        {t.pressIntro}
-      </p>
-    </Reveal>
+    {(t.pressHeading || t.pressIntro) && (
+      <Reveal as="div" mode="up">
+        {t.pressHeading && (
+          <h2 class="font-display text-3xl text-[var(--color-midnight-900)] sm:text-4xl">{t.pressHeading}</h2>
+        )}
+        {t.pressIntro && (
+          <p class:list={['max-w-prose font-text text-lg text-[var(--color-muted)]', t.pressHeading && 'mt-3']}>
+            {t.pressIntro}
+          </p>
+        )}
+      </Reveal>
+    )}
     <ul class="mt-10 grid gap-4 sm:grid-cols-2">
       {mentions.map((mention, i) => (
         <Reveal as="li" mode="up" delay={(i % 2) * 70}>
@@ -87,8 +93,10 @@ const schema = collectionPage({
 
   <Section tone="parchment" space="md">
     <Reveal as="div" mode="up" class="max-w-2xl">
-      <h2 class="font-display text-2xl text-[var(--color-midnight-900)] sm:text-3xl">{t.moreCoverageHeading}</h2>
-      <p class="mt-3 font-text text-lg leading-relaxed text-[var(--color-text)]">
+      {t.moreCoverageHeading && (
+        <h2 class="font-display text-2xl text-[var(--color-midnight-900)] sm:text-3xl">{t.moreCoverageHeading}</h2>
+      )}
+      <p class:list={['font-text text-lg leading-relaxed text-[var(--color-text)]', t.moreCoverageHeading && 'mt-3']}>
         <Fragment set:html={t.moreCoverageP} />
       </p>
     </Reveal>

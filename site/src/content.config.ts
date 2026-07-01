@@ -64,6 +64,7 @@ const guides = defineCollection({
       title: z.string(),
       description: z.string(), // meta description + first-100-words answer summary
       pillar: z.boolean().default(false),
+      chapterOrder: z.number().optional(), // 0 = first chapter within a cluster/series
       cluster: z.string().optional(), // e.g. "hobbit-first-editions"
       heroImage: image().optional(),
       heroAlt: z.string().optional(),
@@ -152,6 +153,17 @@ const rareBooksGallery = defineCollection({
   schema: ({ image }) => z.object({ image: image(), alt: z.string(), caption: z.string() }),
 });
 
+const archiveGallery = defineCollection({
+  loader: orderedList('./src/content/data/archive-gallery.yaml'),
+  schema: ({ image }) =>
+    z.object({
+      image: image(),
+      alt: z.string(),
+      caption: z.string(),
+      category: z.enum(['article', 'tolkien-photo', 'book', 'other']),
+    }),
+});
+
 // Per-page singletons. id = filename (home, about, ...). All fields optional; pages use a subset.
 const pageContent = defineCollection({
   loader: glob({ pattern: '*.yaml', base: './src/content/page-content' }),
@@ -192,5 +204,6 @@ export const collections = {
   mediaMentions,
   usedBooksFaqs,
   rareBooksGallery,
+  archiveGallery,
   pageContent,
 };

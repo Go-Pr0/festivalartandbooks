@@ -24,7 +24,8 @@ interface Props {
 
 const { entry } = Astro.props as Props;
 const { data } = entry;
-const { Content } = await render(entry);
+const { Content, headings } = await render(entry);
+const hasBody = headings.length > 0 || (entry.body?.trim().length ?? 0) > 0;
 
 const slug = entry.id;
 const url = `/books/${slug}`;
@@ -206,11 +207,13 @@ const specs: { label: string; value: string }[] = [
     </Reveal>
   </Section>
 
-  <Section tone="paper" space="md" width="prose">
-    <Reveal>
-      <Prose as="article">
-        <Content />
-      </Prose>
-    </Reveal>
-  </Section>
+  {hasBody && (
+    <Section tone="paper" space="md" width="prose">
+      <Reveal>
+        <Prose as="article">
+          <Content />
+        </Prose>
+      </Reveal>
+    </Section>
+  )}
 </BaseLayout>

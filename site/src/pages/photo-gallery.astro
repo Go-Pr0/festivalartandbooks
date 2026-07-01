@@ -1,0 +1,143 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Section from '@/components/Section.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import Reveal from '@/components/Reveal.astro';
+import Button from '@/components/Button.astro';
+import Gallery from '@/components/showcase/Gallery.astro';
+import type { GalleryItem } from '@/components/showcase/Gallery.astro';
+import { collectionPage } from '@/lib/schema';
+import { getEntry, getCollection } from 'astro:content';
+
+const PATH = '/photo-gallery';
+
+const page = (await getEntry('pageContent', 'photo-gallery'))!;
+const t = page.data.text!;
+
+const title = page.data.seo!.title!;
+const description = page.data.seo!.description!;
+
+const trail = [
+  { name: 'Home', url: '/' },
+  { name: 'Photo Gallery', url: PATH },
+];
+
+const categories = [
+  { id: 'all', label: 'All' },
+  { id: 'article', label: 'Articles' },
+  { id: 'tolkien-photo', label: 'Tolkien Photos' },
+  { id: 'book', label: 'Books' },
+  { id: 'other', label: 'Other' },
+] as const;
+
+const gallery: GalleryItem[] = (await getCollection('archiveGallery'))
+  .sort((a, b) => a.id.localeCompare(b.id))
+  .map((item) => ({
+    src: item.data.image,
+    alt: item.data.alt,
+    caption: item.data.caption,
+    category: item.data.category,
+  }));
+
+const schema = collectionPage({
+  name: 'Photo Gallery',
+  description,
+  url: PATH,
+  items: gallery.map((item) => ({ name: item.alt, url: PATH })),
+});
+---
+<BaseLayout title={title} description={description} schema={schema}>
+  <Section tone="midnight" space="md">
+    <Breadcrumbs trail={trail} class="text-[var(--color-parchment)]/70" />
+    <Reveal as="header" class="mt-10 max-w-3xl">
+      <p class="font-ui text-xs uppercase tracking-[0.25em] text-[var(--color-gold-300)]">
+        {t.heroEyebrow}
+      </p>
+      <h1 class="mt-3 font-display text-4xl leading-tight text-[var(--color-parchment)] sm:text-5xl lg:text-6xl">
+        {t.heroH1}
+      </h1>
+      <p class="mt-6 font-text text-xl leading-relaxed text-[var(--color-parchment)]/90">
+        {t.heroIntro}
+      </p>
+    </Reveal>
+  </Section>
+
+  <Section space="lg">
+    {gallery.length > 0 ? (
+      <>
+        <Reveal>
+          <div class="flex flex-wrap gap-2" role="tablist" aria-label="Filter gallery by category">
+            {categories.map((cat) => (
+              <button
+                type="button"
+                role="tab"
+                aria-selected={cat.id === 'all'}
+                class="gallery-tab rounded-full border border-[var(--color-gold-600)]/30 px-4 py-2 font-ui text-sm text-[var(--color-midnight-900)] transition-colors hover:border-[var(--color-gold-500)] data-[active]:border-[var(--color-gold-600)] data-[active]:bg-[var(--color-parchment-dim)]"
+                data-filter={cat.id}
+              >
+                {cat.label}
+              </button>
+            ))}
+          </div>
+        </Reveal>
+        <Gallery items={gallery} columns={3} filterable class="mt-10" />
+        <p id="gallery-filter-empty" class="mt-10 hidden font-text text-lg text-[var(--color-muted)]" hidden>
+          No photos in this category yet.
+        </p>
+      </>
+    ) : (
+      <Reveal class="max-w-2xl text-center sm:mx-auto">
+        <h2 class="font-display text-2xl text-[var(--color-midnight-900)] sm:text-3xl">
+          {t.emptyGalleryHeading}
+        </h2>
+        <p class="mt-4 font-text text-lg leading-relaxed text-[var(--color-muted)]">
+          {t.emptyGalleryBody}
+        </p>
+        <div class="mt-6">
+          <Button href="/rare-tolkien-books-collectables" variant="primary">
+            Browse rare books
+          </Button>
+        </div>
+      </Reveal>
+    )}
+  </Section>
+</BaseLayout>
+
+{gallery.length > 0 && (
+  <script>
+    function initGalleryFilter() {
+      const tabs = document.querySelectorAll<HTMLButtonElement>('.gallery-tab');
+      const grid = document.querySelector('[data-gallery]');
+      const empty = document.getElementById('gallery-filter-empty');
+      if (!tabs.length || !grid) return;
+
+      const items = grid.querySelectorAll<HTMLElement>('li[data-category]');
+
+      function setActive(filter: string) {
+        let visible = 0;
+        items.forEach((item) => {
+          const show = filter === 'all' || item.dataset.category === filter;
+          item.hidden = !show;
+          if (show) visible++;
+        });
+        tabs.forEach((tab) => {
+          const active = tab.dataset.filter === filter;
+          tab.dataset.active = active ? '' : undefined;
+          tab.setAttribute('aria-selected', String(active));
+        });
+        if (empty) {
+          empty.hidden = visible > 0;
+          empty.classList.toggle('hidden', visible > 0);
+        }
+      }
+
+      tabs.forEach((tab) => {
+        tab.addEventListener('click', () => setActive(tab.dataset.filter ?? 'all'));
+      });
+      setActive('all');
+    }
+
+    initGalleryFilter();
+    document.addEventListener('astro:after-swap', initGalleryFilter);
+  </script>
+)}
