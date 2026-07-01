@@ -1,0 +1,140 @@
+---
+/**
+ * Compact single-row catalogue controls — search, type, price, sort, presets.
+ * Wraps on small screens. Wired by catalogue-filter.ts.
+ */
+interface Props {
+  totalCount: number;
+  minPrice: number;
+  maxPrice: number;
+}
+
+const { totalCount, minPrice, maxPrice } = Astro.props;
+
+const minPlaceholder = Math.floor(minPrice);
+const maxPlaceholder = Math.ceil(maxPrice);
+
+/** Shared control chrome — same height, radius, and border for inputs + select. */
+const fieldClass =
+  'h-10 rounded-[var(--radius)] border border-[var(--color-gold-600)]/30 bg-[var(--color-surface)] px-2.5 font-ui text-sm text-[var(--color-midnight-900)] placeholder:text-[var(--color-muted)] transition-colors focus:border-[var(--color-gold-500)] focus:outline-none focus:ring-1 focus:ring-[var(--color-gold-500)]';
+
+const kindOptions = [
+  { value: 'all', label: 'All' },
+  { value: 'book', label: 'Books' },
+  { value: 'collectable', label: 'Collectables' },
+] as const;
+
+const pricePresets = [
+  { label: '£0–250', min: 0, max: 250 },
+  { label: '£250–1k', min: 250, max: 1000 },
+  { label: '£1k–5k', min: 1000, max: 5000 },
+  { label: '£5k+', min: 5000, max: null },
+] as const;
+---
+
+<div
+  id="catalogue-toolbar"
+  class="sticky top-0 z-20 -mx-4 mb-6 border-b border-[var(--color-gold-600)]/20 bg-[var(--color-bg)]/95 px-4 py-3 backdrop-blur-sm sm:-mx-6 sm:px-6"
+  data-total={totalCount}
+>
+  <div class="flex flex-wrap items-center gap-2">
+    <label for="catalogue-search" class="sr-only">Search catalogue</label>
+    <input
+      type="search"
+      id="catalogue-search"
+      name="q"
+      placeholder="Search…"
+      autocomplete="off"
+      class:list={[fieldClass, 'min-w-[9rem] flex-1 basis-40 sm:max-w-xs']}
+    />
+
+    <div
+      class="flex h-10 shrink-0 items-stretch gap-px overflow-hidden rounded-[var(--radius)] border border-[var(--color-gold-600)]/30"
+      role="group"
+      aria-label="Item type"
+    >
+      {kindOptions.map((opt) => (
+        <button
+          type="button"
+          class="catalogue-kind-btn border-0 bg-[var(--color-surface)] px-2.5 font-ui text-xs text-[var(--color-midnight-900)] transition-colors hover:bg-[var(--color-parchment-dim)] data-[active]:bg-[var(--color-parchment-dim)] data-[active]:text-[var(--color-midnight-900)] sm:px-3 sm:text-sm"
+          data-kind={opt.value}
+          aria-pressed={opt.value === 'all'}
+        >
+          {opt.label}
+        </button>
+      ))}
+    </div>
+
+    <label for="catalogue-min-price" class="sr-only">Minimum price in pounds</label>
+    <input
+      type="number"
+      id="catalogue-min-price"
+      name="min"
+      min="0"
+      step="1"
+      placeholder={`£${minPlaceholder}`}
+      inputmode="numeric"
+      aria-label="Minimum price"
+      class:list={[fieldClass, 'w-[4.75rem] shrink-0 tabular-nums']}
+    />
+
+    <span class="font-ui text-xs text-[var(--color-muted)]" aria-hidden="true">–</span>
+
+    <label for="catalogue-max-price" class="sr-only">Maximum price in pounds</label>
+    <input
+      type="number"
+      id="catalogue-max-price"
+      name="max"
+      min="0"
+      step="1"
+      placeholder={`£${maxPlaceholder}`}
+      inputmode="numeric"
+      aria-label="Maximum price"
+      class:list={[fieldClass, 'w-[5.5rem] shrink-0 tabular-nums']}
+    />
+
+    <div class="relative shrink-0">
+      <label for="catalogue-sort" class="sr-only">Sort by</label>
+      <select id="catalogue-sort" name="sort" class:list={[fieldClass, 'w-[9.5rem] appearance-none pr-7']}>
+        <option value="title-asc">A–Z</option>
+        <option value="title-desc">Z–A</option>
+        <option value="price-asc">Price ↑</option>
+        <option value="price-desc">Price ↓</option>
+      </select>
+      <span
+        class="pointer-events-none absolute top-1/2 right-2 -translate-y-1/2 font-ui text-[0.625rem] text-[var(--color-muted)]"
+        aria-hidden="true"
+      >▼</span>
+    </div>
+
+    <p
+      id="catalogue-count"
+      class="shrink-0 font-ui text-xs text-[var(--color-muted)] sm:text-sm"
+      aria-live="polite"
+    >
+      {totalCount} items
+    </p>
+
+    <div class="flex flex-wrap items-center gap-1.5 sm:ml-1">
+      {pricePresets.map((preset) => (
+        <button
+          type="button"
+          class="catalogue-preset h-7 shrink-0 rounded-[var(--radius)] border border-[var(--color-gold-600)]/25 px-2 font-ui text-[0.6875rem] text-[var(--color-midnight-900)] transition-colors hover:border-[var(--color-gold-500)] data-[active]:border-[var(--color-gold-600)] data-[active]:bg-[var(--color-parchment-dim)] sm:text-xs"
+          data-preset-min={preset.min}
+          data-preset-max={preset.max ?? ''}
+        >
+          {preset.label}
+        </button>
+      ))}
+    </div>
+
+    <button
+      type="button"
+      id="catalogue-clear"
+      class="shrink-0 font-ui text-xs text-[var(--color-oxblood-600)] underline-offset-2 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-gold-500)] hidden sm:text-sm"
+      hidden
+    >
+      Clear
+    </button>
+  </div>
+</div>
