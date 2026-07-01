@@ -21,6 +21,7 @@ import {
   unlink,
 } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
+import { rm } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -250,6 +251,12 @@ async function main() {
   }
 
   console.log(`Wrote ${syncedSlugs.size} catalogue entries to src/content/books/`);
+
+  const astroCache = path.join(SITE_ROOT, '.astro');
+  if (existsSync(astroCache)) {
+    await rm(astroCache, { recursive: true, force: true });
+    console.log('Cleared .astro cache — restart the dev server if it is running.');
+  }
 }
 
 main().catch((err) => {
