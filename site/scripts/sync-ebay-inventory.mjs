@@ -101,23 +101,6 @@ function inferKind(title) {
   return 'book';
 }
 
-/** @param {string} title */
-function cardTitle(title) {
-  const parts = title.split(',').map((s) => s.trim());
-  if (parts.length > 1 && /^J\.?R\.?R\.?\s/i.test(parts[0])) {
-    return parts[0].replace(/^J\.?R\.?R\.?\s*/i, '').trim() || parts[0];
-  }
-  return parts[0];
-}
-
-/** @param {string} title */
-function editionLabel(title) {
-  const parts = title.split(',').map((s) => s.trim());
-  if (parts.length <= 1) return undefined;
-  const rest = parts.slice(1).join(', ');
-  return rest.length > 120 ? `${rest.slice(0, 117)}…` : rest;
-}
-
 /** @param {string} text */
 function yamlQuote(text) {
   return `"${text.replace(/\\/g, '\\\\').replace(/"/g, '\\"')}"`;
@@ -126,19 +109,15 @@ function yamlQuote(text) {
 /** @param {Listing} listing */
 function markdownForListing(listing) {
   const slug = `ebay-${listing.listingId}`;
-  const title = cardTitle(listing.title);
-  const edition = editionLabel(listing.title);
   const author = inferAuthor(listing.title);
   const kind = inferKind(listing.title);
   const imagePath = `../../assets/inventory/ebay-${listing.listingId}.jpg`;
 
   const lines = [
     '---',
-    `title: ${yamlQuote(title)}`,
+    `title: ${yamlQuote(listing.title)}`,
     `description: ${yamlQuote(listing.title)}`,
   ];
-
-  if (edition) lines.push(`editionTitle: ${yamlQuote(edition)}`);
   lines.push(`author: ${yamlQuote(author)}`);
   if (listing.imageUrl) lines.push('images:');
   if (listing.imageUrl) lines.push(`  - ${imagePath}`);
