@@ -26,8 +26,7 @@ const { title, subtitle, positioning } = Astro.props;
     <Image
       src={heroImage}
       alt="Golden dragon in flight over Middle-earth — Festival Art and Books Tolkien rare books poster artwork"
-      class="h-[115%] w-full max-w-none object-cover"
-      style="object-position: 50% 30%; opacity: 0.62;"
+      class="hero-bg-image h-[115%] w-full max-w-none object-cover"
       widths={[768, 1280, 1920]}
       sizes="100vw"
       loading="eager"
@@ -70,3 +69,18 @@ const { title, subtitle, positioning } = Astro.props;
     </div>
   </div>
 </header>
+
+<style>
+  .hero-bg-image {
+    opacity: 0.62;
+    object-position: 50% 30%;
+  }
+
+  /* Wide viewports crop heavily with object-cover — anchor to the image bottom
+     so the dragon doesn't zoom into the middle of its body. */
+  @media (min-width: 1024px) {
+    .hero-bg-image {
+      object-position: 50% 100%;
+    }
+  }
+</style>
