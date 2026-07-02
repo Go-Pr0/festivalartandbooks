@@ -7,6 +7,7 @@ import Breadcrumbs from '@/components/Breadcrumbs.astro';
 import ContactDetails from '@/components/showcase/ContactDetails.astro';
 import { Image } from 'astro:assets';
 import { EXTERNAL } from '@/lib/site';
+import { contactPage, webPage } from '@/lib/schema';
 import { getEntry } from 'astro:content';
 
 const PATH = '/contact';
@@ -18,10 +19,19 @@ const trail = [
   { name: 'Home', url: '/' },
   { name: 'Contact', url: PATH },
 ];
+
+const title = page.data.seo!.title!;
+const description = page.data.seo!.description!;
+
+const schema = [
+  contactPage({ url: PATH, description }),
+  webPage({ name: 'Contact', description, url: PATH }),
+];
 ---
 <BaseLayout
-  title={page.data.seo!.title!}
-  description={page.data.seo!.description!}
+  title={title}
+  description={description}
+  schema={schema}
 >
   <Section tone="midnight" space="md">
     <Breadcrumbs trail={trail} class="text-[var(--color-parchment)]/70" />

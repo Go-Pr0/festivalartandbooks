@@ -16,7 +16,7 @@ const { as = 'div', width = 'page', class: className = '' }: Props = Astro.props
 const Tag = as;
 const widths: Record<NonNullable<Props['width']>, string> = {
   prose: 'max-w-[var(--content-max)]',
-  wide: 'max-w-[50rem]',
+  wide: 'max-w-[var(--content-wide)]',
   page: 'max-w-[var(--page-max)]',
 };
 const maxW = widths[width];

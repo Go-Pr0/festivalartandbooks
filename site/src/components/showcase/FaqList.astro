@@ -14,10 +14,12 @@ export interface FaqItem {
 
 interface Props {
   items: FaqItem[];
+  /** Collapse answers behind the question until opened — reduces visual wall on long FAQ pages. */
+  collapsible?: boolean;
   class?: string;
 }
 
-const { items, class: className = '' } = Astro.props;
+const { items, collapsible = false, class: className = '' } = Astro.props;
 
 /** Stable, human-readable fragment id from the question text for deep-linking. */
 function slugify(text: string): string {
@@ -30,15 +32,41 @@ function slugify(text: string): string {
     .replace(/-+$/g, '');
 }
 ---
-<div class:list={['space-y-10', className]}>
-  {items.map((item, i) => (
-    <Reveal as="article" mode="up" delay={i * 40} class="border-l-2 border-[var(--color-gold-600)]/40 pl-6">
-      <h2 id={slugify(item.question)} class="font-display text-2xl text-[var(--color-midnight-900)] sm:text-3xl">
-        {item.question}
-      </h2>
-      <div class="mt-3 space-y-3 font-text text-lg leading-relaxed text-[var(--color-text)]">
-        {item.answer.map((para) => <p>{para}</p>)}
-      </div>
-    </Reveal>
-  ))}
+<div class:list={[collapsible ? 'space-y-3' : 'space-y-10', className]}>
+  {items.map((item, i) =>
+    collapsible ? (
+      <Reveal
+        as="details"
+        mode="up"
+        delay={i * 30}
+        class="group rounded-[var(--radius)] border border-[var(--color-gold-600)]/25 bg-[var(--color-surface)] open:border-[var(--color-gold-600)]/45"
+      >
+        <summary class="flex cursor-pointer list-none items-start justify-between gap-4 px-5 py-4 marker:content-[''] sm:px-6 sm:py-5">
+          <h2 id={slugify(item.question)} class="font-display text-xl leading-snug text-[var(--color-midnight-900)] sm:text-2xl">
+            {item.question}
+          </h2>
+          <svg
+            class="mt-1 h-4 w-4 shrink-0 text-[var(--color-gold-600)] transition-transform group-open:rotate-180"
+            viewBox="0 0 12 12"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path d="M2.5 4.5 L6 8 L9.5 4.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" />
+          </svg>
+        </summary>
+        <div class="space-y-3 border-t border-[var(--color-gold-600)]/15 px-5 pb-5 pt-4 font-text text-lg leading-relaxed text-[var(--color-text)] sm:px-6 sm:pb-6">
+          {item.answer.map((para) => <p>{para}</p>)}
+        </div>
+      </Reveal>
+    ) : (
+      <Reveal as="article" mode="up" delay={i * 40} class="border-l-2 border-[var(--color-gold-600)]/40 pl-6">
+        <h2 id={slugify(item.question)} class="font-display text-2xl text-[var(--color-midnight-900)] sm:text-3xl">
+          {item.question}
+        </h2>
+        <div class="mt-3 space-y-3 font-text text-lg leading-relaxed text-[var(--color-text)]">
+          {item.answer.map((para) => <p>{para}</p>)}
+        </div>
+      </Reveal>
+    ),
+  )}
 </div>

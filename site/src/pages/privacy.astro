@@ -1,0 +1,80 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Section from '@/components/Section.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import Reveal from '@/components/Reveal.astro';
+import Prose from '@/components/Prose.astro';
+import { webPage } from '@/lib/schema';
+import { SITE } from '@/lib/site';
+
+const PATH = '/privacy';
+const title = 'Privacy Policy';
+const description =
+  'How Festival Art and Books handles personal data on this static website — email contact only, no on-site accounts or checkout.';
+
+const trail = [
+  { name: 'Home', url: '/' },
+  { name: 'Privacy Policy', url: PATH },
+];
+
+const schema = webPage({ name: title, description, url: PATH });
+---
+<BaseLayout title={title} description={description} schema={schema}>
+  <Section tone="parchment" space="md" width="prose">
+    <Breadcrumbs trail={trail} />
+    <Reveal as="header" class="mt-8">
+      <h1 class="font-display text-4xl text-[var(--color-midnight-900)] sm:text-5xl">
+        Privacy Policy
+      </h1>
+      <p class="mt-4 font-ui text-sm text-[var(--color-muted)]">
+        Last updated: 2 July 2026
+      </p>
+    </Reveal>
+    <Reveal class="mt-10">
+      <Prose>
+        <p>
+          {SITE.name} ({SITE.url}) is operated by Mark Faith, trading as Festival Art and
+          Books, from Mid-Wales, United Kingdom. This is a static information website.
+          There is no on-site checkout, user accounts, or contact form that stores data
+          on our servers.
+        </p>
+
+        <h2>What we collect</h2>
+        <p>
+          We only receive personal information when you choose to email us at
+          <a href={`mailto:${SITE.email}`}>{SITE.email}</a>. That may include your name,
+          email address, and any details you include about books you wish to buy, sell,
+          or discuss. We do not ask for payment card details on this website — purchases
+          are completed on eBay, AbeBooks, or by arrangement via email.
+        </p>
+
+        <h2>How we use it</h2>
+        <p>
+          Email correspondence is used solely to respond to enquiries, process orders,
+          and provide advice on rare Tolkien books. We do not sell or share your details
+          with third parties for marketing.
+        </p>
+
+        <h2>Cookies and analytics</h2>
+        <p>
+          This site does not set tracking or advertising cookies. If basic analytics are
+          added in future, this page will be updated. Fonts are self-hosted; no
+          third-party font trackers are used.
+        </p>
+
+        <h2>Your rights</h2>
+        <p>
+          You may ask what information we hold about you from email correspondence and
+          request correction or deletion by writing to
+          <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.
+        </p>
+
+        <h2>Contact</h2>
+        <p>
+          Questions about this policy: <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.
+          See also our <a href="/contact">contact page</a>.
+        </p>
+      </Prose>
+    </Reveal>
+  </Section>
+</BaseLayout>

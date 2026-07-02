@@ -25,8 +25,14 @@ export function organization() {
       '@type': 'Place',
       name: 'Worldwide',
     },
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'customer service',
+      email: SITE.email,
+      areaServed: 'Worldwide',
+    },
     founder: { '@id': `${SITE.url}/#mark-faith` },
-    sameAs: [EXTERNAL.ebay, EXTERNAL.abebooks],
+    sameAs: [EXTERNAL.ebay, EXTERNAL.abebooks, EXTERNAL.youtube],
   };
 }
 
@@ -36,13 +42,17 @@ export function person() {
     '@type': 'Person',
     '@id': `${SITE.url}/#mark-faith`,
     name: 'Mark Faith',
-    jobTitle: 'Antiquarian Bookseller',
+    jobTitle: 'Specialist Tolkien Rare Book Dealer',
+    hasOccupation: {
+      '@type': 'Occupation',
+      name: 'Specialist Tolkien Rare Book Dealer',
+    },
     description:
-      'Specialist dealer in rare and collectible J.R.R. Tolkien books for 25+ years.',
+      'Specialist Tolkien rare book dealer with 25+ years handling rare and first-edition J.R.R. Tolkien books.',
     knowsAbout: ['J.R.R. Tolkien', 'Rare Books', 'First Editions', 'Book Collecting'],
     worksFor: { '@id': `${SITE.url}/#organization` },
     url: `${SITE.url}/about`,
-    sameAs: [EXTERNAL.ebay, EXTERNAL.abebooks], // add IOBA listing, press mentions
+    sameAs: [EXTERNAL.ebay, EXTERNAL.abebooks, EXTERNAL.youtube], // add IOBA listing, press mentions
   };
 }
 
@@ -54,6 +64,14 @@ export function website() {
     name: SITE.name,
     url: SITE.url,
     publisher: { '@id': `${SITE.url}/#organization` },
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: `${SITE.url}/books?q={search_term_string}`,
+      },
+      'query-input': 'required name=search_term_string',
+    },
   };
 }
 
@@ -96,12 +114,16 @@ export function article(opts: {
   };
 }
 
-/** An Offer attached to a Book or Product — sales happen on a marketplace. */
+/**
+ * An Offer attached to a Book or Product — sales happen on a marketplace.
+ * Callers should pass the live eBay or AbeBooks listing URL in `offer.url` when
+ * available; fall back to the on-site catalogue page URL only when no listing exists.
+ */
 export interface OfferInput {
   /** Price as a string, e.g. '54000'. Omit for "price on application". */
   price?: string;
   priceCurrency?: string;
-  /** Marketplace listing URL (eBay / AbeBooks). */
+  /** Marketplace listing URL (eBay / AbeBooks) — preferred over the on-site page URL. */
   url?: string;
   availability?: 'InStock' | 'OutOfStock' | 'SoldOut' | 'PreOrder';
 }
@@ -177,6 +199,33 @@ export function faqPage(qa: { question: string; answer: string }[]) {
       name: item.question,
       acceptedAnswer: { '@type': 'Answer', text: item.answer },
     })),
+  };
+}
+
+/** Schema.org ContactPage — use on the contact route. */
+export function contactPage(opts: { description?: string; url?: string } = {}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    name: 'Contact',
+    description:
+      opts.description ??
+      `Contact ${SITE.founder}, specialist Tolkien rare book dealer at ${SITE.name}.`,
+    url: absolute(opts.url ?? '/contact'),
+    mainEntity: { '@id': `${SITE.url}/#organization` },
+    isPartOf: { '@id': `${SITE.url}/#website` },
+  };
+}
+
+/** Schema.org WebPage for generic static pages. */
+export function webPage(opts: { name: string; description: string; url: string }) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: opts.name,
+    description: opts.description,
+    url: absolute(opts.url),
+    isPartOf: { '@id': `${SITE.url}/#website` },
   };
 }
 

@@ -35,7 +35,6 @@ const gallery: GalleryItem[] = (await getCollection('archiveGallery'))
   .map((item) => ({
     src: item.data.image,
     alt: item.data.alt,
-    caption: item.data.caption,
     category: item.data.category,
   }));
 

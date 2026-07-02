@@ -1,36 +1,34 @@
 ---
 /**
- * Site header: sticky, condenses on scroll, with the Wordmark, primary nav, an
- * accessible Resources dropdown, and a prominent external "Online Shop" affordance.
- * Mobile uses a slide-down panel toggled by a hamburger. Behaviour lives in the
- * inline module script (keyboard + click-outside + view-transition safe).
+ * Site header: sticky, condenses on scroll, with the Wordmark, primary nav, and an
+ * accessible Resources dropdown. Mobile uses a slide-down panel toggled by a hamburger.
+ * Behaviour lives in the inline module script (keyboard + click-outside + view-transition safe).
  */
 import Container from '@/components/Container.astro';
 import Wordmark from '@/components/Wordmark.astro';
-import Button from '@/components/Button.astro';
-import { NAV, SHOP } from '@/lib/site';
+import { NAV } from '@/lib/site';
 ---
 <header
   id="site-header"
   class="sticky top-0 z-50 border-b border-[var(--color-gold-600)]/25 bg-[var(--color-bg)]/90 backdrop-blur transition-shadow duration-300 data-[scrolled]:shadow-[0_1px_24px_-12px_rgba(13,20,48,0.55)]"
 >
   <Container>
-    <div class="flex items-center justify-between gap-4 py-4 transition-[padding] duration-300 data-[scrolled]:py-2.5">
-      <Wordmark />
+    <div class="flex items-center justify-between gap-3 py-3 transition-[padding] duration-300 data-[scrolled]:py-2 xl:gap-4">
+      <Wordmark compact class="max-w-[min(100%,14rem)] sm:max-w-[min(100%,16rem)] xl:max-w-[min(100%,18rem)]" />
 
-      <!-- Desktop nav -->
-      <nav class="hidden items-center gap-6 lg:flex" aria-label="Primary">
+      <!-- Desktop nav — xl+ so the bar fits without wrapping -->
+      <nav class="hidden shrink-0 items-center gap-x-3 gap-y-1 xl:flex 2xl:gap-x-4" aria-label="Primary">
         {NAV.map((item) =>
           item.children ? (
             <div class="nav-dropdown relative">
               <button
                 type="button"
-                class="nav-dropdown__trigger flex items-center gap-1 font-ui text-sm text-[var(--color-midnight-900)] hover:text-[var(--color-oxblood-600)]"
+                class="nav-dropdown__trigger flex items-center gap-1 whitespace-nowrap font-ui text-[0.8125rem] text-[var(--color-midnight-900)] hover:text-[var(--color-oxblood-600)] 2xl:text-sm"
                 aria-expanded="false"
                 aria-haspopup="true"
               >
                 {item.label}
-                <svg class="h-3 w-3 transition-transform duration-200" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                <svg class="h-3 w-3 shrink-0 transition-transform duration-200" viewBox="0 0 12 12" fill="none" aria-hidden="true">
                   <path d="M2.5 4.5 L6 8 L9.5 4.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" />
                 </svg>
               </button>
@@ -52,20 +50,19 @@ import { NAV, SHOP } from '@/lib/site';
           ) : (
             <a
               href={item.href}
-              class="font-ui text-sm text-[var(--color-midnight-900)] hover:text-[var(--color-oxblood-600)]"
+              class="whitespace-nowrap font-ui text-[0.8125rem] text-[var(--color-midnight-900)] hover:text-[var(--color-oxblood-600)] 2xl:text-sm"
             >
               {item.label}
             </a>
           ),
         )}
-        <Button href={SHOP.href} variant="primary" size="sm">{SHOP.label}</Button>
       </nav>
 
       <!-- Mobile toggle -->
       <button
         id="menu-toggle"
         type="button"
-        class="inline-flex items-center justify-center rounded-[var(--radius)] p-2 text-[var(--color-midnight-900)] lg:hidden"
+        class="inline-flex shrink-0 items-center justify-center rounded-[var(--radius)] p-2 text-[var(--color-midnight-900)] xl:hidden"
         aria-expanded="false"
         aria-controls="mobile-menu"
         aria-label="Open menu"
@@ -78,7 +75,7 @@ import { NAV, SHOP } from '@/lib/site';
   </Container>
 
   <!-- Mobile menu -->
-  <div id="mobile-menu" hidden class="border-t border-[var(--color-gold-600)]/20 bg-[var(--color-surface)] lg:hidden">
+  <div id="mobile-menu" hidden class="border-t border-[var(--color-gold-600)]/20 bg-[var(--color-surface)] xl:hidden">
     <Container>
       <nav class="flex flex-col gap-1 py-4" aria-label="Mobile">
         {NAV.map((item) =>
@@ -104,7 +101,6 @@ import { NAV, SHOP } from '@/lib/site';
             </a>
           ),
         )}
-        <Button href={SHOP.href} variant="primary" size="md" class="mt-3 w-full">{SHOP.label}</Button>
       </nav>
     </Container>
   </div>

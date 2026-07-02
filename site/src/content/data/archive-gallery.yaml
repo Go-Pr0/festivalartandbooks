@@ -1,1 +1,25 @@
-items: []
+items:
+  - image: ../../assets/gallery/mark-inventory/tolkien-rare-books-inventory.jpg
+    alt: Shelves of rare and collectible Tolkien books in Mark Faith's stockroom
+    caption: ""
+    category: book
+  - image: ../../assets/gallery/mark-inventory/tolkien-first-editions-shelf.jpg
+    alt: First-edition and early-printing Tolkien titles on display
+    caption: ""
+    category: book
+  - image: ../../assets/gallery/mark-inventory/letters-of-tolkien-first-edition.jpg
+    alt: The Letters of J.R.R. Tolkien, first edition, among rare Tolkien titles
+    caption: ""
+    category: book
+  - image: ../../assets/gallery/mark-inventory/mark-faith-with-artists.jpg
+    alt: Mark Faith with Tolkien-inspired artists Wilkinson and Paul
+    caption: ""
+    category: other
+  - image: ../../assets/gallery/mark-inventory/wales-landscape.jpg
+    alt: Mid-Wales landscape near Aberdyfi, Wales
+    caption: ""
+    category: other
+  - image: ../../assets/story/mark-faith-with-rare-book-art-2005.jpg
+    alt: Mark Faith with a rare Tolkien book art piece, 2005
+    caption: ""
+    category: other

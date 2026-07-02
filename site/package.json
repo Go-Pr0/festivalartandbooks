@@ -9,6 +9,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "check": "astro check",
+    "generate:llms-full": "node scripts/generate-llms-full.mjs",
     "cms:config": "node scripts/generate-cms-config.mjs",
     "cms:server": "decap-server",
     "sync:ebay": "node scripts/sync-ebay-inventory.mjs"

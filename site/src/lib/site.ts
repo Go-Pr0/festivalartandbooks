@@ -5,10 +5,11 @@
  */
 export const SITE = {
   name: 'Festival Art & Books',
-  tagline: 'Tolkien Rare Books',
+  tagline: 'Tolkien Rare Book Dealer',
+  dealerTagline: 'Specialist Tolkien Rare Book Dealer · Est. 2001',
   url: 'https://festivalartandbooks.com',
   description:
-    'Specialist dealer in rare and collectible J.R.R. Tolkien books — first editions of ' +
+    'Specialist Tolkien rare book dealer — rare and collectible J.R.R. Tolkien books — first editions of ' +
     'The Hobbit and The Lord of the Rings — plus original Tolkien-inspired art. Run by ' +
     'Mark Faith, one of the world’s oldest and largest Tolkien rare-book dealerships, for 25+ years.',
   locale: 'en_GB',
@@ -21,6 +22,7 @@ export const SITE = {
 export const EXTERNAL = {
   ebay: 'https://www.ebay.co.uk/str/festivalartandbooks',
   abebooks: 'https://www.abebooks.co.uk/festival-art-and-books-aberdyfi/51881760/sf',
+  youtube: 'https://www.youtube.com/channel/UCW7s3VRIwQLS5CWcasYHsBQ/videos',
   // Add when available: IOBA listing, social profiles, press mentions — used in schema `sameAs`.
 } as const;
 
@@ -34,10 +36,11 @@ export interface NavItem {
 /** Primary navigation — canonical site routes, consumed by the Header. */
 export const NAV: readonly NavItem[] = [
   { label: 'Home', href: '/' },
-  { label: 'Rare Books & Collectables', href: '/rare-tolkien-books-collectables' },
   { label: 'Catalogue', href: '/books' },
+  { label: 'Rare Books', href: '/rare-tolkien-books-collectables' },
   { label: 'Guides', href: '/guides' },
-  { label: 'Used Books & Q&A', href: '/used-tolkien-books' },
+  { label: 'Used Books', href: '/used-tolkien-books' },
+  { label: 'Sell & Source', href: '/sell-and-source' },
   {
     label: 'Resources',
     href: '/resources',

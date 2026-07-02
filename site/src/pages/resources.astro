@@ -4,6 +4,7 @@ import Section from '@/components/Section.astro';
 import Breadcrumbs from '@/components/Breadcrumbs.astro';
 import Reveal from '@/components/Reveal.astro';
 import { NAV } from '@/lib/site';
+import { collectionPage } from '@/lib/schema';
 import { getEntry } from 'astro:content';
 
 const PATH = '/resources';
@@ -43,8 +44,15 @@ const descriptions: Record<string, string> = {
   '/tolkien-art':
     'Tolkien-inspired original art and the artists Mark works with.',
 };
+
+const schema = collectionPage({
+  name: title,
+  description,
+  url: PATH,
+  items: resourceLinks.map((link) => ({ name: link.label, url: link.href })),
+});
 ---
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} schema={schema}>
   <Section tone="midnight" space="md">
     <Breadcrumbs trail={trail} class="text-[var(--color-parchment)]/70" />
     <Reveal as="header" class="mt-10 max-w-3xl">

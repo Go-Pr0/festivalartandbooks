@@ -1,13 +1,16 @@
 seo:
-  description: "Collectible Tolkien Books from Festival Art and Books for serious collectors. Shop today."
+  title: "Tolkien Rare Book Dealer"
+  description: >-
+    Specialist Tolkien rare book dealer Mark Faith in Mid-Wales — first editions of
+    The Hobbit and Lord of the Rings, 5,000+ rare books sold since 2001.
 
 stats:
   - value: 25
     suffix: "+"
     label: "Years selling rare Tolkien books"
-  - value: 300000
-    prefix: "£"
-    label: "Highest Hobbit first edition sold"
+  - value: 5000
+    suffix: "+"
+    label: "Thousands of Tolkien rare books sold"
   - value: 100
     suffix: "%"
     label: "Positive feedback"
@@ -44,7 +47,7 @@ dealsIn:
 
 text:
   heroTitle: "Festival Art and Books"
-  heroSubtitle: "Tolkien Rare Books"
+  heroSubtitle: "Tolkien Rare Book Dealer"
   heroPositioning: "Mine is one of the oldest and largest Tolkien rare book dealerships in the world."
 
   welcomeEyebrow: "Welcome to our site and thank you for taking the time to visit!"

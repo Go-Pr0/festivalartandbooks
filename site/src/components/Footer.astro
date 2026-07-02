@@ -5,6 +5,7 @@
  * the footer doubles as a crawlable internal-link hub.
  */
 import Container from '@/components/Container.astro';
+import DragonLogo from '@/components/DragonLogo.astro';
 import Wordmark from '@/components/Wordmark.astro';
 import { NAV, EXTERNAL, SITE } from '@/lib/site';
 
@@ -22,15 +23,16 @@ const flatNav = NAV.flatMap((item) =>
   <Container>
     <div class="grid gap-12 py-16 md:grid-cols-[1.4fr_1fr_1fr]">
       <!-- Brand + positioning -->
-      <div>
+      <div class="relative">
+        <DragonLogo size="sm" class="pointer-events-none absolute -right-2 top-0 opacity-40" aria-hidden="true" />
         <Wordmark tone="light" />
-        <p class="mt-5 max-w-sm font-text text-[var(--color-parchment)]/75">
-          Specialist dealer in rare and first-edition J.R.R. Tolkien books and
-          Tolkien-inspired art, run by Mark Faith for over 25 years. We ship worldwide.
+        <p class="mt-5 max-w-sm font-text text-[var(--color-parchment)]">
+          {SITE.dealerTagline}. Rare and first-edition J.R.R. Tolkien books and Tolkien-inspired
+          art, run by Mark Faith for over 25 years. We ship worldwide.
         </p>
-        <address class="mt-5 not-italic font-ui text-sm text-[var(--color-parchment)]/70">
-          Aberdyfi, Mid-Wales, United Kingdom<br />
-          <a href={`mailto:${SITE.email}`} class="text-[var(--color-gold-300)] hover:underline">
+        <address class="mt-5 not-italic font-ui text-sm text-[var(--color-parchment)]">
+          Mid-Wales, United Kingdom<br />
+          <a href={`mailto:${SITE.email}`} class="hover:text-[var(--color-gold-300)] hover:underline">
             {SITE.email}
           </a>
         </address>
@@ -38,11 +40,11 @@ const flatNav = NAV.flatMap((item) =>
 
       <!-- Explore -->
       <nav aria-label="Footer">
-        <h2 class="font-ui text-xs uppercase tracking-[0.2em] text-[var(--color-gold-500)]">Explore</h2>
+        <h2 class="font-ui text-xs uppercase tracking-[0.2em] text-[var(--color-parchment)]">Explore</h2>
         <ul class="mt-4 space-y-2">
           {flatNav.map((item) => (
             <li>
-              <a href={item.href} class="font-ui text-sm text-[var(--color-parchment)]/80 hover:text-[var(--color-gold-300)]">
+              <a href={item.href} class="font-ui text-sm text-[var(--color-parchment)] hover:text-[var(--color-gold-300)]">
                 {item.label}
               </a>
             </li>
@@ -52,20 +54,20 @@ const flatNav = NAV.flatMap((item) =>
 
       <!-- Shop -->
       <div>
-        <h2 class="font-ui text-xs uppercase tracking-[0.2em] text-[var(--color-gold-500)]">Online Shops</h2>
+        <h2 class="font-ui text-xs uppercase tracking-[0.2em] text-[var(--color-parchment)]">Online Shops</h2>
         <ul class="mt-4 space-y-2">
           <li>
-            <a href={EXTERNAL.ebay} target="_blank" rel="noopener noreferrer" class="font-ui text-sm text-[var(--color-parchment)]/80 hover:text-[var(--color-gold-300)]">
+            <a href={EXTERNAL.ebay} target="_blank" rel="noopener noreferrer" class="font-ui text-sm text-[var(--color-parchment)] hover:text-[var(--color-gold-300)]">
               eBay Store
             </a>
           </li>
           <li>
-            <a href={EXTERNAL.abebooks} target="_blank" rel="noopener noreferrer" class="font-ui text-sm text-[var(--color-parchment)]/80 hover:text-[var(--color-gold-300)]">
+            <a href={EXTERNAL.abebooks} target="_blank" rel="noopener noreferrer" class="font-ui text-sm text-[var(--color-parchment)] hover:text-[var(--color-gold-300)]">
               AbeBooks Store
             </a>
           </li>
           <li>
-            <a href={`mailto:${SITE.email}`} class="font-ui text-sm text-[var(--color-parchment)]/80 hover:text-[var(--color-gold-300)]">
+            <a href={`mailto:${SITE.email}`} class="font-ui text-sm text-[var(--color-parchment)] hover:text-[var(--color-gold-300)]">
               Buy direct (save fees)
             </a>
           </li>
@@ -73,8 +75,8 @@ const flatNav = NAV.flatMap((item) =>
       </div>
     </div>
 
-    <div class="flex flex-col gap-2 border-t border-[var(--color-parchment)]/10 py-6 font-ui text-xs text-[var(--color-parchment)]/55 sm:flex-row sm:items-center sm:justify-between">
-      <p>© {year} {SITE.name}. All rights reserved.</p>
+    <div class="flex flex-col gap-2 border-t border-[var(--color-parchment)]/15 py-6 font-ui text-xs text-[var(--color-parchment)] sm:flex-row sm:items-center sm:justify-between">
+      <p>© {year} {SITE.name}. All rights reserved. · <a href="/privacy" class="hover:text-[var(--color-gold-300)]">Privacy</a></p>
       <p>Trading as Festival Art and Books since 2009 · {SITE.tagline}</p>
     </div>
   </Container>

@@ -1,6 +1,6 @@
 seo:
   title: "About Mark Faith, Tolkien Rare Book Expert | Festival Art & Books"
-  description: "Mark Faith is a specialist Tolkien rare-book dealer of 25+ years near Machynlleth, Wales: first-edition sales up to £300,000, 300+ first-edition sets sold, TV expert."
+  description: "Mark Faith is a specialist Tolkien rare-book dealer of 25+ years near Machynlleth, Wales: 5,000+ rare Tolkien books sold, 300+ first-edition sets sold, TV expert."
 
 heroImage: "../../assets/story/mark-faith-tolkien-rare-book-dealer-portrait.jpg"
 heroImageAlt: "Mark Faith, Tolkien rare-book dealer and founder of Festival Art and Books, smiling outdoors"
@@ -12,9 +12,9 @@ stats:
   - value: 300
     suffix: "+"
     label: "First-edition sets sold"
-  - value: 125000
-    prefix: "£"
-    label: "Highest Lord of the Rings set sold"
+  - value: 5000
+    suffix: "+"
+    label: "Thousands of Tolkien rare books sold"
 
 timeline:
   - year: "c. 1996"
@@ -49,6 +49,12 @@ timeline:
     body: "Mark Faith, founder of Festival Art and Books and Festival in the Shire, as you might of gathered by now, is a prolific collector of rare Tolkien first edition books and posters, he is also a expert on collecting Tolkien merchandise and has recently showcased his knowledge of the subject on a number of television programs including Channel 4's hugely popular television show Four Rooms which offers sellers of valuable and collectable items a chance to pitch their items to four of the UK's biggest dealers. Up to 30 dealers are rotated throughout the series to give the viewers variety. I did not accept any offers for my Lord of the Rings first editions when I appeared on the show but recently sold the set after for £15,000, a record at the time. I then made two appearances on the new UK version of the Pawn Stars show being aired on the History Channel, the US version has been running since 2009 and is the second most viewed show in North America. Pawn Stars is a reality TV show is based in a pawn shop and depicts the bargaining over the items customers bring in as well as discussing their historical background. Rodney Matthews and I appeared on the show on September 9th and I appeared again on September 23rd to showcase my rare complete set of the first ten Hobbit impressions."
 
 figures:
+  - key: "markWithArt2005"
+    src: "../../assets/story/mark-faith-with-rare-book-art-2005.jpg"
+    alt: "Mark Faith with a rare Tolkien book art piece, 2005"
+    caption: "Mark Faith with a rare book art piece, 2005."
+    delay: 100
+    frame: "portrait"
   - key: "markPortrait"
     src: "../../assets/story/mark-faith-tolkien-rare-book-dealer-portrait.jpg"
     alt: "Smiling bearded man with glasses outdoors"

@@ -1,6 +1,6 @@
 ---
 title: "The Ballantine Tolkien Paperbacks and Barbara Remington's Cover Art"
-description: "We are pleased to offer for sale, perhaps the most important original Tolkien related art piece. It is truly deserving as a museum piece representing a key point in the history of Professor Tolkien works."
+description: "Why the rushed 1965 Ballantine Tolkien paperbacks and Barbara Remington's cover art — which Tolkien disliked — helped propel his work to worldwide fame."
 pillar: false
 cluster: "tolkien-editions"
 heroImage: "../../assets/guides/ballantine-tolkien-barbara-remington-concept-art.jpg"
@@ -17,10 +17,9 @@ faq:
 draft: false
 ---
 
-For sale, perhaps the most important original
-Tolkien related art piece?
+**Sold.**
 
-We are pleased to offer for sale, perhaps the most important original Tolkien related art piece.  It is truly deserving as a museum piece representing a key point in the history of Professor Tolkien works. This is the original concept art submitted to Mrs Betty Ballantine for the 1965 Ballantine paperbacks of The Hobbit and The Lord of the Rings books. It was also used for the promotional posters and banners for these very popular editions. It was produced by artist Barbara Remington as a concept proof before the final colour versions were produced. The medium is gouache on illustration board, 11 x 11 inches in size. It comes with a personal letter from Betty Ballantine. This iconic illustration also has a slightly infamous reputation as Tolkien did not like it, but this does not alter its importance to Tolkien lore as we know it today.
+This was perhaps the most important original Tolkien related art piece. It is truly deserving as a museum piece representing a key point in the history of Professor Tolkien works. This is the original concept art submitted to Mrs Betty Ballantine for the 1965 Ballantine paperbacks of The Hobbit and The Lord of the Rings books. It was also used for the promotional posters and banners for these very popular editions. It was produced by artist Barbara Remington as a concept proof before the final colour versions were produced. The medium is gouache on illustration board, 11 x 11 inches in size. It comes with a personal letter from Betty Ballantine. This iconic illustration also has a slightly infamous reputation as Tolkien did not like it, but this does not alter its importance to Tolkien lore as we know it today.
 
 ## The History
 
@@ -44,7 +43,7 @@ At the time, Tolkien's works were still only beginning to achieve recognition in
 
 The common debate raging today is whether its popular cult or creative merit that makes something great, is one that will not be easily agreed. Surely though, without popularity in the first place, there would be far fewer people aware and thus willing to take the time to assess merit? They in fact go hand in hand whether we like it or not. Certainly today many people would agree there is much popular literature and art not worthy of the merit attached to it. Barbara Remington's art may or may not have merit or have been accurate to the books, but there is no denying its popularity then and now, as it is still very important among today's Tolkien fandom. Indeed, it is not hard to imagine what would have happened without it?
 
-Own a piece of history.
+This piece of history has been sold; the details remain here for reference.
 
 Sources: J.R.R. Tolkien, A biography by Humphrey Carpenter 1977.  The Letters of J.R.R. Tolkien, 1981.
 

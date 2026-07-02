@@ -1,0 +1,33 @@
+---
+/**
+ * Round dragon trademark logo — used in wordmark, book placeholders, and footer watermark.
+ */
+import { Image } from 'astro:assets';
+import dragonLogo from '@/assets/brand/fab-dragon-logo-trademark.jpeg';
+
+interface Props {
+  size?: 'sm' | 'md' | 'lg';
+  class?: string;
+  href?: string;
+}
+
+const { size = 'md', class: className = '', href } = Astro.props;
+
+const heights = { sm: 32, md: 48, lg: 64 } as const;
+const height = heights[size];
+const Tag = href ? 'a' : 'span';
+---
+<Tag
+  href={href}
+  class:list={['inline-flex shrink-0', className]}
+  aria-label={href ? 'Festival Art and Books, home' : undefined}
+>
+  <Image
+    src={dragonLogo}
+    alt="Festival Art and Books dragon trademark logo"
+    height={height}
+    widths={[height, height * 2]}
+    class="h-auto w-auto"
+    style={`height: ${height}px; width: auto;`}
+  />
+</Tag>

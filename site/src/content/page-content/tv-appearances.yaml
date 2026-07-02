@@ -1,7 +1,8 @@
 seo:
   title: "TV Appearances: Mark Faith on Four Rooms & Pawn Stars UK | Festival Art & Books"
   description: >-
-    Tolkien Media Appearances featuring Festival Art and Books expertise. Watch more today.
+    Mark Faith on Four Rooms, Pawn Stars UK and other TV — specialist Tolkien rare
+    book dealer sharing expertise on valuable first editions and collectables.
 
 figures:
   - key: pawnStarsSet
@@ -86,6 +87,7 @@ text:
     time and expenses. If you are a producer willing to pay for expert’s time, please
     contact us.
 
+  youtubeUrl: "https://www.youtube.com/channel/UCW7s3VRIwQLS5CWcasYHsBQ/videos"
   ctaYouTube: "Watch on YouTube"
   ctaPress: "Press & media"
   ctaContact: "Contact Mark"

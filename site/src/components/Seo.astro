@@ -11,6 +11,8 @@ interface Props {
   image?: string;       // absolute or root-relative OG image
   noindex?: boolean;
   type?: 'website' | 'article';
+  publishedTime?: string;
+  modifiedTime?: string;
 }
 const {
   title,
@@ -18,15 +20,25 @@ const {
   image = '/og-default.jpg',
   noindex = false,
   type = 'website',
+  publishedTime,
+  modifiedTime,
 } = Astro.props;
 
-const fullTitle = title ? `${title} | ${SITE.name}` : `${SITE.name} | ${SITE.tagline}`;
+const fullTitle = title
+  ? title.includes(SITE.name)
+    ? title
+    : `${title} | ${SITE.name}`
+  : `${SITE.name} | ${SITE.tagline}`;
 const canonical = new URL(Astro.url.pathname, SITE.url).href;
 const ogImage = image.startsWith('http') ? image : new URL(image, SITE.url).href;
 ---
 <title>{fullTitle}</title>
 <meta name="description" content={description} />
+<meta name="author" content="Mark Faith" />
+<meta name="geo.region" content="GB-WLS" />
+<meta name="geo.placename" content="Mid-Wales, United Kingdom" />
 <link rel="canonical" href={canonical} />
+<link rel="alternate" type="text/markdown" href="/llms.txt" title="LLM content index" />
 {noindex && <meta name="robots" content="noindex, nofollow" />}
 
 <meta property="og:type" content={type} />
@@ -41,3 +53,11 @@ const ogImage = image.startsWith('http') ? image : new URL(image, SITE.url).href
 <meta name="twitter:title" content={fullTitle} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={ogImage} />
+
+{type === 'article' && (
+  <>
+    <meta property="article:author" content="Mark Faith" />
+    {publishedTime && <meta property="article:published_time" content={publishedTime} />}
+    {modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
+  </>
+)}

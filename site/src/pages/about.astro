@@ -33,6 +33,7 @@ const stats: StatItem[] = page.data.stats!;
 const journey: TimelineEntry[] = page.data.timeline!;
 
 const fig = (k: string) => page.data.figures!.find((f) => f.key === k)!;
+const markWithArt2005 = fig('markWithArt2005');
 const markPortrait = fig('markPortrait');
 const markWilburSmith = fig('markWilburSmith');
 const gtcFounders = fig('gtcFounders');
@@ -47,7 +48,7 @@ const schema = article({
   image: '/og/about.jpg',
 });
 ---
-<BaseLayout title={title} description={description} type="article" image="/og/about.jpg" schema={schema}>
+<BaseLayout title={title} description={description} type="article" image="/og/about.jpg" publishedTime="2024-01-01" modifiedTime="2026-06-25" schema={schema}>
   <Section tone="midnight" space="md">
     <Breadcrumbs trail={trail} class="text-[var(--color-parchment)]/70" />
     <div class="mt-10 grid items-center gap-12 lg:grid-cols-[1.4fr_1fr]">
@@ -78,6 +79,15 @@ const schema = article({
         delay={markPortrait.delay}
         frame={markPortrait.frame as 'default' | 'portrait'}
         sizes={markPortrait.sizes}
+      />
+    </div>
+    <div class="mt-12 max-w-md mx-auto lg:mx-0 lg:max-w-sm">
+      <Figure
+        src={markWithArt2005.src}
+        alt={markWithArt2005.alt}
+        caption={markWithArt2005.caption}
+        delay={markWithArt2005.delay}
+        frame={markWithArt2005.frame as 'default' | 'portrait'}
       />
     </div>
   </Section>

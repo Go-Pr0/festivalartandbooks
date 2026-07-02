@@ -10,16 +10,24 @@ import Hero from '@/components/home/Hero.astro';
 import TrustCard from '@/components/home/TrustCard.astro';
 import DealsInCard from '@/components/home/DealsInCard.astro';
 import { SITE } from '@/lib/site';
+import { webPage } from '@/lib/schema';
 import { getEntry } from 'astro:content';
 
 const page = (await getEntry('pageContent', 'home'))!;
 const t = page.data.text as Record<string, string>;
+const title = page.data.seo!.title!;
 const description = page.data.seo!.description!;
 const stats: StatItem[] = page.data.stats!;
 const trustPoints = page.data.trustPoints!;
 const dealsIn = page.data.dealsIn!;
+
+const schema = webPage({
+  name: `${title} | ${SITE.name}`,
+  description,
+  url: '/',
+});
 ---
-<BaseLayout description={description}>
+<BaseLayout title={title} description={description} schema={schema}>
   <Hero
     title={t.heroTitle}
     subtitle={t.heroSubtitle}

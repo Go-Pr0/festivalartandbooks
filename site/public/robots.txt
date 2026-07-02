@@ -32,5 +32,8 @@ Allow: /
 # --- Everything else ---
 User-agent: *
 Allow: /
+Disallow: /mark/
+
+# AI content index: /llms.txt (link index) and /llms-full.txt (full guide text)
 
 Sitemap: https://festivalartandbooks.com/sitemap-index.xml

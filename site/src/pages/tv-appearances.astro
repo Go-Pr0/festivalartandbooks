@@ -6,6 +6,7 @@ import Reveal from '@/components/Reveal.astro';
 import Button from '@/components/Button.astro';
 import Figure from '@/components/story/Figure.astro';
 import { article } from '@/lib/schema';
+import { EXTERNAL } from '@/lib/site';
 import { getEntry } from 'astro:content';
 
 const page = (await getEntry('pageContent', 'tv-appearances'))!;
@@ -101,7 +102,7 @@ const schema = article({
           {t.closingP}
         </p>
         <div class="mt-6 flex flex-wrap gap-3">
-          <Button href="https://www.youtube.com/c/MarkFaithD52" variant="gold">{t.ctaYouTube}</Button>
+          <Button href={EXTERNAL.youtube} variant="gold" external>{t.ctaYouTube as string}</Button>
           <Button href="/news-media" variant="ghost">{t.ctaPress}</Button>
           <Button href="/contact" variant="ghost">{t.ctaContact}</Button>
         </div>

@@ -30,12 +30,14 @@ interface Props {
   image?: string;
   type?: 'website' | 'article';
   noindex?: boolean;
+  publishedTime?: string;
+  modifiedTime?: string;
   /** Extra page-specific schema blocks (Article, Book, Product, FAQPage, Breadcrumbs…). */
   schema?: Record<string, any> | Record<string, any>[];
   /** Set false on the homepage to suppress sitewide entities if a page emits its own. */
   bodyClass?: string;
 }
-const { title, description, image, type, noindex, schema, bodyClass = '' } = Astro.props;
+const { title, description, image, type, noindex, publishedTime, modifiedTime, schema, bodyClass = '' } = Astro.props;
 
 // Sitewide entities on every page; page-specific schema appended.
 const sitewide = [organization(), person(), website()];
@@ -50,7 +52,7 @@ const allSchema = [...sitewide, ...pageSchema];
     <link rel="icon" href="/favicon.png" type="image/png" />
     <link rel="apple-touch-icon" href="/favicon.png" />
     <meta name="theme-color" content="#14224f" />
-    <Seo title={title} description={description} image={image} type={type} noindex={noindex} />
+    <Seo title={title} description={description} image={image} type={type} noindex={noindex} publishedTime={publishedTime} modifiedTime={modifiedTime} />
     <SchemaOrg schema={allSchema} />
     <ClientRouter />
   </head>
@@ -65,10 +67,12 @@ const allSchema = [...sitewide, ...pageSchema];
     <script>
       import { initReveal } from '@/scripts/reveal';
       import { initCountUp } from '@/scripts/countup';
+      import { initVisitCounter } from '@/scripts/visit-counter';
 
       function boot(): void {
         initReveal();
         initCountUp();
+        initVisitCounter();
       }
       boot();
       document.addEventListener('astro:after-swap', boot);

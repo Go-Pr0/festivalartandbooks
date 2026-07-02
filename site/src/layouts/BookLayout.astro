@@ -14,7 +14,8 @@ import Prose from '@/components/Prose.astro';
 import Breadcrumbs from '@/components/Breadcrumbs.astro';
 import Reveal from '@/components/Reveal.astro';
 import Button from '@/components/Button.astro';
-import { book as bookSchema, product, breadcrumbs } from '@/lib/schema';
+import DragonLogo from '@/components/DragonLogo.astro';
+import { book as bookSchema, product } from '@/lib/schema';
 import { inquiryMailto } from '@/lib/inquiry';
 import { SITE } from '@/lib/site';
 
@@ -52,16 +53,18 @@ if (firstImage) {
 const isCollectable = data.kind === 'collectable';
 const condition = data.condition;
 
+const offerUrl = data.offerUrl ?? canonicalUrl;
+
 const offerInput = data.price != null
   ? {
       price: String(data.price),
       priceCurrency: data.priceCurrency,
       availability: data.availability as 'InStock' | 'OutOfStock' | 'PreOrder',
-      url: canonicalUrl,
+      url: offerUrl,
     }
   : {
       availability: data.availability as 'InStock' | 'OutOfStock' | 'PreOrder',
-      url: canonicalUrl,
+      url: offerUrl,
     };
 
 const itemSchema = isCollectable
@@ -84,13 +87,7 @@ const itemSchema = isCollectable
       offer: offerInput,
     });
 
-const crumbSchema = breadcrumbs([
-  { name: 'Home', url: '/' },
-  { name: 'Catalogue', url: '/books' },
-  { name: data.title, url },
-]);
-
-const schema = [itemSchema, crumbSchema];
+const schema = itemSchema;
 
 const metaTitle = data.editionTitle
   ? `${data.title} — ${data.editionTitle}`
@@ -135,7 +132,7 @@ const specs: { label: string; value: string }[] = [
             </figure>
           ) : (
             <div class="flex aspect-[4/3] items-center justify-center rounded-[var(--radius)] border border-[var(--color-gold-600)]/25 bg-[var(--color-surface)]">
-              <span class="font-display text-5xl text-[var(--color-gold-300)]">FAB</span>
+              <DragonLogo size="md" class="opacity-60" />
             </div>
           )}
           {extraImages.length > 0 && (

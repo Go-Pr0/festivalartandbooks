@@ -24,7 +24,7 @@
   /* ---- Brand color palette ---- */
   --color-ink: #1a1512;          /* near-black warm ink for body text */
   --color-parchment: #f6f0e2;    /* primary cream/paper background */
-  --color-parchment-dim: #ece3cf;/* slightly deeper paper for cards/sections */
+  --color-parchment-dim: #f5efe0;/* slightly deeper paper for cards/sections — warm cream, not green-tinted */
 
   --color-midnight-950: #0d1430; /* darkest blue */
   --color-midnight-900: #14224f; /* deep royal blue (hero backdrop) */
@@ -53,8 +53,10 @@
   --font-ui: "Inter Variable", "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
 
   /* ---- Spacing / layout ---- */
-  --content-max: 73ch;   /* comfortable reading measure for long essays (very slightly wider) */
-  --page-max: 80rem;     /* overall page container */
+  --content-max: 85ch;   /* comfortable reading measure for long essays */
+  --content-wide: 58rem; /* roomier blocks (Q&A, galleries, multi-column intros) */
+  --content-intro: 54rem; /* hero / page intro copy — wider than default Tailwind 3xl */
+  --page-max: 84rem;     /* overall page container */
   --radius: 2px;         /* understated, not bubbly */
 
   /* ---- Motion ---- */
@@ -87,6 +89,11 @@ h1, h2, h3, h4, .font-display {
   font-size: 1.175rem;
   line-height: 1.7;
 }
+
+/* Widen common intro/copy constraints sitewide without per-page edits. */
+main .max-w-prose { max-width: var(--content-max); }
+main .max-w-2xl { max-width: 46rem; }
+main .max-w-3xl { max-width: var(--content-intro); }
 
 /*
   Brand-tuned long-form typography. Layered on top of @tailwindcss/typography's
@@ -145,6 +152,20 @@ a:not(.btn) { color: var(--color-link); text-underline-offset: 0.18em; }
 }
 [data-tone="midnight"] .btn-ghost:hover {
   background-color: color-mix(in srgb, #fff 10%, transparent);
+}
+
+/* Footer sits on midnight-950; global link colour must not bleed blue-on-blue. */
+footer {
+  color: var(--color-parchment);
+}
+footer a:not(.btn) {
+  color: var(--color-parchment);
+}
+footer a:not(.btn):hover {
+  color: var(--color-gold-300);
+}
+footer h2 {
+  color: var(--color-parchment);
 }
 
 ::selection { background: var(--color-gold-300); color: var(--color-ink); }
