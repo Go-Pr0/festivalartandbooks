@@ -45,6 +45,7 @@ export const NAV: readonly NavItem[] = [
     label: 'Resources',
     href: '/resources',
     children: [
+      { label: 'Collecting Guides', href: '/guides' },
       { label: "Collector's Guide", href: '/collectors-guide' },
       { label: 'Tolkien Collector E-book', href: '/ebook' },
       { label: 'The Journal', href: '/journal' },
@@ -53,15 +54,50 @@ export const NAV: readonly NavItem[] = [
       { label: 'TV Appearances', href: '/tv-appearances' },
       { label: 'News & Media', href: '/news-media' },
       { label: 'Photo Gallery', href: '/photo-gallery' },
-      { label: 'Tolkien Art', href: '/tolkien-art' },
     ],
   },
   { label: 'About', href: '/about' },
   { label: 'Contact', href: '/contact' },
 ] as const;
 
+/** The Journal — static archive downloads and metadata. */
+export const JOURNAL = {
+  issue1: {
+    title: 'Festival Art and Books Journal — Issue 1 (2009)',
+    description:
+      'The first online edition of Mark Faith’s Tolkien collecting magazine, published in 2009 — ' +
+      '8 pages of commentary, market notes and dealer insight.',
+    pdf: '/downloads/festival-art-and-books-journal-issue-1-2009.pdf',
+    published: '2009',
+    pages: 8,
+  },
+} as const;
+
 /** Where the prominent header shop affordance points (on-site catalogue). */
 export const SHOP = {
   label: 'Catalogue',
   href: '/books',
+} as const;
+
+/**
+ * How the on-site catalogue relates to eBay / AbeBooks — single source for page copy.
+ * The catalogue is curated and updated manually; marketplace shops hold the full live stock.
+ */
+export const CATALOGUE = {
+  metaDescription:
+    'Browse a curated selection of rare and collectible Tolkien books and memorabilia from ' +
+    'specialist dealer Mark Faith. Each entry links to its live eBay or AbeBooks listing.',
+  heroLead:
+    'Please visit our eBay or AbeBooks shops — we have 100% positive feedback on both.',
+  heroNote:
+    'This catalogue highlights featured stock. Each item links through to its live eBay or ' +
+    'AbeBooks listing, where you will find full photographs, condition notes, and can ' +
+    'complete a purchase. The complete, up-to-date inventory is always on those shops; ' +
+    'the newest listings may appear there before they are added here. Prefer to buy direct? ' +
+    'Email Mark — it saves marketplace fees.',
+  /** Shorter variant for secondary pages (e.g. Rare Books showcase). */
+  showcaseNote:
+    'Our online catalogue highlights featured stock; each entry links to its live eBay or ' +
+    'AbeBooks listing. The full, up-to-date inventory — including the newest additions — ' +
+    'is always on those shops.',
 } as const;

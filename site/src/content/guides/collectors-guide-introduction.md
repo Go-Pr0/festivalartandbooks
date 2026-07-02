@@ -1,5 +1,5 @@
 ---
-title: "Introduction"
+title: "Collector's Guide Introduction"
 description: "Mark Faith’s introduction to the Tolkien Collector’s Guide: twenty-five years as a specialist dealer, why condition and market knowledge matter, and how this free guide can save you time and help you make better collecting choices."
 pillar: true
 cluster: "collectors-guide"

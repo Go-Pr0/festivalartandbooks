@@ -348,35 +348,6 @@ collections:
                   widget: string
                 hint: Add one entry per paragraph. Each paragraph appears as a separate block on the site.
             summary: '{{fields.question}}'
-      - name: artists
-        label: Tolkien Artists
-        file: site/src/content/data/artists.yaml
-        format: yaml
-        media_folder: site/src/assets/showcase
-        public_folder: ../../assets/showcase
-        fields:
-          - label: Artists
-            name: items
-            widget: list
-            fields:
-              - label: Name
-                name: name
-                widget: string
-              - label: Portrait / artwork
-                name: image
-                widget: image
-              - label: Alt text
-                name: alt
-                widget: string
-              - label: Bio paragraphs
-                name: bio
-                widget: list
-                field:
-                  label: Paragraph
-                  name: paragraph
-                  widget: string
-                hint: Add one entry per paragraph. Each paragraph appears as a separate block on the site.
-            summary: '{{fields.name}}'
       - name: rare-books-gallery
         label: Rare Books Gallery
         file: site/src/content/data/rare-books-gallery.yaml
@@ -1520,58 +1491,5 @@ collections:
               - label: Hero intro
                 name: heroIntro
                 widget: markdown
-            collapsed: true
-      - name: tolkien-art
-        label: Tolkien Art
-        file: site/src/content/page-content/tolkien-art.yaml
-        format: yaml
-        fields:
-          - label: SEO
-            name: seo
-            widget: object
-            fields:
-              - label: Meta title
-                name: title
-                widget: string
-                required: true
-              - label: Meta description
-                name: description
-                widget: text
-                hint: Short summary for Google and social previews — aim for ~150 characters.
-            collapsed: true
-          - label: Page copy
-            name: text
-            widget: object
-            fields:
-              - label: Hero eyebrow
-                name: heroEyebrow
-                widget: string
-              - label: Hero H1
-                name: heroH1
-                widget: string
-              - label: Hero intro
-                name: heroIntro
-                widget: markdown
-              - label: Art heading
-                name: artHeading
-                widget: string
-              - label: Art paragraph 1
-                name: artP1
-                widget: markdown
-              - label: Art paragraph 2
-                name: artP2
-                widget: markdown
-              - label: Art paragraph 3
-                name: artP3
-                widget: markdown
-              - label: Artists heading
-                name: artistsHeading
-                widget: string
-              - label: Artists intro
-                name: artistsIntro
-                widget: markdown
-              - label: Marketplace CTA heading
-                name: marketplaceCTAHeading
-                widget: string
             collapsed: true
 

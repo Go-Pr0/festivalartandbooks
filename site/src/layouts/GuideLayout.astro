@@ -12,6 +12,7 @@ import Section from '@/components/Section.astro';
 import Prose from '@/components/Prose.astro';
 import Breadcrumbs from '@/components/Breadcrumbs.astro';
 import Reveal from '@/components/Reveal.astro';
+import RelatedGuides from '@/components/guides/RelatedGuides.astro';
 import { article, faqPage } from '@/lib/schema';
 import { SITE } from '@/lib/site';
 
@@ -189,6 +190,8 @@ if (data.faq && data.faq.length > 0) {
         </nav>
       </Reveal>
     )}
+
+    <RelatedGuides currentId={entry.id} />
 
     <Reveal class="mx-auto mt-16 max-w-[var(--content-max)] border-t border-[var(--color-gold-600)]/20 pt-8">
       <p class="font-ui text-sm text-[var(--color-muted)]">

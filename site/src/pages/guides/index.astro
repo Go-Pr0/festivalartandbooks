@@ -31,7 +31,12 @@ const schema = collectionPage({
   items: ordered.map((g) => ({ name: g.data.title, url: `/guides/${g.id}` })),
 });
 ---
-<BaseLayout title={`${title} | Festival Art & Books`} description={description} schema={schema}>
+<BaseLayout
+  title={`${title} | Festival Art & Books`}
+  description={description}
+  image="/og/guides.jpg"
+  schema={schema}
+>
   <Section tone="midnight" space="lg">
     <Breadcrumbs
       class="!text-[var(--color-parchment)]/70"

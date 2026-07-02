@@ -28,6 +28,15 @@ const events: EventEntry[] = (await getCollection('events'))
   .sort((a, b) => a.id.localeCompare(b.id))
   .map((e) => ({ date: e.data.date, location: e.data.location, detail: e.data.detail }));
 
+const datePublished = '2024-01-01';
+const dateModified = '2026-07-02';
+const dateFormat = new Intl.DateTimeFormat('en-GB', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+const lastUpdated = dateFormat.format(new Date(dateModified));
+
 const schema = collectionPage({
   name: 'Events — Festival Art & Books',
   description,
@@ -35,16 +44,26 @@ const schema = collectionPage({
   items: events.map((e) => ({ name: `${e.date} — ${e.location}`, url: '/events' })),
 });
 ---
-<BaseLayout title={title} description={description} schema={schema}>
+<BaseLayout
+  title={title}
+  description={description}
+  type="article"
+  publishedTime={datePublished}
+  modifiedTime={dateModified}
+  schema={schema}
+>
   <Section tone="midnight" space="md">
     <Breadcrumbs trail={trail} class="text-[var(--color-parchment)]/70" />
-    <Reveal as="div" mode="up" class="mt-10 max-w-3xl">
+    <Reveal as="header" mode="up" class="mt-10 max-w-3xl">
       <p class="font-ui text-xs uppercase tracking-[0.25em] text-[var(--color-gold-300)]">{t.heroEyebrow}</p>
       <h1 class="mt-3 font-display text-4xl leading-tight text-[var(--color-parchment)] sm:text-5xl lg:text-6xl">
         {t.heroH1}
       </h1>
       <p class="mt-6 font-text text-xl leading-relaxed text-[var(--color-parchment)]/90">
         <Fragment set:html={t.heroIntro} />
+      </p>
+      <p class="mt-6 font-ui text-sm text-[var(--color-parchment)]/70">
+        By Mark Faith · Last updated: <time datetime={dateModified}>{lastUpdated}</time>
       </p>
     </Reveal>
   </Section>

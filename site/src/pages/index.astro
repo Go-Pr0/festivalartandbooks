@@ -11,7 +11,7 @@ import TrustCard from '@/components/home/TrustCard.astro';
 import DealsInCard from '@/components/home/DealsInCard.astro';
 import { SITE } from '@/lib/site';
 import { webPage } from '@/lib/schema';
-import { getEntry } from 'astro:content';
+import { getEntry, getCollection } from 'astro:content';
 
 const page = (await getEntry('pageContent', 'home'))!;
 const t = page.data.text as Record<string, string>;
@@ -20,6 +20,25 @@ const description = page.data.seo!.description!;
 const stats: StatItem[] = page.data.stats!;
 const trustPoints = page.data.trustPoints!;
 const dealsIn = page.data.dealsIn!;
+
+const allGuides = await getCollection('guides', ({ data }) => !data.draft);
+
+const startHereSlugs = {
+  hobbit: 'hobbit-first-edition-1937-identification',
+  lotr: 'lotr-first-edition-1954-55-identification',
+} as const;
+
+const startHereLinks = [
+  { href: '/guides', label: 'All collecting guides' },
+  {
+    href: `/guides/${allGuides.find((g) => g.id === startHereSlugs.hobbit)?.id ?? startHereSlugs.hobbit}`,
+    label: 'Hobbit (1937) identification',
+  },
+  {
+    href: `/guides/${allGuides.find((g) => g.id === startHereSlugs.lotr)?.id ?? startHereSlugs.lotr}`,
+    label: 'LOTR (1954–55) identification',
+  },
+];
 
 const schema = webPage({
   name: `${title} | ${SITE.name}`,
@@ -107,6 +126,19 @@ const schema = webPage({
         </Reveal>
       ))}
     </div>
+    <Reveal class="mt-10 flex flex-wrap items-center gap-3 border-t border-[var(--color-gold-600)]/20 pt-8">
+      <span class="font-ui text-xs uppercase tracking-[0.2em] text-[var(--color-gold-600)]">
+        Start here
+      </span>
+      {startHereLinks.map((link) => (
+        <a
+          href={link.href}
+          class="rounded-[var(--radius)] border border-[var(--color-gold-600)]/30 px-4 py-2 font-ui text-sm text-[var(--color-oxblood-600)] transition-colors hover:border-[var(--color-gold-500)] hover:bg-[var(--color-parchment-dim)]"
+        >
+          {link.label} →
+        </a>
+      ))}
+    </Reveal>
   </Section>
 
   <!-- Free e-book + newsletter -->

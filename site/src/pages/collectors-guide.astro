@@ -22,6 +22,42 @@ const chapters = (await getCollection('guides', ({ data }) =>
     (a.data.chapterOrder ?? 0) - (b.data.chapterOrder ?? 0),
 );
 
+const allGuides = await getCollection('guides', ({ data }) => !data.draft);
+
+const identificationFallbacks = {
+  'hobbit-first-edition-1937-identification': {
+    title: 'Hobbit First Edition (1937) Identification',
+    description:
+      'Allen & Unwin first-edition points, dust-jacket variants, and how to tell a true 1937 Hobbit from later impressions.',
+    cluster: 'hobbit-first-editions',
+  },
+  'lotr-first-edition-1954-55-identification': {
+    title: 'Lord of the Rings First Edition (1954–55) Identification',
+    description:
+      'How to identify a genuine first-edition Lord of the Rings set — printings, jackets, and the details dealers check first.',
+    cluster: 'lotr-first-editions',
+  },
+} as const;
+
+function resolveIdentificationGuide(slug: keyof typeof identificationFallbacks) {
+  const exact = allGuides.find((g) => g.id === slug);
+  if (exact) return exact;
+  const cluster = identificationFallbacks[slug].cluster;
+  return allGuides.find((g) => g.data.cluster === cluster && g.data.pillar) ?? null;
+}
+
+const identificationGuides = (Object.keys(identificationFallbacks) as Array<
+  keyof typeof identificationFallbacks
+>).map((slug) => {
+  const guide = resolveIdentificationGuide(slug);
+  const fallback = identificationFallbacks[slug];
+  return {
+    href: `/guides/${guide?.id ?? slug}`,
+    title: guide?.data.title ?? fallback.title,
+    description: guide?.data.description ?? fallback.description,
+  };
+});
+
 const title = page.data.seo!.title!;
 const description = page.data.seo!.description!;
 
@@ -41,7 +77,7 @@ const schema = collectionPage({
   items: chapters.map((ch) => ({ name: ch.data.title, url: `/guides/${ch.id}` })),
 });
 ---
-<BaseLayout title={title} description={description} schema={schema}>
+<BaseLayout title={title} description={description} image="/og/guides.jpg" schema={schema}>
   <Section tone="midnight" space="md">
     <Breadcrumbs trail={trail} class="text-[var(--color-parchment)]/70" />
     <div class="mt-8 grid grid-cols-1 gap-10 lg:grid-cols-[1.4fr_1fr] lg:items-center">
@@ -132,5 +168,38 @@ const schema = collectionPage({
         </p>
       </Reveal>
     )}
+  </Section>
+
+  <Section tone="parchment" space="md">
+    <Reveal as="header" class="max-w-2xl">
+      <p class="font-ui text-xs uppercase tracking-[0.2em] text-[var(--color-gold-600)]">
+        First-edition identification
+      </p>
+      <h2 class="mt-3 font-display text-3xl text-[var(--color-midnight-900)] sm:text-4xl">
+        Identification guides
+      </h2>
+      <p class="mt-4 font-text text-lg leading-relaxed text-[var(--color-muted)]">
+        Ready to verify a copy before you buy? These cornerstone guides walk through the
+        identification points dealers use for Tolkien&apos;s two most collected first editions.
+      </p>
+    </Reveal>
+    <ul class="mt-8 grid gap-6 sm:grid-cols-2">
+      {identificationGuides.map((guide, i) => (
+        <Reveal as="li" delay={i * 80}>
+          <a
+            href={guide.href}
+            class="group flex h-full flex-col rounded-[var(--radius)] border border-[var(--color-gold-600)]/30 bg-[var(--color-surface)] p-6 transition-colors hover:border-[var(--color-gold-500)]"
+          >
+            <h3 class="font-display text-2xl text-[var(--color-midnight-900)] group-hover:text-[var(--color-oxblood-600)]">
+              {guide.title}
+            </h3>
+            <p class="mt-3 flex-1 text-[var(--color-muted)]">{guide.description}</p>
+            <span class="mt-4 font-ui text-sm text-[var(--color-oxblood-600)]">
+              Read the guide →
+            </span>
+          </a>
+        </Reveal>
+      ))}
+    </ul>
   </Section>
 </BaseLayout>

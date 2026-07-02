@@ -9,13 +9,15 @@
 
 ## Collecting Guides
 
-- [Collecting Tolkien Books for Fun and Investment](https://festivalartandbooks.com/guides/collecting-tolkien-books-for-investment): Cornerstone guide on how to collect and invest in Tolkien first editions — condition, pricing, and why issue points rarely matter.
-- [The Ballantine Tolkien Paperbacks and Barbara Remington's Cover Art](https://festivalartandbooks.com/guides/ballantine-tolkien-paperbacks-barbara-remington): The 1965 Ballantine paperbacks, Remington's rushed cover art, and how they propelled Tolkien to worldwide fame.
-- [Collector's Guide Introduction](https://festivalartandbooks.com/guides/collectors-guide-introduction): Mark Faith's introduction — twenty-five years as a specialist dealer and why this free guide can save collectors time and money.
-- [What to Buy](https://festivalartandbooks.com/guides/collectors-guide-what-to-buy): Which Tolkien titles to collect, condition grading, signed books, dust-jacket wear and restoration.
-- [Where to Buy](https://festivalartandbooks.com/guides/collectors-guide-where-to-buy): Specialist dealers vs auctions, negotiating, market fundamentals and assessing condition from photos.
-- [Technicalities](https://festivalartandbooks.com/guides/collectors-guide-technicalities): Printing history, states vs errors, Lord of the Rings impression charts, proofs and advance reading copies.
-- [The Three Eras of Tolkien Books](https://festivalartandbooks.com/guides/collectors-guide-three-eras): Pre-hippie, collector-era and post-Jackson collecting; deluxe editions and long-term value.
+- [Collecting Tolkien Books for Fun and Investment](https://festivalartandbooks.com/guides/collecting-tolkien-books-for-investment): How to collect and invest in Tolkien first editions: buy the earliest printing you can in the best possible condition, complete with its dust jacket, ideally from a specialist dealer.
+- [Collector's Guide Introduction](https://festivalartandbooks.com/guides/collectors-guide-introduction): Mark Faith’s introduction to the Tolkien Collector’s Guide: twenty-five years as a specialist dealer, why condition and market knowledge matter, and how this free guide can save you time and help you make better collecting choices.
+- [The Hobbit First Edition (1937): Identification Points](https://festivalartandbooks.com/guides/hobbit-first-edition-1937-identification): How to identify a 1937 first-edition Hobbit from Allen & Unwin: copyright page, binding, dust jacket and why condition — not ISBNs or issue points — drives value.
+- [The Lord of the Rings First Edition (1954–55): Identification Points](https://festivalartandbooks.com/guides/lotr-first-edition-1954-55-identification): How to identify Allen & Unwin first-edition Lord of the Rings volumes (1954–55): printing history, impression charts, uniform wear, and why matched 1st/1st sets were never sold new.
+- [Technicalities](https://festivalartandbooks.com/guides/collectors-guide-technicalities): Tolkien book technicalities explained: printing history from the 1950s to digital print-on-demand, states versus printing errors, Lord of the Rings impression charts, and what proofs and advance reading copies are worth to collectors.
+- [The Ballantine Tolkien Paperbacks and Barbara Remington's Cover Art](https://festivalartandbooks.com/guides/ballantine-tolkien-paperbacks-barbara-remington): Why the rushed 1965 Ballantine Tolkien paperbacks and Barbara Remington's cover art — which Tolkien disliked — helped propel his work to worldwide fame.
+- [The Three Eras of Tolkien Books](https://festivalartandbooks.com/guides/collectors-guide-three-eras): The three eras of Tolkien book collecting — hippie paperbacks, pre-2000 deluxe editions, and the post-Jackson film era — plus what modern print runs, slipcased deluxes and shrink-wrapped copies mean for future value.
+- [What to Buy](https://festivalartandbooks.com/guides/collectors-guide-what-to-buy): What Tolkien books to collect and why condition beats edition: specialist dealer expertise, Hobbit and Lord of the Rings priorities, signed books and bookplates, dust-jacket wear, restoration versus repair, and when art editions matter.
+- [Where to Buy](https://festivalartandbooks.com/guides/collectors-guide-where-to-buy): Where to buy rare Tolkien books: building a relationship with a specialist dealer, negotiating politely, why auctions are risky, how the Tolkien market behaves like a commodity market, and the bell-curve lesson that explains why fine copies keep rising in price.
 
 ## Collector's Guide (hub + chapters)
 
@@ -42,7 +44,12 @@
 
 - [Resources hub](https://festivalartandbooks.com/resources): Index of guides, journal, events, media, art and the photo gallery.
 - [Free Tolkien Collector E-book](https://festivalartandbooks.com/ebook): Download the 26-page PDF guide or read the full guide online.
-- [The Journal](https://festivalartandbooks.com/journal): Essays on Tolkien collecting, market commentary and notable finds. Issue 1 (2009) archive is being restored.
+- [The Journal](https://festivalartandbooks.com/journal): Essays on Tolkien collecting, market commentary and notable finds.
+- [Journal Issue 1 (2009) PDF](https://festivalartandbooks.com/downloads/festival-art-and-books-journal-issue-1-2009.pdf): The first Festival Art and Books Journal — 8-page archive edition from 2009.
+
+## Journal
+
+- [The Hobbit or The Lord of the Rings?](https://festivalartandbooks.com/journal/the-hobbit-or-the-lord-of-the-rings): Which Tolkien masterpiece matters more to collectors — The Hobbit or The Lord of the Rings? Mark Faith compares rarity, condition attrition, and what belongs at the heart of a serious collection.
 
 ## Media
 
@@ -51,4 +58,3 @@
 - [Photo Gallery](https://festivalartandbooks.com/photo-gallery): Archive photographs of rare books, events and memorabilia.
 - [Festival in the Shire](https://festivalartandbooks.com/festival-in-the-shire): The Tolkien fan festival Mark Faith founded — history and photos.
 - [Events](https://festivalartandbooks.com/events): Past exhibitions, talks and Tolkien collecting events.
-- [Tolkien Art](https://festivalartandbooks.com/tolkien-art): Tolkien-inspired original art and the artists Mark works with.

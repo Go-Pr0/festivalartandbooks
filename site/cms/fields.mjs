@@ -330,17 +330,6 @@ export function usedBooksFaqsListFields() {
   ];
 }
 
-export function artistsListFields() {
-  return [
-    listField('Artists', 'items', [
-      stringField('Name', 'name'),
-      imageField('Portrait / artwork', 'image'),
-      stringField('Alt text', 'alt'),
-      stringListField('Bio paragraphs', 'bio', 'Paragraph'),
-    ], { summary: '{{fields.name}}' }),
-  ];
-}
-
 export function rareBooksGalleryListFields() {
   return [
     listField('Gallery images', 'items', [

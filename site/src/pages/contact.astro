@@ -5,9 +5,11 @@ import Reveal from '@/components/Reveal.astro';
 import Button from '@/components/Button.astro';
 import Breadcrumbs from '@/components/Breadcrumbs.astro';
 import ContactDetails from '@/components/showcase/ContactDetails.astro';
+import FaqList from '@/components/showcase/FaqList.astro';
+import type { FaqItem } from '@/components/showcase/FaqList.astro';
 import { Image } from 'astro:assets';
-import { EXTERNAL } from '@/lib/site';
-import { contactPage, webPage } from '@/lib/schema';
+import { EXTERNAL, SITE } from '@/lib/site';
+import { contactPage, faqPage, webPage } from '@/lib/schema';
 import { getEntry } from 'astro:content';
 
 const PATH = '/contact';
@@ -23,9 +25,36 @@ const trail = [
 const title = page.data.seo!.title!;
 const description = page.data.seo!.description!;
 
+const faqs: FaqItem[] = [
+  {
+    question: 'What is the best way to contact Mark Faith?',
+    answer: [
+      'Email is best. Mark is based near Machynlleth in Mid-Wales but travels extensively for the business, so a message to ' +
+        SITE.email +
+        ' is more reliable than trying to catch him by phone.',
+      'Include photographs if you are asking about a specific book, and say whether you are buying, selling or commissioning sourcing. Mark will call back when a conversation is needed.',
+    ],
+  },
+  {
+    question: 'How quickly will I get a response?',
+    answer: [
+      'Most enquiries receive a reply within a few working days. Complex valuation requests, consignment discussions and bespoke sourcing briefs may take a little longer while Mark reviews the details properly.',
+      'If your matter is time-sensitive — an auction deadline, an estate sale or a book about to be listed elsewhere — say so in your email and Mark will prioritise accordingly.',
+    ],
+  },
+  {
+    question: 'Can I buy directly instead of through eBay or AbeBooks?',
+    answer: [
+      'Yes. Stock is listed on eBay and AbeBooks with honest photographs and condition notes, but for anything of real value you can email Mark to buy direct. Dealing direct saves marketplace fees and puts you in touch with the specialist himself.',
+      'For commissioning sourcing of a particular edition, set or piece of art, direct contact is the usual route. Use the marketplace shops to browse; email Mark when you want to discuss a specific copy or a private acquisition.',
+    ],
+  },
+];
+
 const schema = [
   contactPage({ url: PATH, description }),
   webPage({ name: 'Contact', description, url: PATH }),
+  faqPage(faqs.map((item) => ({ question: item.question, answer: item.answer.join(' ') }))),
 ];
 ---
 <BaseLayout
@@ -68,6 +97,15 @@ const schema = [
         </figure>
       </Reveal>
     </div>
+  </Section>
+
+  <Section tone="parchment" width="wide" id="faq" space="lg">
+    <Reveal class="prose-paper mx-auto mb-10 max-w-3xl">
+      <p class="font-ui text-xs uppercase tracking-[0.2em] text-[var(--color-gold-600)]">
+        Frequently asked questions
+      </p>
+    </Reveal>
+    <FaqList items={faqs} collapsible />
   </Section>
 
   <Section tone="parchment" width="prose" space="md">

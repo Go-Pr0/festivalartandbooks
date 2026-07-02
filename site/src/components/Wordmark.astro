@@ -11,7 +11,7 @@ interface Props {
   href?: string;
   /** Light variant for dark (midnight) backgrounds. */
   tone?: 'dark' | 'light';
-  /** Smaller logo + name for the header bar; tagline hidden until 2xl. */
+  /** Smaller logo + name for the header bar; tagline always shown beside the emblem. */
   compact?: boolean;
   class?: string;
 }
@@ -27,18 +27,18 @@ const Tag = href ? 'a' : 'span';
 ---
 <Tag
   href={href || undefined}
-  class:list={['group inline-flex min-w-0 items-center gap-2 sm:gap-3', className]}
+  class:list={['group inline-flex min-w-0 items-center gap-2.5 sm:gap-3', className]}
   aria-label={href ? `${SITE.name}, home` : undefined}
 >
   <DragonLogo
-    size={compact ? 'sm' : 'md'}
-    class="shrink-0 transition-transform duration-500 group-hover:rotate-[18deg]"
+    size={compact ? 'md' : 'lg'}
+    class="shrink-0 transition-transform duration-500 group-hover:rotate-[12deg]"
   />
-  <span class="flex min-w-0 flex-col leading-none">
+  <span class="flex min-w-0 flex-col justify-center gap-0.5 leading-none">
     <span
       class:list={[
-        'truncate font-display tracking-wide',
-        compact ? 'text-lg xl:text-xl' : 'text-xl sm:text-2xl',
+        'font-display tracking-wide',
+        compact ? 'text-base leading-tight sm:text-lg lg:text-xl' : 'text-xl sm:text-2xl',
         nameColor,
       ]}
     >
@@ -46,8 +46,8 @@ const Tag = href ? 'a' : 'span';
     </span>
     <span
       class:list={[
-        'font-ui uppercase tracking-[0.28em]',
-        compact ? 'hidden text-[0.55rem] 2xl:block' : 'text-[0.6rem]',
+        'font-ui uppercase tracking-[0.22em] sm:tracking-[0.28em]',
+        compact ? 'text-[0.5rem] sm:text-[0.55rem] lg:text-[0.6rem]' : 'text-[0.6rem]',
         taglineColor,
       ]}
     >

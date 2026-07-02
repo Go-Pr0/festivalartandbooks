@@ -10,11 +10,11 @@ import { NAV } from '@/lib/site';
 ---
 <header
   id="site-header"
-  class="sticky top-0 z-50 border-b border-[var(--color-gold-600)]/25 bg-[var(--color-bg)]/90 backdrop-blur transition-shadow duration-300 data-[scrolled]:shadow-[0_1px_24px_-12px_rgba(13,20,48,0.55)]"
+  class="group/header sticky top-0 z-50 border-b border-[var(--color-gold-600)]/25 bg-[var(--color-bg)]/90 backdrop-blur transition-shadow duration-300 data-[scrolled]:shadow-[0_1px_24px_-12px_rgba(13,20,48,0.55)]"
 >
   <Container>
-    <div class="flex items-center justify-between gap-3 py-3 transition-[padding] duration-300 data-[scrolled]:py-2 xl:gap-4">
-      <Wordmark compact class="max-w-[min(100%,14rem)] sm:max-w-[min(100%,16rem)] xl:max-w-[min(100%,18rem)]" />
+    <div class="flex items-center justify-between gap-3 py-2.5 transition-[padding] duration-300 group-data-[scrolled]/header:py-2 xl:gap-6">
+      <Wordmark compact class="min-w-0 max-w-[min(100%,14rem)] sm:max-w-none" />
 
       <!-- Desktop nav — xl+ so the bar fits without wrapping -->
       <nav class="hidden shrink-0 items-center gap-x-3 gap-y-1 xl:flex 2xl:gap-x-4" aria-label="Primary">

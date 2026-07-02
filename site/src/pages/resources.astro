@@ -25,12 +25,14 @@ const resourceLinks = resourcesNav?.children ?? [];
 
 /** Short blurbs for each resource link — editable here until moved to CMS. */
 const descriptions: Record<string, string> = {
+  '/guides':
+    'Authoritative collecting guides by Mark Faith — first-edition identification, condition, market advice and investment fundamentals.',
   '/collectors-guide':
     "Mark's full collecting guide online, chapter by chapter — identification, condition and buying advice.",
   '/ebook':
     'Free 26-page PDF guide to download with any purchase or by email.',
   '/journal':
-    'Essays and commentary on collecting, the market and Tolkien editions.',
+    'Essays and commentary on collecting, the market and Tolkien editions — including Issue 1 (2009) as a free PDF.',
   '/festival-in-the-shire':
     'The Shire festival Mark founded — history, photos and what comes next.',
   '/events':
@@ -41,9 +43,16 @@ const descriptions: Record<string, string> = {
     'Press coverage, interviews and media mentions over the years.',
   '/photo-gallery':
     'Archive photographs of rare books, events and memorabilia.',
-  '/tolkien-art':
-    'Tolkien-inspired original art and the artists Mark works with.',
 };
+
+const datePublished = '2024-01-01';
+const dateModified = '2026-07-02';
+const dateFormat = new Intl.DateTimeFormat('en-GB', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+const lastUpdated = dateFormat.format(new Date(dateModified));
 
 const schema = collectionPage({
   name: title,
@@ -52,7 +61,14 @@ const schema = collectionPage({
   items: resourceLinks.map((link) => ({ name: link.label, url: link.href })),
 });
 ---
-<BaseLayout title={title} description={description} schema={schema}>
+<BaseLayout
+  title={title}
+  description={description}
+  type="article"
+  publishedTime={datePublished}
+  modifiedTime={dateModified}
+  schema={schema}
+>
   <Section tone="midnight" space="md">
     <Breadcrumbs trail={trail} class="text-[var(--color-parchment)]/70" />
     <Reveal as="header" class="mt-10 max-w-3xl">
@@ -64,6 +80,9 @@ const schema = collectionPage({
       </h1>
       <p class="mt-6 font-text text-xl leading-relaxed text-[var(--color-parchment)]/90">
         {t.heroIntro}
+      </p>
+      <p class="mt-6 font-ui text-sm text-[var(--color-parchment)]/70">
+        By Mark Faith · Last updated: <time datetime={dateModified}>{lastUpdated}</time>
       </p>
     </Reveal>
   </Section>

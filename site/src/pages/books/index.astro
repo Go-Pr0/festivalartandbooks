@@ -9,7 +9,9 @@ import Breadcrumbs from '@/components/Breadcrumbs.astro';
 import Reveal from '@/components/Reveal.astro';
 import BookCard from '@/components/books/BookCard.astro';
 import CatalogueToolbar from '@/components/books/CatalogueToolbar.astro';
+import MarketplaceCTA from '@/components/MarketplaceCTA.astro';
 import { collectionPage } from '@/lib/schema';
+import { CATALOGUE } from '@/lib/site';
 import catalogueMontage from '@/assets/home/tolkien-rare-books-first-edition-montage-hero.jpg';
 
 const allBooks = await getCollection('books', ({ data }) => !data.draft && data.availability !== 'OutOfStock');
@@ -24,8 +26,7 @@ const minPrice = prices.length > 0 ? Math.min(...prices) : 0;
 const maxPrice = prices.length > 0 ? Math.max(...prices) : 0;
 
 const title = 'Rare Tolkien Books Catalogue';
-const description =
-  'Browse rare and collectible Tolkien books, first editions and memorabilia from specialist dealer Mark Faith — prices and photos synced from the live shop.';
+const description = CATALOGUE.metaDescription;
 
 const schema = collectionPage({
   name: title,
@@ -34,7 +35,7 @@ const schema = collectionPage({
   items: books.map((b) => ({ name: b.data.title, url: `/books/${b.id}` })),
 });
 ---
-<BaseLayout title={title} description={description} schema={schema}>
+<BaseLayout title={title} description={description} image="/og/catalogue.jpg" schema={schema}>
   <Section tone="midnight" space="md" contained={false} class="relative overflow-hidden">
     <Image
       src={catalogueMontage}
@@ -59,11 +60,10 @@ const schema = collectionPage({
           {title}
         </h1>
         <p class="mt-6 font-text text-xl leading-relaxed text-[var(--color-parchment)]/85">
-          Please visit our Ebay or AbeBooks shops. We have 100% positive feedback on both.
+          {CATALOGUE.heroLead}
         </p>
         <p class="mt-4 max-w-2xl font-text text-lg leading-relaxed text-[var(--color-parchment)]/75">
-          This catalogue is synced from our live eBay shop. It is updated when inventory
-          changes on eBay; for the very latest listings, visit our eBay store directly.
+          {CATALOGUE.heroNote}
         </p>
       </Reveal>
     </div>
@@ -110,6 +110,10 @@ const schema = collectionPage({
         </p>
       </Reveal>
     )}
+  </Section>
+
+  <Section tone="surface" space="md">
+    <MarketplaceCTA heading="Newest listings on eBay & AbeBooks" />
   </Section>
 </BaseLayout>
 

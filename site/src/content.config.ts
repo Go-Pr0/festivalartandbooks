@@ -132,12 +132,6 @@ const events = defineCollection({
   schema: z.object({ date: z.string(), location: z.string(), detail: z.string() }),
 });
 
-const artists = defineCollection({
-  loader: orderedList('./src/content/data/artists.yaml'),
-  schema: ({ image }) =>
-    z.object({ name: z.string(), image: image(), alt: z.string(), bio: stringArray() }),
-});
-
 const mediaMentions = defineCollection({
   loader: orderedList('./src/content/data/media-mentions.yaml'),
   schema: z.object({ outlet: z.string(), headline: z.string(), url: z.string() }),
@@ -200,7 +194,6 @@ export const collections = {
   pages,
   books,
   events,
-  artists,
   mediaMentions,
   usedBooksFaqs,
   rareBooksGallery,
