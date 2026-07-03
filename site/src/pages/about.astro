@@ -11,6 +11,7 @@ import Figure from '@/components/story/Figure.astro';
 import type { TimelineEntry } from '@/components/story/TimelineItem.astro';
 import type { StatItem } from '@/components/StatBand.astro';
 import { article } from '@/lib/schema';
+import { EXTERNAL } from '@/lib/site';
 import { getEntry } from 'astro:content';
 
 const page = (await getEntry('pageContent', 'about'))!;
@@ -72,6 +73,15 @@ const schema = article({
             {' '}{t.ctaBrowse}{' '}
           </Button>
         </div>
+        <aside class="mt-8 max-w-prose rounded-[var(--radius)] border border-[var(--color-gold-500)]/30 bg-[var(--color-parchment)]/5 p-5">
+          <h2 class="font-display text-xl text-[var(--color-gold-300)]">{t.podcastHeading}</h2>
+          <p class="mt-2 font-text text-base leading-relaxed text-[var(--color-parchment)]/85">
+            {t.podcastDescription}
+          </p>
+          <div class="mt-4">
+            <Button href={EXTERNAL.podcast} variant="gold" external>{t.podcastCta}</Button>
+          </div>
+        </aside>
       </Reveal>
       <Figure
         src={markPortrait.src}

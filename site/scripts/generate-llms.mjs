@@ -18,6 +18,7 @@ const SITE_URL = 'https://festivalartandbooks.com';
 const EXTERNAL = {
   ebay: 'https://www.ebay.co.uk/str/festivalartandbooks',
   abebooks: 'https://www.abebooks.co.uk/festival-art-and-books-aberdyfi/51881760/sf',
+  podcast: 'https://castbox.fm/app/castbox/player/id1209853/id485657519',
 };
 
 const INTRO = `# Festival Art & Books
@@ -117,6 +118,7 @@ ${linkLine('Used & Rare Tolkien Books: Q&A', '/used-tolkien-books', 'Answer-firs
 ## About & Services
 
 ${linkLine('About Mark Faith', '/about', 'Biography, credentials, 5,000+ rare Tolkien books sold, TV expert appearances.')}
+- [AbeBooks Collecting Podcast](${EXTERNAL.podcast}): Mark Faith on collecting Tolkien books and why they are such a phenomenon.
 ${linkLine('Sell & Source', '/sell-and-source', 'We buy rare Tolkien books, offer consignment for high-value items, and confidentially source titles.')}
 ${linkLine('Contact', '/contact', 'Email Mark Faith for advice, valuations, buying or selling rare Tolkien books.')}
 

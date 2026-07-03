@@ -23,6 +23,7 @@ export const EXTERNAL = {
   ebay: 'https://www.ebay.co.uk/str/festivalartandbooks',
   abebooks: 'https://www.abebooks.co.uk/festival-art-and-books-aberdyfi/51881760/sf',
   youtube: 'https://www.youtube.com/channel/UCW7s3VRIwQLS5CWcasYHsBQ/videos',
+  podcast: 'https://castbox.fm/app/castbox/player/id1209853/id485657519',
   // Add when available: IOBA listing, social profiles, press mentions — used in schema `sameAs`.
 } as const;
 

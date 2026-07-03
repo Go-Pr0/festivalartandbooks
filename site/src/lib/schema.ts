@@ -32,7 +32,7 @@ export function organization() {
       areaServed: 'Worldwide',
     },
     founder: { '@id': `${SITE.url}/#mark-faith` },
-    sameAs: [EXTERNAL.ebay, EXTERNAL.abebooks, EXTERNAL.youtube],
+    sameAs: [EXTERNAL.ebay, EXTERNAL.abebooks, EXTERNAL.youtube, EXTERNAL.podcast],
   };
 }
 
@@ -52,7 +52,7 @@ export function person() {
     knowsAbout: ['J.R.R. Tolkien', 'Rare Books', 'First Editions', 'Book Collecting'],
     worksFor: { '@id': `${SITE.url}/#organization` },
     url: `${SITE.url}/about`,
-    sameAs: [EXTERNAL.ebay, EXTERNAL.abebooks, EXTERNAL.youtube], // add IOBA listing, press mentions
+    sameAs: [EXTERNAL.ebay, EXTERNAL.abebooks, EXTERNAL.youtube, EXTERNAL.podcast], // add IOBA listing, press mentions
   };
 }
 
