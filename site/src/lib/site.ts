@@ -41,7 +41,7 @@ export const NAV: readonly NavItem[] = [
   { label: 'Rare Books', href: '/rare-tolkien-books-collectables' },
   { label: 'Guides', href: '/guides' },
   { label: 'Used Books', href: '/used-tolkien-books' },
-  { label: 'Sell & Source', href: '/sell-and-source' },
+  { label: 'Sell, Source and Appraisals', href: '/sell-and-source' },
   {
     label: 'Resources',
     href: '/resources',

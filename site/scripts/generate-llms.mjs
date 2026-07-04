@@ -119,7 +119,7 @@ ${linkLine('Used & Rare Tolkien Books: Q&A', '/used-tolkien-books', 'Answer-firs
 
 ${linkLine('About Mark Faith', '/about', 'Biography, credentials, 5,000+ rare Tolkien books sold, TV expert appearances.')}
 - [AbeBooks Collecting Podcast](${EXTERNAL.podcast}): Mark Faith on collecting Tolkien books and why they are such a phenomenon.
-${linkLine('Sell & Source', '/sell-and-source', 'We buy rare Tolkien books, offer consignment for high-value items, and confidentially source titles.')}
+${linkLine('Sell, Source and Appraisals', '/sell-and-source', 'We buy rare Tolkien books, offer consignment, source titles confidentially, and provide official valuations for insurance and probate.')}
 ${linkLine('Contact', '/contact', 'Email Mark Faith for advice, valuations, buying or selling rare Tolkien books.')}
 
 ## Current Inventory

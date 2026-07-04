@@ -22,7 +22,7 @@ const title = page.data.seo!.title!;
 const description = page.data.seo!.description!;
 
 const datePublished = '2024-01-01';
-const dateModified = '2026-07-02';
+const dateModified = '2026-07-04';
 const dateFormat = new Intl.DateTimeFormat('en-GB', {
   day: 'numeric',
   month: 'long',
@@ -32,7 +32,7 @@ const lastUpdated = dateFormat.format(new Date(dateModified));
 
 const trail = [
   { name: 'Home', url: '/' },
-  { name: 'Sell & Source', url: PATH },
+  { name: 'Sell, Source and Appraisals', url: PATH },
 ];
 
 const faqs: FaqItem[] = [
@@ -55,6 +55,13 @@ const faqs: FaqItem[] = [
     answer: [
       'Yes. Sourcing is a core part of the business. Mark maintains relationships with collectors, institutions and trade sources worldwide and has helped high-net-worth buyers and libraries acquire books discreetly.',
       'If you need a particular printing, state of preservation or provenance, email what you are looking for and your budget range. Confidential enquiries are handled as a matter of course.',
+    ],
+  },
+  {
+    question: 'Do you provide official valuations for insurance or probate?',
+    answer: [
+      'Yes. Based on 25 years in the Tolkien rare-book trade, Mark can provide official valuations for a single title or an entire collection — for insurance, probate and estate purposes.',
+      'The process usually starts with photographs and details by email, followed by an in-person examination. A fee is charged as a percentage of the assessed value; if Mark later sells the book or books for you on consignment, that fee is refunded.',
     ],
   },
   {
@@ -81,6 +88,7 @@ const services = [
   { id: 'we-buy-tolkien-books', heading: t.buyHeading, body: t.buyBody },
   { id: 'consignment', heading: t.consignmentHeading, body: t.consignmentBody },
   { id: 'sourcing', heading: t.sourcingHeading, body: t.sourcingBody },
+  { id: 'appraisals', heading: t.appraisalsHeading, body: t.appraisalsBody },
 ] as const;
 ---
 <BaseLayout
@@ -108,7 +116,7 @@ const services = [
   </Section>
 
   <Section tone="paper" space="lg">
-    <ul class="grid gap-6 lg:grid-cols-3" role="list">
+    <ul class="grid gap-6 sm:grid-cols-2" role="list">
       {services.map((service, i) => (
         <li id={service.id}>
           <Reveal delay={i * 90}>
@@ -125,7 +133,7 @@ const services = [
         Frequently asked questions
       </p>
       <p class="mt-4 font-text text-lg leading-relaxed text-[var(--color-text)]">
-        Practical answers on selling, consigning and commissioning rare Tolkien books through Festival Art and Books.
+        Practical answers on selling, consigning, sourcing and appraising rare Tolkien books through Festival Art and Books.
       </p>
     </Reveal>
     <FaqList items={faqs} collapsible />
