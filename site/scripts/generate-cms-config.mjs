@@ -18,17 +18,17 @@ display_url: festivalartandbooks.com
 logo_url: /logo.png
 
 editor:
-  preview: true
+ preview: true
 
 `;
 
 const BACKEND = `backend:
-  name: github
-  repo: Go-Pr0/festivalartandbooks
-  branch: main
+ name: github
+ repo: Go-Pr0/festivalartandbooks
+ branch: main
   # Netlify OAuth proxy — uncomment and set once you have a deployed site on Netlify:
-  # base_url: https://your-netlify-site.netlify.app
-  # auth_endpoint: api/auth
+ # base_url: https://your-netlify-site.netlify.app
+ # auth_endpoint: api/auth
 
 # Enables the CMS UI without GitHub auth when running \`npm run dev\` locally
 local_backend: true
@@ -41,20 +41,20 @@ public_folder: ../../assets/inventory
 const collectionDefs = collections();
 const errors = validateCollections(collectionDefs);
 if (errors.length > 0) {
-  console.error('Decap CMS config validation failed:\n');
-  for (const err of errors) console.error(`  - ${err}`);
-  process.exit(1);
+ console.error('Decap CMS config validation failed:\n');
+ for (const err of errors) console.error(` - ${err}`);
+ process.exit(1);
 }
 
 const collectionsYaml = yaml.dump(collectionDefs, {
-  lineWidth: -1,
-  noRefs: true,
+ lineWidth: -1,
+ noRefs: true,
 });
 
 const indentedCollections = collectionsYaml
-  .split('\n')
-  .map((line) => (line ? `  ${line}` : ''))
-  .join('\n');
+ .split('\n')
+ .map((line) => (line ? ` ${line}` : ''))
+ .join('\n');
 
 writeFileSync(outPath, `${SITE}${BACKEND}collections:\n${indentedCollections}\n`, 'utf8');
 console.log(`Wrote ${outPath}`);

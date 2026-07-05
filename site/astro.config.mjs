@@ -13,6 +13,9 @@ const vitePlugins = [tailwindcss()];
 // Production domain — required for sitemap, canonical URLs, and absolute schema.org URLs.
 export default defineConfig({
   site: 'https://festivalartandbooks.com',
+  redirects: {
+    '/ebook': '/collectors-guide',
+  },
   integrations: [
     mdx(),
     sitemap(),

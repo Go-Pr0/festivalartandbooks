@@ -14,7 +14,7 @@ import Breadcrumbs from '@/components/Breadcrumbs.astro';
 import Reveal from '@/components/Reveal.astro';
 import RelatedGuides from '@/components/guides/RelatedGuides.astro';
 import { article, faqPage } from '@/lib/schema';
-import { SITE } from '@/lib/site';
+import { SITE, COLLECTORS_GUIDE } from '@/lib/site';
 
 interface Props {
   entry: CollectionEntry<'guides'>;
@@ -44,7 +44,7 @@ if (isCollectorsGuide) {
 const breadcrumbTrail = isCollectorsGuide
   ? [
       { name: 'Home', url: '/' },
-      { name: "The Tolkien Collector's Guide", url: '/collectors-guide' },
+      { name: COLLECTORS_GUIDE, url: '/collectors-guide' },
       { name: data.title, url },
     ]
   : [
@@ -98,7 +98,7 @@ if (data.faq && data.faq.length > 0) {
             href="/collectors-guide"
             class="text-[var(--color-oxblood-600)] underline decoration-[var(--color-gold-600)]/40 underline-offset-4 hover:decoration-[var(--color-oxblood-600)]"
           >
-            Part of The Tolkien Collector's Guide
+            Part of {COLLECTORS_GUIDE}
           </a>
         </p>
       )}

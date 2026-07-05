@@ -20,7 +20,7 @@ import { inquiryMailto } from '@/lib/inquiry';
 import { SITE } from '@/lib/site';
 
 interface Props {
-  entry: CollectionEntry<'books'>;
+ entry: CollectionEntry<'books'>;
 }
 
 const { entry } = Astro.props as Props;
@@ -33,8 +33,8 @@ const url = `/books/${slug}`;
 const canonicalUrl = `${SITE.url}${url}`;
 
 function formatPrice(p: number, currency: string): string {
-  const symbol = currency === 'GBP' ? '£' : currency + '\u00a0';
-  return `${symbol}${p.toLocaleString('en-GB')}`;
+ const symbol = currency === 'GBP' ? '£' : currency + '\u00a0';
+ return `${symbol}${p.toLocaleString('en-GB')}`;
 }
 
 const priceDisplay = data.price != null ? formatPrice(data.price, data.priceCurrency) : 'Price on application';
@@ -46,8 +46,8 @@ const extraImages = images.slice(1);
 
 let schemaImage: string | undefined;
 if (firstImage) {
-  const optimized = await getImage({ src: firstImage, width: 1200, format: 'jpg' });
-  schemaImage = new URL(optimized.src, SITE.url).href;
+ const optimized = await getImage({ src: firstImage, width: 1200, format: 'jpg' });
+ schemaImage = new URL(optimized.src, SITE.url).href;
 }
 
 const isCollectable = data.kind === 'collectable';
@@ -56,161 +56,161 @@ const condition = data.condition;
 const offerUrl = data.offerUrl ?? canonicalUrl;
 
 const offerInput = data.price != null
-  ? {
-      price: String(data.price),
-      priceCurrency: data.priceCurrency,
-      availability: data.availability as 'InStock' | 'OutOfStock' | 'PreOrder',
-      url: offerUrl,
-    }
-  : {
-      availability: data.availability as 'InStock' | 'OutOfStock' | 'PreOrder',
-      url: offerUrl,
-    };
+ ? {
+ price: String(data.price),
+ priceCurrency: data.priceCurrency,
+ availability: data.availability as 'InStock' | 'OutOfStock' | 'PreOrder',
+ url: offerUrl,
+ }
+ : {
+ availability: data.availability as 'InStock' | 'OutOfStock' | 'PreOrder',
+ url: offerUrl,
+ };
 
 const itemSchema = isCollectable
-  ? product({
-      name: data.title,
-      description: data.description,
-      url,
-      image: schemaImage,
-      offer: offerInput,
-    })
-  : bookSchema({
-      name: data.title,
-      author: data.author,
-      description: data.description,
-      url,
-      image: schemaImage,
-      bookEdition: data.editionTitle,
-      datePublished: data.datePublished,
-      isbn: data.isbn,
-      offer: offerInput,
-    });
+ ? product({
+ name: data.title,
+ description: data.description,
+ url,
+ image: schemaImage,
+ offer: offerInput,
+ })
+ : bookSchema({
+ name: data.title,
+ author: data.author,
+ description: data.description,
+ url,
+ image: schemaImage,
+ bookEdition: data.editionTitle,
+ datePublished: data.datePublished,
+ isbn: data.isbn,
+ offer: offerInput,
+ });
 
 const schema = itemSchema;
 
 const metaTitle = data.editionTitle
-  ? `${data.title} — ${data.editionTitle}`
-  : data.title;
+ ? `${data.title}, ${data.editionTitle}`
+ : data.title;
 
 const specs: { label: string; value: string }[] = [
-  ...(data.author ? [{ label: 'Author', value: data.author }] : []),
-  ...(data.publisher ? [{ label: 'Publisher', value: data.publisher }] : []),
-  ...(data.datePublished ? [{ label: 'Year published', value: data.datePublished }] : []),
-  ...(data.bookFormat ? [{ label: 'Format', value: data.bookFormat }] : []),
-  ...(condition ? [{ label: 'Condition', value: condition }] : []),
-  ...(data.isbn ? [{ label: 'ISBN', value: data.isbn }] : []),
+ ...(data.author ? [{ label: 'Author', value: data.author }] : []),
+ ...(data.publisher ? [{ label: 'Publisher', value: data.publisher }] : []),
+ ...(data.datePublished ? [{ label: 'Year published', value: data.datePublished }] : []),
+ ...(data.bookFormat ? [{ label: 'Format', value: data.bookFormat }] : []),
+ ...(condition ? [{ label: 'Condition', value: condition }] : []),
+ ...(data.isbn ? [{ label: 'ISBN', value: data.isbn }] : []),
 ];
 ---
 <BaseLayout
-  title={`${metaTitle} | Catalogue`}
-  description={data.description}
-  schema={schema}
+ title={`${metaTitle} | Catalogue`}
+ description={data.description}
+ schema={schema}
 >
-  <Section tone="parchment" space="md">
-    <Breadcrumbs
-      trail={[
-        { name: 'Home', url: '/' },
-        { name: 'Catalogue', url: '/books' },
-        { name: data.title, url },
-      ]}
-    />
+ <Section tone="parchment" space="md">
+ <Breadcrumbs
+ trail={[
+ { name: 'Home', url: '/' },
+ { name: 'Catalogue', url: '/books' },
+ { name: data.title, url },
+ ]}
+ />
 
-    <Reveal class="mt-8">
-      <div class="grid gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-14 lg:items-start">
+ <Reveal class="mt-8">
+ <div class="grid gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-14 lg:items-start">
         <!-- Images -->
-        <div class="space-y-4">
-          {firstImage ? (
-            <figure class="overflow-hidden rounded-[var(--radius)] border border-[var(--color-gold-600)]/25 bg-[var(--color-surface)] shadow-sm">
-              <Image
-                src={firstImage}
-                alt={data.title}
-                widths={[640, 960, 1200]}
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                class="w-full object-cover"
-              />
-            </figure>
-          ) : (
-            <div class="flex aspect-[4/3] items-center justify-center rounded-[var(--radius)] border border-[var(--color-gold-600)]/25 bg-[var(--color-surface)]">
-              <DragonLogo size="md" class="opacity-60" />
-            </div>
-          )}
-          {extraImages.length > 0 && (
-            <div class="grid grid-cols-3 gap-3">
-              {extraImages.map((img: ImageMetadata, i: number) => (
-                <figure class="overflow-hidden rounded-[var(--radius)] border border-[var(--color-gold-600)]/20 bg-[var(--color-surface)]">
-                  <Image
-                    src={img}
-                    alt={`${data.title} — view ${i + 2}`}
-                    widths={[240, 400]}
-                    sizes="(min-width: 1024px) 15vw, 30vw"
-                    class="aspect-square w-full object-cover"
-                  />
-                </figure>
-              ))}
-            </div>
-          )}
-        </div>
+ <div class="space-y-4">
+ {firstImage ? (
+ <figure class="overflow-hidden rounded-[var(--radius)] border border-[var(--color-gold-600)]/25 bg-[var(--color-surface)] shadow-sm">
+ <Image
+ src={firstImage}
+ alt={data.title}
+ widths={[640, 960, 1200]}
+ sizes="(min-width: 1024px) 50vw, 100vw"
+ class="w-full object-cover"
+ />
+ </figure>
+ ) : (
+ <div class="flex aspect-[4/3] items-center justify-center rounded-[var(--radius)] border border-[var(--color-gold-600)]/25 bg-[var(--color-surface)]">
+ <DragonLogo size="md" class="opacity-60" />
+ </div>
+ )}
+ {extraImages.length > 0 && (
+ <div class="grid grid-cols-3 gap-3">
+ {extraImages.map((img: ImageMetadata, i: number) => (
+ <figure class="overflow-hidden rounded-[var(--radius)] border border-[var(--color-gold-600)]/20 bg-[var(--color-surface)]">
+ <Image
+ src={img}
+ alt={`${data.title}, view ${i + 2}`}
+ widths={[240, 400]}
+ sizes="(min-width: 1024px) 15vw, 30vw"
+ class="aspect-square w-full object-cover"
+ />
+ </figure>
+ ))}
+ </div>
+ )}
+ </div>
 
         <!-- Details -->
-        <div class="flex flex-col lg:sticky lg:top-28">
-          {data.editionTitle && (
-            <p class="font-ui text-xs uppercase tracking-[0.2em] text-[var(--color-gold-600)]">
-              {data.editionTitle}
-            </p>
-          )}
-          <h1 class="mt-2 font-display text-4xl leading-tight text-[var(--color-midnight-900)] sm:text-[2.75rem]">
-            {data.title}
-          </h1>
-          <p class="mt-4 text-lg leading-relaxed text-[var(--color-muted)]">
-            {data.description}
-          </p>
+ <div class="flex flex-col lg:sticky lg:top-28">
+ {data.editionTitle && (
+ <p class="font-ui text-xs uppercase tracking-[0.2em] text-[var(--color-gold-600)]">
+ {data.editionTitle}
+ </p>
+ )}
+ <h1 class="mt-2 font-display text-4xl leading-tight text-[var(--color-midnight-900)] sm:text-[2.75rem]">
+ {data.title}
+ </h1>
+ <p class="mt-4 text-lg leading-relaxed text-[var(--color-muted)]">
+ {data.description}
+ </p>
 
-          <p class="mt-6 font-display text-3xl text-[var(--color-midnight-900)] sm:text-4xl">
-            {priceDisplay}
-          </p>
-          {data.availability === 'InStock' && (
-            <p class="mt-2 font-ui text-xs uppercase tracking-[0.16em] text-[var(--color-gold-600)]">
-              Available
-            </p>
-          )}
+ <p class="mt-6 font-display text-3xl text-[var(--color-midnight-900)] sm:text-4xl">
+ {priceDisplay}
+ </p>
+ {data.availability === 'InStock' && (
+ <p class="mt-2 font-ui text-xs uppercase tracking-[0.16em] text-[var(--color-gold-600)]">
+ Available
+ </p>
+ )}
 
-          {specs.length > 0 && (
-            <dl class="mt-8 divide-y divide-[var(--color-gold-600)]/15 border-y border-[var(--color-gold-600)]/15">
-              {specs.map((row) => (
-                <div class="grid grid-cols-[7rem_1fr] gap-4 py-3 font-ui text-sm sm:grid-cols-[8rem_1fr]">
-                  <dt class="text-[var(--color-muted)]">{row.label}</dt>
-                  <dd class="text-[var(--color-text)]">{row.value}</dd>
-                </div>
-              ))}
-            </dl>
-          )}
+ {specs.length > 0 && (
+ <dl class="mt-8 divide-y divide-[var(--color-gold-600)]/15 border-y border-[var(--color-gold-600)]/15">
+ {specs.map((row) => (
+ <div class="grid grid-cols-[7rem_1fr] gap-4 py-3 font-ui text-sm sm:grid-cols-[8rem_1fr]">
+ <dt class="text-[var(--color-muted)]">{row.label}</dt>
+ <dd class="text-[var(--color-text)]">{row.value}</dd>
+ </div>
+ ))}
+ </dl>
+ )}
 
-          <div class="mt-8 flex flex-wrap gap-3">
-            <Button href={mailtoUrl} variant="primary" size="lg">
-              Email Mark about this item
-            </Button>
-            {data.offerUrl && (
-              <Button href={data.offerUrl} variant="ghost" size="lg" external>
-                View on eBay / AbeBooks ↗
-              </Button>
-            )}
-          </div>
-          <p class="mt-4 text-sm text-[var(--color-muted)]">
-            Buying direct saves marketplace fees. Mark responds personally.
-          </p>
-        </div>
-      </div>
-    </Reveal>
-  </Section>
+ <div class="mt-8 flex flex-wrap gap-3">
+ <Button href={mailtoUrl} variant="primary" size="lg">
+ Email Mark about this item
+ </Button>
+ {data.offerUrl && (
+ <Button href={data.offerUrl} variant="ghost" size="lg" external>
+ View on eBay / AbeBooks ↗
+ </Button>
+ )}
+ </div>
+ <p class="mt-4 text-sm text-[var(--color-muted)]">
+ Buying direct saves marketplace fees. Mark responds personally.
+ </p>
+ </div>
+ </div>
+ </Reveal>
+ </Section>
 
-  {hasBody && (
-    <Section tone="paper" space="md" width="prose">
-      <Reveal>
-        <Prose as="article">
-          <Content />
-        </Prose>
-      </Reveal>
-    </Section>
-  )}
+ {hasBody && (
+ <Section tone="paper" space="md" width="prose">
+ <Reveal>
+ <Prose as="article">
+ <Content />
+ </Prose>
+ </Reveal>
+ </Section>
+ )}
 </BaseLayout>

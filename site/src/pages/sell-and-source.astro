@@ -24,144 +24,144 @@ const description = page.data.seo!.description!;
 const datePublished = '2024-01-01';
 const dateModified = '2026-07-04';
 const dateFormat = new Intl.DateTimeFormat('en-GB', {
-  day: 'numeric',
-  month: 'long',
-  year: 'numeric',
+ day: 'numeric',
+ month: 'long',
+ year: 'numeric',
 });
 const lastUpdated = dateFormat.format(new Date(dateModified));
 
 const trail = [
-  { name: 'Home', url: '/' },
-  { name: 'Sell, Source and Appraisals', url: PATH },
+ { name: 'Home', url: '/' },
+ { name: 'Sell, Source and Appraisals', url: PATH },
 ];
 
 const faqs: FaqItem[] = [
-  {
-    question: 'Can I sell my Tolkien books directly to Mark Faith?',
-    answer: [
-      'Yes. We are always buying rare Tolkien books — a single title or an entire collection. Email photographs and any details you have about edition, printing and condition; Mark will respond with an honest assessment and, where appropriate, an offer.',
-      'We deal in first and early printings, complete with dust jackets where applicable. If you are unsure what you have, send what you can; part of the job is identification.',
-    ],
-  },
-  {
-    question: 'When does consignment make sense?',
-    answer: [
-      'Consignment is for high-value rare Tolkien books — typically those worth more than £10,000 — where you want Mark to sell on your behalf through his established marketplace presence and collector network.',
-      'You retain ownership until the book sells; Mark handles photography, listing, buyer enquiries and secure dispatch. Contact Mark to discuss terms for your specific copy.',
-    ],
-  },
-  {
-    question: 'Can you source a specific rare edition for me?',
-    answer: [
-      'Yes. Sourcing is a core part of the business. Mark maintains relationships with collectors, institutions and trade sources worldwide and has helped high-net-worth buyers and libraries acquire books discreetly.',
-      'If you need a particular printing, state of preservation or provenance, email what you are looking for and your budget range. Confidential enquiries are handled as a matter of course.',
-    ],
-  },
-  {
-    question: 'Do you provide official valuations for insurance or probate?',
-    answer: [
-      'Yes. Based on 25 years in the Tolkien rare-book trade, Mark can provide official valuations for a single title or an entire collection — for insurance, probate and estate purposes.',
-      'The process usually starts with photographs and details by email, followed by an in-person examination. A fee is charged as a percentage of the assessed value; if Mark later sells the book or books for you on consignment, that fee is refunded.',
-    ],
-  },
-  {
-    question: 'Are sell and source enquiries treated confidentially?',
-    answer: [
-      'Absolutely. Whether you are selling a family collection, consigning a museum-grade copy or commissioning a private acquisition, your enquiry is handled directly by Mark and not discussed with third parties.',
-      'Many clients prefer discretion — especially for estate sales, institutional purchases and high-value consignments. Email is the usual channel; Mark will call back when a conversation is needed.',
-    ],
-  },
+ {
+ question: 'Can I sell my Tolkien books directly to Mark Faith?',
+ answer: [
+ 'Yes. We are always buying rare Tolkien books, a single title or an entire collection. Email photographs and any details you have about edition, printing and condition; Mark will respond with an honest assessment and, where appropriate, an offer.',
+ 'We deal in first and early printings, complete with dust jackets where applicable. If you are unsure what you have, send what you can; part of the job is identification.',
+ ],
+ },
+ {
+ question: 'When does consignment make sense?',
+ answer: [
+ 'Consignment is for high-value rare Tolkien books, typically those worth more than £10,000, where you want Mark to sell on your behalf through his established marketplace presence and collector network.',
+ 'You retain ownership until the book sells; Mark handles photography, listing, buyer enquiries and secure dispatch. Contact Mark to discuss terms for your specific copy.',
+ ],
+ },
+ {
+ question: 'Can you source a specific rare edition for me?',
+ answer: [
+ 'Yes. Sourcing is a core part of the business. Mark maintains relationships with collectors, institutions and trade sources worldwide and has helped high-net-worth buyers and libraries acquire books discreetly.',
+ 'If you need a particular printing, state of preservation or provenance, email what you are looking for and your budget range. Confidential enquiries are handled as a matter of course.',
+ ],
+ },
+ {
+ question: 'Do you provide official valuations for insurance or probate?',
+ answer: [
+ 'Yes. Based on 25 years in the Tolkien rare-book trade, Mark can provide official valuations for a single title or an entire collection, for insurance, probate and estate purposes.',
+ 'The process usually starts with photographs and details by email, followed by an in-person examination. A fee is charged as a percentage of the assessed value; if Mark later sells the book or books for you on consignment, that fee is refunded.',
+ ],
+ },
+ {
+ question: 'Are sell and source enquiries treated confidentially?',
+ answer: [
+ 'Absolutely. Whether you are selling a family collection, consigning a museum-grade copy or commissioning a private acquisition, your enquiry is handled directly by Mark and not discussed with third parties.',
+ 'Many clients prefer discretion, especially for estate sales, institutional purchases and high-value consignments. Email is the usual channel; Mark will call back when a conversation is needed.',
+ ],
+ },
 ];
 
 const schema = [
-  article({
-    title,
-    description,
-    url: PATH,
-    datePublished,
-    dateModified,
-  }),
-  faqPage(faqs.map((item) => ({ question: item.question, answer: item.answer.join(' ') }))),
+ article({
+ title,
+ description,
+ url: PATH,
+ datePublished,
+ dateModified,
+ }),
+ faqPage(faqs.map((item) => ({ question: item.question, answer: item.answer.join(' ') }))),
 ];
 
 const services = [
-  { id: 'we-buy-tolkien-books', heading: t.buyHeading, body: t.buyBody },
-  { id: 'consignment', heading: t.consignmentHeading, body: t.consignmentBody },
-  { id: 'sourcing', heading: t.sourcingHeading, body: t.sourcingBody },
-  { id: 'appraisals', heading: t.appraisalsHeading, body: t.appraisalsBody },
+ { id: 'we-buy-tolkien-books', heading: t.buyHeading, body: t.buyBody },
+ { id: 'consignment', heading: t.consignmentHeading, body: t.consignmentBody },
+ { id: 'sourcing', heading: t.sourcingHeading, body: t.sourcingBody },
+ { id: 'appraisals', heading: t.appraisalsHeading, body: t.appraisalsBody },
 ] as const;
 ---
 <BaseLayout
-  title={title}
-  description={description}
-  type="article"
-  image="/og/catalogue.jpg"
-  publishedTime={datePublished}
-  modifiedTime={dateModified}
-  schema={schema}
+ title={title}
+ description={description}
+ type="article"
+ image="/og/catalogue.jpg"
+ publishedTime={datePublished}
+ modifiedTime={dateModified}
+ schema={schema}
 >
-  <Section tone="midnight" space="md">
-    <Breadcrumbs trail={trail} class="text-[var(--color-parchment)]/70" />
-    <Reveal as="header" class="mt-8 max-w-3xl">
-      <p class="font-ui text-xs uppercase tracking-[0.2em] text-[var(--color-gold-300)]">
-        {t.heroEyebrow}
-      </p>
-      <h1 class="mt-3 font-display text-4xl text-[var(--color-parchment)] sm:text-5xl">
-        {t.heroH1}
-      </h1>
-      <p class="mt-6 font-ui text-sm text-[var(--color-parchment)]/70">
-        By Mark Faith · Last updated: <time datetime={dateModified}>{lastUpdated}</time>
-      </p>
-    </Reveal>
-  </Section>
+ <Section tone="midnight" space="md">
+ <Breadcrumbs trail={trail} class="text-[var(--color-parchment)]/70" />
+ <Reveal as="header" class="mt-8 max-w-3xl">
+ <p class="font-ui text-xs uppercase tracking-[0.2em] text-[var(--color-gold-300)]">
+ {t.heroEyebrow}
+ </p>
+ <h1 class="mt-3 font-display text-4xl text-[var(--color-parchment)] sm:text-5xl">
+ {t.heroH1}
+ </h1>
+ <p class="mt-6 font-ui text-sm text-[var(--color-parchment)]/70">
+ By Mark Faith · Last updated: <time datetime={dateModified}>{lastUpdated}</time>
+ </p>
+ </Reveal>
+ </Section>
 
-  <Section tone="paper" space="lg">
-    <ul class="grid gap-6 sm:grid-cols-2" role="list">
-      {services.map((service, i) => (
-        <li id={service.id}>
-          <Reveal delay={i * 90}>
-            <TrustCard heading={service.heading} body={service.body} />
-          </Reveal>
-        </li>
-      ))}
-    </ul>
-  </Section>
+ <Section tone="paper" space="lg">
+ <ul class="grid gap-6 sm:grid-cols-2" role="list">
+ {services.map((service, i) => (
+ <li id={service.id}>
+ <Reveal delay={i * 90}>
+ <TrustCard heading={service.heading} body={service.body} />
+ </Reveal>
+ </li>
+ ))}
+ </ul>
+ </Section>
 
-  <Section tone="paper" width="wide" id="faq" space="lg">
-    <Reveal class="prose-paper mx-auto mb-10 max-w-3xl">
-      <p class="font-ui text-xs uppercase tracking-[0.2em] text-[var(--color-gold-600)]">
-        Frequently asked questions
-      </p>
-      <p class="mt-4 font-text text-lg leading-relaxed text-[var(--color-text)]">
-        Practical answers on selling, consigning, sourcing and appraising rare Tolkien books through Festival Art and Books.
-      </p>
-    </Reveal>
-    <FaqList items={faqs} collapsible />
-  </Section>
+ <Section tone="paper" width="wide" id="faq" space="lg">
+ <Reveal class="prose-paper mx-auto mb-10 max-w-3xl">
+ <p class="font-ui text-xs uppercase tracking-[0.2em] text-[var(--color-gold-600)]">
+ Frequently asked questions
+ </p>
+ <p class="mt-4 font-text text-lg leading-relaxed text-[var(--color-text)]">
+ Practical answers on selling, consigning, sourcing and appraising rare Tolkien books through Festival Art and Books.
+ </p>
+ </Reveal>
+ <FaqList items={faqs} collapsible />
+ </Section>
 
-  <Section tone="parchment" space="md">
-    <div class="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-14">
-      <Reveal>
-        <div class="rounded-[var(--radius)] border border-[var(--color-gold-600)]/30 bg-[var(--color-surface)] p-8 sm:p-10">
-          <div class="flex flex-wrap gap-3">
-            <Button href="/contact" variant="primary" size="lg">{t.ctaContact}</Button>
-            <Button href={`mailto:${SITE.email}`} variant="ghost" size="lg">
-              {SITE.email}
-            </Button>
-          </div>
-        </div>
-      </Reveal>
-      <Reveal mode="fade" delay={120}>
-        <figure class="overflow-hidden rounded-[var(--radius)] border border-[var(--color-gold-600)]/25">
-          <Image
-            src={inventoryImg}
-            alt="Rare Tolkien first editions and collectable books in the Festival Art and Books inventory"
-            widths={[400, 700, 1000]}
-            sizes="(min-width: 1024px) 45vw, 100vw"
-            class="w-full object-cover"
-          />
-        </figure>
-      </Reveal>
-    </div>
-  </Section>
+ <Section tone="parchment" space="md">
+ <div class="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-14">
+ <Reveal>
+ <div class="rounded-[var(--radius)] border border-[var(--color-gold-600)]/30 bg-[var(--color-surface)] p-8 sm:p-10">
+ <div class="flex flex-wrap gap-3">
+ <Button href="/contact" variant="primary" size="lg">{t.ctaContact}</Button>
+ <Button href={`mailto:${SITE.email}`} variant="ghost" size="lg">
+ {SITE.email}
+ </Button>
+ </div>
+ </div>
+ </Reveal>
+ <Reveal mode="fade" delay={120}>
+ <figure class="overflow-hidden rounded-[var(--radius)] border border-[var(--color-gold-600)]/25">
+ <Image
+ src={inventoryImg}
+ alt="Rare Tolkien first editions and collectable books in the Festival Art and Books inventory"
+ widths={[400, 700, 1000]}
+ sizes="(min-width: 1024px) 45vw, 100vw"
+ class="w-full object-cover"
+ />
+ </figure>
+ </Reveal>
+ </div>
+ </Section>
 </BaseLayout>

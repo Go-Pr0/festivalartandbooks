@@ -8,9 +8,9 @@ import { collectionPage } from '@/lib/schema';
 import { getEntry, getCollection } from 'astro:content';
 
 interface MediaMention {
-  outlet: string;
-  headline: string;
-  url: string;
+ outlet: string;
+ headline: string;
+ url: string;
 }
 
 const looksLikeUrl = (value: string) => /^https?:\/\//i.test(value.trim());
@@ -24,111 +24,111 @@ const figure = (key: string) => page.data.figures!.find((f) => f.key === key)!;
 const pressFigure = figure('press');
 
 const trail = [
-  { name: 'Home', url: '/' },
-  { name: 'News & Media', url: '/news-media' },
+ { name: 'Home', url: '/' },
+ { name: 'News & Media', url: '/news-media' },
 ];
 
 const mentions: MediaMention[] = (await getCollection('mediaMentions'))
-  .sort((a, b) => a.id.localeCompare(b.id))
-  .map((m) => ({ outlet: m.data.outlet, headline: m.data.headline, url: m.data.url }));
+ .sort((a, b) => a.id.localeCompare(b.id))
+ .map((m) => ({ outlet: m.data.outlet, headline: m.data.headline, url: m.data.url }));
 
 const datePublished = '2024-01-01';
 const dateModified = '2026-07-02';
 const dateFormat = new Intl.DateTimeFormat('en-GB', {
-  day: 'numeric',
-  month: 'long',
-  year: 'numeric',
+ day: 'numeric',
+ month: 'long',
+ year: 'numeric',
 });
 const lastUpdated = dateFormat.format(new Date(dateModified));
 
 const schema = collectionPage({
-  name: 'News & Media — Festival Art & Books',
-  description,
-  url: '/news-media',
-  items: mentions.map((m) => ({ name: `${m.outlet}: ${m.headline}`, url: m.url })),
+ name: 'News & Media | Festival Art & Books',
+ description,
+ url: '/news-media',
+ items: mentions.map((m) => ({ name: `${m.outlet}: ${m.headline}`, url: m.url })),
 });
 ---
 <BaseLayout
-  title={title}
-  description={description}
-  type="article"
-  publishedTime={datePublished}
-  modifiedTime={dateModified}
-  schema={schema}
+ title={title}
+ description={description}
+ type="article"
+ publishedTime={datePublished}
+ modifiedTime={dateModified}
+ schema={schema}
 >
-  <Section tone="midnight" space="md">
-    <Breadcrumbs trail={trail} class="text-[var(--color-parchment)]/70" />
-    <div class="mt-10 grid items-center gap-12 lg:grid-cols-[1.4fr_1fr]">
-      <Reveal as="header" mode="up">
-        <p class="font-ui text-xs uppercase tracking-[0.25em] text-[var(--color-gold-300)]">{t.heroEyebrow}</p>
-        <h1 class="mt-3 font-display text-4xl leading-tight text-[var(--color-parchment)] sm:text-5xl lg:text-6xl">
-          {t.heroH1}
-        </h1>
-        <p class="mt-6 max-w-prose font-text text-xl leading-relaxed text-[var(--color-parchment)]/90">
-          {t.heroIntro}
-        </p>
-        <p class="mt-6 font-ui text-sm text-[var(--color-parchment)]/70">
-          By Mark Faith · Last updated: <time datetime={dateModified}>{lastUpdated}</time>
-        </p>
-      </Reveal>
-      <Figure
-        src={pressFigure.src}
-        alt={pressFigure.alt}
-        caption={pressFigure.caption}
-        frame={pressFigure.frame as 'default' | 'portrait'}
-        delay={pressFigure.delay}
-        sizes={pressFigure.sizes}
-      />
-    </div>
-  </Section>
+ <Section tone="midnight" space="md">
+ <Breadcrumbs trail={trail} class="text-[var(--color-parchment)]/70" />
+ <div class="mt-10 grid items-center gap-12 lg:grid-cols-[1.4fr_1fr]">
+ <Reveal as="header" mode="up">
+ <p class="font-ui text-xs uppercase tracking-[0.25em] text-[var(--color-gold-300)]">{t.heroEyebrow}</p>
+ <h1 class="mt-3 font-display text-4xl leading-tight text-[var(--color-parchment)] sm:text-5xl lg:text-6xl">
+ {t.heroH1}
+ </h1>
+ <p class="mt-6 max-w-prose font-text text-xl leading-relaxed text-[var(--color-parchment)]/90">
+ {t.heroIntro}
+ </p>
+ <p class="mt-6 font-ui text-sm text-[var(--color-parchment)]/70">
+ By Mark Faith · Last updated: <time datetime={dateModified}>{lastUpdated}</time>
+ </p>
+ </Reveal>
+ <Figure
+ src={pressFigure.src}
+ alt={pressFigure.alt}
+ caption={pressFigure.caption}
+ frame={pressFigure.frame as 'default' | 'portrait'}
+ delay={pressFigure.delay}
+ sizes={pressFigure.sizes}
+ />
+ </div>
+ </Section>
 
-  <Section space="lg">
-    {(t.pressHeading || t.pressIntro) && (
-      <Reveal as="div" mode="up">
-        {t.pressHeading && (
-          <h2 class="font-display text-3xl text-[var(--color-midnight-900)] sm:text-4xl">{t.pressHeading}</h2>
-        )}
-        {t.pressIntro && (
-          <p class:list={['max-w-prose font-text text-lg text-[var(--color-muted)]', t.pressHeading && 'mt-3']}>
-            {t.pressIntro}
-          </p>
-        )}
-      </Reveal>
-    )}
-    <ul class="mt-10 grid gap-4 sm:grid-cols-2">
-      {mentions.map((mention, i) => (
-        <Reveal as="li" mode="up" delay={(i % 2) * 70} class="min-w-0">
-          <a
-            href={mention.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="flex h-full min-w-0 flex-col rounded-[var(--radius)] border border-[var(--color-gold-600)]/25 bg-[var(--color-surface)] p-5 transition-colors hover:border-[var(--color-gold-500)]"
-          >
-            <span class="font-ui text-xs uppercase tracking-[0.18em] text-[var(--color-gold-600)] break-words">{mention.outlet}</span>
-            <span
-              class:list={[
-                'mt-1 leading-snug text-[var(--color-midnight-900)]',
-                looksLikeUrl(mention.headline)
-                  ? 'font-ui text-sm break-all text-[var(--color-muted)]'
-                  : 'font-display text-xl break-words',
-              ]}
-            >
-              {mention.headline}
-            </span>
-          </a>
-        </Reveal>
-      ))}
-    </ul>
-  </Section>
+ <Section space="lg">
+ {(t.pressHeading || t.pressIntro) && (
+ <Reveal as="div" mode="up">
+ {t.pressHeading && (
+ <h2 class="font-display text-3xl text-[var(--color-midnight-900)] sm:text-4xl">{t.pressHeading}</h2>
+ )}
+ {t.pressIntro && (
+ <p class:list={['max-w-prose font-text text-lg text-[var(--color-muted)]', t.pressHeading && 'mt-3']}>
+ {t.pressIntro}
+ </p>
+ )}
+ </Reveal>
+ )}
+ <ul class="mt-10 grid gap-4 sm:grid-cols-2">
+ {mentions.map((mention, i) => (
+ <Reveal as="li" mode="up" delay={(i % 2) * 70} class="min-w-0">
+ <a
+ href={mention.url}
+ target="_blank"
+ rel="noopener noreferrer"
+ class="flex h-full min-w-0 flex-col rounded-[var(--radius)] border border-[var(--color-gold-600)]/25 bg-[var(--color-surface)] p-5 transition-colors hover:border-[var(--color-gold-500)]"
+ >
+ <span class="font-ui text-xs uppercase tracking-[0.18em] text-[var(--color-gold-600)] break-words">{mention.outlet}</span>
+ <span
+ class:list={[
+ 'mt-1 leading-snug text-[var(--color-midnight-900)]',
+ looksLikeUrl(mention.headline)
+ ? 'font-ui text-sm break-all text-[var(--color-muted)]'
+ : 'font-display text-xl break-words',
+ ]}
+ >
+ {mention.headline}
+ </span>
+ </a>
+ </Reveal>
+ ))}
+ </ul>
+ </Section>
 
-  <Section tone="parchment" space="md">
-    <Reveal as="div" mode="up" class="max-w-2xl">
-      {t.moreCoverageHeading && (
-        <h2 class="font-display text-2xl text-[var(--color-midnight-900)] sm:text-3xl">{t.moreCoverageHeading}</h2>
-      )}
-      <p class:list={['font-text text-lg leading-relaxed text-[var(--color-text)]', t.moreCoverageHeading && 'mt-3']}>
-        <Fragment set:html={t.moreCoverageP} />
-      </p>
-    </Reveal>
-  </Section>
+ <Section tone="parchment" space="md">
+ <Reveal as="div" mode="up" class="max-w-2xl">
+ {t.moreCoverageHeading && (
+ <h2 class="font-display text-2xl text-[var(--color-midnight-900)] sm:text-3xl">{t.moreCoverageHeading}</h2>
+ )}
+ <p class:list={['font-text text-lg leading-relaxed text-[var(--color-text)]', t.moreCoverageHeading && 'mt-3']}>
+ <Fragment set:html={t.moreCoverageP} />
+ </p>
+ </Reveal>
+ </Section>
 </BaseLayout>

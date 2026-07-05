@@ -18,108 +18,108 @@ const page = (await getEntry('pageContent', 'contact'))!;
 const t = page.data.text!;
 
 const trail = [
-  { name: 'Home', url: '/' },
-  { name: 'Contact', url: PATH },
+ { name: 'Home', url: '/' },
+ { name: 'Contact', url: PATH },
 ];
 
 const title = page.data.seo!.title!;
 const description = page.data.seo!.description!;
 
 const faqs: FaqItem[] = [
-  {
-    question: 'What is the best way to contact Mark Faith?',
-    answer: [
-      'Email is best. Mark is based near Machynlleth in Mid-Wales but travels extensively for the business, so a message to ' +
-        SITE.email +
-        ' is more reliable than trying to catch him by phone.',
-      'Include photographs if you are asking about a specific book, and say whether you are buying, selling or commissioning sourcing. Mark will call back when a conversation is needed.',
-    ],
-  },
-  {
-    question: 'How quickly will I get a response?',
-    answer: [
-      'Most enquiries receive a reply within a few working days. Complex valuation requests, consignment discussions and bespoke sourcing briefs may take a little longer while Mark reviews the details properly.',
-      'If your matter is time-sensitive — an auction deadline, an estate sale or a book about to be listed elsewhere — say so in your email and Mark will prioritise accordingly.',
-    ],
-  },
-  {
-    question: 'Can I buy directly instead of through eBay or AbeBooks?',
-    answer: [
-      'Yes. Stock is listed on eBay and AbeBooks with honest photographs and condition notes, but for anything of real value you can email Mark to buy direct. Dealing direct saves marketplace fees and puts you in touch with the specialist himself.',
-      'For commissioning sourcing of a particular edition, set or piece of art, direct contact is the usual route. Use the marketplace shops to browse; email Mark when you want to discuss a specific copy or a private acquisition.',
-    ],
-  },
+ {
+ question: 'What is the best way to contact Mark Faith?',
+ answer: [
+ 'Email is best. Mark is based near Machynlleth in Mid-Wales but travels extensively for the business, so a message to ' +
+ SITE.email +
+ ' is more reliable than trying to catch him by phone.',
+ 'Include photographs if you are asking about a specific book, and say whether you are buying, selling or commissioning sourcing. Mark will call back when a conversation is needed.',
+ ],
+ },
+ {
+ question: 'How quickly will I get a response?',
+ answer: [
+ 'Most enquiries receive a reply within a few working days. Complex valuation requests, consignment discussions and bespoke sourcing briefs may take a little longer while Mark reviews the details properly.',
+ 'If your matter is time-sensitive, an auction deadline, an estate sale or a book about to be listed elsewhere, say so in your email and Mark will prioritise accordingly.',
+ ],
+ },
+ {
+ question: 'Can I buy directly instead of through eBay or AbeBooks?',
+ answer: [
+ 'Yes. Stock is listed on eBay and AbeBooks with honest photographs and condition notes, but for anything of real value you can email Mark to buy direct. Dealing direct saves marketplace fees and puts you in touch with the specialist himself.',
+ 'For commissioning sourcing of a particular edition, set or piece of art, direct contact is the usual route. Use the marketplace shops to browse; email Mark when you want to discuss a specific copy or a private acquisition.',
+ ],
+ },
 ];
 
 const schema = [
-  contactPage({ url: PATH, description }),
-  webPage({ name: 'Contact', description, url: PATH }),
-  faqPage(faqs.map((item) => ({ question: item.question, answer: item.answer.join(' ') }))),
+ contactPage({ url: PATH, description }),
+ webPage({ name: 'Contact', description, url: PATH }),
+ faqPage(faqs.map((item) => ({ question: item.question, answer: item.answer.join(' ') }))),
 ];
 ---
 <BaseLayout
-  title={title}
-  description={description}
-  schema={schema}
+ title={title}
+ description={description}
+ schema={schema}
 >
-  <Section tone="midnight" space="md">
-    <Breadcrumbs trail={trail} class="text-[var(--color-parchment)]/70" />
-    <Reveal class="mt-8 max-w-3xl">
-      <p class="font-ui text-xs uppercase tracking-[0.2em] text-[var(--color-gold-300)]">
-        {t.heroEyebrow}
-      </p>
-      <h1 class="mt-3 font-display text-4xl text-[var(--color-parchment)] sm:text-5xl">
-        {t.heroH1}
-      </h1>
-      <p class="mt-6 font-text text-xl leading-relaxed text-[var(--color-parchment)]/85">
-        {t.heroIntro}
-      </p>
-    </Reveal>
-  </Section>
+ <Section tone="midnight" space="md">
+ <Breadcrumbs trail={trail} class="text-[var(--color-parchment)]/70" />
+ <Reveal class="mt-8 max-w-3xl">
+ <p class="font-ui text-xs uppercase tracking-[0.2em] text-[var(--color-gold-300)]">
+ {t.heroEyebrow}
+ </p>
+ <h1 class="mt-3 font-display text-4xl text-[var(--color-parchment)] sm:text-5xl">
+ {t.heroH1}
+ </h1>
+ <p class="mt-6 font-text text-xl leading-relaxed text-[var(--color-parchment)]/85">
+ {t.heroIntro}
+ </p>
+ </Reveal>
+ </Section>
 
-  <Section tone="paper">
-    <div class="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-start">
-      <Reveal>
-        <ContactDetails />
-      </Reveal>
-      <Reveal mode="fade" delay={120}>
-        <figure class="overflow-hidden rounded-[var(--radius)] border border-[var(--color-gold-600)]/25">
-          <Image
-            src={page.data.heroImage!}
-            alt={page.data.heroImageAlt!}
-            widths={[400, 700, 1000]}
-            sizes="(min-width: 1024px) 45vw, 100vw"
-            class="w-full object-cover"
-          />
-          <figcaption class="bg-[var(--color-surface)] px-5 py-4 font-ui text-sm text-[var(--color-muted)]">
-            {t.portraitCaption}
-          </figcaption>
-        </figure>
-      </Reveal>
-    </div>
-  </Section>
+ <Section tone="paper">
+ <div class="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-start">
+ <Reveal>
+ <ContactDetails />
+ </Reveal>
+ <Reveal mode="fade" delay={120}>
+ <figure class="overflow-hidden rounded-[var(--radius)] border border-[var(--color-gold-600)]/25">
+ <Image
+ src={page.data.heroImage!}
+ alt={page.data.heroImageAlt!}
+ widths={[400, 700, 1000]}
+ sizes="(min-width: 1024px) 45vw, 100vw"
+ class="w-full object-cover"
+ />
+ <figcaption class="bg-[var(--color-surface)] px-5 py-4 font-ui text-sm text-[var(--color-muted)]">
+ {t.portraitCaption}
+ </figcaption>
+ </figure>
+ </Reveal>
+ </div>
+ </Section>
 
-  <Section tone="parchment" width="wide" id="faq" space="lg">
-    <Reveal class="prose-paper mx-auto mb-10 max-w-3xl">
-      <p class="font-ui text-xs uppercase tracking-[0.2em] text-[var(--color-gold-600)]">
-        Frequently asked questions
-      </p>
-    </Reveal>
-    <FaqList items={faqs} collapsible />
-  </Section>
+ <Section tone="parchment" width="wide" id="faq" space="lg">
+ <Reveal class="prose-paper mx-auto mb-10 max-w-3xl">
+ <p class="font-ui text-xs uppercase tracking-[0.2em] text-[var(--color-gold-600)]">
+ Frequently asked questions
+ </p>
+ </Reveal>
+ <FaqList items={faqs} collapsible />
+ </Section>
 
-  <Section tone="parchment" width="prose" space="md">
-    <Reveal>
-      <h2 class="font-display text-3xl text-[var(--color-midnight-900)] sm:text-4xl">
-        {t.whereToBuyH2}
-      </h2>
-      <p class="mt-4 font-text text-lg leading-relaxed text-[var(--color-text)]">
-        {t.whereToBuyP1}
-      </p>
-      <div class="mt-6 flex flex-wrap gap-3">
-        <Button href={EXTERNAL.ebay} variant="primary">{t.ctaEbay}</Button>
-        <Button href={EXTERNAL.abebooks} variant="ghost">{t.ctaAbebooks}</Button>
-      </div>
-    </Reveal>
-  </Section>
+ <Section tone="parchment" width="prose" space="md">
+ <Reveal>
+ <h2 class="font-display text-3xl text-[var(--color-midnight-900)] sm:text-4xl">
+ {t.whereToBuyH2}
+ </h2>
+ <p class="mt-4 font-text text-lg leading-relaxed text-[var(--color-text)]">
+ {t.whereToBuyP1}
+ </p>
+ <div class="mt-6 flex flex-wrap gap-3">
+ <Button href={EXTERNAL.ebay} variant="primary">{t.ctaEbay}</Button>
+ <Button href={EXTERNAL.abebooks} variant="ghost">{t.ctaAbebooks}</Button>
+ </div>
+ </Reveal>
+ </Section>
 </BaseLayout>

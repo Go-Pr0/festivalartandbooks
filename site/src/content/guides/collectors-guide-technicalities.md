@@ -12,7 +12,7 @@ faq:
   - question: "Do states and printing errors make a Tolkien book more valuable?"
     answer: "Generally no. The first-edition Return of the King slip-text error on page 49 is interesting for identification but not worth more than any other first impression. Modern Tolkien first editions are clearly stated on the copyright page; variations are fun to collect but rarely add premium value."
   - question: "What is the difference between a proof and an advance reading copy?"
-    answer: "Proofs were for text review and revision and are part of early publishing history — they can be valuable. Advance reading copies were marketing copies sent to reviewers once the text was fixed; unless associated with someone notable, they add only modest value over a regular copy."
+    answer: "Proofs were for text review and revision and are part of early publishing history; they can be valuable. Advance reading copies were marketing copies sent to reviewers once the text was fixed; unless associated with someone notable, they add only modest value over a regular copy."
   - question: "Can you still buy a matched first-edition Lord of the Rings set from a 1950s bookshop?"
     answer: "No. The three titles were printed separately as stocks sold; by the time the first Return of the King appeared, the first Fellowship had sold out. Mark Faith's printing-history chart shows probable combinations, but uniform wear on jackets is the best clue that a set was kept together."
 draft: false
@@ -50,7 +50,7 @@ From information printed in the books, I compiled a chart (below) of the printin
 
 ![Lord of the Rings first-edition printing history chart by Mark Faith](../../assets/guides/collectors-guide/tolkien-lotr-printing-history-chart.jpeg)
 
-*Printing history chart compiled from information printed in the books — allocations to bookstores, not distribution records.*
+*Printing history chart compiled from information printed in the books: allocations to bookstores, not distribution records.*
 
 If you walked into a bookstore between July 1954 and say July 1956, it would have been impossible to know the dates and printings of any set in stock. We can only speculate on the probability of availability based on original print quantities. Contrary to popular belief, the hardbacks were NOT best sellers. Bookstores almost certainly had leftover stocks of books and dust jackets. Three book sets were sold in slipcases in limited numbers: three hundred initially, increasing to five hundred by the 1960s. These sets were comprised of books which varied in terms of date and could have been changed by the bookstore owners combining older printings with newer ones to make their own sets.
 

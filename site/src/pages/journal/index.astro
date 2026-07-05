@@ -9,200 +9,200 @@ import Button from '@/components/Button.astro';
 import Reveal from '@/components/Reveal.astro';
 import { collectionPage } from '@/lib/schema';
 import {
-  JOURNAL_ARCHIVE_INDEX,
-  JOURNAL_ARCHIVE_ISSUES,
-  JOURNAL_DEALER_NEWSLETTER,
-  JOURNAL_LEIDEN_SPECIAL,
-  journalIssueUrl,
+ JOURNAL_ARCHIVE_INDEX,
+ JOURNAL_ARCHIVE_ISSUES,
+ JOURNAL_DEALER_NEWSLETTER,
+ JOURNAL_LEIDEN_SPECIAL,
+ journalIssueUrl,
 } from '@/lib/journal-archive';
 
 const entries = (await getCollection('journal', ({ data }) => !data.draft)).sort(
-  (a: CollectionEntry<'journal'>, b: CollectionEntry<'journal'>) =>
-    b.data.datePublished.getTime() - a.data.datePublished.getTime(),
+ (a: CollectionEntry<'journal'>, b: CollectionEntry<'journal'>) =>
+ b.data.datePublished.getTime() - a.data.datePublished.getTime(),
 );
 
 const title = 'THE JOURNAL';
 const description =
-  'The Festival Art and Books Journal — the online Tolkien magazine published from 2009 by Mark Faith and Festival in the Shire. Read archived issues online or download the collecting newsletter.';
+ 'The Festival Art and Books Journal, the online Tolkien magazine published from 2009 by Mark Faith and Festival in the Shire. Read archived issues online or download the collecting newsletter.';
 
 const schema = collectionPage({
-  name: title,
-  description,
-  url: '/journal',
-  items: [
-    ...JOURNAL_ARCHIVE_ISSUES.map((issue) => ({
-      name: `Journal Issue ${issue.number} (${issue.label})`,
-      url: journalIssueUrl(issue.folder),
-    })),
-    { name: JOURNAL_LEIDEN_SPECIAL.title, url: JOURNAL_LEIDEN_SPECIAL.pdf },
-    { name: JOURNAL_DEALER_NEWSLETTER.title, url: JOURNAL_DEALER_NEWSLETTER.pdf },
-    ...entries.map((e) => ({ name: e.data.title, url: `/journal/${e.id}` })),
-  ],
+ name: title,
+ description,
+ url: '/journal',
+ items: [
+ ...JOURNAL_ARCHIVE_ISSUES.map((issue) => ({
+ name: `Journal Issue ${issue.number} (${issue.label})`,
+ url: journalIssueUrl(issue.folder),
+ })),
+ { name: JOURNAL_LEIDEN_SPECIAL.title, url: JOURNAL_LEIDEN_SPECIAL.pdf },
+ { name: JOURNAL_DEALER_NEWSLETTER.title, url: JOURNAL_DEALER_NEWSLETTER.pdf },
+ ...entries.map((e) => ({ name: e.data.title, url: `/journal/${e.id}` })),
+ ],
 });
 ---
 <BaseLayout title={`${title} | Festival Art & Books`} description={description} schema={schema}>
-  <Section tone="midnight" space="lg">
-    <Breadcrumbs
-      class="!text-[var(--color-parchment)]/70"
-      trail={[
-        { name: 'Home', url: '/' },
-        { name: 'Journal', url: '/journal' },
-      ]}
-    />
-    <Reveal as="header" class="mt-8 max-w-[var(--content-max)]">
-      <p class="font-ui text-xs uppercase tracking-[0.2em] text-[var(--color-gold-300)]">
-        The Journal
-      </p>
-      <h1 class="mt-3 font-display text-4xl leading-tight text-[var(--color-parchment)] sm:text-5xl">
-        {title}
-      </h1>
-      <p class="mt-6 max-w-prose text-xl leading-relaxed text-[var(--color-parchment)]/80">
-        The Festival in the Shire Journal discussed all things Tolkien — news, interviews, music and
-        art relating to Tolkien, The Lord of the Rings, The Hobbit and Middle-earth. Published online
-        from 2009 to 2010 by Mark Faith and Festival Art and Books.
-      </p>
-    </Reveal>
-  </Section>
+ <Section tone="midnight" space="lg">
+ <Breadcrumbs
+ class="!text-[var(--color-parchment)]/70"
+ trail={[
+ { name: 'Home', url: '/' },
+ { name: 'Journal', url: '/journal' },
+ ]}
+ />
+ <Reveal as="header" class="mt-8 max-w-[var(--content-max)]">
+ <p class="font-ui text-xs uppercase tracking-[0.2em] text-[var(--color-gold-300)]">
+ The Journal
+ </p>
+ <h1 class="mt-3 font-display text-4xl leading-tight text-[var(--color-parchment)] sm:text-5xl">
+ {title}
+ </h1>
+ <p class="mt-6 max-w-prose text-xl leading-relaxed text-[var(--color-parchment)]/80">
+ The Festival in the Shire Journal discussed all things Tolkien, news, interviews, music and
+ art relating to Tolkien, The Lord of the Rings, The Hobbit and Middle-earth. Published online
+ from 2009 to 2010 by Mark Faith and Festival Art and Books.
+ </p>
+ </Reveal>
+ </Section>
 
-  <Section space="lg">
-    <Reveal as="header" mode="up" class="max-w-prose">
-      <p class="font-ui text-xs uppercase tracking-[0.2em] text-[var(--color-gold-600)]">
-        Magazine archive
-      </p>
-      <h2 class="mt-2 font-display text-3xl text-[var(--color-midnight-900)] sm:text-4xl">
-        Issues 1–10
-      </h2>
-      <p class="mt-3 font-text text-lg text-[var(--color-muted)]">
-        Each issue opens in the original magazine layout — features, interviews and editorials as
-        published at the time.
-      </p>
-    </Reveal>
+ <Section space="lg">
+ <Reveal as="header" mode="up" class="max-w-prose">
+ <p class="font-ui text-xs uppercase tracking-[0.2em] text-[var(--color-gold-600)]">
+ Magazine archive
+ </p>
+ <h2 class="mt-2 font-display text-3xl text-[var(--color-midnight-900)] sm:text-4xl">
+ Issues 1–10
+ </h2>
+ <p class="mt-3 font-text text-lg text-[var(--color-muted)]">
+ Each issue opens in the original magazine layout, features, interviews and editorials as
+ published at the time.
+ </p>
+ </Reveal>
 
-    <ul class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" role="list">
-      {JOURNAL_ARCHIVE_ISSUES.map((issue, i) => (
-        <Reveal as="li" mode="up" delay={(i % 3) * 60} class="min-w-0">
-          <article class="flex h-full min-w-0 flex-col overflow-hidden rounded-[var(--radius)] border border-[var(--color-gold-600)]/25 bg-[var(--color-surface)]">
-            <a href={journalIssueUrl(issue.folder)} class="block shrink-0 overflow-hidden">
-              <img
-                src={issue.thumbnail}
-                alt={`Journal issue ${issue.number} — cover thumbnail`}
-                width="600"
-                height="400"
-                loading="lazy"
-                decoding="async"
-                class="aspect-[3/2] w-full object-cover"
-                style={issue.thumbnailPosition ? `object-position: ${issue.thumbnailPosition}` : undefined}
-              />
-            </a>
-            <div class="flex min-w-0 flex-1 flex-col p-5">
-              <p class="font-ui text-xs uppercase tracking-[0.18em] text-[var(--color-gold-600)]">
-                Issue {issue.number} · {issue.label}
-              </p>
-              <h3 class="mt-2 font-display text-xl leading-snug text-[var(--color-midnight-900)]">
-                <a
-                  href={journalIssueUrl(issue.folder)}
-                  class="hover:text-[var(--color-oxblood-600)]"
-                >
-                  Journal Issue {issue.number}
-                </a>
-              </h3>
-              <p class="mt-2 flex-1 font-text text-sm leading-relaxed text-[var(--color-muted)]">
-                {issue.summary}
-              </p>
-              <div class="mt-4 flex flex-wrap gap-2">
-                <Button href={journalIssueUrl(issue.folder)} variant="primary" size="sm">
-                  Read issue
-                </Button>
-                {issue.number === 1 && (
-                  <Button href={JOURNAL_DEALER_NEWSLETTER.pdf} variant="ghost" size="sm" download>
-                    Dealer PDF
-                  </Button>
-                )}
-              </div>
-            </div>
-          </article>
-        </Reveal>
-      ))}
-    </ul>
+ <ul class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" role="list">
+ {JOURNAL_ARCHIVE_ISSUES.map((issue, i) => (
+ <Reveal as="li" mode="up" delay={(i % 3) * 60} class="min-w-0">
+ <article class="flex h-full min-w-0 flex-col overflow-hidden rounded-[var(--radius)] border border-[var(--color-gold-600)]/25 bg-[var(--color-surface)]">
+ <a href={journalIssueUrl(issue.folder)} class="block shrink-0 overflow-hidden">
+ <img
+ src={issue.thumbnail}
+ alt={`Journal issue ${issue.number}, cover thumbnail`}
+ width="600"
+ height="400"
+ loading="lazy"
+ decoding="async"
+ class="aspect-[3/2] w-full object-cover"
+ style={issue.thumbnailPosition ? `object-position: ${issue.thumbnailPosition}` : undefined}
+ />
+ </a>
+ <div class="flex min-w-0 flex-1 flex-col p-5">
+ <p class="font-ui text-xs uppercase tracking-[0.18em] text-[var(--color-gold-600)]">
+ Issue {issue.number} · {issue.label}
+ </p>
+ <h3 class="mt-2 font-display text-xl leading-snug text-[var(--color-midnight-900)]">
+ <a
+ href={journalIssueUrl(issue.folder)}
+ class="hover:text-[var(--color-oxblood-600)]"
+ >
+ Journal Issue {issue.number}
+ </a>
+ </h3>
+ <p class="mt-2 flex-1 font-text text-sm leading-relaxed text-[var(--color-muted)]">
+ {issue.summary}
+ </p>
+ <div class="mt-4 flex flex-wrap gap-2">
+ <Button href={journalIssueUrl(issue.folder)} variant="primary" size="sm">
+ Read issue
+ </Button>
+ {issue.number === 1 && (
+ <Button href={JOURNAL_DEALER_NEWSLETTER.pdf} variant="ghost" size="sm" download>
+ Dealer PDF
+ </Button>
+ )}
+ </div>
+ </div>
+ </article>
+ </Reveal>
+ ))}
+ </ul>
 
-    <Reveal as="article" mode="up" class="mt-10 max-w-3xl">
-      <div class="rounded-[var(--radius)] border border-[var(--color-gold-600)]/25 bg-[var(--color-surface)] p-6 sm:p-8">
-        <p class="font-ui text-xs uppercase tracking-[0.18em] text-[var(--color-gold-600)]">
-          Special edition · {JOURNAL_LEIDEN_SPECIAL.label}
-        </p>
-        <h3 class="mt-2 font-display text-2xl text-[var(--color-midnight-900)]">
-          {JOURNAL_LEIDEN_SPECIAL.title}
-        </h3>
-        <p class="mt-3 font-text text-base leading-relaxed text-[var(--color-muted)]">
-          {JOURNAL_LEIDEN_SPECIAL.summary}
-        </p>
-        <div class="mt-5 flex flex-wrap gap-3">
-          <Button href={JOURNAL_LEIDEN_SPECIAL.pdf} variant="primary" size="lg" target="_blank" rel="noopener">
-            Read PDF
-          </Button>
-          <Button href={JOURNAL_LEIDEN_SPECIAL.pdf} variant="ghost" size="lg" download>
-            Download
-          </Button>
-        </div>
-      </div>
-    </Reveal>
+ <Reveal as="article" mode="up" class="mt-10 max-w-3xl">
+ <div class="rounded-[var(--radius)] border border-[var(--color-gold-600)]/25 bg-[var(--color-surface)] p-6 sm:p-8">
+ <p class="font-ui text-xs uppercase tracking-[0.18em] text-[var(--color-gold-600)]">
+ Special edition · {JOURNAL_LEIDEN_SPECIAL.label}
+ </p>
+ <h3 class="mt-2 font-display text-2xl text-[var(--color-midnight-900)]">
+ {JOURNAL_LEIDEN_SPECIAL.title}
+ </h3>
+ <p class="mt-3 font-text text-base leading-relaxed text-[var(--color-muted)]">
+ {JOURNAL_LEIDEN_SPECIAL.summary}
+ </p>
+ <div class="mt-5 flex flex-wrap gap-3">
+ <Button href={JOURNAL_LEIDEN_SPECIAL.pdf} variant="primary" size="lg" target="_blank" rel="noopener">
+ Read PDF
+ </Button>
+ <Button href={JOURNAL_LEIDEN_SPECIAL.pdf} variant="ghost" size="lg" download>
+ Download
+ </Button>
+ </div>
+ </div>
+ </Reveal>
 
-    <Reveal as="aside" mode="up" class="mt-8 max-w-3xl">
-      <p class="font-text text-sm leading-relaxed text-[var(--color-muted)]">
-        {JOURNAL_DEALER_NEWSLETTER.description} Available as a separate{' '}
-        <a class="underline decoration-[var(--color-gold-500)]/60 underline-offset-4" href={JOURNAL_DEALER_NEWSLETTER.pdf}>
-          {JOURNAL_DEALER_NEWSLETTER.pages}-page PDF download
-        </a>
-        .
-      </p>
-    </Reveal>
+ <Reveal as="aside" mode="up" class="mt-8 max-w-3xl">
+ <p class="font-text text-sm leading-relaxed text-[var(--color-muted)]">
+ {JOURNAL_DEALER_NEWSLETTER.description} Available as a separate{' '}
+ <a class="underline decoration-[var(--color-gold-500)]/60 underline-offset-4" href={JOURNAL_DEALER_NEWSLETTER.pdf}>
+ {JOURNAL_DEALER_NEWSLETTER.pages}-page PDF download
+ </a>
+ .
+ </p>
+ </Reveal>
 
-    <Reveal as="div" mode="up" class="mt-10 border-t border-[var(--color-gold-600)]/20 pt-8">
-      <Button href={JOURNAL_ARCHIVE_INDEX} variant="ghost">
-        Original back-issues page (2009 layout)
-      </Button>
-    </Reveal>
-  </Section>
+ <Reveal as="div" mode="up" class="mt-10 border-t border-[var(--color-gold-600)]/20 pt-8">
+ <Button href={JOURNAL_ARCHIVE_INDEX} variant="ghost">
+ Original back-issues page (2009 layout)
+ </Button>
+ </Reveal>
+ </Section>
 
-  {entries.length > 0 && (
-    <Section tone="parchment" space="lg">
-      <Reveal as="header" mode="up" class="max-w-prose">
-        <p class="font-ui text-xs uppercase tracking-[0.2em] text-[var(--color-gold-600)]">
-          From Mark Faith
-        </p>
-        <h2 class="mt-2 font-display text-3xl text-[var(--color-midnight-900)] sm:text-4xl">
-          Recent essays
-        </h2>
-      </Reveal>
-      <ul class="mt-10 grid gap-8 sm:grid-cols-2">
-        {entries.map((entry, i) => (
-          <Reveal as="li" delay={i * 80}>
-            <a
-              href={`/journal/${entry.id}`}
-              class="group flex h-full flex-col overflow-hidden rounded-sm border border-[var(--color-gold-600)]/20 bg-[var(--color-surface)] transition-colors hover:border-[var(--color-gold-500)]"
-            >
-              <div class="flex flex-1 flex-col p-6">
-                <p class="font-ui text-xs uppercase tracking-[0.18em] text-[var(--color-gold-600)]">
-                  <time datetime={entry.data.datePublished.toISOString()}>
-                    {new Intl.DateTimeFormat('en-GB', {
-                      day: 'numeric',
-                      month: 'long',
-                      year: 'numeric',
-                    }).format(entry.data.datePublished)}
-                  </time>
-                </p>
-                <h2 class="mt-2 font-display text-2xl text-[var(--color-midnight-900)] group-hover:text-[var(--color-oxblood-600)]">
-                  {entry.data.title}
-                </h2>
-                <p class="mt-3 flex-1 text-[var(--color-muted)]">{entry.data.description}</p>
-                <span class="mt-4 font-ui text-sm text-[var(--color-oxblood-600)]">
-                  Read the essay →
-                </span>
-              </div>
-            </a>
-          </Reveal>
-        ))}
-      </ul>
-    </Section>
-  )}
+ {entries.length > 0 && (
+ <Section tone="parchment" space="lg">
+ <Reveal as="header" mode="up" class="max-w-prose">
+ <p class="font-ui text-xs uppercase tracking-[0.2em] text-[var(--color-gold-600)]">
+ From Mark Faith
+ </p>
+ <h2 class="mt-2 font-display text-3xl text-[var(--color-midnight-900)] sm:text-4xl">
+ Recent essays
+ </h2>
+ </Reveal>
+ <ul class="mt-10 grid gap-8 sm:grid-cols-2">
+ {entries.map((entry, i) => (
+ <Reveal as="li" delay={i * 80}>
+ <a
+ href={`/journal/${entry.id}`}
+ class="group flex h-full flex-col overflow-hidden rounded-sm border border-[var(--color-gold-600)]/20 bg-[var(--color-surface)] transition-colors hover:border-[var(--color-gold-500)]"
+ >
+ <div class="flex flex-1 flex-col p-6">
+ <p class="font-ui text-xs uppercase tracking-[0.18em] text-[var(--color-gold-600)]">
+ <time datetime={entry.data.datePublished.toISOString()}>
+ {new Intl.DateTimeFormat('en-GB', {
+ day: 'numeric',
+ month: 'long',
+ year: 'numeric',
+ }).format(entry.data.datePublished)}
+ </time>
+ </p>
+ <h2 class="mt-2 font-display text-2xl text-[var(--color-midnight-900)] group-hover:text-[var(--color-oxblood-600)]">
+ {entry.data.title}
+ </h2>
+ <p class="mt-3 flex-1 text-[var(--color-muted)]">{entry.data.description}</p>
+ <span class="mt-4 font-ui text-sm text-[var(--color-oxblood-600)]">
+ Read the essay →
+ </span>
+ </div>
+ </a>
+ </Reveal>
+ ))}
+ </ul>
+ </Section>
+ )}
 </BaseLayout>

@@ -16,12 +16,12 @@ import catalogueMontage from '@/assets/home/tolkien-rare-books-first-edition-mon
 
 const allBooks = await getCollection('books', ({ data }) => !data.draft && data.availability !== 'OutOfStock');
 const books = allBooks.sort((a: CollectionEntry<'books'>, b: CollectionEntry<'books'>) =>
-  a.data.title.localeCompare(b.data.title),
+ a.data.title.localeCompare(b.data.title),
 );
 
 const prices = books
-  .map((b) => b.data.price)
-  .filter((p): p is number => p != null);
+ .map((b) => b.data.price)
+ .filter((p): p is number => p != null);
 const minPrice = prices.length > 0 ? Math.min(...prices) : 0;
 const maxPrice = prices.length > 0 ? Math.max(...prices) : 0;
 
@@ -29,97 +29,97 @@ const title = 'Rare Tolkien Books Catalogue';
 const description = CATALOGUE.metaDescription;
 
 const schema = collectionPage({
-  name: title,
-  description,
-  url: '/books',
-  items: books.map((b) => ({ name: b.data.title, url: `/books/${b.id}` })),
+ name: title,
+ description,
+ url: '/books',
+ items: books.map((b) => ({ name: b.data.title, url: `/books/${b.id}` })),
 });
 ---
 <BaseLayout title={title} description={description} image="/og/catalogue.jpg" schema={schema}>
-  <Section tone="midnight" space="md" contained={false} class="relative overflow-hidden">
-    <Image
-      src={catalogueMontage}
-      alt="Montage of J.R.R. Tolkien first-edition book covers, The Hobbit and The Lord of the Rings, from Festival Art & Books"
-      widths={[800, 1400, 2000]}
-      sizes="100vw"
-      class="absolute inset-0 h-full w-full object-cover opacity-30"
-    />
-    <div class="relative mx-auto w-full max-w-[var(--page-max)] px-6 sm:px-8">
-      <Breadcrumbs
-        class="!text-[var(--color-parchment)]/70"
-        trail={[
-          { name: 'Home', url: '/' },
-          { name: 'Current Catalogue', url: '/books' },
-        ]}
-      />
-      <Reveal class="mt-8 max-w-3xl">
-        <p class="font-ui text-xs uppercase tracking-[0.2em] text-[var(--color-gold-300)]">
-          Current Catalogue
-        </p>
-        <h1 class="mt-3 font-display text-4xl text-[var(--color-parchment)] sm:text-6xl">
-          {title}
-        </h1>
-        <p class="mt-6 font-text text-xl leading-relaxed text-[var(--color-parchment)]/85">
-          {CATALOGUE.heroLead}
-        </p>
-        <p class="mt-4 max-w-2xl font-text text-lg leading-relaxed text-[var(--color-parchment)]/75">
-          {CATALOGUE.heroNote}
-        </p>
-      </Reveal>
-    </div>
-  </Section>
+ <Section tone="midnight" space="md" contained={false} class="relative overflow-hidden">
+ <Image
+ src={catalogueMontage}
+ alt="Montage of J.R.R. Tolkien first-edition book covers, The Hobbit and The Lord of the Rings, from Festival Art & Books"
+ widths={[800, 1400, 2000]}
+ sizes="100vw"
+ class="absolute inset-0 h-full w-full object-cover opacity-30"
+ />
+ <div class="relative mx-auto w-full max-w-[var(--page-max)] px-6 sm:px-8">
+ <Breadcrumbs
+ class="!text-[var(--color-parchment)]/70"
+ trail={[
+ { name: 'Home', url: '/' },
+ { name: 'Current Catalogue', url: '/books' },
+ ]}
+ />
+ <Reveal class="mt-8 max-w-3xl">
+ <p class="font-ui text-xs uppercase tracking-[0.2em] text-[var(--color-gold-300)]">
+ Current Catalogue
+ </p>
+ <h1 class="mt-3 font-display text-4xl text-[var(--color-parchment)] sm:text-6xl">
+ {title}
+ </h1>
+ <p class="mt-6 font-text text-xl leading-relaxed text-[var(--color-parchment)]/85">
+ {CATALOGUE.heroLead}
+ </p>
+ <p class="mt-4 max-w-2xl font-text text-lg leading-relaxed text-[var(--color-parchment)]/75">
+ {CATALOGUE.heroNote}
+ </p>
+ </Reveal>
+ </div>
+ </Section>
 
-  <Section space="md">
-    {books.length > 0 ? (
-      <>
-        <CatalogueToolbar totalCount={books.length} minPrice={minPrice} maxPrice={maxPrice} />
-        <p
-          id="catalogue-empty"
-          class="hidden font-text text-lg text-[var(--color-muted)]"
-          hidden
-        >
-          No items match your filters. Try adjusting your search or price range.
-        </p>
-        <ul id="catalogue-grid" class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {books.map((b) => (
-            <li
-              data-price={b.data.price ?? ''}
-              data-kind={b.data.kind}
-              data-title={b.data.title}
-              data-search-text={`${b.data.title} ${b.data.description}`.toLowerCase()}
-            >
-              <BookCard
-                slug={b.id}
-                title={b.data.title}
-                description={b.data.description}
-                editionTitle={b.data.editionTitle}
-                price={b.data.price}
-                priceCurrency={b.data.priceCurrency}
-                firstImage={b.data.images?.[0]}
-              />
-            </li>
-          ))}
-        </ul>
-      </>
-    ) : (
-      <Reveal class="max-w-[var(--content-max)]">
-        <p class="text-xl text-[var(--color-muted)]">
-          No items are listed at the moment. Mark's stock changes regularly —
+ <Section space="md">
+ {books.length > 0 ? (
+ <>
+ <CatalogueToolbar totalCount={books.length} minPrice={minPrice} maxPrice={maxPrice} />
+ <p
+ id="catalogue-empty"
+ class="hidden font-text text-lg text-[var(--color-muted)]"
+ hidden
+ >
+ No items match your filters. Try adjusting your search or price range.
+ </p>
+ <ul id="catalogue-grid" class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+ {books.map((b) => (
+ <li
+ data-price={b.data.price ?? ''}
+ data-kind={b.data.kind}
+ data-title={b.data.title}
+ data-search-text={`${b.data.title} ${b.data.description}`.toLowerCase()}
+ >
+ <BookCard
+ slug={b.id}
+ title={b.data.title}
+ description={b.data.description}
+ editionTitle={b.data.editionTitle}
+ price={b.data.price}
+ priceCurrency={b.data.priceCurrency}
+ firstImage={b.data.images?.[0]}
+ />
+ </li>
+ ))}
+ </ul>
+ </>
+ ) : (
+ <Reveal class="max-w-[var(--content-max)]">
+ <p class="text-xl text-[var(--color-muted)]">
+          No items are listed at the moment. Mark's stock changes regularly;
           check back soon, or <a href="/contact">contact him directly</a> to
-          discuss what you're looking for.
-        </p>
-      </Reveal>
-    )}
-  </Section>
+ discuss what you're looking for.
+ </p>
+ </Reveal>
+ )}
+ </Section>
 
-  <Section tone="surface" space="md">
-    <MarketplaceCTA heading="Newest listings on eBay & AbeBooks" />
-  </Section>
+ <Section tone="surface" space="md">
+ <MarketplaceCTA heading="Newest listings on eBay & AbeBooks" />
+ </Section>
 </BaseLayout>
 
 {books.length > 0 && (
-  <script>
-    import { setupCatalogueFilter } from '@/scripts/catalogue-filter';
-    setupCatalogueFilter();
-  </script>
+ <script>
+ import { setupCatalogueFilter } from '@/scripts/catalogue-filter';
+ setupCatalogueFilter();
+ </script>
 )}

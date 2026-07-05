@@ -1,7 +1,7 @@
 seo:
   title: "Tolkien Rare Book Dealer"
   description: >-
-    Specialist Tolkien rare book dealer Mark Faith in Mid-Wales — first editions of
+    Specialist Tolkien rare book dealer Mark Faith in Mid-Wales, first editions of
     The Hobbit and Lord of the Rings, 5,000+ rare books sold since 2001.
 
 stats:
@@ -63,10 +63,22 @@ text:
   dealsInHeading: "What I deal in"
   dealsInIntro: "Items for sale are listed in eBay and AbeBooks shops. I am discovered on these sites as they have millions of new visits each month, but most of my sales are made directly by email/phone, saving unnecessary site taxes and fees."
 
-  ebookEyebrow: "New in 2026"
-  ebookHeading: "The Tolkien Collectors Guide"
-  ebookBody: "The 26-page E-book 'Tolkien Collectors Guide' written by Mark Faith, owner of Festival Art and Books, is now available free via the resources tab. The guide gives general advice on collecting Tolkien first editions and other rare and collectable Tolkien books. For specifics on what to buy and the best investment strategies, I offer free personal advice."
-  ebookCTA: "Get the free e-book"
+  ebookEyebrow: "The Tolkien Collector's Guide®"
+  ebookHeading: "The Tolkien Collector's Guide®"
+  ebookBody: >-
+    One guide, online chapters and a free PDF e-book. The Tolkien Collector's Guide®
+    gives practical advice on collecting Tolkien first editions and other rare books,
+    written from twenty-five years as a specialist dealer. Read it here or email Mark
+    for the PDF.
+  ebookCTA: "Read The Tolkien Collector's Guide®"
+
+  podcastEyebrow: "Amazon · The Rings of Power"
+  podcastHeading: "Collecting Tolkien books"
+  podcastBody: >-
+    Mark recorded this podcast for Amazon around the release of The Rings of Power,
+    on why Tolkien books are such a collecting phenomenon, rare editions, and the
+    market today.
+  podcastCTA: "Listen to the podcast"
 
   newsletterEyebrow: "Free newsletter"
   newsletterHeading: "Subscribe to our free newsletter!"

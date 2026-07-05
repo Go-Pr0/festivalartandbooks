@@ -14,11 +14,11 @@ faq:
   - question: "How do I negotiate with a Tolkien dealer?"
     answer: "Build rapport first. A polite email or phone call, especially if you are complimentary and intend to buy again, will achieve more than a blunt message asking for the best price from a stranger. Buying in quantity and keeping your promises also earns better terms over time."
   - question: "Why do fine Tolkien copies keep getting more expensive?"
-    answer: "Condition among surviving copies follows a normal distribution — most are average, a few are superb and many are poor. As the best copies go into collections and only worn examples return to market, demand for better condition drives prices up even when supply feels plentiful."
+    answer: "Condition among surviving copies follows a normal distribution; most are average, a few are superb and many are poor. As the best copies go into collections and only worn examples return to market, demand for better condition drives prices up even when supply feels plentiful."
 draft: false
 ---
 
-**The safest place to buy rare Tolkien books is from an experienced specialist dealer with stock in hand and a reputation to protect — not at auction and not on price alone.** Building a long-term relationship, negotiating with courtesy, and understanding how the market behaves like a commodity futures market will save you from overpaying for poor condition or restored jackets.
+**The safest place to buy rare Tolkien books is from an experienced specialist dealer with stock in hand and a reputation to protect, not at auction and not on price alone.** Building a long-term relationship, negotiating with courtesy, and understanding how the market behaves like a commodity futures market will save you from overpaying for poor condition or restored jackets.
 
 ## Why build a relationship with a dealer?
 
@@ -56,7 +56,7 @@ Smart people know that your money must work for you and are more willing to try 
 
 ![Side-by-side condition comparison of Tolkien books](../../assets/guides/collectors-guide/tolkien-book-condition-comparison.jpeg)
 
-*Compare every copy you can find side by side — fewer fine examples remain on the market as the best go into collections.*
+*Compare every copy you can find side by side; fewer fine examples remain on the market as the best go into collections.*
 
 Understanding book market fundamentals is to understand distribution and probability statistics. I was never a brilliant student in any subject, too impatient to think hard about anything and more than a little dyslexic. I had a mandatory semester on statistics that filled me with dread. The first day the teacher gave workgroups of three a huge pile of a hundred acorns and told us to sort them by category. What categories? we asked. They look the same. As they appear compared to one another was the answer. They were green and brown, large and small, shiny and dull, round or misshapen and so on. The assignment was to determine the main features of the average acorn in the sample and sort them into categories based on these. The more we sorted, the more we found that certain characteristics, some natural, some not, were common to many acorns, a simple majority, while some features were indeed rare. 90% were very similar in a range of attributes, while 5% were uniquely perfect while the last 5% were the dregs of the acorn world.
 

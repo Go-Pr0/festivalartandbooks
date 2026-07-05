@@ -22,189 +22,189 @@ const heroMontage = page.data.heroImage!;
 const datePublished = '2024-01-01';
 const dateModified = '2026-07-02';
 const dateFormat = new Intl.DateTimeFormat('en-GB', {
-  day: 'numeric',
-  month: 'long',
-  year: 'numeric',
+ day: 'numeric',
+ month: 'long',
+ year: 'numeric',
 });
 const lastUpdated = dateFormat.format(new Date(dateModified));
 
 const trail = [
-  { name: 'Home', url: '/' },
-  { name: 'Rare Tolkien Books & Collectables', url: PATH },
+ { name: 'Home', url: '/' },
+ { name: 'Rare Tolkien Books & Collectables', url: PATH },
 ];
 
 const gallery: GalleryItem[] = (await getCollection('rareBooksGallery'))
-  .sort((a, b) => a.id.localeCompare(b.id))
-  .map((item) => ({ src: item.data.image, alt: item.data.alt, caption: item.data.caption }));
+ .sort((a, b) => a.id.localeCompare(b.id))
+ .map((item) => ({ src: item.data.image, alt: item.data.alt, caption: item.data.caption }));
 
 const faqs: FaqItem[] = [
-  {
-    question: 'How do I buy rare Tolkien books from Festival Art & Books?',
-    answer: [
-      'Featured stock is listed in the online catalogue on this site; each entry links to its live eBay or AbeBooks listing where you complete the purchase. The full, up-to-date inventory — including the newest additions — is always on those shops.',
-      'For anything of real value, or to commission sourcing for a specific edition or set, email Mark directly. Dealing direct saves marketplace fees and puts you in touch with the specialist himself.',
-    ],
-  },
-  {
-    question: 'Why does condition matter so much in Tolkien collecting?',
-    answer: [
-      'The same printing can be worth £50 or £5,000 — the difference is almost always condition. Older printings and copies closer to the first edition are more valuable, but only when complete with the dust jacket and free from serious damage beyond normal wear.',
-      'Every day someone tells me they have a special old book, only for it to be missing its jacket or severely worn. Sadly, such copies are often worthless while the same book in near-fine condition would be very valuable. Several good photographs tell you everything you need to know.',
-    ],
-  },
-  {
-    question: 'Should I buy from the catalogue, eBay or AbeBooks?',
-    answer: [
-      'All three show the same honest photographs and condition notes — the catalogue is a curated window into featured stock, while eBay and AbeBooks carry the complete live inventory updated in real time.',
-      'If you buy from a specialist you will generally get what you pay for, with recourse if there is a problem later. Shop around when you can, but a reputable specialist dealer is less risky than a general bookseller or the lottery of auction rooms.',
-    ],
-  },
-  {
-    question: 'What counts as a rare Tolkien book?',
-    answer: [
-      'In practice, "rare Tolkien books" mostly means first and early printings of titles that have never been out of print — chiefly The Hobbit and The Lord of the Rings, though hundreds of editions and printings exist across many languages.',
-      'While newer deluxe editions with smaller print runs can be collectable, the scarcest and most valuable copies are generally the earliest Allen & Unwin printings in the best condition. Posters, art and memorabilia round out a serious collection.',
-    ],
-  },
+ {
+ question: 'How do I buy rare Tolkien books from Festival Art & Books?',
+ answer: [
+ 'Featured stock is listed in the online catalogue on this site; each entry links to its live eBay or AbeBooks listing where you complete the purchase. The full, up-to-date inventory, including the newest additions, is always on those shops.',
+ 'For anything of real value, or to commission sourcing for a specific edition or set, email Mark directly. Dealing direct saves marketplace fees and puts you in touch with the specialist himself.',
+ ],
+ },
+ {
+ question: 'Why does condition matter so much in Tolkien collecting?',
+ answer: [
+ 'The same printing can be worth £50 or £5,000, the difference is almost always condition. Older printings and copies closer to the first edition are more valuable, but only when complete with the dust jacket and free from serious damage beyond normal wear.',
+ 'Every day someone tells me they have a special old book, only for it to be missing its jacket or severely worn. Sadly, such copies are often worthless while the same book in near-fine condition would be very valuable. Several good photographs tell you everything you need to know.',
+ ],
+ },
+ {
+ question: 'Should I buy from the catalogue, eBay or AbeBooks?',
+ answer: [
+ 'All three show the same honest photographs and condition notes, the catalogue is a curated window into featured stock, while eBay and AbeBooks carry the complete live inventory updated in real time.',
+ 'If you buy from a specialist you will generally get what you pay for, with recourse if there is a problem later. Shop around when you can, but a reputable specialist dealer is less risky than a general bookseller or the lottery of auction rooms.',
+ ],
+ },
+ {
+ question: 'What counts as a rare Tolkien book?',
+ answer: [
+ 'In practice, "rare Tolkien books" mostly means first and early printings of titles that have never been out of print, chiefly The Hobbit and The Lord of the Rings, though hundreds of editions and printings exist across many languages.',
+ 'While newer deluxe editions with smaller print runs can be collectable, the scarcest and most valuable copies are generally the earliest Allen & Unwin printings in the best condition. Posters, art and memorabilia round out a serious collection.',
+ ],
+ },
 ];
 
 const schema = [
-  collectionPage({
-    name: 'Rare Tolkien Books & Collectables',
-    description:
-      'A showcase of the rare and collectable J.R.R. Tolkien books Mark Faith deals in: ' +
-      'first and early printings of The Hobbit and The Lord of the Rings, plus posters and memorabilia.',
-    url: PATH,
-    items: gallery.map((item) => ({ name: item.alt, url: PATH })),
-  }),
-  faqPage(faqs.map((item) => ({ question: item.question, answer: item.answer.join(' ') }))),
+ collectionPage({
+ name: 'Rare Tolkien Books & Collectables',
+ description:
+ 'A showcase of the rare and collectable J.R.R. Tolkien books Mark Faith deals in: ' +
+ 'first and early printings of The Hobbit and The Lord of the Rings, plus posters and memorabilia.',
+ url: PATH,
+ items: gallery.map((item) => ({ name: item.alt, url: PATH })),
+ }),
+ faqPage(faqs.map((item) => ({ question: item.question, answer: item.answer.join(' ') }))),
 ];
 ---
 <BaseLayout
-  title={page.data.seo!.title!}
-  description={page.data.seo!.description!}
-  type="article"
-  image="/og/catalogue.jpg"
-  publishedTime={datePublished}
-  modifiedTime={dateModified}
-  schema={schema}
+ title={page.data.seo!.title!}
+ description={page.data.seo!.description!}
+ type="article"
+ image="/og/catalogue.jpg"
+ publishedTime={datePublished}
+ modifiedTime={dateModified}
+ schema={schema}
 >
-  <Section tone="midnight" space="md" contained={false} class="relative overflow-hidden">
-    <Image
-      src={heroMontage}
-      alt={page.data.heroImageAlt as string}
-      widths={[800, 1400, 2000]}
-      sizes="100vw"
-      class="absolute inset-0 h-full w-full object-cover opacity-25"
-    />
-    <div class="relative mx-auto w-full max-w-[var(--page-max)] px-6 sm:px-8">
-      <Breadcrumbs trail={trail} class="text-[var(--color-parchment)]/70" />
-      <Reveal as="header" class="mt-8 max-w-3xl">
-        <p class="font-ui text-xs uppercase tracking-[0.2em] text-[var(--color-gold-300)]">
-          {t.heroEyebrow}
-        </p>
-        <h1 class="mt-3 font-display text-4xl text-[var(--color-parchment)] sm:text-6xl">
-          {t.heroH1}
-        </h1>
-        <p class="mt-6 font-text text-xl leading-relaxed text-[var(--color-parchment)]/85">
-          {t.heroIntro}
-        </p>
-        <p class="mt-6 font-ui text-sm text-[var(--color-parchment)]/70">
-          By Mark Faith · Last updated: <time datetime={dateModified}>{lastUpdated}</time>
-        </p>
-      </Reveal>
-    </div>
-  </Section>
+ <Section tone="midnight" space="md" contained={false} class="relative overflow-hidden">
+ <Image
+ src={heroMontage}
+ alt={page.data.heroImageAlt as string}
+ widths={[800, 1400, 2000]}
+ sizes="100vw"
+ class="absolute inset-0 h-full w-full object-cover opacity-25"
+ />
+ <div class="relative mx-auto w-full max-w-[var(--page-max)] px-6 sm:px-8">
+ <Breadcrumbs trail={trail} class="text-[var(--color-parchment)]/70" />
+ <Reveal as="header" class="mt-8 max-w-3xl">
+ <p class="font-ui text-xs uppercase tracking-[0.2em] text-[var(--color-gold-300)]">
+ {t.heroEyebrow}
+ </p>
+ <h1 class="mt-3 font-display text-4xl text-[var(--color-parchment)] sm:text-6xl">
+ {t.heroH1}
+ </h1>
+ <p class="mt-6 font-text text-xl leading-relaxed text-[var(--color-parchment)]/85">
+ {t.heroIntro}
+ </p>
+ <p class="mt-6 font-ui text-sm text-[var(--color-parchment)]/70">
+ By Mark Faith · Last updated: <time datetime={dateModified}>{lastUpdated}</time>
+ </p>
+ </Reveal>
+ </div>
+ </Section>
 
-  <Section tone="paper" width="prose">
-    <Reveal>
-      <p class="font-ui text-xs uppercase tracking-[0.2em] text-[var(--color-gold-600)]">
-        {t.whatWeDealInEyebrow}
-      </p>
-      <h2 class="mt-3 font-display text-3xl text-[var(--color-midnight-900)] sm:text-4xl">
-        {t.whatWeDealInHeading}
-      </h2>
-      <div class="mt-6 space-y-5 font-text text-lg leading-relaxed text-[var(--color-text)]">
-        <p>
-          {t.whatWeDealInP1}
-        </p>
-        <p>
-          {t.whatWeDealInP2}
-        </p>
-      </div>
-    </Reveal>
-  </Section>
+ <Section tone="paper" width="prose">
+ <Reveal>
+ <p class="font-ui text-xs uppercase tracking-[0.2em] text-[var(--color-gold-600)]">
+ {t.whatWeDealInEyebrow}
+ </p>
+ <h2 class="mt-3 font-display text-3xl text-[var(--color-midnight-900)] sm:text-4xl">
+ {t.whatWeDealInHeading}
+ </h2>
+ <div class="mt-6 space-y-5 font-text text-lg leading-relaxed text-[var(--color-text)]">
+ <p>
+ {t.whatWeDealInP1}
+ </p>
+ <p>
+ {t.whatWeDealInP2}
+ </p>
+ </div>
+ </Reveal>
+ </Section>
 
-  <Section tone="parchment" width="prose">
-    <Reveal>
-      <h2 class="font-display text-3xl text-[var(--color-midnight-900)] sm:text-4xl">
-        {t.bookValuesHeading}
-      </h2>
-      <div class="prose-tolkien mt-6 space-y-5 font-text text-lg leading-relaxed text-[var(--color-text)]">
-        <Fragment set:html={t.bookValuesBody as string} />
-      </div>
-    </Reveal>
-  </Section>
+ <Section tone="parchment" width="prose">
+ <Reveal>
+ <h2 class="font-display text-3xl text-[var(--color-midnight-900)] sm:text-4xl">
+ {t.bookValuesHeading}
+ </h2>
+ <div class="prose-tolkien mt-6 space-y-5 font-text text-lg leading-relaxed text-[var(--color-text)]">
+ <Fragment set:html={t.bookValuesBody as string} />
+ </div>
+ </Reveal>
+ </Section>
 
-  <Section tone="parchment">
-    <Reveal>
-      <h2 class="font-display text-3xl text-[var(--color-midnight-900)] sm:text-4xl">
-        {t.galleryHeading}
-      </h2>
-      <p class="mt-3 max-w-2xl font-text text-lg text-[var(--color-muted)]">
-        {t.galleryIntro}
-      </p>
-    </Reveal>
-    <Gallery items={gallery} columns={3} class="mt-10" />
-  </Section>
+ <Section tone="parchment">
+ <Reveal>
+ <h2 class="font-display text-3xl text-[var(--color-midnight-900)] sm:text-4xl">
+ {t.galleryHeading}
+ </h2>
+ <p class="mt-3 max-w-2xl font-text text-lg text-[var(--color-muted)]">
+ {t.galleryIntro}
+ </p>
+ </Reveal>
+ <Gallery items={gallery} columns={3} class="mt-10" />
+ </Section>
 
-  <Section tone="midnight" width="prose">
-    <Reveal class="text-center">
-      <h2 class="font-display text-3xl text-[var(--color-parchment)] sm:text-4xl">
-        {t.catalogueHeading}
-      </h2>
-      <p class="mx-auto mt-4 max-w-xl font-text text-lg leading-relaxed text-[var(--color-parchment)]/80">
-        {t.catalogueIntro}
-      </p>
-      <div class="mt-8">
-        <Button href="/books" variant="gold">{t.catalogueButtonLabel}</Button>
-      </div>
-    </Reveal>
-  </Section>
+ <Section tone="midnight" width="prose">
+ <Reveal class="text-center">
+ <h2 class="font-display text-3xl text-[var(--color-parchment)] sm:text-4xl">
+ {t.catalogueHeading}
+ </h2>
+ <p class="mx-auto mt-4 max-w-xl font-text text-lg leading-relaxed text-[var(--color-parchment)]/80">
+ {t.catalogueIntro}
+ </p>
+ <div class="mt-8">
+ <Button href="/books" variant="gold">{t.catalogueButtonLabel}</Button>
+ </div>
+ </Reveal>
+ </Section>
 
-  <Section tone="paper" width="prose">
-    <Reveal class="rounded-[var(--radius)] border border-[var(--color-gold-600)]/30 bg-[var(--color-surface)] p-8 sm:p-10">
-      <p class="font-ui text-xs uppercase tracking-[0.2em] text-[var(--color-gold-600)]">
-        {t.goDeeperEyebrow}
-      </p>
-      <h2 class="mt-3 font-display text-2xl text-[var(--color-midnight-900)] sm:text-3xl">
-        {t.goDeeperHeading}
-      </h2>
-      <p class="mt-4 font-text text-lg leading-relaxed text-[var(--color-text)]">
-        {t.goDeeperBody}
-      </p>
-      <div class="mt-6">
-        <Button href="/guides" variant="gold">{t.goDeeperButtonLabel}</Button>
-      </div>
-    </Reveal>
-  </Section>
+ <Section tone="paper" width="prose">
+ <Reveal class="rounded-[var(--radius)] border border-[var(--color-gold-600)]/30 bg-[var(--color-surface)] p-8 sm:p-10">
+ <p class="font-ui text-xs uppercase tracking-[0.2em] text-[var(--color-gold-600)]">
+ {t.goDeeperEyebrow}
+ </p>
+ <h2 class="mt-3 font-display text-2xl text-[var(--color-midnight-900)] sm:text-3xl">
+ {t.goDeeperHeading}
+ </h2>
+ <p class="mt-4 font-text text-lg leading-relaxed text-[var(--color-text)]">
+ {t.goDeeperBody}
+ </p>
+ <div class="mt-6">
+ <Button href="/guides" variant="gold">{t.goDeeperButtonLabel}</Button>
+ </div>
+ </Reveal>
+ </Section>
 
-  <Section tone="paper" width="wide" id="faq" space="lg">
-    <Reveal class="prose-paper mx-auto mb-10 max-w-3xl">
-      <p class="font-ui text-xs uppercase tracking-[0.2em] text-[var(--color-gold-600)]">
-        Frequently asked questions
-      </p>
-      <p class="mt-4 font-text text-lg leading-relaxed text-[var(--color-text)]">
-        Straight answers on buying rare Tolkien books, assessing condition and where to shop.
-      </p>
-    </Reveal>
-    <FaqList items={faqs} collapsible />
-  </Section>
+ <Section tone="paper" width="wide" id="faq" space="lg">
+ <Reveal class="prose-paper mx-auto mb-10 max-w-3xl">
+ <p class="font-ui text-xs uppercase tracking-[0.2em] text-[var(--color-gold-600)]">
+ Frequently asked questions
+ </p>
+ <p class="mt-4 font-text text-lg leading-relaxed text-[var(--color-text)]">
+ Straight answers on buying rare Tolkien books, assessing condition and where to shop.
+ </p>
+ </Reveal>
+ <FaqList items={faqs} collapsible />
+ </Section>
 
-  <Section tone="surface">
-    <MarketplaceCTA
-      heading={t.marketplaceCtaHeading as string}
-      tone="paper"
-    />
-  </Section>
+ <Section tone="surface">
+ <MarketplaceCTA
+ heading={t.marketplaceCtaHeading as string}
+ tone="paper"
+ />
+ </Section>
 </BaseLayout>

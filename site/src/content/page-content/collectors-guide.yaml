@@ -1,21 +1,61 @@
 seo:
-  title: "The Tolkien Collector’s Guide | Festival Art & Books"
+  title: "The Tolkien Collector's Guide® | Festival Art & Books"
   description: >-
-    Read Mark Faith’s free Tolkien Collector’s Guide online: five chapters on what to buy,
-    where to buy, technicalities and the three eras of Tolkien book collecting, from a
-    twenty-five-year specialist dealer.
+    The Tolkien Collector's Guide®, Mark Faith's free guide to collecting rare Tolkien
+    books. Read online chapter by chapter or download the PDF e-book with any purchase
+    or via the newsletter.
 
-heroImage: "../../assets/guides/collectors-guide/tolkien-collectors-guide-cover.png"
-heroImageAlt: "Cover of Mark Faith’s Tolkien Collector’s Guide"
+heroImage: "../../assets/guides/collectors-guide/mark-faith-tolkien-dealer.jpeg"
+heroImageAlt: "Eleven first-edition Hobbit impressions lined up by printing, the kind of detail The Tolkien Collector's Guide® helps you identify"
 
 text:
-  heroEyebrow: "Collector’s guide"
-  heroH1: "The Tolkien Collector’s Guide"
+  heroEyebrow: "The Tolkien Collector's Guide®"
+  heroH1: "The Tolkien Collector's Guide®"
   heroIntro: >-
-    Mark’s full Tolkien Collector’s Guide is free to read here chapter by chapter, and
-    available as a PDF when you buy from us or join the newsletter. Twenty-five years as
-    a specialist dealer distilled into practical advice on condition, market behaviour,
-    printing history and what actually holds value.
-  chaptersHeading: "Read the guide"
+    There is one guide, The Tolkien Collector's Guide®, free to read here chapter by
+    chapter, and available as a PDF e-book when you buy from us or join the newsletter.
+    Twenty-five years as a specialist dealer distilled into practical advice on condition,
+    market behaviour, printing history and what actually holds value.
+  chaptersHeading: "Read the guide online"
   ctaReadOnline: "Start with the introduction"
-  ctaDownload: "Email Mark for the PDF"
+  ctaDownload: "Email Mark for the PDF e-book"
+
+  fromIntroEyebrow: "From the introduction"
+  noteFromMarkH2: "A note from Mark"
+  noteP1: >-
+    Thank you for investing your time in The Tolkien Collector's Guide®. I hope it will
+    enhance your Tolkien collecting experience, save you time and help you to make better
+    choices. Many people consider their Tolkien book collecting just a hobby, but for
+    most it's very much a paying hobby. I financed my first collection by re-selling
+    spare copies. If you are old enough and lucky enough to have begun collecting
+    early editions before the Peter Jackson films came out you will have acquired some
+    real bargains given current valuations. Tolkien early editions and printings are
+    easy to identify, but prices do vary widely so it can be tricky knowing what to
+    pay for a particular copy.
+  noteP2: >-
+    I have been a specialist Tolkien dealer for twenty-five years and was a private
+    collector before that. I am not an antiquarian book or literature expert; I only
+    know Tolkien books as a personal reading passion. I think I know more than most
+    dealers because I have specialised so narrowly and have handled thousands of
+    copies myself. There were no other full-time specialist Tolkien dealers when I
+    started. I am not a broker; I have dozens of rare editions in stock ready to buy.
+    At the core of my business is a true passion for the author and the fantasy genre.
+    This guide is my way of sharing what I have learned.
+  noteP3: >-
+    Please feel free to call me or email your own tips, anecdotes and suggestions so
+    I can improve future editions of The Tolkien Collector's Guide®.
+
+  howToGetH2: "How to get the PDF e-book"
+  howToGetIntro: >-
+    The Tolkien Collector's Guide® is the same content whether you read it here or as a
+    PDF, one guide, two formats.
+  step1Label: "Step 1:"
+  step1Body: >-
+    The Tolkien Collector's Guide® PDF is free with any purchase from Festival Art & Books.
+  step2Label: "Step 2:"
+  step2Body: "The monthly collector's newsletter is also free."
+  step3Label: "Step 3:"
+  step3Body: >-
+    For a PDF copy or to join the mailing list, email
+    <a href="{mailto}" class="text-[var(--color-midnight-900)] underline decoration-[var(--color-gold-600)]/50 underline-offset-4 hover:text-[var(--color-oxblood-600)]">markfaith@festivalartandbooks.com</a>
+  ctaRequestEbook: "Request the PDF e-book"

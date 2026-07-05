@@ -10,9 +10,9 @@ datePublished: 2025-01-01
 dateModified: 2026-07-01
 faq:
   - question: "What Tolkien titles should I collect first?"
-    answer: "Most collectors start with The Hobbit and The Lord of the Rings — even later editions and printings of these two titles are the core of any collection. Early editions of Tom Bombadil, Farmer Giles of Ham and Tree and Leaf have risen sharply in value, but people generally collect what they enjoy reading."
+    answer: "Most collectors start with The Hobbit and The Lord of the Rings, even later editions and printings of these two titles are the core of any collection. Early editions of Tom Bombadil, Farmer Giles of Ham and Tree and Leaf have risen sharply in value, but people generally collect what they enjoy reading."
   - question: "Do owner signatures and bookplates reduce a Tolkien book's value?"
-    answer: "Not in Mark Faith's professional opinion. Small bookplates do not affect value when overall condition is good, and matching owner signatures across all three Lord of the Rings volumes can indicate a set kept together from the outset — often a positive clue for collectors."
+    answer: "Not in Mark Faith's professional opinion. Small bookplates do not affect value when overall condition is good, and matching owner signatures across all three Lord of the Rings volumes can indicate a set kept together from the outset, often a positive clue for collectors."
   - question: "Does dust-jacket restoration add value?"
     answer: "No. Restoration rebuilds missing or severely damaged paper and cannot be removed without further damage. A restored jacket is worth what the item was before restoration, not what it would be in original condition. Minor conservation repair using archival tape is acceptable; undisclosed restoration is deception."
 draft: false
@@ -32,7 +32,7 @@ As an author’s work becomes more collectable, people look after their books be
 
 ![Spine wear and fading on early Tolkien dust jackets](../../assets/guides/collectors-guide/tolkien-book-spine-condition.jpeg)
 
-*Most dust-jacket wear appears on the spine — exposed to air, handling and damp.*
+*Most dust-jacket wear appears on the spine, exposed to air, handling and damp.*
 
 ## What titles and editions should you collect?
 
@@ -90,7 +90,7 @@ Books that have suffered damage from age and regular reading are to be regarded 
 
 There is a difference between dust jacket restoration and dust jacket repair. Museums define repair as something that could be removed without damaging the original state. Repair is generally for preservation and conservation, to prevent minor damage from getting worse. For example, acid free clear tape over a paper tear is fine as it prevents it from tearing more. Restoration rebuilds what is severely damaged or missing and can’t be removed later without causing more damage. The main difference is motive. The damaged item has a value as it is. The restoration has a value. The two together, however, do not make the item worth what it would be in original, undamaged condition. Unacknowledged restoration is deception, fakery, and the motive are only profit. I am shocked to see major auction houses selling restored items but not disclosing this fact. Some say that if only a small percentage, perhaps 5%, has been restored, it is acceptable. I say not necessarily. Most restoration is likely to be to the jacket spine ends or corners, to make it look like new. If the vendor isn’t charging for fine, then perhaps that is acceptable. No one wants to see the damage get worse on a truly fine set, so some conservation repair is good.
 
-![Restored dust jacket example — restoration does not add value](../../assets/guides/collectors-guide/tolkien-restored-dust-jacket-example.png)
+![Restored dust jacket example, restoration does not add value](../../assets/guides/collectors-guide/tolkien-restored-dust-jacket-example.png)
 
 To me, restorations says more about the buyer, than the seller. Sellers want to make money. If the buyer is happy collecting a fake, it is more about whether they look good, not the quality of the item they collect. Some can live with a fake, others cannot. Someday partly restored jackets will be common and fully acceptable, but for now, buy unrestored copies. Minor repairs are fine. Authentic collectors prefer them warts and all.
 

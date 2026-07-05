@@ -1,6 +1,6 @@
 ---
 title: "The Three Eras of Tolkien Books"
-description: "The three eras of Tolkien book collecting — hippie paperbacks, pre-2000 deluxe editions, and the post-Jackson film era — plus what modern print runs, slipcased deluxes and shrink-wrapped copies mean for future value."
+description: "The three eras of Tolkien book collecting, hippie paperbacks, pre-2000 deluxe editions, and the post-Jackson film era, plus what modern print runs, slipcased deluxes and shrink-wrapped copies mean for future value."
 pillar: false
 cluster: "collectors-guide"
 chapterOrder: 4
@@ -12,13 +12,13 @@ faq:
   - question: "What are the three eras of Tolkien book collecting?"
     answer: "The first era began in the mid-1960s with American hippies discovering cheap paperbacks. The second ran from the mid-1970s to 2000 with new illustrators, languages and deluxe editions bought to collect rather than read. The third era is post-2000 and post-Jackson films, with huge print runs, internet trading and deluxe editions that may appreciate if kept shrink-wrapped and scarce."
   - question: "Are modern deluxe Tolkien editions worth collecting?"
-    answer: "Older black slipcased india-paper deluxes from the 1970s–80s remain among the most collected modern Tolkien books — case condition now dictates price. Newer deluxes with print runs of 6,000 or less have potential if collector numbers hold, but most mass-produced modern hardbacks will never become rare."
+    answer: "Older black slipcased india-paper deluxes from the 1970s–80s remain among the most collected modern Tolkien books, case condition now dictates price. Newer deluxes with print runs of 6,000 or less have potential if collector numbers hold, but most mass-produced modern hardbacks will never become rare."
   - question: "Do number lines still identify first printings of new Tolkien books?"
     answer: "Not reliably. Components may be printed overseas and assembled in the UK, number lines can include 2, 3 or 15 before books reach shops, and as many as 40% of copies may be sold as seconds. For modern titles, fine condition and remaining shrink wrap matter more than a number 1 in the line."
 draft: false
 ---
 
-**Tolkien collecting spans three main eras — 1960s paperback discovery, the 1970s–2000 collector boom, and the post-Jackson internet age — and only early small print runs, fine condition and honest deluxe slipcases tend to hold real long-term value.** Modern mass printing and global assembly have made edition points less meaningful than whether a copy was preserved from new.
+**Tolkien collecting spans three main eras, 1960s paperback discovery, the 1970s–2000 collector boom, and the post-Jackson internet age, and only early small print runs, fine condition and honest deluxe slipcases tend to hold real long-term value.** Modern mass printing and global assembly have made edition points less meaningful than whether a copy was preserved from new.
 
 ## What are the three eras?
 

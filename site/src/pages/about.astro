@@ -37,6 +37,7 @@ const fig = (k: string) => page.data.figures!.find((f) => f.key === k)!;
 const markWithArt2005 = fig('markWithArt2005');
 const markPortrait = fig('markPortrait');
 const markWilburSmith = fig('markWilburSmith');
+const rodneyMatthews = fig('rodneyMatthews');
 const gtcFounders = fig('gtcFounders');
 const gtcEarlyTalks = fig('gtcEarlyTalks');
 
@@ -133,6 +134,12 @@ const schema = article({
           alt={markWilburSmith.alt}
           caption={markWilburSmith.caption}
           delay={markWilburSmith.delay}
+        />
+        <Figure
+          src={rodneyMatthews.src}
+          alt={rodneyMatthews.alt}
+          caption={rodneyMatthews.caption}
+          delay={rodneyMatthews.delay}
         />
         <Figure
           src={gtcFounders.src}

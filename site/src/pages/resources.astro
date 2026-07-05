@@ -16,8 +16,8 @@ const title = page.data.seo!.title!;
 const description = page.data.seo!.description!;
 
 const trail = [
-  { name: 'Home', url: '/' },
-  { name: 'Resources', url: PATH },
+ { name: 'Home', url: '/' },
+ { name: 'Resources', url: PATH },
 ];
 
 const resourcesNav = NAV.find((item) => item.href === PATH);
@@ -25,88 +25,86 @@ const resourceLinks = resourcesNav?.children ?? [];
 
 /** Short blurbs for each resource link — editable here until moved to CMS. */
 const descriptions: Record<string, string> = {
-  '/guides':
-    'Authoritative collecting guides by Mark Faith — first-edition identification, condition, market advice and investment fundamentals.',
-  '/collectors-guide':
-    "Mark's full collecting guide online, chapter by chapter — identification, condition and buying advice.",
-  '/ebook':
-    'Free 26-page PDF guide to download with any purchase or by email.',
-  '/journal':
-    'Essays and commentary on collecting, the market and Tolkien editions — including Issue 1 (2009) as a free PDF.',
-  '/festival-in-the-shire':
-    'The Shire festival Mark founded — history, photos and what comes next.',
-  '/events':
-    'Past appearances and Tolkien collecting events Mark has taken part in.',
-  '/tv-appearances':
-    'Four Rooms, Pawn Stars and other television appearances.',
-  '/news-media':
-    'Press coverage, interviews and media mentions over the years.',
-  '/photo-gallery':
-    'Archive photographs of rare books, events and memorabilia.',
+ '/guides':
+ 'Authoritative collecting guides by Mark Faith, first-edition identification, condition, market advice and investment fundamentals.',
+ '/collectors-guide':
+ "The Tolkien Collector's Guide®, Mark Faith's complete free guide, readable online chapter by chapter or downloadable as a PDF e-book.",
+ '/journal':
+ 'Essays and commentary on collecting, the market and Tolkien editions, including Issue 1 (2009) as a free PDF.',
+ '/festival-in-the-shire':
+ 'The Shire festival Mark founded, history, photos and what comes next.',
+ '/events':
+ 'Past appearances and Tolkien collecting events Mark has taken part in.',
+ '/tv-appearances':
+ 'Four Rooms, Pawn Stars and other television appearances.',
+ '/news-media':
+ 'Press coverage, interviews and media mentions over the years.',
+ '/photo-gallery':
+ 'Archive photographs of rare books, events and memorabilia.',
 };
 
 const datePublished = '2024-01-01';
 const dateModified = '2026-07-02';
 const dateFormat = new Intl.DateTimeFormat('en-GB', {
-  day: 'numeric',
-  month: 'long',
-  year: 'numeric',
+ day: 'numeric',
+ month: 'long',
+ year: 'numeric',
 });
 const lastUpdated = dateFormat.format(new Date(dateModified));
 
 const schema = collectionPage({
-  name: title,
-  description,
-  url: PATH,
-  items: resourceLinks.map((link) => ({ name: link.label, url: link.href })),
+ name: title,
+ description,
+ url: PATH,
+ items: resourceLinks.map((link) => ({ name: link.label, url: link.href })),
 });
 ---
 <BaseLayout
-  title={title}
-  description={description}
-  type="article"
-  publishedTime={datePublished}
-  modifiedTime={dateModified}
-  schema={schema}
+ title={title}
+ description={description}
+ type="article"
+ publishedTime={datePublished}
+ modifiedTime={dateModified}
+ schema={schema}
 >
-  <Section tone="midnight" space="md">
-    <Breadcrumbs trail={trail} class="text-[var(--color-parchment)]/70" />
-    <Reveal as="header" class="mt-10 max-w-3xl">
-      <p class="font-ui text-xs uppercase tracking-[0.25em] text-[var(--color-gold-300)]">
-        {t.heroEyebrow}
-      </p>
-      <h1 class="mt-3 font-display text-4xl leading-tight text-[var(--color-parchment)] sm:text-5xl lg:text-6xl">
-        {t.heroH1}
-      </h1>
-      <p class="mt-6 font-text text-xl leading-relaxed text-[var(--color-parchment)]/90">
-        {t.heroIntro}
-      </p>
-      <p class="mt-6 font-ui text-sm text-[var(--color-parchment)]/70">
-        By Mark Faith · Last updated: <time datetime={dateModified}>{lastUpdated}</time>
-      </p>
-    </Reveal>
-  </Section>
+ <Section tone="midnight" space="md">
+ <Breadcrumbs trail={trail} class="text-[var(--color-parchment)]/70" />
+ <Reveal as="header" class="mt-10 max-w-3xl">
+ <p class="font-ui text-xs uppercase tracking-[0.25em] text-[var(--color-gold-300)]">
+ {t.heroEyebrow}
+ </p>
+ <h1 class="mt-3 font-display text-4xl leading-tight text-[var(--color-parchment)] sm:text-5xl lg:text-6xl">
+ {t.heroH1}
+ </h1>
+ <p class="mt-6 font-text text-xl leading-relaxed text-[var(--color-parchment)]/90">
+ {t.heroIntro}
+ </p>
+ <p class="mt-6 font-ui text-sm text-[var(--color-parchment)]/70">
+ By Mark Faith · Last updated: <time datetime={dateModified}>{lastUpdated}</time>
+ </p>
+ </Reveal>
+ </Section>
 
-  <Section space="lg">
-    <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      {resourceLinks.map((link, i) => (
-        <Reveal as="li" delay={i * 60}>
-          <a
-            href={link.href}
-            class="block h-full rounded-[var(--radius)] border border-[var(--color-gold-600)]/25 bg-[var(--color-surface)] p-6 transition-colors hover:border-[var(--color-gold-500)]"
-          >
-            <span class="font-display text-xl text-[var(--color-midnight-900)]">
-              {link.label}
-            </span>
-            <span class="mt-2 block font-text text-[var(--color-muted)]">
-              {descriptions[link.href] ?? ''}
-            </span>
-            <span class="mt-4 block font-ui text-sm text-[var(--color-oxblood-600)]">
-              Explore →
-            </span>
-          </a>
-        </Reveal>
-      ))}
-    </ul>
-  </Section>
+ <Section space="lg">
+ <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+ {resourceLinks.map((link, i) => (
+ <Reveal as="li" delay={i * 60}>
+ <a
+ href={link.href}
+ class="block h-full rounded-[var(--radius)] border border-[var(--color-gold-600)]/25 bg-[var(--color-surface)] p-6 transition-colors hover:border-[var(--color-gold-500)]"
+ >
+ <span class="font-display text-xl text-[var(--color-midnight-900)]">
+ {link.label}
+ </span>
+ <span class="mt-2 block font-text text-[var(--color-muted)]">
+ {descriptions[link.href] ?? ''}
+ </span>
+ <span class="mt-4 block font-ui text-sm text-[var(--color-oxblood-600)]">
+ Explore →
+ </span>
+ </a>
+ </Reveal>
+ ))}
+ </ul>
+ </Section>
 </BaseLayout>

@@ -9,7 +9,7 @@ import MarketplaceCTA from '@/components/MarketplaceCTA.astro';
 import Hero from '@/components/home/Hero.astro';
 import TrustCard from '@/components/home/TrustCard.astro';
 import DealsInCard from '@/components/home/DealsInCard.astro';
-import { SITE } from '@/lib/site';
+import { SITE, EXTERNAL } from '@/lib/site';
 import { webPage } from '@/lib/schema';
 import { getEntry, getCollection } from 'astro:content';
 
@@ -141,9 +141,9 @@ const schema = webPage({
     </Reveal>
   </Section>
 
-  <!-- Free e-book + newsletter -->
+  <!-- Free guide, podcast + newsletter -->
   <Section tone="surface">
-    <div class="grid gap-10 lg:grid-cols-2">
+    <div class="grid gap-10 lg:grid-cols-3">
       <Reveal class="rounded-[var(--radius)] border border-[var(--color-gold-600)]/30 bg-[var(--color-parchment-dim)] p-8 sm:p-10">
         <p class="font-ui text-xs uppercase tracking-[0.24em] text-[var(--color-gold-600)]">
           {t.ebookEyebrow}
@@ -155,7 +155,22 @@ const schema = webPage({
           {t.ebookBody}
         </p>
         <div class="mt-7">
-          <Button href="/ebook" variant="gold">{t.ebookCTA}</Button>
+          <Button href="/collectors-guide" variant="gold">{t.ebookCTA}</Button>
+        </div>
+      </Reveal>
+
+      <Reveal delay={60} class="rounded-[var(--radius)] border border-[var(--color-gold-600)]/30 bg-[var(--color-parchment-dim)] p-8 sm:p-10">
+        <p class="font-ui text-xs uppercase tracking-[0.24em] text-[var(--color-gold-600)]">
+          {t.podcastEyebrow}
+        </p>
+        <h2 class="mt-4 font-display text-3xl text-[var(--color-midnight-900)]">
+          {t.podcastHeading}
+        </h2>
+        <p class="mt-4 font-text text-lg leading-relaxed text-[var(--color-muted)]">
+          {t.podcastBody}
+        </p>
+        <div class="mt-7">
+          <Button href={EXTERNAL.podcast} variant="primary" external>{t.podcastCTA}</Button>
         </div>
       </Reveal>
 

@@ -4,13 +4,13 @@ description: "Mark Faith’s introduction to the Tolkien Collector’s Guide: tw
 pillar: true
 cluster: "collectors-guide"
 chapterOrder: 0
-heroImage: "../../assets/guides/collectors-guide/tolkien-collectors-guide-cover.png"
-heroAlt: "Cover of Mark Faith’s Tolkien Collector’s Guide e-book"
+heroImage: "../../assets/home/tolkien-first-edition-collection-montage.jpg"
+heroAlt: "First-edition Lord of the Rings set, jackets, spines, bindings and copyright pages"
 datePublished: 2025-01-01
 dateModified: 2026-07-01
 faq:
   - question: "Who wrote the Tolkien Collector’s Guide?"
-    answer: "Mark Faith, founder of Festival Art and Books, wrote the guide after twenty-five years as a full-time specialist Tolkien dealer and many more years as a private collector. He holds dozens of rare editions in stock and sells on consignment for customers — he is not a broker."
+    answer: "Mark Faith, founder of Festival Art and Books, wrote the guide after twenty-five years as a full-time specialist Tolkien dealer and many more years as a private collector. He holds dozens of rare editions in stock and sells on consignment for customers; he is not a broker."
   - question: "Is the Tolkien Collector’s Guide free?"
     answer: "Yes. The full guide is free with any purchase from Festival Art and Books, and you can also request a copy by email. The monthly collector’s newsletter is free as well."
   - question: "How can I suggest improvements to future editions?"
@@ -24,5 +24,5 @@ I have been a specialist Tolkien dealer for twenty-five years and was a collecto
 
 Please feel free to call me or email your own tips, anecdotes and suggestions so I can improve future editions.
 
-Mark Faith  
+Mark Faith 
 [MarkFaith@festivalartandbooks.com](mailto:MarkFaith@festivalartandbooks.com)
