@@ -133,8 +133,11 @@ ${linkLine('Rare Tolkien Books & Collectables', '/rare-tolkien-books-collectable
 
 ${linkLine('Resources hub', '/resources', 'Index of guides, journal, events, media, art and the photo gallery.')}
 ${linkLine('Free Tolkien Collector E-book', '/ebook', 'Download the 26-page PDF guide or read the full guide online.')}
-${linkLine('The Journal', '/journal', 'Essays on Tolkien collecting, market commentary and notable finds.')}
-${linkLine('Journal Issue 1 (2009) PDF', '/downloads/festival-art-and-books-journal-issue-1-2009.pdf', 'The first Festival Art and Books Journal — 8-page archive edition from 2009.')}
+${linkLine('The Journal', '/journal', 'Festival in the Shire magazine archive — issues 1–10 (2009–2010) online, Leiden Exhibition Special PDF, and new essays by Mark Faith.')}
+${linkLine('Journal back issues (original layout)', '/journal/archive/index.html', 'The legacy back-issues index for the online Tolkien magazine.')}
+${linkLine('Journal Issue 1 — December 2009', '/journal/archive/journal1bdx/index.html', 'Daphne Castell, Jane Chance, Jef Murray, Arjan Kiel and Martin Romberg.')}
+${linkLine('Leiden Exhibition Special (PDF)', '/journal/archive/Journal%20Leiden%20Exhibition%20Special.pdf', '2012 exhibition special — John Howe, Rodney Matthews, Weta and more.')}
+${linkLine('Dealer newsletter PDF (2009)', '/downloads/festival-art-and-books-journal-issue-1-2009.pdf', 'Mark Faith collecting newsletter — 8 pages of commentary and market notes.')}
 
 `;
 }

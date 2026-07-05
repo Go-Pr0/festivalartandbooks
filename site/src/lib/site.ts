@@ -61,19 +61,6 @@ export const NAV: readonly NavItem[] = [
   { label: 'Contact', href: '/contact' },
 ] as const;
 
-/** The Journal — static archive downloads and metadata. */
-export const JOURNAL = {
-  issue1: {
-    title: 'Festival Art and Books Journal — Issue 1 (2009)',
-    description:
-      'The first online edition of Mark Faith’s Tolkien collecting magazine, published in 2009 — ' +
-      '8 pages of commentary, market notes and dealer insight.',
-    pdf: '/downloads/festival-art-and-books-journal-issue-1-2009.pdf',
-    published: '2009',
-    pages: 8,
-  },
-} as const;
-
 /** Where the prominent header shop affordance points (on-site catalogue). */
 export const SHOP = {
   label: 'Catalogue',

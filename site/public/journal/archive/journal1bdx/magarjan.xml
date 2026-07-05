@@ -1,0 +1,150 @@
+<?xml version="1.0"?>
+
+<coffeecupjukebox version="4.5">
+
+  <jukebox
+   x="0"
+   y="0"
+   w="300"
+   h="60"
+   playonstartup="t"
+   loop="t"
+   shuffle="t"
+   bkdobk="f"
+   bkdogradient="f"
+   bkfillclr="0x000000"
+   bkfillalpha="100"
+   bkgradclr="0xFFFFFF"
+   bkgradalpha="100"
+   bkgradangle="70"
+   bkdoimg="t"
+   bkimg="magarjan_files/body.jpg"
+   bkdobdr="f"
+   bkbdrsolid="t"
+   bkbdrcolor="0x808080"
+   bkdomask="t"
+  >
+
+disableclicktoactiveprompt="false"
+  <rewindbutton
+   x="128"
+   y="43"
+   w="13"
+   h="13"
+   toggle="f"
+   btnupimg="magarjan_files/1.jpg"
+   action="rr"
+   visible="t"
+  ></rewindbutton>
+
+  <ffbutton
+   x="158"
+   y="43"
+   w="13"
+   h="13"
+   toggle="f"
+   btnupimg="magarjan_files/4.jpg"
+   action="ff"
+   visible="t"
+  ></ffbutton>
+
+  <playbutton
+   x="143"
+   y="43"
+   w="13"
+   h="13"
+   toggle="t"
+   btnupimg="magarjan_files/2.jpg"
+   btndownimg="magarjan_files/3.jpg"
+   action="playpause"
+   visible="t"
+  ></playbutton>
+
+  <shufbutton
+   x="16"
+   y="151"
+   w="35"
+   h="14"
+   toggle="t"
+   action="shuf"
+   visible="f"
+  ></shufbutton>
+
+  <loopbutton
+   x="100"
+   y="0"
+   w="20"
+   h="20"
+   toggle="t"
+   action="loop"
+   visible="f"
+  ></loopbutton>
+
+  <volume
+   x="8"
+   y="42"
+   w="114"
+   h="13"
+   visible="t"
+  ></volume>
+
+  <progress
+   x="6"
+   y="110"
+   w="278"
+   visible="t"
+  ></progress>
+
+  <tree
+   x="17"
+   y="-178"
+   w="320"
+   h="93"
+   visible="f"
+  >
+  <node label="">
+    <node name="BeornsHouse" file="magarjan_files/BeornsHouse.mp3" artist="Arjan Kiel" label="Arjan Kiel - BeornsHouse"/>
+    <node name="Dunedain" file="magarjan_files/Dunedain.mp3" artist="Arjan Kiel" label="Arjan Kiel - Dunedain"/>
+    <node name="LuthienAndBeren" file="magarjan_files/LuthienAndBeren.mp3" artist="Arjan Kiel" label="Arjan Kiel - LuthienAndBeren"/>
+    <node name="Nienor" file="magarjan_files/Nienor.mp3" artist="Arjan Kiel" label="Arjan Kiel - Nienor"/>
+  </node>
+
+  </tree>
+
+  <label
+   x="9"
+   y="9"
+   w="56"
+   h="16"
+   bkdobk="f"
+   bkdogradient="f"
+   bkdoimg="f"
+   fntalpha="100"
+   fntsize="10"
+   fntclr="0xFFFFFF"
+   fntbold="f"
+   fntitalic="f"
+   fnt="Arial"
+   visible="t"
+  ></label>
+
+  <scrolllabel
+   x="67"
+   y="9"
+   w="223"
+   h="17"
+   bkdobk="f"
+   bkdogradient="f"
+   bkdoimg="f"
+   fntalpha="100"
+   fntsize="10"
+   fntclr="0xFFFFFF"
+   fntbold="f"
+   fntitalic="f"
+   fnt="Arial"
+   visible="t"
+  ></scrolllabel>
+
+  </jukebox>
+
+</coffeecupjukebox>
