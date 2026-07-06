@@ -10,7 +10,7 @@
   NODE_VERSION = "22"
 
 [functions]
-  directory = "site/netlify/functions"
+  directory = "netlify/functions"
 
 # Decap CMS GitHub OAuth — proxy /api/auth to our Netlify Function (see site/DECAP.md)
 [[redirects]]
