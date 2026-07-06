@@ -15,7 +15,7 @@ const outPath = join(__dirname, '../public/admin/config.yml');
 
 const SITE = `site_url: https://festivalartandbooks.com
 display_url: festivalartandbooks.com
-logo_url: /logo.png
+logo_url: https://festivalartandbooks.com/logo.png
 
 editor:
  preview: true
@@ -26,9 +26,8 @@ const BACKEND = `backend:
  name: github
  repo: Go-Pr0/festivalartandbooks
  branch: main
-  # Netlify OAuth proxy — uncomment and set once you have a deployed site on Netlify:
- # base_url: https://your-netlify-site.netlify.app
- # auth_endpoint: api/auth
+ base_url: https://festivalartandbooks.com
+ auth_endpoint: api/auth
 
 # Enables the CMS UI without GitHub auth when running \`npm run dev\` locally
 local_backend: true

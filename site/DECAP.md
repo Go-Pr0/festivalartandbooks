@@ -7,25 +7,26 @@ Decap CMS is the browser-based editor for the site. Open **`/admin`** to add and
 
 ---
 
-## One-time setup (Netlify + GitHub login)
+## One-time setup (GitHub login on the live site)
 
-These steps are done once when the site is first deployed.
+These steps are done once. The repo ships Netlify Functions that handle GitHub OAuth for `/admin` — you only need a GitHub OAuth App and two environment variables on Netlify.
 
-1. **Push the repo to GitHub** (already connected: `Go-Pr0/festivalartandbooks`).
+1. **Create a GitHub OAuth App** (Settings → Developer settings → OAuth Apps → New OAuth App):
+   - **Application name:** `Festival Art & Books CMS` (or similar)
+   - **Homepage URL:** `https://festivalartandbooks.com`
+   - **Authorization callback URL:** `https://festivalartandbooks.com/.netlify/functions/callback`
+   - Copy the **Client ID** and generate a **Client secret**.
 
-2. **Enable Netlify Identity** (free):
-   - In the Netlify dashboard go to *Site configuration → Identity* and enable Identity.
-   - Under *Identity → Settings → External providers* add **GitHub**.
-   - Invite yourself (and anyone else who should edit) under *Identity → Invite users*.
+2. **Add secrets to Netlify** (Site configuration → Environment variables → Add a variable):
+   - `GITHUB_CLIENT_ID` — the OAuth App Client ID
+   - `GITHUB_CLIENT_SECRET` — the OAuth App Client secret
+   - Scope: all deploy contexts (or at least Production).
 
-3. **Connect the CMS to Netlify OAuth** — in `site/public/admin/config.yml`, uncomment and set:
-   ```yaml
-   base_url: https://YOUR-NETLIFY-SITE.netlify.app
-   auth_endpoint: api/auth
-   ```
-   Replace `YOUR-NETLIFY-SITE` with your actual Netlify subdomain. Commit and deploy.
+3. **Redeploy the site** so the functions pick up the new variables (Deploys → Trigger deploy → Deploy site).
 
-4. Visit **`https://festivalartandbooks.com/admin`** and log in with the GitHub account Netlify linked to your invite.
+4. Visit **`https://festivalartandbooks.com/admin`** and click **Login with GitHub**. Authorize the app with a GitHub account that has **write access** to `Go-Pr0/festivalartandbooks`.
+
+> **Why this is needed:** Without `base_url` / `auth_endpoint` in the CMS config, Decap defaults to `api.netlify.com` and returns **Not Found**. The site now routes `/api/auth` to a Netlify Function on your domain instead.
 
 > **Note for developers:** The admin config is generated from `site/cms/`. After changing collection schemas, run `npm run cms:config` (see below) before deploying.
 

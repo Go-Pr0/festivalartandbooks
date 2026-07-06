@@ -9,6 +9,22 @@
 [build.environment]
   NODE_VERSION = "22"
 
+[functions]
+  directory = "site/netlify/functions"
+
+# Decap CMS GitHub OAuth — proxy /api/auth to our Netlify Function (see site/DECAP.md)
+[[redirects]]
+  from = "/api/auth"
+  to = "/.netlify/functions/auth"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/auth/*"
+  to = "/.netlify/functions/auth"
+  status = 200
+  force = true
+
 # Decap CMS admin panel — serve the static admin shell
 [[redirects]]
   from = "/admin/*"
