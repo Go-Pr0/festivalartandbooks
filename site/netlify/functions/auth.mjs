@@ -1,6 +1,6 @@
-import { cmsCallbackUrl, cmsSiteUrl, missingConfigResponse } from './_cms-oauth.mjs';
+import { cmsCallbackUrl, cmsSiteUrl, missingConfigResponse, oauthCallbackHtml } from './_cms-oauth.mjs';
 
-export const handler = async () => {
+export const handler = async (event) => {
   const clientId = process.env.GITHUB_CLIENT_ID;
   if (!clientId || !cmsSiteUrl()) {
     return missingConfigResponse();
@@ -11,6 +11,11 @@ export const handler = async () => {
     redirect_uri: cmsCallbackUrl(),
     scope: 'repo,user',
   });
+
+  const state = event.queryStringParameters?.state;
+  if (state) {
+    params.set('state', state);
+  }
 
   return {
     statusCode: 302,

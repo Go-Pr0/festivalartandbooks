@@ -1,21 +1,46 @@
-/** Shared helpers for Decap CMS GitHub OAuth Netlify Functions. */
+/** HTML page that completes the Decap CMS ↔ GitHub OAuth postMessage handshake. */
+export function oauthCallbackHtml(status, content) {
+  const serialized = JSON.stringify(content);
 
-export function cmsSiteUrl() {
-  const raw = process.env.CMS_OAUTH_ORIGIN || process.env.URL || '';
-  return raw.replace(/\/$/, '');
-}
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Signing in…</title>
+</head>
+<body>
+  <p>Signing in to Content Manager… You can close this window if it does not close automatically.</p>
+  <script>
+    (function () {
+      var payload = ${serialized};
+      var sent = false;
 
-export function cmsCallbackUrl() {
-  return `${cmsSiteUrl()}/.netlify/functions/callback`;
-}
+      function sendSuccess(origin) {
+        if (sent || !window.opener) return;
+        sent = true;
+        window.opener.postMessage(
+          'authorization:github:${status}:' + JSON.stringify(payload),
+          origin
+        );
+        window.removeEventListener('message', onMessage, false);
+        window.close();
+      }
 
-export function missingConfigResponse() {
-  return {
-    statusCode: 503,
-    headers: { 'Content-Type': 'text/plain; charset=utf-8' },
-    body:
-      'CMS GitHub OAuth is not configured on Netlify yet.\n\n' +
-      'Add GITHUB_CLIENT_ID and GITHUB_CLIENT_SECRET in Site configuration → Environment variables, ' +
-      'then redeploy. See site/DECAP.md for the GitHub OAuth App setup steps.',
-  };
+      function onMessage(message) {
+        // Decap CMS replies after the popup posts "authorizing:github".
+        if (message.source === window.opener) {
+          sendSuccess(message.origin);
+        }
+      }
+
+      window.addEventListener('message', onMessage, false);
+
+      if (window.opener) {
+        // Kick off the handshake expected by Decap CMS / netlify-cms-lib-auth.
+        window.opener.postMessage('authorizing:github', '*');
+      }
+    })();
+  </script>
+</body>
+</html>`;
 }
