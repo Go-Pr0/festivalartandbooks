@@ -2,15 +2,11 @@
 import type { GetStaticPaths } from 'astro';
 import { getCollection } from 'astro:content';
 import BookLayout from '@/layouts/BookLayout.astro';
-import { isTolkienCatalogueTitle } from '@/lib/catalogue-tolkien';
 
 export const getStaticPaths = (async () => {
   const books = await getCollection(
     'books',
-    ({ data }) =>
-      !data.draft &&
-      data.availability !== 'OutOfStock' &&
-      isTolkienCatalogueTitle(data.title),
+    ({ data }) => !data.draft && data.availability !== 'OutOfStock',
   );
   return books.map((entry) => ({
     params: { slug: entry.id },

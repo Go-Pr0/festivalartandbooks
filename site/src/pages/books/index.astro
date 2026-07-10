@@ -12,15 +12,11 @@ import CatalogueToolbar from '@/components/books/CatalogueToolbar.astro';
 import MarketplaceCTA from '@/components/MarketplaceCTA.astro';
 import { collectionPage } from '@/lib/schema';
 import { CATALOGUE } from '@/lib/site';
-import { isTolkienCatalogueTitle } from '@/lib/catalogue-tolkien';
 import catalogueMontage from '@/assets/home/tolkien-rare-books-first-edition-montage-hero.jpg';
 
 const allBooks = await getCollection(
   'books',
-  ({ data }) =>
-    !data.draft &&
-    data.availability !== 'OutOfStock' &&
-    isTolkienCatalogueTitle(data.title),
+  ({ data }) => !data.draft && data.availability !== 'OutOfStock',
 );
 const books = allBooks.sort((a: CollectionEntry<'books'>, b: CollectionEntry<'books'>) =>
  a.data.title.localeCompare(b.data.title),
