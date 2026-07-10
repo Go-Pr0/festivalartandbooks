@@ -1,4 +1,4 @@
-import { cmsCallbackUrl, cmsSiteUrl, missingConfigResponse, oauthCallbackHtml } from './_cms-oauth.mjs';
+import { cmsCallbackUrl, cmsSiteUrl, missingConfigResponse } from './_cms-oauth.mjs';
 
 export const handler = async (event) => {
   const clientId = process.env.GITHUB_CLIENT_ID;
