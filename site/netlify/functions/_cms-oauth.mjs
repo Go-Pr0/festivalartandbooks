@@ -30,7 +30,6 @@ export function missingConfigResponse() {
  */
 export function oauthCallbackHtml(status, content) {
   const serialized = JSON.stringify(content);
-  const baseUrl = JSON.stringify(cmsSiteUrl());
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -43,37 +42,52 @@ export function oauthCallbackHtml(status, content) {
   <script>
     (function () {
       var payload = ${serialized};
-      var baseUrl = ${baseUrl};
       var provider = 'github';
       var sent = false;
+      var resultMessage = 'authorization:' + provider + ':${status}:' + JSON.stringify(payload);
+      var channel = typeof BroadcastChannel !== 'undefined'
+        ? new BroadcastChannel('fab-decap-oauth')
+        : null;
 
-      function sendResult(origin) {
-        if (sent || !window.opener) return;
+      function broadcastResult() {
+        if (!channel) return;
+        channel.postMessage({ type: 'oauth-result', status: '${status}', content: payload });
+        channel.close();
+      }
+
+      function finish(origin, useBroadcast) {
+        if (sent) return;
         sent = true;
-        window.opener.postMessage(
-          'authorization:' + provider + ':${status}:' + JSON.stringify(payload),
-          origin
-        );
+        if (useBroadcast) broadcastResult();
+        if (window.opener) {
+          window.opener.postMessage(resultMessage, origin);
+        }
         window.removeEventListener('message', onMessage, false);
         window.close();
       }
 
       function onMessage(e) {
-        // CMS echoes "authorizing:github" after verifying e.origin === base_url.
-        if (e.source === window.opener && e.data === 'authorizing:' + provider) {
-          sendResult(e.origin);
+        // Match vencax/netlify-cms-github-oauth-provider: any opener reply completes the handshake.
+        if (window.opener && e.source === window.opener) {
+          finish(e.origin, false);
         }
       }
 
       window.addEventListener('message', onMessage, false);
 
-      if (!window.opener) {
-        document.getElementById('status').textContent =
-          'Could not connect to Content Manager. Close this window and try logging in again from /admin.';
+      if (window.opener) {
+        window.opener.postMessage('authorizing:' + provider, '*');
+        // If postMessage is broken after the GitHub redirect (COOP), BroadcastChannel still delivers the token.
+        setTimeout(function () {
+          if (!sent) finish(window.location.origin, true);
+        }, 3000);
         return;
       }
 
-      window.opener.postMessage('authorizing:' + provider, baseUrl || '*');
+      broadcastResult();
+      document.getElementById('status').textContent =
+        'Signed in — returning to Content Manager… You can close this window.';
+      setTimeout(function () { window.close(); }, 1500);
     })();
   </script>
 </body>

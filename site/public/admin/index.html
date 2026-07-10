@@ -13,6 +13,34 @@
   <link rel="stylesheet" href="/admin/admin.css" />
 </head>
 <body>
+  <!-- Completes Decap OAuth when popup postMessage breaks after GitHub redirect (COOP). -->
+  <script>
+    (function () {
+      if (typeof BroadcastChannel === 'undefined') return;
+      var origin = window.location.origin;
+      var done = false;
+      var channel = new BroadcastChannel('fab-decap-oauth');
+      channel.onmessage = function (e) {
+        if (done || !e.data || e.data.type !== 'oauth-result') return;
+        done = true;
+        var content = e.data.content;
+        var status = e.data.status;
+        // decap-cms-lib-auth: handshake then token (netlify-auth.js).
+        window.dispatchEvent(
+          new MessageEvent('message', { data: 'authorizing:github', origin: origin })
+        );
+        setTimeout(function () {
+          window.dispatchEvent(
+            new MessageEvent('message', {
+              data: 'authorization:github:' + status + ':' + JSON.stringify(content),
+              origin: origin,
+            })
+          );
+          channel.close();
+        }, 100);
+      };
+    })();
+  </script>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   <script>
     CMS.registerPreviewStyle('/admin/preview.css');
