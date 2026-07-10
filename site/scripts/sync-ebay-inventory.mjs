@@ -22,6 +22,7 @@ import {
  writeFile,
  readdir,
  unlink,
+ readFile,
 } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { rm } from 'node:fs/promises';
@@ -88,6 +89,15 @@ function parseStoreHtml(html) {
 function hiResImageUrl(url) {
  if (!url) return null;
  return url.replace(/\/s-l\d+\.(jpg|jpeg|png|webp)/i, '/s-l1600.$1').replace(/\.webp$/i, '.jpg');
+}
+
+/** Keep in sync with src/lib/catalogue-tolkien.ts */
+const TOLKIEN_CATALOGUE_TITLE_RE =
+ /\b(tolkien|hobbit|lord of the rings|silmarillion|middle[- ]earth|beowulf|mr\.?\s*bliss|farmer giles|smith of wooton|tree and leaf|sir gawain|sir orfeo|roverandom|bombadil|bilbo|frodo|remington|ballantine|unfinished tales|pictures by|letters of jrr|unwin|pauline baynes|ruth lacon|ivan cavini|hilary tolkien|christopher tolkien|tolkien's first|tolkien society|tolkien themed|tolkien lithograph)/i;
+
+/** @param {string} title */
+function isTolkienCatalogueTitle(title) {
+ return TOLKIEN_CATALOGUE_TITLE_RE.test(title);
 }
 
 /** @param {string} title */
@@ -372,6 +382,10 @@ async function main() {
 
  const syncedSlugs = new Set();
  for (const listing of listings.values()) {
+ if (!isTolkienCatalogueTitle(listing.title)) {
+ console.log(` Skipping non-Tolkien listing ${listing.listingId}: ${listing.title.slice(0, 60)}…`);
+ continue;
+ }
  const { imagePaths, imageUrls } = markdownForListing(listing);
  const slug = await writeListingAssets(listing, imagePaths, imageUrls);
  syncedSlugs.add(slug);
@@ -414,6 +428,10 @@ async function main() {
  const syncedSlugs = new Set();
 
  for (const listing of listings.values()) {
+ if (!isTolkienCatalogueTitle(listing.title)) {
+ console.log(` Skipping non-Tolkien listing ${listing.listingId}: ${listing.title.slice(0, 60)}…`);
+ continue;
+ }
  console.log(` Enriching ${listing.listingId}…`);
  const { body, summary } = await fetchItemDescription(listing.listingId);
  let gallery = await fetchItemGalleryImages(listing.listingId);
@@ -435,6 +453,18 @@ async function main() {
  const existing = (await readdir(BOOKS_DIR)).filter((f) => f.endsWith('.md'));
  for (const file of existing) {
  const slug = file.replace(/\.md$/, '');
+ const full = path.join(BOOKS_DIR, file);
+ const raw = await readFile(full, 'utf8');
+ const titleMatch = raw.match(/^title:\s*"?([^"\n]+)/m);
+ const title = titleMatch?.[1] ?? '';
+ if (slug.startsWith('ebay-') && title && !isTolkienCatalogueTitle(title)) {
+ await unlink(full);
+ const id = slug.replace('ebay-', '');
+ const img = path.join(IMAGES_DIR, `ebay-${id}.jpg`);
+ if (existsSync(img)) await unlink(img);
+ console.log(`Pruned non-Tolkien listing: ${slug}`);
+ continue;
+ }
  if (slug.startsWith('ebay-') && !syncedSlugs.has(slug)) {
  await unlink(path.join(BOOKS_DIR, file));
  const id = slug.replace('ebay-', '');
